@@ -1,0 +1,557 @@
+Date: Wed, 24 Apr 2024 13:55:22 +0200 (CEST)
+Message-ID: <617917676.8554.1713959722385@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8553_1943185056.1713959722385"
+
+------=_Part_8553_1943185056.1713959722385
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>ESTA Tekton E2E User Stories</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>ESTA Tekton E2E User Stories</h1>
+    <div class=3D"Section1">
+        <p><br></p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped relative-table confluenceTable" style=3D"width: 95.=
+0%;">
+<colgroup>
+<col style=3D"width: 3.03193%;">
+<col style=3D"width: 44.6367%;">
+<col style=3D"width: 52.3008%;">
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">ID</th>
+<th class=3D"confluenceTh">Beschreibung</th>
+<th class=3D"confluenceTh">Szenario/Akzeptanzkriterien</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">3</td>
+<td class=3D"confluenceTd"><p>Ein eingeloggter User m=C3=B6chte einen Taggi=
+ng Pipeline Run finden. Der User weiss&nbsp; in welchem Repository sich der=
+ Build befindet, deshalb filtert er die Suche.</p></td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zum Pipelines Fenster</li>
+<li>Filtert nach Repository</li>
+<li>gibt "tagging" in das Suchfeld ein</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>User wird von der Startseite zur Pipeline Seite gef=C3=BChrt</li>
+<li>Nur die gefailten Builds eines Repositories werden angezeigt</li>
+<li>Nur der Build mit dem gesuchtem Namen erscheint&nbsp;</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">4</td>
+<td class=3D"confluenceTd">Als eingeloggter User m=C3=B6chte ich das Pipeli=
+nerun YAML File von einem Build sehen</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zum Pipelines Fenster</li>
+<li>Klickt auf sein gesuchten Pipeline Build</li>
+<li>Klickt auf das YAML Fenster&nbsp;</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>User wird von der Startseite zur Pipeline Seite gef=C3=BChrt</li>
+<li>Der User wird auf eine Seite weitergeleitet, wo er Details zum Pipeline=
+ Build findet</li>
+<li>Das YAML File wird angezeigt</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6">1</td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6">Eingeloggter User m=C3=B6chte=
+ einen Build laufen lassen</td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6">
+<ol title=3D"">
+<li>Navigiert zum Projects Fenster</li>
+<li>Klickt auf das richtige Project</li>
+<li>Hovert auf das richtige Repository bei der Last Pipeline Runs Spalte</l=
+i>
+<li>Klickt auf das Play Icon um den Build laufen zu lasssen</li>
+</ol><p title=3D"">Resultat:</p>
+<ol title=3D"">
+<li>User wird von der Startseite zur Projects Seite gef=C3=BChrt</li>
+<li>User sieht eine Liste von Repositories welche zum Project geh=C3=B6ren<=
+/li>
+<li>4 Icons tauchen auf in der letzten Spalte</li>
+<li>Der Build wird gestartet</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">2</td>
+<td class=3D"confluenceTd">Der User erstellt einen Release Tag auf einem Re=
+pository</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zum Projects Fenster</li>
+<li>Klickt auf das richtige Project</li>
+<li>Hovert auf das richtige Repository bei der Last Pipeline Runs Spalte</l=
+i>
+<li>Klickt auf den Tag Button</li>
+<li>W=C3=A4hlt den Branch aus</li>
+<li>W=C3=A4hlt einen Radiobutton f=C3=BCr den Version Tag</li>
+<li>W=C3=A4hlt einen Radiobutton f=C3=BCr die Developer Version</li>
+<li>Klickt auf den Next Button</li>
+<li>Klickt auf den Execute Button</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>User wird von der Startseite zur Projects Seite gef=C3=BChrt</li>
+<li>User sieht eine Liste von Repositories welche zum Project geh=C3=B6ren<=
+/li>
+<li>4 Icons tauchen auf in der letzten Spalte</li>
+<li>Ein neues Fenster =C3=B6ffnet sich, wo man den Tag erstellen kann</li>
+<li>Branch wird ausgew=C3=A4hlt</li>
+<li>Radiobutton Eingabe wird angezeigt</li>
+<li>Radiobutton Eingabe wird angezeigt</li>
+<li>Die get=C3=A4tigte Eingabe wird stichpunktartig angezeigt</li>
+<li>Neuer Tag wird erstellt</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">5</td>
+<td class=3D"confluenceTd">Der User m=C3=B6chte eine Pipeline Secret Key ko=
+pieren</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zum Pipeline Secrets Fenster</li>
+<li>Klickt auf das gew=C3=BCnschte Pipeline Secret</li>
+<li>Klickt auf das Auge Icon um den Value eines Keys anzuzeigen</li>
+<li>Kopiert den Key</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Der User wird von der Startseite zur Secrets Seite gef=C3=BChrt</li>
+<li>Die verschiedenen Keys eines Secrets werden angezeigt</li>
+<li>Der Value des Key wird angezeigt</li>
+<li>Value im Input-Feld entspricht dem erwarteten Wert</li>
+</ol><p>(Secret muss beim Initialisieren der Tests erstellt werden =E2=86=
+=92 Helm Chart)</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">6</td>
+<td class=3D"confluenceTd">Der User f=C3=BCgt ein Secret hinzu und l=C3=B6s=
+cht es wieder</td>
+<td class=3D"confluenceTd">
+<ol title=3D"">
+<li>Navigiert zum Pipeline Secrets Fenster</li>
+<li>Klickt auf das gew=C3=BCnschte Pipeline Secret</li>
+<li>Klickt auf das Add Key/Value Pair Button</li>
+<li>Gibt beim Key Input Field einen Namen f=C3=BCr das Secret</li>
+<li>Gibt beim Value Input Field den Value ein</li>
+<li>Klickt auf den Save Button um die =C3=84nderungen zu speichern</li>
+<li>Klickt auf den L=C3=B6schen Button</li>
+</ol><p title=3D"">Resultat:</p>
+<ol title=3D"">
+<li>Der User wird zum Secret Fenster weitergeleitet</li>
+<li>Die verschiedenen Keys eines Secrets werden angezeigt</li>
+<li>2 leere Input Felder werden der Seite hinzugef=C3=BCgt, eines namens Ke=
+y das andere Value</li>
+<li>Der neue Key ist sichtbar</li>
+<li>Secret wird in der Liste angezeigt</li>
+<li>Nach L=C3=B6schung ist das Secret wieder entfernt</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">7</td>
+<td class=3D"confluenceTd"><s>Der User gibt einer Gruppe die Admin Rolle</s=
+></td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zum User Permissions Fenster</li>
+<li>W=C3=A4hlt die Admin Rolle aus</li>
+<li>Schreibt die zuberechtigende Gruppe in das Input Field</li>
+<li>Klickt auf den Add Group Button</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Der User wird zur Permission Seite weitergeleitet</li>
+<li>Der Radiobutton mit dem Wert Admin ist ausgew=C3=A4hlt</li>
+<li>Der Name der zuberechtigenden Gruppe ist im Input Feld sichtbar, der Ad=
+d Group Button wechselt seinen State von disabled zu activated</li>
+<li>Zusammen mit der Rolle wird die neue Gruppe in der untenstehenden Liste=
+ angezeigt</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">8</td>
+<td class=3D"confluenceTd"><s>User sieht sich die PipelineRun Details in Op=
+enshift an</s></td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zum Pipelines Fenster</li>
+<li>Hovert auf dem gew=C3=BCnschten Pipeline Run</li>
+<li>Klickt auf Openshift Konsole</li>
+<li>Gelangt zum Openshift Fenster mit den PipelineRun Details</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Der User wird zur Pipelines Seite weitergeleitet</li>
+<li>2 Icons erscheinen in der letzten Spalte</li>
+<li>Ein neuer Tab f=C3=BChrt den User zur Openshift Seite</li>
+<li>Sieht die Details des PipelineRuns auf Openshift</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">9</td>
+<td class=3D"confluenceTd">User sieht sich die Tekton Pipeline Runs in eine=
+m Repository an</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zur Repository Seite</li>
+<li>Hovert =C3=BCber dem gew=C3=BCnschtem Repository</li>
+<li>Klickt auf den Show Pipelines Button</li>
+<li>Klickt den Filter Button auf dem master Branch</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Der User wird zur Repositories Seite gef=C3=BChrt, wo die verschiedenen=
+ Repositories angezeigt werden</li>
+<li>4 Icons erscheinen in der letzten Spalte</li>
+<li>Der User wird auf die Repo-Details Seite weitergeleitet wo er alle Pipe=
+line Runs in dem Repository sieht</li>
+<li>Pipelines Listing passt sich der Branch-Selektion an</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">10</td>
+<td class=3D"confluenceTd">User l=C3=B6scht ein Repository in der Liste</td=
+>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zur Repository Seite</li>
+<li>Hovert =C3=BCber das zul=C3=B6schende Repository</li>
+<li>Klickt auf das X Icon</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Der User wird zur Repositories Seite weitergeleitet</li>
+<li>4 Icons erscheinen in der letzten Spalte</li>
+<li>Das gel=C3=B6schte Repository verschwindet von der Liste</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">11</td>
+<td class=3D"confluenceTd"><s>User rescant die Repositories eines Projektes=
+</s><br>
+ :tick: bereist vorhanden</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zur Projects Seite</li>
+<li>Hovert =C3=BCber das gew=C3=BCnschte Projekt</li>
+<li>Klickt auf das Icon mit den 2 im Kreis drehenden Pfeile, um den Scan zu=
+ starten</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Der User wird zur Projects Seite weitergeleitet</li>
+<li>3 Icons erscheinen</li>
+<li>Scan wird gestartet</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">12</td>
+<td class=3D"confluenceTd"><s>User konvertiert sein estaCloudPipeline.json =
+zu estaTektonPipeline.json und l=C3=A4dt die Datei herunter</s> <br>
+ =E2=86=92 in UI Playwright Tests</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zur Migration Seite</li>
+<li>kopiert den Inhalt seiner estaCloudPipeline.json</li>
+<li>f=C3=BCgt den kopierten Inhalt in das estaCloudPipeline.json Input Fiel=
+d</li>
+<li>Klickt auf den Download Button</li>
+</ol><p>Resultat:&nbsp;</p>
+<ol>
+<li>Der User wird zur Migration Seite weitergeleitet</li>
+<li>Der Inhalt des estaCloudPipeline.json Datei befindet sich in der Zwisch=
+enablage des Users</li>
+<li>Der Inhalt des estaCloudPipeline.json Datei ist im Input Feld ersichtli=
+ch</li>
+<li>Das File wird vom Browser heruntergeladen</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">13</td>
+<td class=3D"confluenceTd">User vermutet Probleme mit den Caches, deshalb l=
+=C3=B6scht er Pipeline Caches f=C3=BCr ein Repo</td>
+<td class=3D"confluenceTd">
+<ol>
+<li>Navigiert zur Repositories Seite&nbsp;</li>
+<li>W=C3=A4hlt ein Repo aus</li>
+<li>Klickt auf den Button "Manage pipeline cache"</li>
+<li>W=C3=A4hlt alle Cache-Eintr=C3=A4ge aus</li>
+<li>Klickt auf Delete selected</li>
+</ol><p>Resultat:</p>
+<ol>
+<li>Die Liste der Pipeline Caches zeigt mind. 1 Eintrag</li>
+<li>Nach dem L=C3=B6schen ist die Liste leer</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">14</td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6"><p title=3D"">User will einig=
+e Repositories ausblenden</p></td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6">
+<ol title=3D"">
+<li>Navigiert zur System Configuration Seite</li>
+<li>User erstellt ein Regex welches gewisse Repositories ausblendet</li>
+<li>Einf=C3=BCgen des Regexes in das Exclude Git Repository regular express=
+ion patterns Input Field</li>
+<li>Bet=C3=A4tigt Enter Taste um den Chip zu speichern</li>
+</ol><p title=3D""><span style=3D"color: rgb(104,104,104);">Resultat:</span=
+></p>
+<ol title=3D"">
+<li>Der User wird zur Configuration Seite weitergeleitet</li>
+<li>-</li>
+<li>-</li>
+<li>Der Regex wird zu einem Chip mit den man die gew=C3=BCnschten Repositor=
+ies ausblenden kann (Die Repositories werden nicht mehr in der Liste angeze=
+igt)</li>
+</ol></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">15</td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6">Templates importieren&nbsp;</=
+td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lgelb 35 %" data-highlight-colour=3D"#fffae6">
+<ol title=3D"">
+<li>Navigiert zur System Configuration Seite</li>
+<li>Klickt auf den Import templates now Button</li>
+</ol><p title=3D"">Resultat:</p>
+<ol title=3D"">
+<li>Der User wird zur System Configuration Seite weitergeleitet</li>
+<li>Die angezeigte Last Import Zeit wird aktualisiert</li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8553_1943185056.1713959722385--

@@ -1,0 +1,436 @@
+Date: Wed, 24 Apr 2024 13:54:16 +0200 (CEST)
+Message-ID: <1294650471.8522.1713959656789@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8521_121881899.1713959656789"
+
+------=_Part_8521_121881899.1713959656789
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Performanceoptimierung PipelineRuns Listing</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Performanceoptimierung PipelineRuns Listing</h1>
+    <div class=3D"Section1">
+        <div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh"><p>Fragestellung</p></th>
+<td class=3D"confluenceTd"><p>Wie k=C3=B6nnen wir die Performance beim List=
+ing von PipelineRuns im Tekton Control Panel verbessern?</p><p>Aktuell wird=
+ vom Control Panel via Polling immer die vollst=C3=A4ndige Liste aller Pipe=
+lineRuns vom Backend bezogen, was lange Ladezeiten und viel Datenvolumen zu=
+r Folge hat. Prim=C3=A4rer Grund daf=C3=BCr sind die eingeschr=C3=A4nkten A=
+bfrage-M=C3=B6glichkeiten von PipelineRuns via Kubernetes API (kein Paging,=
+ keine Sortierung, wenig Filter-Attribute). Wir m=C3=B6chten vom Client nac=
+h M=C3=B6glichkeit nur Pipeline Runs laden, die sich seit dem letzten Poll =
+ge=C3=A4ndert haben.</p><p>Eine Liste von 350 Pipeline Runs ben=C3=B6tigt c=
+a. 4 Sekunden Ladezeit. Diese Ladezeit ist ein dringlicher Indikator, dass =
+hier optimiert werden muss. Zudem werden mit dem aktuellen Update-Mechanism=
+us im Client gel=C3=B6schte Pipeline Runs nicht aus der Liste entfernt bis =
+im Browser die App reloaded wird. Auch diese Unsch=C3=B6nheit soll mit den =
+Optimierungen behoben werden.</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Rahmenbedingung</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Datenquelle f=C3=BCr das Listing ist nachwievor Openshift</li>
+<li>Das bestehende API des Controllers soll keine Breaking Change erfahren =
+(nur Erweiterungen)</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Annahmen</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Die M=C3=B6glichkeiten zur Abfrage von Ressourcen via Kubernetes API (f=
+abric8 Library) bleiben eingeschr=C3=A4nkt</li>
+<li>Die Zahl der PipelineRuns wird eher zu- als abnehmen</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Alternativen / Varianten</p></th>
+<td class=3D"confluenceTd"><p>Zuerst wurden die Anforderungen an das API zu=
+r Abfrage von PipelineRuns definiert. Der Client m=C3=B6chte die folgenden =
+Use-Cases abdecken:</p>
+<ul>
+<li>Listing aller PipelineRuns</li>
+<li>Listing der letzten X PipelineRuns f=C3=BCr ein Repository</li>
+<li>Inkremetelle Updates von ge=C3=A4nderten/gel=C3=B6schten Records</li>
+</ul><h2 id=3D"PerformanceoptimierungPipelineRunsListing-Variante1">Variant=
+e 1</h2><p><strong>Spiegelung der PipelineRuns in einer In-Memory Datenbank=
+.</strong></p><p>Eine Datendank mit Metadaten von PipelineRuns wird angeleg=
+t und vom Controller in Sync gehalten. Dar=C3=BCber k=C3=B6nnen schnelle Ab=
+fragen von Client beantwortet werden. Die f=C3=BCr das Listing ben=C3=B6tig=
+ten DTOs werden komplett in der DB gespeichert und es muss f=C3=BCr das Lis=
+ting keine Abfrage an Openshift gemacht werden. Die Aktualisierung der DB g=
+eschieht aufgrund von Kubernetes Events, welche =C3=BCber einen Watcher sub=
+scribed werden. Beim Start der App werden alle PipelineRuns gelesen und die=
+ DB bef=C3=BCllt.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><p>Schnelle Abfrage nach beliebigen Kriterien m=
+=C3=B6glich</p></td>
+<td class=3D"confluenceTd"><p>Kopie der Daten aus Openshift</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd"><p>DB kann out-of-sync sein</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd"><p>H=C3=B6herer Memorybedarf</p></td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">Gr=C3=B6sseres Refactoring</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id=3D"PerformanceoptimierungPipelineRunsListing-Variante2">Varian=
+te 2</h2><p><strong>Benutzung der Quarkus Cache Funktionen f=C3=BCr ein In-=
+Memory Caching</strong></p><p>Die PipelineRunDTOs welche f=C3=BCr das Listi=
+ng ben=C3=B6tigt werden, werden =C3=BCber eine mit @CacheResult annotierte =
+Methode bezogen und k=C3=B6nnen so direkt und ohne Abfrage an Openshift aus=
+gegeben werden. Als Index kann direkt der Key-Index des Quarkus Caches benu=
+tzt werden. Das Filtering geschieht durch Iteration =C3=BCber die aus dem C=
+ache gelesenen PipelineRunDTOs. Die Aktualisierung des Caches geschieht auf=
+grund von Kubernetes Events, welche =C3=BCber einen Watcher subscribed werd=
+en. Beim Start der App werden alle PipelineRuns gelesen und der Cache bef=
+=C3=BCllt. L=C3=B6schungen k=C3=B6nnen ebenfalls in diesem Cache registrier=
+t und dem Client beim n=C3=A4chsten Poll mitgeteilt werden. =C3=9Cber den S=
+cheduler kann periodisch der Cache geleert und neu aufgebaut werden, um ihn=
+ 100% wieder in sync zu bringen.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Schnelle Abfrage aus dem Memory</td>
+<td class=3D"confluenceTd">Partielle Kopie der Daten</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Anpassung der Filter-Kriterien einfach m=C3=B6gl=
+ich</td>
+<td class=3D"confluenceTd">Cache kann out-of-sync sein</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Mit Quarkus Boardmitteln umsetzbar</td>
+<td class=3D"confluenceTd">H=C3=B6herer Memorybedarf</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id=3D"PerformanceoptimierungPipelineRunsListing-Variante3">Varian=
+te 3</h2><p><strong>Inkrementelle Updates via Websockets an den Client send=
+en</strong></p><p>Die einzige Datenquelle bleibt Openshift und alle Daten w=
+erden direkt daraus gelesen. Der Client =C3=B6ffnet eine Websocket-Verbindu=
+ng zum Controller, welcher =C3=BCber =C3=84nderungen an PipelineRuns =C3=BC=
+ber CloudEvent Notifications empf=C3=A4ngt und diese direkt an den Client s=
+endet.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kein out-of-sync</td>
+<td class=3D"confluenceTd">Websockets + Angular unstabil</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine kopierten Daten</td>
+<td class=3D"confluenceTd">Keine Erfahrung mit Websockets + Quarkus</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Instand-Updates im Client</td>
+<td class=3D"confluenceTd">Initatialer Load im Client immer noch langsam</t=
+d>
+</tr>
+</tbody>
+</table>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Entscheidung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p>Es wurde <strong>Variante 2</strong> gew=C3=A4hlt</p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Begr=C3=BCndung</p></th>
+<td class=3D"confluenceTd"><p>Ein Caching kann mit den verf=C3=BCgbaren Mit=
+teln in Quarkus einfach umgesetzt werden. Nach dem Startup des Controllers =
+k=C3=B6nnen Anfragen blitzschnell aus dem Cache beantwortet werden. Das Emp=
+fangen von Kubernetes Events hat sich in ersten Tests als stabil erwiesen u=
+nd optional kann der Cache periodisch im Hintergrund gel=C3=B6scht und neu =
+aufgebaut werden. Durch die Speicherung der f=C3=BCr das Listing verwendete=
+n DTOs im Cache (anstelle der kompletten PipelineRuns) bleibt der Memory-Be=
+darf =C3=BCberschaubar.</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wer</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"u233658" =
+href=3D"/display/~u233658" data-linked-resource-id=3D"1607762183" data-link=
+ed-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-=
+url=3D"https://confluence.sbb.ch">Br=C3=BCderli Thomas (IT-PTR-SL2)</a> <a =
+class=3D"confluence-userlink user-mention" data-username=3D"ue64007" href=
+=3D"/display/~ue64007" data-linked-resource-id=3D"327718071" data-linked-re=
+source-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=
+=3D"https://confluence.sbb.ch">Wallrapp Manuel (IT-PTR-EXT-EXT2 - Extern)</=
+a>&nbsp;</p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wann</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><time datetime=3D"2022-02-14" class=3D"date-past">14.02.2022</time>&nbsp=
+;</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8521_121881899.1713959656789--

@@ -1,0 +1,394 @@
+Date: Wed, 24 Apr 2024 13:55:01 +0200 (CEST)
+Message-ID: <1389683773.8544.1713959701776@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8543_953155769.1713959701776"
+
+------=_Part_8543_953155769.1713959701776
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Controller API Authentication aus Pipelines</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Controller API Authentication aus Pipelines</h1>
+    <div class=3D"Section1">
+        <p>Aus Tekton Pipelines sollen via Controller API weitere Pipelines=
+ gestartet werden k=C3=B6nnen (<a href=3D"https://flow.sbb.ch/browse/ESTA-4=
+989" class=3D"external-link" rel=3D"nofollow">ESTA-4989</a>). Um API Reques=
+ts an den Controller senden zu k=C3=B6nnen, m=C3=BCssen diese eine Authenti=
+fizierung enthalten, die vom Controller akzeptiert wird. In diesem Konzept =
+wird beschrieben, wie ein solcher Authentifizierungs-Mechanismus aussehen k=
+=C3=B6nnte.</p>
+<h1 id=3D"ControllerAPIAuthenticationausPipelines-Grundidee">Grundidee</h1>
+<p><em><strong>F=C3=BCr jede Pipeline wird ein JWT generiert und via Env Va=
+riable den Tasks zur Verf=C3=BCgung gestellt. Dieser Token ist nur solang g=
+=C3=BCltig, wie der PipelineRun noch l=C3=A4uft.</strong></em></p>
+<p><strong>Hintergrund:</strong></p>
+<p>Die Tokens sollen m=C3=B6glichst kurzlebig und auch nur im Kontext eines=
+ spezifischen PipelineRuns nutzbar sein. Zwar k=C3=B6nnten langlebige Token=
+s statisch in OpenShift Secrets hinterlegt werden, diese sind allerdings sc=
+hwieriger zu rotieren. In den dynamischen Tokens k=C3=B6nnen zudem Claims w=
+ie Username/Actor, welcher die aktuelle Pipeline gestartet hat, gespeichert=
+ werden und sie k=C3=B6nnen damit gleich wie die OICD JWT (von Microsoft Lo=
+gin) behandelt werden.</p>
+<h1 id=3D"ControllerAPIAuthenticationausPipelines-TokenGenerierung">Token G=
+enerierung</h1>
+<p>Bei jedem Start eines PipelineRuns wird ein <a href=3D"https://jwt.io/in=
+troduction" class=3D"external-link" rel=3D"nofollow">JWT</a> generiert, wel=
+cher an diese Pipeline gebunden ist. Die Claims sehen wie folgt aus:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: json; gutter: false; theme: Confluence" data-custom-language-resource=3D"=
+com.atlassian.confluence.ext.code.custom.Json.8823381252449680163:custom-co=
+de-syntax-resources" data-theme=3D"Confluence">{
+  "iss": "esta-tekton-pipeline-controller@&lt;tekton-namespace&gt;",
+  "sub": "&lt;pipelinerun-id&gt;",
+  "exp": 1707920236,
+  "name": "John Doe",
+  "preferred_username": "john.doe@sbb.ch",
+  "roles": [
+    "TektonPipeline"
+  ],
+  "sbbuid": "u222555"
+}</pre>
+</div>
+</div>
+<ul>
+<li>Als Issuer (iss) wird der ESTA Tekton Controller und der Namespace-Name=
+ verwendet. Damit lassen sich die selbst ausgestellten Tokens von denen von=
+ Microsoft unterscheiden.</li>
+<li>Als Subject (sub) wird die ID (Name) des PipelineRuns eingetragen. Dar=
+=C3=BCber kann sp=C3=A4ter gepr=C3=BCft werden, ob der Token noch g=C3=BClt=
+ig ist</li>
+<li>Weitere Claims wie <code>name</code>, <code>preferred_username</code> u=
+nd <code>sbbuid</code> werden vom aktuellen Kontext (API Request) in den Pi=
+peline Token =C3=BCbertragen.</li>
+<li>Der JWT wird mit einem Key signiert, welcher f=C3=BCr jede Tekton Insta=
+nz individuell generiert wird.</li>
+</ul>
+<h1 id=3D"ControllerAPIAuthenticationausPipelines-TokenValidierung">Token V=
+alidierung</h1>
+<p>Im Controller werden die JWT Tokens im Request Handling validiert. Dies =
+wird aktuell bereits von OIDC in Quarkus gemacht, welcher mit dem Microsoft=
+ Login konfiguriert ist. Neu muss zuerst eine Fallunterscheidung aufgrund d=
+es Token Issuers gemacht werden. Ist es ein selbst ausgestellter Token, mac=
+ht der Controller die Validierung selbst. Diese Validierung ist in folgende=
+ Schritte gegliedert:</p>
+<ol>
+<li>Pr=C3=BCfung der Signatur</li>
+<li>Pr=C3=BCfung des Ablaufdatums</li>
+<li>Pr=C3=BCfung der PipelineRun Referenz (Subject) =E2=86=92 der PipelineR=
+un muss existieren und den Status <em>Running</em> haben.</li>
+</ol>
+<h1 id=3D"ControllerAPIAuthenticationausPipelines-=C3=9CbergabeanPipelineTa=
+sks">=C3=9Cbergabe an Pipeline Tasks</h1>
+<p>Die JWT Tokens sollen in den Pipeline Tasks als Env Variable (oder besse=
+r noch als File) konsumierbar sein. Von einer direkten Definition via podTe=
+mplate ist abzusehen, da so die effektiven Tokens sowohl im PipelineRun (Ya=
+ml) als auch im Pod (Yaml) sichtbar w=C3=A4ren und von Tekton Results, Splu=
+nk, etc. auch gespeichert w=C3=BCrden. Die Tokens sollen in einem OpenShift=
+ Secret angelegt und lediglich der Secret-Name als Pipeline Parameter =C3=
+=BCbergeben werden. Siehe auch <a href=3D"/display/CLEW/Recommended+practic=
+e+for+OpenShift+Secrets+and+Passwords#RecommendedpracticeforOpenShiftSecret=
+sandPasswords-HowtouseKubernetesSecretinpractice">How to use Kubernetes Sec=
+ret in practice</a>.</p>
+<p>Hierbei wird also f=C3=BCr jeden PipelineRun auch ein Secret in OpenShif=
+t angelegt, welches nach Beendigung der Pipeline wieder gel=C3=B6scht werde=
+n sollte. Evtl. l=C3=A4sst sich die L=C3=B6schung =C3=BCber eine <a href=3D=
+"https://kubernetes.io/docs/concepts/overview/working-with-objects/owners-d=
+ependents/" class=3D"external-link" rel=3D"nofollow">Owner Reference</a> an=
+ Kubernetes delegieren.</p>
+<h1 id=3D"ControllerAPIAuthenticationausPipelines-UmsetzunginQuarkus">Umset=
+zung in Quarkus</h1>
+<p>Allgemeine Infos zum Authentifizierungsprozess in Quarkus finden sich hi=
+er: <a href=3D"https://quarkus.io/guides/security-architecture" class=3D"ex=
+ternal-link" rel=3D"nofollow">https://quarkus.io/guides/security-architectu=
+re</a></p>
+<p>Die Token Generierung kann mit&nbsp;<code>quarkus-smallrye-jwt-build</co=
+de> implementiert werden. Siehe <a href=3D"https://quarkus.io/guides/securi=
+ty-jwt-build" class=3D"external-link" rel=3D"nofollow">https://quarkus.io/g=
+uides/security-jwt-build</a></p>
+<p>F=C3=BCr die Signierung muss ein JSON Web Key (JWK) File angelegt werden=
+. Dies kann als OpenShift Secret gespeichert und als Volume in den Controll=
+er Pod gemounted werden.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>JWK File</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: json; gutter: false; theme: Confluence" data-custom-language-resource=3D"=
+com.atlassian.confluence.ext.code.custom.Json.8823381252449680163:custom-co=
+de-syntax-resources" data-theme=3D"Confluence">{
+  "kty":"oct",
+  "kid":"secretKey",
+  "k":"&lt;random-secret-key&gt;"
+}</pre>
+</div>
+</div>
+<p>In der Quarkus Config wird der Pfad zu diesem Key File f=C3=BCr sign und=
+ verify angegeben:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>application.yaml</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: yml; gutter: false; theme: Confluence" data-theme=3D"Confluence">smallrye=
+:
+  jwt:
+    sign:
+      key:
+        id: secretKey
+        location: ${JWT_SIGN_KEY_FILE:/config/jwt-sign-key.json}
+    verify:
+      algorithm: HS256
+      key:
+        location: ${JWT_SIGN_KEY_FILE:/config/jwt-sign-key.json}</pre>
+</div>
+</div>
+<p><br></p>
+<p>Die Unterscheidung f=C3=BCr die interne JWT Validierung (oidc oder self-=
+issued) kann =C3=BCber eine&nbsp;<code class=3D"language-java hljs"><span c=
+lass=3D"hljs-class"><span class=3D"hljs-title">HttpAuthenticationMechanism =
+</span></span></code>Klasse gemacht werden. Siehe <a href=3D"https://quarku=
+s.io/guides/security-customization#dealing-with-more-than-one-http-auth-mec=
+hanisms" class=3D"external-link" rel=3D"nofollow">Dealing with more than on=
+e HttpAuthenticationMechanism</a>.</p>
+<p>Durch die Verwendung von&nbsp;<code class=3D"language-java hljs">JWTAuth=
+Mechanism </code>aus dem&nbsp;<code class=3D"language-xml hljs">quarkus-sec=
+urity </code>Modul wird die syntaktische Validierung des JWT (Signatur, Exp=
+) bereits gemacht, so dass im Code nur noch die PipelineRun Referenz gepr=
+=C3=BCft werden muss.</p>
+<p>Ein (unvollst=C3=A4ndiger) POC ist in Commit <a href=3D"https://code.sbb=
+.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/commits/59242d89=
+78738460f1809e90018d850f2f6a9a7a" class=3D"external-link" rel=3D"nofollow">=
+59242d8978</a> zu sehen und kann als Basis f=C3=BCr die Umsetzung verwendet=
+ werden.</p>
+<p><br></p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_8543_953155769.1713959701776--

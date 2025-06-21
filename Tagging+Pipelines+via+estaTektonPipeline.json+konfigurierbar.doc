@@ -1,0 +1,605 @@
+Date: Wed, 24 Apr 2024 13:54:25 +0200 (CEST)
+Message-ID: <1388715279.8530.1713959665656@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8529_405795046.1713959665656"
+
+------=_Part_8529_405795046.1713959665656
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Tagging Pipelines via estaTektonPipeline.json konfigurierbar</ti=
+tle>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Tagging Pipelines via estaTektonPipeline.json konfigurierbar</h1>
+    <div class=3D"Section1">
+        <div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Fragestellung</th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p>Aus ersten Pilotprojekten ergibt sich die Anforderung, den Release-Proze=
+ss (=E2=86=92 Tagging Pipelines) auch automatisiert aus Git Events starten =
+zu k=C3=B6nnen. Aktuell ist dies nur =C3=BCber das Tekton Control Panel ode=
+r =C3=BCber das REST API des Controllers m=C3=B6glich und es gibt keine Ein=
+stellungsm=C3=B6glichkeiten. Tagging Pipelines sollen daher auch =C3=BCber =
+die Step Konfiguration im estaTektonPipeline.json gesteuert werden k=C3=B6n=
+nen. Bislang definieren die Steps lediglich Build Pipelines. Auch f=C3=BCr =
+das automatisierte Tagging sollen Trigger-Kriterien wie triggerTypes und br=
+anchNamePrefixes konfiguriert werden k=C3=B6nnen.</p>
+<p><span class=3D"aui-message aui-message-warning jim-error-message jim-err=
+or-message-single"> <span class=3D"icon-in-pdf"></span> <a href=3D"https://=
+flow.sbb.ch/browse/ESTA-4906?src=3Dconfmacro">ESTA-4906</a> - Der Jira-Vorg=
+ang existiert nicht oder Sie sind nicht anzeigeberechtigt. </span></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Rahmenbedingungen</th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Konfiguration =C3=BCber estaTektonPipeline.json</li>
+<li>Anpassungen r=C3=BCckw=C3=A4rtskompatibel zum bisherigen Schema von est=
+aTektonPipeline.json</li>
+<li>Steuerung =C3=BCber den ESTA Tekton Controller</li>
+<li>Die automatische Versionierung (major, minor, patch) muss konfigurierba=
+r sein</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Annahmen</th>
+<td class=3D"confluenceTd">--</td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Varianten / Alternativen</th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<h2 id=3D"TaggingPipelinesviaestaTektonPipeline.jsonkonfigurierbar-Variante=
+1">Variante 1</h2>
+<p><strong>Die bestehende Step Konfigurationsstruktur wird um ein Property =
+"pipelineType" ("TAGGING" | "BUILD") erg=C3=A4nzt.</strong></p>
+<p>Beispiel:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">Step Config mit pipelineType</b><span class=3D"coll=
+apse-source expand-control" style=3D"display:none;"><span class=3D"expand-c=
+ontrol-icon icon">&nbsp;</span><span class=3D"expand-control-text">Quelle e=
+rweitern</span></span><span class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence; collapse: true" data-theme=3D"Con=
+fluence">{
+  "name": "continuous-release",
+  "pipelineType": "TAGGING",
+  "enabled": true,
+  "updateHelmChart": false,
+  "versionIncrement": "minor",
+  "triggerType": [
+    "USER",
+    "GITEVENT"
+  ],
+  "branchNamePrefixes": [
+    "master",
+    "hotifx"
+  ]
+}</pre>
+</div>
+</div>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfache Integration =E2=86=92 wenig Entwicklung=
+saufwand</td>
+<td class=3D"confluenceTd">Schlechte Unterscheidung der Step-Configs</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Explizite Angabe</td>
+<td class=3D"confluenceTd">Inkonsistenz mit dem Staging Konzept im JSON</td=
+>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Vollst=C3=A4ndig r=C3=BCckw=C3=A4rtskompatibel</=
+td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"TaggingPipelinesviaestaTektonPipeline.jsonkonfigurierbar-Variante=
+2">Variante 2</h2>
+<p><strong>Separate Step Konfigurationsstrukturen f=C3=BCr Tagging und Buil=
+d Pipelines.</strong></p>
+<p>Im JSON Schema gibt es eine neue Liste "releases" mit Step configs f=C3=
+=BCr Tagging/Release Pipelines und "builds" f=C3=BCr Build Pipelines. Diese=
+ Terminologie integriert sich gut mit den bestehenden "stages" f=C3=BCr die=
+ Staging Pipelines. Die bisherigen "steps" w=C3=BCrden in "builds" umbenann=
+t, was eine Breaking Change darstellt.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">Release, Build, Staging Konfiguration</b><span clas=
+s=3D"collapse-source expand-control" style=3D"display:none;"><span class=3D=
+"expand-control-icon icon">&nbsp;</span><span class=3D"expand-control-text"=
+>Quelle erweitern</span></span><span class=3D"collapse-spinner-wrapper"></s=
+pan>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence; collapse: true" data-theme=3D"Con=
+fluence">{
+  "stages": [
+    {
+      "stageName": "dev",
+      "argoCD": {
+        "autoSync": true
+      }
+    }
+  ],
+  "builds": [
+    {
+      "name": "continuous-build",
+      "enabled": true,
+      "additionalBuildParams": "-DskipITs",
+      "triggerType": [
+        "USER",
+        "GITEVENT"
+      ],
+      "branchNamePrefixes": [
+        "feature",
+        "hotfix"
+      ]
+    },
+    { ... }
+  ],
+  "releases": [
+    {
+      "name": "continuous-release",
+      "enabled": true,
+      "versionIncrement": "patch",
+      "triggerType": [
+        "USER",
+        "GITEVENT"
+      ],
+      "branchNamePrefixes": [
+        "master",
+        "hotfix"
+      ]
+    },
+    { ... }
+  ]
+}</pre>
+</div>
+</div>
+<p>Die R=C3=BCckw=C3=A4rtskompatibilit=C3=A4t zum bisherigen Schema von est=
+aTektonPipeline.json kann gew=C3=A4hrleistet werden, indem die bisherige "s=
+teps" Liste vom Controller als "builds" gelesen und sinngem=C3=A4ss als Ali=
+as behandelt wird.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Konsequentes und verst=C3=A4ndliches Naming</td>
+<td class=3D"confluenceTd">Breaking Change</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Klare Unterscheidung</td>
+<td class=3D"confluenceTd">Gr=C3=B6ssere Abweichung von estaCloudPipeline.j=
+son</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Individuelle Schema Definitionen (build, release=
+, stage) und somit bessere Validierungsm=C3=B6glichkeiten</td>
+<td class=3D"confluenceTd">Custom Pipelines unter "builds" gef=C3=BChrt</td=
+>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 class=3D"auto-cursor-target" id=3D"TaggingPipelinesviaestaTektonPipelin=
+e.jsonkonfigurierbar-Variante3">Variante 3</h2>
+<p><strong>Die Step Konfigurationsstruktur wird komplett neu strukturiert</=
+strong></p>
+<ul>
+<li class=3D"auto-cursor-target">Die Liste "steps" wird in "pipelines" umbe=
+nannt</li>
+<li class=3D"auto-cursor-target">Die bisherige "step" Config erh=C3=A4lt ne=
+ue Unterobjekte je nach Pipeline-Typ:=20
+<ul>
+<li class=3D"auto-cursor-target">"build": buildDockerImage, packageAndDeplo=
+yHelmChart, additionalBuildParams, deployArtifacts</li>
+<li class=3D"auto-cursor-target">"tagging": versionIncrementPattern, update=
+Helm Chart</li>
+<li class=3D"auto-cursor-target">"custom": pipelineRef, pipelineTemplate, p=
+arams</li>
+</ul></li>
+<li class=3D"auto-cursor-target">Folgende Properties sind allgemein f=C3=BC=
+r alle Pipeline Configs:<br>
+ name, enabled, triggerType, branchNamePrefixes, versionTagEventPatterns, s=
+tages</li>
+</ul>
+<p>Beispiel:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">Pipelines Config</b><span class=3D"collapse-source =
+expand-control" style=3D"display:none;"><span class=3D"expand-control-icon =
+icon">&nbsp;</span><span class=3D"expand-control-text">Quelle erweitern</sp=
+an></span><span class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence; collapse: true" data-theme=3D"Con=
+fluence">{
+  "stages": [
+    {
+      "stageName": "dev",
+      "argoCD": {
+        "autoSync": true
+      }
+    }
+  ],
+  "pipelines": [
+    {
+      "name": "continuous-build",
+      "enabled": true,
+      "triggerType": [
+        "USER",
+        "GITEVENT"
+      ],
+      "branchNamePrefixes": [
+        "feature",
+        "development"
+      ],
+      "build": {
+        "additionalBuildParams": "-DskipITs"
+      }
+    },
+    {
+      "name": "continuous-release",
+      "enabled": true,
+      "triggerType": [
+        "USER",
+        "GITEVENT"
+      ],
+      "branchNamePrefixes": [
+        "master",
+        "hotfix"
+      ],
+      "tagging": {
+        "versionIncrementPattern": "\\d+\\.(\\d+)-saturn-2"
+      }
+    },
+    {
+      "name": "custom-build",
+      "enabled": true,
+      "triggerType": [
+        "GITEVENT"
+      ],
+      "versionTagEventPatterns": [
+        "^custom-(\\d+\\.)(\\d+\\.)(\\*|\\d+)$"
+      ],
+      "custom": {
+        "pipelineTemplate": "foo-bar-pipeline.yaml",
+        "params": {
+          "FOO": "BAR"
+        }
+      },
+      "stages": ["dev"]
+    }
+  ]
+}</pre>
+</div>
+</div>
+<p class=3D"auto-cursor-target">Die R=C3=BCckw=C3=A4rtskompatibilit=C3=A4t =
+ist mit dieser Variante nicht gew=C3=A4hrleistet. Es ist somit eine Migrati=
+on der bestehenden Tekton-enabled Projekte notwendig. Eine automatisierter =
+Check von alten Schemas mit Konvertierung ins neue Schema (es wird ein PR e=
+rstellt) k=C3=B6nnte im ESTA Tekton Controller implementiert werden und auc=
+h f=C3=BCr sp=C3=A4tere Schema-Anpassungen n=C3=BCtzlich sein.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Konsequentes und verst=C3=A4ndliches Naming</td>
+<td class=3D"confluenceTd">Breaking Change</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Bessere Struktur f=C3=BCr Custom Pipelines</td>
+<td class=3D"confluenceTd">Hoher Entwicklungsaufwand</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Individuelle Schema Definitionen und bessere Val=
+idierungsm=C3=B6glichkeiten</td>
+<td class=3D"confluenceTd">Pipeline Config etwas un=C3=BCbersichtlich wegen=
+ zus=C3=A4tzlicher Unterobjekte</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">Migration bestehender Projekte not=
+wendig</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh">Entscheidung</th>
+<td class=3D"confluenceTd">Es wurde <strong>Variante 3</strong> gew=C3=A4hl=
+t</td>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Begr=C3=BCndung</th>
+<td colspan=3D"1" class=3D"confluenceTd">Mit dieser strukturellen =C3=84nde=
+rung legen wir eine solide Basis f=C3=BCr die Umsetzung dieser Anforderung =
+sowie f=C3=BCr die Weiterentwicklung des ESTA Tekton Pipeline. Solche grund=
+legenden Anpassungen k=C3=B6nnen wir in der aktuellen Phase des Projekts no=
+ch machen, sp=C3=A4ter wird es dann schwieriger.</td>
+</tr>
+<tr>
+<th colspan=3D"1" class=3D"confluenceTh">Wer/Wann</th>
+<td colspan=3D"1" class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><time datetime=3D"2021-09-30" class=3D"date-past">30.09.2021</time>&nbsp=
+;&nbsp;<a class=3D"confluence-userlink user-mention" data-username=3D"u2336=
+58" href=3D"/display/~u233658" data-linked-resource-id=3D"1607762183" data-=
+linked-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-b=
+ase-url=3D"https://confluence.sbb.ch">Br=C3=BCderli Thomas (IT-PTR-CEN2-SL2=
+)</a> <a class=3D"confluence-userlink user-mention" data-username=3D"ue6400=
+7" href=3D"/display/~ue64007" data-linked-resource-id=3D"327718071" data-li=
+nked-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-bas=
+e-url=3D"https://confluence.sbb.ch">Wallrapp Manuel (IT-PTR-EXT-EXT2 - Exte=
+rn)</a> <a class=3D"confluence-userlink user-mention" data-username=3D"u228=
+304" href=3D"/display/~u228304" data-linked-resource-id=3D"1093766913" data=
+-linked-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-=
+base-url=3D"https://confluence.sbb.ch">Spirig Lukas (IT-PTR-CEN2-SL3)</a></=
+p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8529_405795046.1713959665656--

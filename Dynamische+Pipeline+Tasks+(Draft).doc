@@ -1,0 +1,438 @@
+Date: Wed, 24 Apr 2024 13:55:06 +0200 (CEST)
+Message-ID: <1826889471.8546.1713959706546@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8545_952071660.1713959706546"
+
+------=_Part_8545_952071660.1713959706546
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Dynamische Pipeline Tasks (Draft)</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Dynamische Pipeline Tasks (Draft)</h1>
+    <div class=3D"Section1">
+        <p><span style=3D"color: rgb(0,0,0);">tekton.dev/v1beta1</span>Idee=
+/Entwurf f=C3=BCr frei konfigurierbare Pipeline Tasks/Steps/Actions (=E2=86=
+=92 analog GitHub Actions) innerhalb der ESTA Tekton Standard Pipelines.</p=
+>
+<h1 id=3D"DynamischePipelineTasks(Draft)-Anforderungen">Anforderungen</h1>
+<p>Abnehmer von ESTA Tekton sollen einfach die standardisierten Pipelines v=
+ia<code> estaTektonPipeline.json</code> um weitere Tasks erweitern k=C3=B6n=
+nen, ohne eine Custom Pipeline selbst bauen und pflegen zu m=C3=BCssen.</p>
+<p>ESTA pflegt eine Palette von Tekton Tasks f=C3=BCr unterschiedliche Funk=
+tionen, die nicht zum Standard Buildprozess geh=C3=B6ren. Abnehmer k=C3=B6n=
+nen zudem eigene Tekton Tasks erstellen und =C3=BCber ein <a href=3D"/displ=
+ay/CLEW/Advanced+Topics#AdvancedTopics-ImportCustomPipelinesfromyourownRepo=
+sitory">Custom Template Repository</a> in ihrem Build Namespace verf=C3=BCg=
+bar machen.</p>
+<p>Die Tasks k=C3=B6nnen an beliebiger Stelle in die Pipeline eingeh=C3=A4n=
+gt werden (=E2=86=92 runAfter/runBefore).</p>
+<h1 id=3D"DynamischePipelineTasks(Draft)-Beispiel(S3Push)">Beispiel (S3 Pus=
+h)</h1>
+<h2 id=3D"DynamischePipelineTasks(Draft)-TektonTaskDefinition">Tekton Task =
+Definition</h2>
+<p>Inspired by <a href=3D"https://hub.tekton.dev/tekton/task/aws-cli" class=
+=3D"external-link" rel=3D"nofollow">https://hub.tekton.dev/tekton/task/aws-=
+cli</a></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>esta-s2-push.yaml</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: yml; gutter: false; theme: Confluence" data-theme=3D"Confluence">apiVersi=
+on: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: esta-s3-push
+spec:
+  description: |
+    This task can push files from the workspace directory to a given S3 buc=
+ket
+
+  params:
+    - name: BUCKET_URL
+      description: URL to destination bucket and subdirectory (e.g. s3://bu=
+cket-name/subdir)
+    - name: SOURCE_DIR
+      description: Source directory for files to push
+    - name: GLOB_PATTERN
+      description: Glob pattern for files to push from SOURCE_DIR
+      default: '*'
+    - name: AWS_DEFAULT_REGION
+      description: AWS region
+      default: us-east-1
+    - name: AWS_CREDENTIALS_SECRET
+      description: |
+        Secret name to read AWS credentails from.
+        Must contain entries named AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_=
+KEY
+
+  workspaces:
+    - name: source
+    - name: env-vars
+      optional: true
+
+  steps:
+    - name: push
+      image: remote.docker.bin.sbb.ch/amazon/aws-cli:2.0.5
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: AWS_DEFAULT_REGION
+          value: $(params.AWS_DEFAULT_REGION)
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: $(params.AWS_CREDENTIALS_SECRET)
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: $(params.AWS_CREDENTIALS_SECRET)
+              key: AWS_SECRET_ACCESS_KEY
+      script: |
+        aws s3 cp $(params.SOURCE_DIR)/$(params.GLOB_PATTERN) $(params.BUCK=
+ET_URL)/</pre>
+</div>
+</div>
+<h2 id=3D"DynamischePipelineTasks(Draft)-ActioninestaTektonPipeline.json">A=
+ction in estaTektonPipeline.json</h2>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>estaTektonPipeline.json</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: js; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "$schema": "https://clew-resources.sbb-cloud.net/tekton-schema.json",
+  ...
+  "pipelines": [
+    {
+      "name": "release",
+      "triggerType": ["GITEVENT"],
+      "versionTagEventPatterns": "^(\\d+\\.)(\\d+\\.)(\\*|\\d+)",
+      "build": {
+
+      },
+      "tasks": [
+        {
+          "name": "s3-push",
+          "taskRef": "esta-s3-push",
+          "params": {
+            "BUCKET_URL": "s3://test-bucket/static-www",
+            "SOURCE_DIR": "./dist",
+            "AWS_DEFAULT_REGION": "us-east-1",
+            "AWS_CREDENTIALS_SECRET": "pipeline-env-aws-credentails"
+          },
+          "runAfter": "quality-gate-check",
+          "runBefore": "helm-package-deploy"
+        }
+      ]
+    }
+  ]
+}</pre>
+</div>
+</div>
+<p><br></p>
+<p>=E2=86=92 per Template Modifier wird folgendes ins Pipelinerun Template =
+eingef=C3=BCgt:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: yml; gutter: false; theme: Confluence" data-theme=3D"Confluence">  - kind=
+: PipelineRun
+    ...
+    spec:
+      params:
+        ...
+        - name: S3_PUSH_BUCKET_URL
+          value: ${S3_PUSH_BUCKET_URL}
+        - name: S3_PUSH_SOURCE_DIR
+          value: ${S3_PUSH_SOURCE_DIR}
+        - name: S3_PUSH_AWS_DEFAULT_REGION
+          value: ${S3_PUSH_AWS_DEFAULT_REGION}
+        - name: S3_PUSH_AWS_CREDENTIALS_SECRET
+          value: ${S3_PUSH_AWS_CREDENTIALS_SECRET}
+
+      pipelineSpec:
+        params:
+          ...
+          - name: S3_PUSH_BUCKET_URL
+          - name: S3_PUSH_SOURCE_DIR
+          - name: S3_PUSH_AWS_DEFAULT_REGION
+          - name: S3_PUSH_AWS_CREDENTIALS_SECRET
+
+        tasks:
+          ...
+          - name: helm-package-deploy
+            ...
+            runAfter:
+              ...
+              - s3-push
+
+          # injected task from json action
+          - name: s3-push
+            taskRef:
+              name: esta-s3-push
+            runAfter:
+              - quality-gate-check
+            params:
+              - name: BUCKET_URL
+                value: $(params.S3_PUSH_BUCKET_URL)
+              - name: SOURCE_DIR
+                value: $(params.S3_PUSH_SOURCE_DIR)
+              - name: AWS_DEFAULT_REGION
+                value: $(params.S3_PUSH_AWS_DEFAULT_REGION)
+              - name: AWS_CREDENTIALS_SECRET
+                value: $(params.S3_PUSH_AWS_CREDENTIALS_SECRET)
+            workspaces:
+              - name: source
+                workspace: pipeline-workspace
+              - name: env-vars
+                workspace: pipeline-env
+
+parameters:
+  ...
+  - name: S3_PUSH_BUCKET_URL
+    type: string
+  - name: S3_PUSH_SOURCE_DIR
+    type: string
+  - name: S3_PUSH_AWS_DEFAULT_REGION
+    type: string
+  - name: S3_PUSH_AWS_CREDENTIALS_SECRET
+    type: string</pre>
+</div>
+</div>
+<h2 id=3D"DynamischePipelineTasks(Draft)-Konventionenf=C3=BCrTasks">Konvent=
+ionen f=C3=BCr Tasks</h2>
+<ul>
+<li>Definiert genau einen Workspace mit den Namen "source"</li>
+<li>Akzeptiert nur Parameter vom type: string</li>
+</ul>
+<p><br></p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_8545_952071660.1713959706546--

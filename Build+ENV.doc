@@ -1,0 +1,929 @@
+Date: Wed, 24 Apr 2024 13:54:53 +0200 (CEST)
+Message-ID: <1493849516.8540.1713959693540@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8539_1331135174.1713959693540"
+
+------=_Part_8539_1331135174.1713959693540
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Build ENV</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Build ENV</h1>
+    <div class=3D"Section1">
+        <p class=3D"auto-cursor-target">Namen und Beschreibung ist noch von=
+ Github/Gitlab</p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 98.=
+0%;">
+<colgroup>
+<col style=3D"width: 20.0059%;">
+<col style=3D"width: 74.9906%;">
+<col style=3D"width: 4.97001%;">
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Name</th>
+<th scope=3D"col" class=3D"confluenceTh">Beschreibung</th>
+<th scope=3D"col" class=3D"confluenceTh"><br></th>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_CONCURR=
+ENT_ID</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The unique=
+ ID of build execution in a single executor.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_CONCURR=
+ENT_PROJECT_ID</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The unique=
+ ID of build execution in a single executor and project.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_CONFIG_=
+PATH</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The path t=
+o the CI/CD configuration file. Defaults to<span>&nbsp;</span> </span> <cod=
+e class=3D"highlighter-rouge" style=3D"text-align: left;">.gitlab-ci.yml</c=
+ode> <span style=3D"color: rgb(64,64,64);">. Read-only inside a running pip=
+eline</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_ENVIRON=
+MENT_NAME</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The name o=
+f the environment for this job. Available if<span>&nbsp;</span> </span> <a =
+href=3D"https://docs.gitlab.com/ee/ci/yaml/index.html#environmentname" styl=
+e=3D"text-decoration: none;text-align: left;" class=3D"external-link" rel=
+=3D"nofollow"> <code class=3D"highlighter-rouge">environment:name</code> </=
+a> <span style=3D"color: rgb(64,64,64);"> <span>&nbsp;</span>is set.</span>=
+</td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_ENVIRON=
+MENT_SLUG</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The simpli=
+fied version of the environment name, suitable for inclusion in DNS, URLs, =
+Kubernetes labels, and so on. Available if<span>&nbsp;</span> </span> <a hr=
+ef=3D"https://docs.gitlab.com/ee/ci/yaml/index.html#environmentname" style=
+=3D"text-decoration: none;text-align: left;" class=3D"external-link" rel=3D=
+"nofollow"> <code class=3D"highlighter-rouge">environment:name</code> </a> =
+<span style=3D"color: rgb(64,64,64);"> <span>&nbsp;</span>is set. The slug =
+is<span>&nbsp;</span> </span> <a href=3D"https://gitlab.com/gitlab-org/gitl=
+ab/-/issues/20941" style=3D"text-decoration: none;text-align: left;" class=
+=3D"external-link" rel=3D"nofollow">truncated to 24 characters</a> <span st=
+yle=3D"color: rgb(64,64,64);">. A random suffix is automatically added to<s=
+pan>&nbsp;</span> </span> <a style=3D"text-decoration: none;text-align: lef=
+t;" href=3D"https://gitlab.com/gitlab-org/gitlab/-/issues/415526" class=3D"=
+external-link" rel=3D"nofollow">uppercase environment names</a> <span style=
+=3D"color: rgb(64,64,64);">.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_ENVIRON=
+MENT_URL</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The URL of=
+ the environment for this job. Available if<span>&nbsp;</span> </span> <a s=
+tyle=3D"text-decoration: none;text-align: left;" href=3D"https://docs.gitla=
+b.com/ee/ci/yaml/index.html#environmenturl" class=3D"external-link" rel=3D"=
+nofollow"> <code class=3D"highlighter-rouge">environment:url</code> </a> <s=
+pan style=3D"color: rgb(64,64,64);"> <span>&nbsp;</span>is set</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_RELEASE=
+_DESCRIPTION</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The descri=
+ption of the release. Available only on pipelines for tags. Description len=
+gth is limited to first 1024 characters&nbsp;</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_KUBERNE=
+TES_ACTIVE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">Only avail=
+able if the pipeline has a Kubernetes cluster available for deployments.<sp=
+an>&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-al=
+ign: left;">true</code> <span style=3D"color: rgb(64,64,64);"> <span>&nbsp;=
+</span>when available.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_OPEN_ME=
+RGE_REQUESTS</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">A comma-se=
+parated list of up to four merge requests that use the current branch and p=
+roject as the merge request source. Only available in branch and merge requ=
+est pipelines if the branch has an associated merge request. For example,<s=
+pan>&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-a=
+lign: left;">gitlab-org/gitlab!333,gitlab-org/gitlab-foss!11</code> <span s=
+tyle=3D"color: rgb(64,64,64);">.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PLATFOR=
+M<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">Name of th=
+e CI/CD Platform ("Tekton" or "Jenkins")<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_KUBERNE=
+TES_CLUSTER<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">OpenShift =
+cluster name where the pipeline runs (TODO: im Pod abrufbar? oder sonst inj=
+ect via Helm Value =E2=86=92 Controller Env Var)<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_KUBERNE=
+TES_NAMESPACE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">OpenShift =
+namespace/project name where the pipeline runs<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_CONTROL=
+LER_URL</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The URL of=
+ the controller</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lblaugr=C3=BCn 35 %" colspan=3D"2" data-highlight-colour=3D"#e6fcff"><stron=
+g> <span style=3D"color: rgb(64,64,64);" title=3D"">Workflow Information</s=
+pan> </strong></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><strong title=3D""> <span s=
+tyle=3D"color: rgb(64,64,64);" title=3D""> <br></span> </strong></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_ACT=
+IONS</span></td>
+<td class=3D"confluenceTd">Indicates if GitHub Actions is running.</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_WOR=
+KFLOW</span></td>
+<td class=3D"confluenceTd">Name of the event that triggered the workflow.</=
+td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_EVE=
+NT_NAME</span></td>
+<td class=3D"confluenceTd">Name of the event that triggered the workflow.</=
+td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_EVE=
+NT_PATH</span></td>
+<td class=3D"confluenceTd">Name of the event that triggered the workflow.</=
+td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_WOR=
+KSPACE</span></td>
+<td class=3D"confluenceTd">Default working directory on the runner.</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_REP=
+OSITORY</span></td>
+<td class=3D"confluenceTd">Repository name</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_REP=
+OSITORY_OWNER</span></td>
+<td class=3D"confluenceTd">Repository owner's name</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_REP=
+OSITORY_ID</span></td>
+<td class=3D"confluenceTd">Repository ID</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">GITHUB_REP=
+OSITORY_OWNER_ID</span></td>
+<td class=3D"confluenceTd">GITHUB_REPOSITORY_OWNER_ID</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lblaugr=C3=BCn 35 %" colspan=3D"2" data-highlight-colour=3D"#e6fcff"><stron=
+g> <span style=3D"color: rgb(64,64,64);" title=3D"">Commit, Branch und Tag =
+Information</span> </strong></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><strong title=3D""> <span s=
+tyle=3D"color: rgb(64,64,64);" title=3D""> <br></span> </strong></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI<br></sp=
+an></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">Fixed valu=
+e "true" indicating a CI environment<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_ACTOR<b=
+r></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">Email addr=
+ess of the user who started the pipeline<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+AUTHOR</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The author=
+ of the commit in<span>&nbsp;</span> </span> <code class=3D"highlighter-rou=
+ge" style=3D"text-align: left;">Name &lt;email&gt;</code> <span style=3D"co=
+lor: rgb(64,64,64);"> <span>&nbsp;</span>format.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+BEFORE_SHA</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The previo=
+us latest commit present on a branch or tag. Is always<span>&nbsp;</span> <=
+code class=3D"highlighter-rouge" style=3D"text-align: left;">00000000000000=
+00000000000000000000000000</code> <span>&nbsp;</span>for merge request pipe=
+lines, the first commit in pipelines for branches or tags, or when manually=
+ running a pipeline.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+BRANCH</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The commit=
+ branch name. Available in branch pipelines, including pipelines for the de=
+fault branch. Not available in merge request pipelines or tag pipelines.</s=
+pan></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+DESCRIPTION</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The descri=
+ption of the commit. If the title is shorter than 100 characters, the messa=
+ge without the first line.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+MESSAGE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The full c=
+ommit message.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+REF_NAME</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The branch=
+ or tag name for which project is built.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+SHA</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The commit=
+ revision the project is built for.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+TAG</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The commit=
+ tag name. Available only in pipelines for tags.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+TAG_MESSAGE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The commit=
+ tag message. Available only in pipelines for tags.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+TIMESTAMP</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The timest=
+amp of the commit in the<span>&nbsp;</span> <a href=3D"https://www.rfc-edit=
+or.org/rfc/rfc3339#appendix-A" style=3D"text-decoration: none;text-align: l=
+eft;" class=3D"external-link" rel=3D"nofollow">ISO 8601</a> <span>&nbsp;</s=
+pan>format. For example,<span>&nbsp;</span> <code class=3D"highlighter-roug=
+e" style=3D"text-align: left;">2022-01-31T16:47:55Z</code>.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_COMMIT_=
+TITLE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The title =
+of the commit. The full first line of the message.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" colspan=3D"2" data-highlight-colour=3D"#e6fcff"><strong title=
+=3D""><span style=3D"color: rgb(64,64,64);" title=3D"">Bitbucket/Repo Infor=
+mation<br></span></strong></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><strong title=3D""><span st=
+yle=3D"color: rgb(64,64,64);" title=3D""><br></span></strong></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>CI_REPOSITORY_NAME</span><strong><span style=3D"color: rgb(64,64,64);" tit=
+le=3D""><br></span></strong></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>Bitbucket/Git repository name<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>:tick:</span></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>CI_REPOSITORY_SLUG<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>Bitbucket/Git repository slug/key<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>:tick:</span></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>CI_REPOSITORY_OWNER<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>The Bitbucket project key<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>:tick:</span></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>CI_REPOSITORY_URL</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+><span style=3D"color: rgb(64,64,64);">The HTTP(S) address of the repositor=
+y</span></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>:tick:</span></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>CI_GIT_URL<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>The Git /checkout) URL to the repository<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);" title=3D""=
+>:tick:</span></td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" colspan=3D"2" data-highlight-c=
+olour=3D"#e6fcff"><strong> <span style=3D"color: rgb(64,64,64);" title=3D""=
+>Project Information (Gitlab)</span> </strong></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><strong title=3D""> <span s=
+tyle=3D"color: rgb(64,64,64);" title=3D""> <br></span> </strong></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_DEFAULT=
+_BRANCH</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The name o=
+f the project=E2=80=99s default branch.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_ID</span></td>
+<td class=3D"confluenceTd">The ID of the current project. This ID is unique=
+ across all projects on the GitLab instance.</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_NAME</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The name o=
+f the directory for the project. For example if the project URL is<span>&nb=
+sp;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-align: l=
+eft;"> <a href=3D"http://gitlab.example.com/group-name/project-1" class=3D"=
+external-link" rel=3D"nofollow">gitlab.example.com/group-name/project-1</a>=
+ </code> <span style=3D"color: rgb(64,64,64);">,<span>&nbsp;</span> </span>=
+ <code class=3D"highlighter-rouge" style=3D"text-align: left;">CI_PROJECT_N=
+AME</code> <span style=3D"color: rgb(64,64,64);"> <span>&nbsp;</span>is<spa=
+n>&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-ali=
+gn: left;">project-1</code> <span style=3D"color: rgb(64,64,64);">.</span><=
+/td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_NAMESPACE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The projec=
+t namespace (username or group name) of the job.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_NAMESPACE_ID</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The projec=
+t namespace ID of the job.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_PATH_SLUG</span></td>
+<td class=3D"confluenceTd"><code class=3D"highlighter-rouge">$CI_PROJECT_PA=
+TH</code> <span>&nbsp;</span>in lowercase with characters that are not<span=
+>&nbsp;</span> <code class=3D"highlighter-rouge">a-z</code> <span>&nbsp;</s=
+pan>or<span>&nbsp;</span> <code class=3D"highlighter-rouge">0-9</code> <spa=
+n>&nbsp;</span>replaced with<span>&nbsp;</span> <code class=3D"highlighter-=
+rouge">-</code> <span>&nbsp;</span>and shortened to 63 bytes. Use in URLs a=
+nd domain names.</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_PATH</span></td>
+<td class=3D"confluenceTd">The project namespace with the project name incl=
+uded.</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_REPOSITORY_LANGUAGES</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">A comma-se=
+parated, lowercase list of the languages used in the repository. For exampl=
+e<span>&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"tex=
+t-align: left;">ruby,javascript,html,css</code> <span style=3D"color: rgb(6=
+4,64,64);">. The maximum number of languages is limited to 5. An issue<span=
+>&nbsp;</span> </span> <a style=3D"text-decoration: none;text-align: left;"=
+ href=3D"https://gitlab.com/gitlab-org/gitlab/-/issues/368925" class=3D"ext=
+ernal-link" rel=3D"nofollow">proposes to increase the limit</a> <span style=
+=3D"color: rgb(64,64,64);">.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_URL</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The HTTP(S=
+) address of the project.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PROJECT=
+_VISIBILITY</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The projec=
+t visibility. Can be<span>&nbsp;</span> </span> <code class=3D"highlighter-=
+rouge" style=3D"text-align: left;">internal</code> <span style=3D"color: rg=
+b(64,64,64);">,<span>&nbsp;</span> </span> <code class=3D"highlighter-rouge=
+" style=3D"text-align: left;">private</code> <span style=3D"color: rgb(64,6=
+4,64);">, or<span>&nbsp;</span> </span> <code class=3D"highlighter-rouge" s=
+tyle=3D"text-align: left;">public</code> <span style=3D"color: rgb(64,64,64=
+);">.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_JOB_STA=
+GE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The name o=
+f the job=E2=80=99s stage.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_JOB_STA=
+TUS</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The status=
+ of the job as each runner stage is executed. Use with<span>&nbsp;</span> <=
+/span> <a href=3D"https://docs.gitlab.com/ee/ci/yaml/index.html#after_scrip=
+t" style=3D"text-decoration: none;text-align: left;" class=3D"external-link=
+" rel=3D"nofollow"> <code class=3D"highlighter-rouge">after_script</code> <=
+/a> <span style=3D"color: rgb(64,64,64);">. Can be<span>&nbsp;</span> </spa=
+n> <code class=3D"highlighter-rouge" style=3D"text-align: left;">success</c=
+ode> <span style=3D"color: rgb(64,64,64);">,<span>&nbsp;</span> </span> <co=
+de class=3D"highlighter-rouge" style=3D"text-align: left;">failed</code> <s=
+pan style=3D"color: rgb(64,64,64);">, or<span>&nbsp;</span> </span> <code c=
+lass=3D"highlighter-rouge" style=3D"text-align: left;">canceled</code> <spa=
+n style=3D"color: rgb(64,64,64);">.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_JOB_TIM=
+EOUT</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The job ti=
+meout, in seconds.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_JOB_TOK=
+EN</span></td>
+<td class=3D"confluenceTd">A token to authenticate with<span>&nbsp;</span> =
+<a href=3D"https://docs.gitlab.com/ee/ci/jobs/ci_job_token.html" style=3D"t=
+ext-decoration: none;" class=3D"external-link" rel=3D"nofollow">certain API=
+ endpoints</a>. The token is valid as long as the job is running.</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_JOB_URL=
+</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The job de=
+tails URL.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_JOB_STA=
+RTED_AT</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The UTC da=
+tetime when a job started, in<span>&nbsp;</span> </span> <a style=3D"text-d=
+ecoration: none;text-align: left;" href=3D"https://www.rfc-editor.org/rfc/r=
+fc3339#appendix-A" class=3D"external-link" rel=3D"nofollow">ISO 8601</a> <s=
+pan style=3D"color: rgb(64,64,64);"> <span>&nbsp;</span>format. For example=
+,<span>&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"tex=
+t-align: left;">2022-01-31T16:47:55Z</code> <span style=3D"color: rgb(64,64=
+,64);">.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lblaugr=C3=BCn 35 %" colspan=3D"2" data-highlight-colour=3D"#e6fcff"><stron=
+g> <span style=3D"color: rgb(64,64,64);" title=3D"">Pipeline Information</s=
+pan> </strong> <span style=3D"color: rgb(64,64,64);" title=3D""> <br></span=
+></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><strong title=3D""> <span s=
+tyle=3D"color: rgb(64,64,64);" title=3D""> <br></span> </strong></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_ID</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The instan=
+ce-level ID of the current pipeline =E2=86=92&nbsp; Tekton PipelineRun name=
+<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_SOURCE</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">How the pi=
+peline was triggered. Can be<span>&nbsp;</span> </span> <code class=3D"high=
+lighter-rouge" style=3D"text-align: left;">push</code> <span style=3D"color=
+: rgb(64,64,64);">,<span>&nbsp;</span> </span> <code class=3D"highlighter-r=
+ouge" style=3D"text-align: left;">web</code> <span style=3D"color: rgb(64,6=
+4,64);">,<span>&nbsp;</span> </span> <code class=3D"highlighter-rouge" styl=
+e=3D"text-align: left;">schedule</code> <span style=3D"color: rgb(64,64,64)=
+;">,<span>&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"=
+text-align: left;">api</code> <span style=3D"color: rgb(64,64,64);">,<span>=
+&nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-align=
+: left;">external</code> <span style=3D"color: rgb(64,64,64);">,<span>&nbsp=
+;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-align: lef=
+t;">chat</code> <span style=3D"color: rgb(64,64,64);">,<span>&nbsp;</span> =
+</span> <code class=3D"highlighter-rouge" style=3D"text-align: left;">webid=
+e</code> <span style=3D"color: rgb(64,64,64);">,<span>&nbsp;</span> </span>=
+ <code class=3D"highlighter-rouge" style=3D"text-align: left;">merge_reques=
+t_event</code> <span style=3D"color: rgb(64,64,64);">,<span>&nbsp;</span> <=
+/span> <code class=3D"highlighter-rouge" style=3D"text-align: left;">extern=
+al_pull_request_event</code> <span style=3D"color: rgb(64,64,64);">,<span>&=
+nbsp;</span> </span> <code class=3D"highlighter-rouge" style=3D"text-align:=
+ left;">parent_pipeline</code> <span style=3D"color: rgb(64,64,64);">,<span=
+>&nbsp;</span> </span> <a style=3D"text-decoration: none;text-align: left;"=
+ href=3D"https://docs.gitlab.com/ee/ci/triggers/index.html#configure-cicd-j=
+obs-to-run-in-triggered-pipelines" class=3D"external-link" rel=3D"nofollow"=
+> <code class=3D"highlighter-rouge">trigger</code>, or<span>&nbsp;</span> <=
+code class=3D"highlighter-rouge">pipeline</code> </a> <span style=3D"color:=
+ rgb(64,64,64);">. For a description of each value, see<span>&nbsp;</span> =
+</span> <a style=3D"text-decoration: none;text-align: left;" href=3D"https:=
+//docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules" =
+class=3D"external-link" rel=3D"nofollow">Common<span>&nbsp;</span> <code cl=
+ass=3D"highlighter-rouge">if</code> <span>&nbsp;</span>clauses for<span>&nb=
+sp;</span> <code class=3D"highlighter-rouge">rules</code> </a> <span style=
+=3D"color: rgb(64,64,64);">, which uses this variable to control when jobs =
+run.</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"> <br></spa=
+n></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_TRIGGERED</span></td>
+<td class=3D"confluenceTd"><code class=3D"highlighter-rouge" style=3D"text-=
+align: left;">true</code> <span style=3D"color: rgb(64,64,64);"> <span>&nbs=
+p;</span>if the job was<span>&nbsp;</span> </span> <a href=3D"https://docs.=
+gitlab.com/ee/ci/triggers/index.html" style=3D"text-decoration: none;text-a=
+lign: left;" class=3D"external-link" rel=3D"nofollow">triggered</a> <span s=
+tyle=3D"color: rgb(64,64,64);">.</span></td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_URL</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The URL fo=
+r the pipeline details (=E2=86=92 Tekton Control Panel Pipeline Run)</span>=
+</td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_CREATED_AT</span></td>
+<td class=3D"confluenceTd">The UTC datetime when the pipeline was created, =
+in<span>&nbsp;</span> <a href=3D"https://www.rfc-editor.org/rfc/rfc3339#app=
+endix-A" style=3D"text-decoration: none;" class=3D"external-link" rel=3D"no=
+follow">ISO 8601</a> <span>&nbsp;</span>format. For example,<span>&nbsp;</s=
+pan> <code class=3D"highlighter-rouge">2022-01-31T16:47:55Z</code>.</td>
+<td class=3D"confluenceTd">:tick:</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_CONFIG_NAME</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">The name o=
+f the matching pipeline config in estaTektonPipeline.json<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">CI_PIPELIN=
+E_TRIGGER</span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">Tekton Pip=
+eline triggerType ("GITEVENT", "USER" or "CRON")<br></span></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);">:tick:</sp=
+an></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"><br></span=
+></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"><br></span=
+></td>
+<td class=3D"confluenceTd"><span style=3D"color: rgb(64,64,64);"><br></span=
+></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8539_1331135174.1713959693540--

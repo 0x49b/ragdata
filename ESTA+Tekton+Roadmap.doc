@@ -1,0 +1,316 @@
+Date: Wed, 24 Apr 2024 13:53:54 +0200 (CEST)
+Message-ID: <532355201.8500.1713959634053@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8499_2080604964.1713959634053"
+
+------=_Part_8499_2080604964.1713959634053
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>ESTA Tekton Roadmap</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>ESTA Tekton Roadmap</h1>
+    <div class=3D"Section1">
+        <div class=3D"confluence-information-macro confluence-information-m=
+acro-information"><span class=3D"aui-icon aui-icon-small aui-iconfont-info =
+confluence-information-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p>The following roadmap is just an internal draft and thus shall not be ta=
+ken as a commitment. Furthermore it's subject to change at any time.</p>
+</div>
+</div>
+<h1 id=3D"ESTATektonRoadmap-PlannedFeaturesforESTATekton">Planned Features =
+for ESTA Tekton</h1>
+<p>This is a loose collection of high-level features we plan to integrate i=
+nto the ESTA Tekton CI/CD system.</p>
+<h2 id=3D"ESTATektonRoadmap-Prio1"><span class=3D"author-a-tey8dz78zz88zsvz=
+75zz88zpz80zz86zz73zz67z">Prio 1</span></h2>
+<ul class=3D"list-bullet1">
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">estaC=
+loudPipeline.json Migration tool :tick:<br></span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Full =
+Buildpacks support :tick:<br></span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Tekto=
+n Namespace Setup via CLEW SSP :tick:<br></span></li>
+</ul>
+<h2 id=3D"ESTATektonRoadmap-Prio2"><span class=3D"author-a-tey8dz78zz88zsvz=
+75zz88zpz80zz86zz73zz67z">Prio 2</span></h2>
+<ul class=3D"list-bullet1">
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Param=
+etrized Builds (via Tekton Control Panel)<br></span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">JUnit=
+, Cucumber (+ other) test report publishing</span></li>
+</ul>
+<h2 id=3D"ESTATektonRoadmap-Prio3"><span class=3D"author-a-tey8dz78zz88zsvz=
+75zz88zpz80zz86zz73zz67z">Prio 3</span></h2>
+<ul class=3D"list-bullet1">
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Pytho=
+n Support :tick:<br></span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Selec=
+table Maven Versions (SDKman?)</span></li>
+</ul>
+<h2 id=3D"ESTATektonRoadmap-Later"><span class=3D"author-a-tey8dz78zz88zsvz=
+75zz88zpz80zz86zz73zz67z">Later</span></h2>
+<ul class=3D"list-bullet1">
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Mobil=
+e Build + Deployment</span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Hotfi=
+x Creation Assistant</span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Advan=
+ced Pipeline Configuration via YAML (like Github actions)</span></li>
+</ul>
+<h1 id=3D"ESTATektonRoadmap-Out-of-scopeFeatures">Out-of-scope Features</h1=
+>
+<ul class=3D"list-bullet1">
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Kafka=
+ Deployment<br></span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">APIM =
+Registration</span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Azure=
+ AD App Registration</span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Solac=
+e Deployment (TMS)</span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Pre a=
+nd Post Hooks in staging pipelines (preCiDeploymentJob, postCiDeploymentJob=
+)</span></li>
+</ul>
+<p><em><strong>These are topics specific to deployment and therefore are no=
+t an integrated part of ESTA Tekton which delegates deployment to ArgoCD.</=
+strong></em><br><em><strong>Solutions will be discussed with the CLEW Archi=
+tect and eventually provided by CLEW.</strong></em></p>
+<h1 id=3D"ESTATektonRoadmap-OtherTODOsforESTATekton">Other TODOs for ESTA T=
+ekton</h1>
+<ul class=3D"list-bullet1">
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Perfo=
+rmance Tests / Benchmarks</span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Monit=
+oring / Alerting<br></span></li>
+<li><span class=3D"author-a-tey8dz78zz88zsvz75zz88zpz80zz86zz73zz67z">Secur=
+ity Audit</span></li>
+</ul>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_8499_2080604964.1713959634053--

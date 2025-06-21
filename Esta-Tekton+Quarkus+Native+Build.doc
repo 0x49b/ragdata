@@ -1,0 +1,306 @@
+Date: Wed, 24 Apr 2024 13:56:13 +0200 (CEST)
+Message-ID: <1517199732.8594.1713959773880@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8593_719403711.1713959773880"
+
+------=_Part_8593_719403711.1713959773880
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Esta-Tekton Quarkus Native Build</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Esta-Tekton Quarkus Native Build</h1>
+    <div class=3D"Section1">
+        <p>Vieles kann auf dem Standardguide von Quarkus nachgelesen werden=
+. Ich m=C3=B6chte hier trotzdemnochmals die Erfahrungen kurz zusammenfassen=
+.</p>
+<p>Der Standardguide f=C3=BCr Quarkus-Native kann hier gefunden werden: <a =
+href=3D"https://quarkus.io/guides/native-reference" class=3D"external-link"=
+ rel=3D"nofollow">https://quarkus.io/guides/native-reference</a></p>
+<h2 id=3D"EstaTektonQuarkusNativeBuild-UmstellungaufNativebuild">Umstellung=
+ auf Nativebuild</h2>
+<ol>
+<li>Anpassung des Dockerfiles</li>
+<li>GraalVm selektieren: <a href=3D"https://code.sbb.ch/projects/KD_ESTA/re=
+pos/esta-tekton-pipeline-controller/browse/estaTektonPipeline.json#5" class=
+=3D"external-link" rel=3D"nofollow">https://code.sbb.ch/projects/KD_ESTA/re=
+pos/esta-tekton-pipeline-controller/browse/estaTektonPipeline.json#5</a></l=
+i>
+<li>Quarkus Buildparameter setzen: <a href=3D"https://code.sbb.ch/projects/=
+KD_ESTA/repos/esta-tekton-pipeline-controller/browse/estaTektonPipeline.jso=
+n#58" class=3D"external-link" rel=3D"nofollow">https://code.sbb.ch/projects=
+/KD_ESTA/repos/esta-tekton-pipeline-controller/browse/estaTektonPipeline.js=
+on#58</a></li>
+<li>Quarkus Native Block im application.yml konfigurieren: <a href=3D"https=
+://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/brows=
+e/src/main/resources/application.yaml#55" class=3D"external-link" rel=3D"no=
+follow">https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-con=
+troller/browse/src/main/resources/application.yaml#55</a></li>
+<li>Externe Library Klassen welche per Reflection instanziert werden regist=
+rieren: <a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-p=
+ipeline-controller/browse/src/main/java/ch/sbb/esta/tekton/pipeline/nativeb=
+uild/RegisterReflections.java" class=3D"external-link" rel=3D"nofollow">htt=
+ps://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/bro=
+wse/src/main/java/ch/sbb/esta/tekton/pipeline/nativebuild/RegisterReflectio=
+ns.java</a></li>
+<li>Eigene Klassen welche per Reflection instanziert werden annotieren: <a =
+href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-con=
+troller/browse/src/main/java/ch/sbb/esta/tekton/pipeline/service/appregistr=
+ation/model/AccessToken.java#5" class=3D"external-link" rel=3D"nofollow">ht=
+tps://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/br=
+owse/src/main/java/ch/sbb/esta/tekton/pipeline/service/appregistration/mode=
+l/AccessToken.java#5</a></li>
+</ol>
+<p>Dann kann der lokale Build per:&nbsp;</p>
+<p>mvn package -DskipTests -Dnative -Dquarkus.native.debug.enabled=3Dtrue -=
+Dquarkus-profile=3Ddev&nbsp;</p>
+<p>gestartet werden. Sobald der Build erfolgreich durchlief kann das native=
+ image wie folgt gestartet werden:</p>
+<p>./target/esta-tekton-pipeline-controller-x.y.z-SNAPSHOT-runner</p>
+<h2 id=3D"EstaTektonQuarkusNativeBuild-Tekton-Clientf=C3=BCrQuarkusNativebu=
+ildaufbereiten">Tekton-Client f=C3=BCr Quarkus Nativebuild aufbereiten</h2>
+<p>Da die tekton-client library nicht in der aktuellen Version f=C3=BCr den=
+ Quarkus Nativebuild aufbereitet ist, wurde ein eigenes repo mit einem eige=
+nen Build angelegt, um den tekton-client f=C3=BCr den nativebuild konfiguri=
+ert zu haben.&nbsp;</p>
+<p><a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-quarkus-tekto=
+n-client/browse" class=3D"external-link" rel=3D"nofollow">https://code.sbb.=
+ch/projects/KD_ESTA/repos/esta-quarkus-tekton-client/browse</a></p>
+<h2 id=3D"EstaTektonQuarkusNativeBuild-DebuggeneinerNativeApp">Debuggen ein=
+er Native App</h2>
+<p>Das debuggen einer Nativeapp geht nur unter Linux. Leider hat auch unter=
+ Linux mit GDB das debuggen per Intellij Debugger nicht funktioniert. Das a=
+ttachen des Debugger klappt nicht.</p>
+<p>Man f=C3=BChrt den debugger wie folgt aus 'gdb target/esta-tekton-pipeli=
+ne-controller-x.y.z-SNAPSHOT-runner' dann erh=C3=A4lt man eine Konsole und =
+tippt dort 'run' das Programm wird ausgef=C3=BChrt, aber leider konnte der =
+debugger nicht attached werden.&nbsp;</p>
+<h2 id=3D"EstaTektonQuarkusNativeBuild-ErfolgreichespublishenderApp">Erfolg=
+reiches publishen der App</h2>
+<p>Im Endeffekt konnten wir die App erfolgreich auf esta-tekton-dev und cle=
+w-tekton ausrollen.</p>
+    </div>
+</body>
+</html>
+------=_Part_8593_719403711.1713959773880--

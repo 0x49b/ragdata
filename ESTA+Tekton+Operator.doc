@@ -1,0 +1,591 @@
+Date: Wed, 24 Apr 2024 13:55:30 +0200 (CEST)
+Message-ID: <1313425836.8558.1713959730239@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8557_1436994890.1713959730239"
+
+------=_Part_8557_1436994890.1713959730239
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>ESTA Tekton Operator</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>ESTA Tekton Operator</h1>
+    <div class=3D"Section1">
+        <p>Ziel: Anwender k=C3=B6nnen&nbsp; ESTA Tekton selbst=C3=A4ndig vi=
+a Custom Resource in einem OpenShift Namespace installieren.</p>
+<p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713959730234 {padding: 0px;}
+div.rbtoc1713959730234 ul {margin-left: 0px;}
+div.rbtoc1713959730234 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713959730234">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonOperator-ErforderlicheRessourcen">Erforderliche R=
+essourcen</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonOperator-NamespaceSetup">Namespace Setup</a></li>
+<li><a href=3D"#ESTATektonOperator-ESTATektonDeployment">ESTA Tekton Deploy=
+ment</a></li>
+</ul></li>
+<li><a href=3D"#ESTATektonOperator-SetupProzess">Setup Prozess</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonOperator-OAuthSetup(AzureADAppRegistration)">OAut=
+h Setup (Azure AD App Registration)</a></li>
+<li><a href=3D"#ESTATektonOperator-CredentialExchange">Credential Exchange<=
+/a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonOperator-BitbucketUser">Bitbucket User</a></li>
+<li><a href=3D"#ESTATektonOperator-ArtifactoryUser">Artifactory User</a></l=
+i>
+<li><a href=3D"#ESTATektonOperator-AWSS3AccessKey">AWS S3 Access Key</a></l=
+i>
+<li><a href=3D"#ESTATektonOperator-AzureBlobStorage">Azure Blob Storage</a>=
+</li>
+</ul></li>
+</ul></li>
+<li><a href=3D"#ESTATektonOperator-Technologie">Technologie</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonOperator-OperatorCredentials">Operator Credential=
+s</a></li>
+<li><a href=3D"#ESTATektonOperator-OperatorConfigOptions">Operator Config O=
+ptions</a></li>
+<li><a href=3D"#ESTATektonOperator-EntwurfCustomResource">Entwurf Custom Re=
+source</a></li>
+<li><a href=3D"#ESTATektonOperator-TODOs/Refactorings">TODOs / Refactorings=
+</a></li>
+</ul></li>
+</ul>
+</div>
+<p></p>
+<h1 id=3D"ESTATektonOperator-ErforderlicheRessourcen">Erforderliche Ressour=
+cen</h1>
+<h2 id=3D"ESTATektonOperator-NamespaceSetup">Namespace Setup</h2>
+<p>Quellen: <a href=3D"https://code.sbb.ch/projects/KD_PAAS/repos/ocp-argoc=
+d/browse/projects/default/applications/namespace-configuration-operator/val=
+ues.yaml#49" class=3D"external-link" rel=3D"nofollow">ocp-argocd/namespace-=
+configuration-operator</a>, <a href=3D"https://code.sbb.ch/projects/KD_ESTA=
+/repos/esta-tekton-pipeline-config/browse/charts/esta-tekton-pipeline-confi=
+g/templates" class=3D"external-link" rel=3D"nofollow">esta-tekton-pipeline-=
+config</a></p>
+<ul>
+<li>LimitRange=20
+<ul>
+<li>sbb-esta-tekton-pipeline-defaults</li>
+</ul></li>
+<li>ResourceQuota=20
+<ul>
+<li>esta-tekton-pipeline-quota</li>
+</ul></li>
+<li>ServiceAccount=20
+<ul>
+<li>esta-tekton-pipeline-sa</li>
+<li>esta-tekton-pipeline-root-sa :question:</li>
+<li>esta-tekton-controller-sa</li>
+</ul></li>
+<li>RoleBinding=20
+<ul>
+<li>esta-tekton-sa-scc-anyuid</li>
+<li>esta-tekton-pipeline-sa</li>
+<li>esta-tekton-pipeline-root-sa :question:</li>
+<li>esta-tekton-controller-sa</li>
+</ul></li>
+<li>Secret=20
+<ul>
+<li>azure-ad-client-credentials</li>
+<li>esta-tekton-basicauth-docker</li>
+<li>esta-tekton-basicauth-git</li>
+<li>esta-tekton-oauth-client-ids</li>
+<li>esta-tekton-sonar-api-key</li>
+<li>esta-owasp-db-secret</li>
+<li>esta-tekton-pipeline-env</li>
+<li>argocd-env-secret</li>
+<li>smtp-server-secret</li>
+</ul></li>
+</ul>
+<p>Default LimitRanges (sbb-default-limits) und ResourceQuota (<span class=
+=3D"co-resource-item__resource-name">default-mini-project-quota</span>) m=
+=C3=BCssen vom Operator resp. vom Helm Chart via Hook gel=C3=B6scht werden.=
+</p>
+<h2 id=3D"ESTATektonOperator-ESTATektonDeployment">ESTA Tekton Deployment</=
+h2>
+<p>Quellen: <a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekt=
+on-pipeline-controller/browse/charts/esta-tekton-pipeline-controller/templa=
+tes" class=3D"external-link" rel=3D"nofollow">esta-tekton-pipeline-controll=
+er</a>, <a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-p=
+ipeline-ui/browse/charts/esta-tekton-pipeline-ui/templates" class=3D"extern=
+al-link" rel=3D"nofollow">esta-tekton-pipeline-ui</a></p>
+<ul>
+<li>Deployment=20
+<ul>
+<li>esta-tekton-pipeline-controller</li>
+<li>esta-tekton-pipeline-ui</li>
+</ul></li>
+<li>Service=20
+<ul>
+<li>esta-tekton-pipeline-controller</li>
+<li>esta-tekton-pipeline-ui</li>
+</ul></li>
+<li>Route=20
+<ul>
+<li>esta-tekton-pipeline-controller-sbb-cloud</li>
+<li>esta-tekton-pipeline-ui-sbb-cloud</li>
+</ul></li>
+<li>ConfigMap=20
+<ul>
+<li>esta-tekton-pipeline-controller-application-yaml</li>
+<li>esta-tekton-pipeline-controller-notification-text-yaml</li>
+<li>esta-tekton-bitbucket-config</li>
+<li>sbb-certificates</li>
+</ul></li>
+<li>PersistentVolumeClaim=20
+<ul>
+<li>esta-tekton-pipeline-controller-workspace</li>
+</ul></li>
+</ul>
+<h1 id=3D"ESTATektonOperator-SetupProzess">Setup Prozess</h1>
+<ol>
+<li>Anlegen der Namespace Config Resources (LimitRange, ResourceQuota)</li>
+<li>Initialisierung Umsysteme=20
+<ol>
+<li>OAuth Setup</li>
+<li>Bitbucket=20
+<ol>
+<li>User erstellen :question:</li>
+<li>Access Token registrieren :question:</li>
+<li>Secret <code>esta-tekton-basicauth-git</code> anlegen</li>
+</ol></li>
+<li>Artifactory=20
+<ol>
+<li>User erstellen :question:</li>
+<li>Access Token registrieren :question:</li>
+<li>Secret <code>esta-tekton-basicauth-docker</code> anlegen</li>
+</ol></li>
+<li>AWS IAM User &amp; Policy=20
+<ol>
+<li>Terraform apply</li>
+<li>Secret <code>esta-tekton-aws-cache-credentials</code> anlegen</li>
+</ol></li>
+<li>Azure Blob Storage Setup=20
+<ol>
+<li><em>Vorgehen noch unbekannt</em></li>
+</ol></li>
+</ol></li>
+<li>ESTA Tekton Deployment=20
+<ol>
+<li><a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipel=
+ine-config/browse" class=3D"external-link" rel=3D"nofollow">esta-tekton-pip=
+eline-config</a> Helm Chart installieren</li>
+</ol></li>
+</ol>
+<h2 id=3D"ESTATektonOperator-OAuthSetup(AzureADAppRegistration)">OAuth Setu=
+p (Azure AD App Registration)</h2>
+<p>Kann wie bisher =C3=BCber einen Taskrun ausgef=C3=BChrt werden.<br>
+ Es sollen aber pro Namespace individuelle Azure AD API Credentials generie=
+rt werden, wie dies im Konzept <a href=3D"/display/CLEW/Azure+AD+App+Regist=
+ration+Prozess">Azure AD App Registration Prozess</a> beschrieben wird.</p>
+<h2 id=3D"ESTATektonOperator-CredentialExchange">Credential Exchange</h2>
+<h3 id=3D"ESTATektonOperator-BitbucketUser">Bitbucket User</h3>
+<p>Falls via API m=C3=B6glich: ein neuer Benutzer wird angelegt (falls nich=
+t existent)<br>
+ Falls via API m=C3=B6glich: der Operator generiert via API einen Access To=
+ken f=C3=BCr den angegebenen Benutzer und speichert diesen im Secret <code>=
+esta-tekton-basicauth-git.<br></code>Falls via API m=C3=B6glich: Der Operat=
+or generiert ebenfalls einen SSH Key und speichert via API den Pubkey in Bi=
+tbucket. Der Private Key wird in einem Secret <code>esta-tekton-ssh-git</co=
+de> gespeichert.</p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">Vault Integration</p><span class=3D"au=
+i-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon">=
+</span>
+<div class=3D"confluence-information-macro-body">
+<p>Eine allf=C3=A4llige Anbindung von Hashicorp Vault ist zu pr=C3=BCfen. I=
+m besten Fall kann f=C3=BCr den Tekton Namespace lediglich ein Vault Key ko=
+nfiguriert werden.</p>
+</div>
+</div>
+<h3 id=3D"ESTATektonOperator-ArtifactoryUser">Artifactory User</h3>
+<p>Falls via API m=C3=B6glich: ein neuer Benutzer wird angelegt (falls nich=
+t existent)<br>
+ Falls via API m=C3=B6glich: Der Operator generiert via API einen Access To=
+ken f=C3=BCr den angegebenen Benutzer und speichert diesen im Secret <code>=
+esta-tekton-basicauth-docker.</code></p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">Vault Integration</p><span class=3D"au=
+i-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon">=
+</span>
+<div class=3D"confluence-information-macro-body">
+<p>Eine allf=C3=A4llige Anbindung von Hashicorp Vault ist zu pr=C3=BCfen. I=
+m besten Fall kann f=C3=BCr den Tekton Namespace lediglich ein Vault Key ko=
+nfiguriert werden.</p>
+</div>
+</div>
+<h3 id=3D"ESTATektonOperator-AWSS3AccessKey">AWS S3 Access Key</h3>
+<p>F=C3=BCr den Cache Zugriff muss im gesharten AWS Account ein IAM User &a=
+mp; Policy angelegt werden. Das kann wie bisher mittels Terraform in einem =
+Taskrun im Operator Namespace ausgef=C3=BChrt werden. Als Alternative ist d=
+ie direkte Ausf=C3=BChrung von Terraform im Operator (Pod) zu pr=C3=BCfen.<=
+/p>
+<h3 id=3D"ESTATektonOperator-AzureBlobStorage">Azure Blob Storage</h3>
+<p><em>Der Prozess ist noch nicht bekannt</em></p>
+<h1 id=3D"ESTATektonOperator-Technologie">Technologie</h1>
+<p>Der Operator soll prim=C3=A4r =C3=BCber ein Helm Chart die oben aufgef=
+=C3=BChrten Ressourcen in den Zielnamespace bringen und damit den Namespace=
+ Configuration Operator sowie das bestehende Helm Chart (<a href=3D"https:/=
+/code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-config/browse" cla=
+ss=3D"external-link" rel=3D"nofollow">esta-tekton-pipeline-config</a>) abl=
+=C3=B6sen resp. vereinen.</p>
+<p>Controller und UI werden als Dependencies =C3=BCber die individuellen Ch=
+arts der einzelnen Komponenten in den konfigurierten Version herunterladen =
+und im Namespace installieren.</p>
+<p>Auch die App Registration und die Tasks f=C3=BCr die Credential Exchange=
+ k=C3=B6nnen als Job oder TaskRun im Helm Chart definiert und im Operator N=
+amespace verarbeitet werden, =C3=A4hnlich wie das bisher mit ArgoCD gemacht=
+ wird.</p>
+<p>Ein <a href=3D"https://sdk.operatorframework.io/docs/building-operators/=
+helm/tutorial/" class=3D"external-link" rel=3D"nofollow">Helm-based Operato=
+r</a> kann hier als technologische Grundlage dienen. Ein POC gem=C3=A4ss de=
+m Quickstart Guide mit <a href=3D"https://code.sbb.ch/users/u233658/repos/e=
+sta-tekton-namespace/browse" class=3D"external-link" rel=3D"nofollow">diese=
+m Helm Chart</a> wurde erfolgreich durchgef=C3=BChrt.</p>
+<h2 id=3D"ESTATektonOperator-OperatorCredentials">Operator Credentials</h2>
+<p>(Als Secrets im Operator Namespace hinterlegt)</p>
+<ul>
+<li>AWS Key &amp; Secret zum Anlegen der IAM User &amp; Policies</li>
+<li>Azure AD API Client-id und Secret</li>
+<li>Defaults f=C3=BCr esta-tekton-sonar-api-key, esta-owasp-db-secret und s=
+mtp-server-secret<br>
+ (=E2=86=92 =C3=BCber <a href=3D"https://sdk.operatorframework.io/docs/buil=
+ding-operators/helm/reference/watches/" class=3D"external-link" rel=3D"nofo=
+llow">Watches/valueOverrides</a> injected)</li>
+</ul>
+<h2 id=3D"ESTATektonOperator-OperatorConfigOptions">Operator Config Options=
+</h2>
+<ul>
+<li>pipelineCacheBackend: (AWS_S3 oder AZURE_BLOB)</li>
+<li>azureAdApiHost: <a href=3D"http://azure-ad.api.sbb.ch" class=3D"externa=
+l-link" rel=3D"nofollow">azure-ad.api.sbb.ch</a></li>
+<li>awsTerraform:=20
+<ul>
+<li><p>backendBucket: terraform-esta-tekton-infrastructure-prod</p></li>
+<li>s3BucketName: esta-tekton-pipeline-cache-prod</li>
+</ul></li>
+<li>Default Values f=C3=BCr <a href=3D"https://code.sbb.ch/projects/KD_ESTA=
+/repos/esta-tekton-pipeline-config/browse/charts/esta-tekton-pipeline-confi=
+g/values.yaml" class=3D"external-link" rel=3D"nofollow">esta-tekton-pipelin=
+e-config</a> Helm Chart</li>
+</ul>
+<h2 id=3D"ESTATektonOperator-EntwurfCustomResource">Entwurf Custom Resource=
+</h2>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">esta-tekton-cr.yaml</b><span class=3D"collapse-sour=
+ce expand-control" style=3D"display:none;"><span class=3D"expand-control-ic=
+on icon">&nbsp;</span><span class=3D"expand-control-text">Quelle erweitern<=
+/span></span><span class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: yml; gutter: false; theme: Confluence; collapse: true" data-theme=3D"Conf=
+luence">apiVersion: esta.sbb.ch/v1beta1
+kind: EstaTektonBuildSystem
+metadata:
+  name: my-own-tekton
+  namespace: esta-tekton-dev
+spec:
+  releaseVersion: 0.14.12
+
+  appRegistration:
+    owners:
+      - userPrincipalName: replace-with-REQUESTER
+    allowedADGroups:
+      # DG_RBT_ESTA
+      - a51563af-953f-485b-8cf0-b37bc8d7c5fe
+      # add your groups here
+ &nbsp; &nbsp;apiAccessClientIds: []
+
+  bitbucket:
+    host: code.sbb.ch
+    username: esta-build-clew
+
+  artifactory:
+    host: bin.sbb.ch
+    username: esta-build-clew
+
+  storageQuota:
+    default: 1Ti
+    overrides:
+      ki-tekton: 2Ti
+
+&nbsp; # values aus esta-tekton-pipeline-config Helm Chart
+ &nbsp;esta-tekton-pipeline-controller:
+    appVersion: 2.15.1
+    pipelineTemplateVersion: 0.11.5
+ &nbsp; &nbsp;defaultMavenGoals: clean install
+ &nbsp; &nbsp;additionalTemplateRepos:
+ &nbsp; &nbsp; &nbsp;- https://code.sbb.ch/scm/kd_esta_test/esta-tekton-pip=
+eline-custom-templates.git?at=3Drefs/heads/master
+ &nbsp; &nbsp;splunkIndex: sbb_esta-tekton_internal_prod_events
+
+ &nbsp;esta-tekton-pipeline-ui:
+    appVersion: 2.10.0
+  &nbsp; splunkIndex: sbb_esta-tekton_internal_prod_events
+    </pre>
+</div>
+</div>
+<div class=3D"confluence-information-macro confluence-information-macro-war=
+ning">
+<p class=3D"title conf-macro-render">Subchart Versioning</p><span class=3D"=
+aui-icon aui-icon-small aui-iconfont-error confluence-information-macro-ico=
+n"></span>
+<div class=3D"confluence-information-macro-body">
+<p>Bislang unklar ist, wie die Versionen der Subcharts (esta-tekton-pipelin=
+e-controller und esta-tekton-pipeline-ui) als Parameter =C3=BCber die Custo=
+m Resource definiert werden kann.</p>
+</div>
+</div>
+<h2 id=3D"ESTATektonOperator-TODOs/Refactorings">TODOs / Refactorings</h2>
+<ul>
+<li>"stage" Value in esta-tekton-pipeline-* Charts m=C3=BCssen mit <code>.R=
+elease.Namespace</code> ersetzt werden.</li>
+<li>Die konkreten Permissions f=C3=BCr den Service Account des Operators re=
+sp. der TaskRuns im Operator Namespace m=C3=BCssen definiert werden (muss S=
+ecrets im Zielnamespace anlegen/=C3=BCberschreiben k=C3=B6nnen)</li>
+<li>Der Release-Prozess muss neu definiert werden. =C3=9Cber den (einfachen=
+) Helm Operator k=C3=B6nnen nur statische Werte f=C3=BCr die App Versionen =
+hinterlegt werden.<br>
+ Eine Option w=C3=A4re, ein Helm Chart analog zum <a href=3D"https://code.s=
+bb.ch/projects/KD_ESTA/repos/helm-argocd/browse" class=3D"external-link" re=
+l=3D"nofollow"> CLEW ArgoCD </a>Chart anzubieten, welches prim=C3=A4r die C=
+ustom Resource mit vor-definierten Values f=C3=BCr Controller und UI schrei=
+bt.</li>
+</ul>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_8557_1436994890.1713959730239--

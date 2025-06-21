@@ -1,0 +1,342 @@
+Date: Wed, 24 Apr 2024 13:56:31 +0200 (CEST)
+Message-ID: <1351993302.8602.1713959791203@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8601_1953832176.1713959791203"
+
+------=_Part_8601_1953832176.1713959791203
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Cluster Setup f=C3=BCr ESTA Tekton</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Cluster Setup f=C3=BCr ESTA Tekton</h1>
+    <div class=3D"Section1">
+        <p>Um einen OpenShift Cluster f=C3=BCr ESTA Tekton "ready" zu mache=
+n, sind die folgenden Punkte zu erf=C3=BCllen:</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped fixed-width confluenceTable" style=3D"width: 1467.0=
+px;">
+<colgroup>
+<col style=3D"width: 276.0px;">
+<col style=3D"width: 58.0px;">
+<col style=3D"width: 794.0px;">
+<col style=3D"width: 79.0px;">
+<col style=3D"width: 54.0px;">
+<col style=3D"width: 67.0px;">
+<col style=3D"width: 60.0px;">
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Task</th>
+<th scope=3D"col" class=3D"confluenceTh">Wer?</th>
+<th scope=3D"col" class=3D"confluenceTh">Wie?</th>
+<th scope=3D"col" class=3D"confluenceTh">clew01d</th>
+<th scope=3D"col" class=3D"confluenceTh">azure01d</th>
+<th scope=3D"col" class=3D"confluenceTh">aws01t</th>
+<th scope=3D"col" class=3D"confluenceTh">trs01t</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><p>Batch Nodes (mit auto-scaling) konfigurieren<=
+/p></td>
+<td class=3D"confluenceTd">CON</td>
+<td class=3D"confluenceTd"><a href=3D"https://code.sbb.ch/projects/KD_PAAS/=
+repos/ocp-argocd/browse" class=3D"external-link" rel=3D"nofollow">ocp-argoc=
+d</a>: Zus=C3=A4tzliche Cluster Gruppe "cluster/batch-nodes" im <em>instanc=
+es/&lt;stage&gt;/clusters.yaml</em> hinzuf=C3=BCgen<br>
+ In Cluster-spezifischen Values Instanz-Typ der Batch Nodes definieren<br>
+ Via CON ArgoCD synchronisieren.</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><p>OpenShift Pipelines Operator installieren,</p=
+><p>ESTA Tekton ClusterRollen erstellen</p><p>Namespace Configuration Opera=
+tor ESTA Tekton Confuration anlegen</p></td>
+<td class=3D"confluenceTd">ESTA</td>
+<td class=3D"confluenceTd"><a href=3D"https://code.sbb.ch/projects/KD_PAAS/=
+repos/ocp-argocd/browse" class=3D"external-link" rel=3D"nofollow">ocp-argoc=
+d</a>: Zus=C3=A4tzliche Cluster Gruppe "applications/esta-tekton-build-cont=
+roller" im <em>instances/&lt;stage&gt;/<a href=3D"https://code.sbb.ch/proje=
+cts/KD_PAAS/repos/ocp-argocd/browse/instances/int/clusters.yaml" class=3D"e=
+xternal-link" rel=3D"nofollow">clusters.yaml</a></em> hinzuf=C3=BCgen.<br>
+ Nach dem Approval durch CON mergen und via <a href=3D"https://confluence.s=
+bb.ch/display/CLEW/Delegated+Cluster-Admin+Permissions#DelegatedClusterAdmi=
+nPermissions-DelegatedPermissionsWorkflow" rel=3D"nofollow">CON ArgoCD</a> =
+synchronisieren<br>
+ Zus=C3=A4tzlich muss CON "outcold-collectord" und "namespace-configuration=
+-operator" synchronisieren</td>
+<td class=3D"confluenceTd"><p>:tick:</p><p>:tick:</p><p>:tick:</p></td>
+<td class=3D"confluenceTd"><p>:tick:</p><p>:tick:</p><p>:tick:</p></td>
+<td class=3D"confluenceTd"><p>:tick:</p><p>:tick:</p><p>:tick:</p></td>
+<td class=3D"confluenceTd"><p>:tick:</p><p>:warning:</p><p>:warning:</p></t=
+d>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Self-Service f=C3=BCr Tekton Projekte aktivieren=
+</td>
+<td class=3D"confluenceTd">CON</td>
+<td class=3D"confluenceTd"><a href=3D"https://code.sbb.ch/projects/KD_CLEWS=
+SP/repos/clew-self-service-argocd/browse" class=3D"external-link" rel=3D"no=
+follow">clew-self-service-argocd</a>: Feature "estatekton" in dem CON backe=
+nd <a href=3D"https://code.sbb.ch/projects/KD_CLEWSSP/repos/clew-self-servi=
+ce-argocd/browse/applications/con-self-service-backend/templates/_helpers.t=
+pl" class=3D"external-link" rel=3D"nofollow">ConfigMap template</a> hinzuf=
+=C3=BCgen. Via <a href=3D"https://code.sbb.ch/projects/KD_CLEWSSP/repos/cle=
+w-self-service-argocd/browse/applications/con-self-service-backend/README.m=
+d" class=3D"external-link" rel=3D"nofollow">CLEW ArgoCD</a> synchronisieren=
+.</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Neuer Cluster in <a href=3D"https://code.sbb.ch/=
+projects/KD_ESTA/repos/esta-apps-argocd/browse/clusters" class=3D"external-=
+link" rel=3D"nofollow">esta-apps-argocd</a> erfassen</td>
+<td class=3D"confluenceTd">ESTA</td>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">ArgoCD Instanz clew-esta-argocd aufsetzen</td>
+<td class=3D"confluenceTd">ESTA</td>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd">:tick:</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8601_1953832176.1713959791203--

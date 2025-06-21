@@ -1,0 +1,479 @@
+Date: Wed, 24 Apr 2024 13:56:51 +0200 (CEST)
+Message-ID: <1360772219.8612.1713959811579@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8611_1071452315.1713959811579"
+
+------=_Part_8611_1071452315.1713959811579
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>ESTA Tekton Self-Managed Migration</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>ESTA Tekton Self-Managed Migration</h1>
+    <div class=3D"Section1">
+        <p>ESTA Tekton can now be installed individually using a prepared H=
+elm chart which is maintained and released by ESTA. The preparation and use=
+ of this Helm chart is documented in the README of the <a href=3D"https://c=
+ode.sbb.ch/projects/KD_ESTA/repos/esta-tekton-helm/browse" class=3D"externa=
+l-link" rel=3D"nofollow">esta-tekton-helm</a> source repository (see sectio=
+n "How to use").</p>
+<p>If you're already using ESTA Tekton as a managed service (ordered via th=
+e CLEW Self Service Portal), here are the steps required to migrate your Te=
+kton instance into your own self-managed environment:</p>
+<p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713959811572 {padding: 0px;}
+div.rbtoc1713959811572 ul {margin-left: 0px;}
+div.rbtoc1713959811572 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713959811572">
+<ul class=3D"toc-indentation">
+<li><span class=3D"TOCOutline">1</span> <a href=3D"#ESTATektonSelfManagedMi=
+gration-BackuptheTektonResultsDatabase">Backup the Tekton Results Database<=
+/a></li>
+<li><span class=3D"TOCOutline">2</span> <a href=3D"#ESTATektonSelfManagedMi=
+gration-(A)MigratetheOpenShiftNamespace">(A) Migrate the OpenShift Namespac=
+e</a></li>
+<li><span class=3D"TOCOutline">3</span> <a href=3D"#ESTATektonSelfManagedMi=
+gration-(B)CreateanewOpenShiftNamespace">(B) Create a new OpenShift Namespa=
+ce</a></li>
+<li><span class=3D"TOCOutline">4</span> <a href=3D"#ESTATektonSelfManagedMi=
+gration-ShutdownthemanagedESTATektoninstance">Shut down the managed ESTA Te=
+kton instance</a></li>
+<li><span class=3D"TOCOutline">5</span> <a href=3D"#ESTATektonSelfManagedMi=
+gration-InstallESTATektonviaArgoCD">Install ESTA Tekton via ArgoCD</a></li>
+<li><span class=3D"TOCOutline">6</span> <a href=3D"#ESTATektonSelfManagedMi=
+gration-RestoretheTektonResultsDatabase">Restore the Tekton Results Databas=
+e</a></li>
+</ul>
+</div>
+<p></p>
+<h2 id=3D"ESTATektonSelfManagedMigration-BackuptheTektonResultsDatabase">Ba=
+ckup the Tekton Results Database</h2>
+<p>For new Tekton instances, a new database schema for storing pipeline run=
+s will be created. In order to preserve the build history, we recommend to =
+dump the existing database and later import the records into the new schema=
+.</p>
+<ol>
+<li>Get the database credentials from the secret named "tekton-results-post=
+gres" in the existing Tekton namespace</li>
+<li>Use <a href=3D"https://www.postgresql.org/docs/current/app-pgdump.html"=
+ class=3D"external-link" rel=3D"nofollow">pg_dump</a> to copy all data into=
+ a local file</li>
+</ol>
+<p>Here's a shell script that performs these actions:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>backup-tekton-db.sh</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence"># 1. lo=
+g in to the cluster that hosts your current Tekton namespace
+# oc login ....
+
+export TEKTON_NAMESPACE=3D"&lt;your-tekton-namespace&gt;"
+export POSTGRES_SCHEMA=3D$(echo "$TEKTON_NAMESPACE" | sed 's/-/_/g')
+
+for key in DB_HOST POSTGRES_DB POSTGRES_USER POSTGRES_PASSWORD; do
+  export $key=3D$(oc get secret tekton-results-postgres -n $TEKTON_NAMESPAC=
+E -o jsonpath=3D"{.data.$key}" | base64 -d);
+done
+
+PGPASSWORD=3D"$POSTGRES_PASSWORD" pg_dump -U $POSTGRES_USER -h $DB_HOST -p =
+5432 -n $POSTGRES_SCHEMA --no-privileges --no-comments --data-only $POSTGRE=
+S_DB &gt; tekton-results-dump.sql</pre>
+</div>
+</div>
+<h2 id=3D"ESTATektonSelfManagedMigration-(A)MigratetheOpenShiftNamespace">(=
+A) Migrate the OpenShift Namespace</h2>
+<p>For a smooth transition it's best to keep the existing namespace but sim=
+ply replace the deployment of ESTA Tekton. The following steps are required=
+:</p>
+<ol>
+<li>Change the label c<code>lew.sbb.ch/project-type: build</code> to the va=
+lue "<code>build-self"</code></li>
+<li>Add the label <code>iam.sbb.ch/appregistration: "true"</code></li>
+<li>Remove sensitive secrets: <em>azure-ad-client-credentials, esta-owasp-d=
+b-secret, esta-tekton-smtp-auth, esta-tekton-sonar-api-key</em></li>
+<li>Grant admin rights to the new owner/customer</li>
+</ol>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">admin-role-binding.yaml</b><span class=3D"collapse-=
+source expand-control" style=3D"display:none;"><span class=3D"expand-contro=
+l-icon icon">&nbsp;</span><span class=3D"expand-control-text">Quelle erweit=
+ern</span></span><span class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: yml; gutter: false; theme: Confluence; collapse: true" data-theme=3D"Conf=
+luence">apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: admin-uXXXXXX
+subjects:
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: uXXXXXX
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+
+</pre>
+</div>
+</div>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">IMPORTANT</p><span class=3D"aui-icon a=
+ui-icon-small aui-iconfont-info confluence-information-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p>The label <code>clew.sbb.ch/project-type</code> can only be changed by a=
+ cluster admin. Reach out to the CON team to get this done.</p>
+</div>
+</div>
+<h2 id=3D"ESTATektonSelfManagedMigration-(B)CreateanewOpenShiftNamespace">(=
+B) Create a new OpenShift Namespace</h2>
+<p>Order a new OpenShift namespace via the <a href=3D"https://self.sbb-clou=
+d.net/tools/openshift/standalone" class=3D"external-link" rel=3D"nofollow">=
+CLEW Self Service Portal</a>. Tekton namespaces <strong>can only be created=
+ on the clusters <em>aws01t</em> and <em>aws02t</em></strong>.</p>
+<p>In order to keep the URL to your Tekton instance unchanged, we recommend=
+ to choose the same name as the existing namespace (e.g. clew-tekton) but s=
+elect another cluster. So if your current namespace is on aws01t, create th=
+e new one on aws02t and vice versa. Of course, you can choose any name you =
+want but the URL pointing to your Tekton instance will contain the namespac=
+e name.</p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">IMPORTANT</p><span class=3D"aui-icon a=
+ui-icon-small aui-iconfont-info confluence-information-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+At the time of writing, some changes to the namespace template need to be a=
+pplied manually be the Container Team. Please open a CLEW Support issue wit=
+h the component "OpenShift" to get the default limit ranges and resource qu=
+otas removed from your Tekton namespace and to get the label <code>clew.sbb=
+.ch/project-type: build-self</code> added.
+</div>
+</div>
+<h2 id=3D"ESTATektonSelfManagedMigration-ShutdownthemanagedESTATektoninstan=
+ce">Shut down the managed ESTA Tekton instance</h2>
+<ol>
+<li>Remove the according application from the <a href=3D"https://code.sbb.c=
+h/projects/KD_ESTA/repos/esta-apps-argocd/browse" class=3D"external-link" r=
+el=3D"nofollow">ESTA ArgoCD Git repository</a>.</li>
+<li>Sync ArgoCD (should be done automatically)</li>
+</ol>
+<h2 id=3D"ESTATektonSelfManagedMigration-InstallESTATektonviaArgoCD">Instal=
+l ESTA Tekton via ArgoCD</h2>
+<ol>
+<li><p class=3D"auto-cursor-target">Follow the "How to use" section in the =
+<a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-helm/brow=
+se/README.md" class=3D"external-link" rel=3D"nofollow">README</a> and creat=
+e a new application in your in your ArgoCD Git repository with two values f=
+iles providing all the mandatory chart values listed in the README. One con=
+taining the public settings for your setup and one containing the secret va=
+lues like client secrets, usernames, passwords, etc. The latter one should =
+be encrypted with <a href=3D"/display/CLEW/ArgoCD+Setup+and+Configuration#A=
+rgoCDSetupandConfiguration-ManageSecretValueswithSOPSandGPG">SOPS</a> befor=
+e checking it in to Git.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">applica=
+tions/esta-tekton/
+  - Chart.yaml
+  - values.yaml
+  - secrets.yaml</pre>
+</div>
+</div><p class=3D"auto-cursor-target">See <a href=3D"https://code.sbb.ch/pr=
+ojects/KD_ESTA/repos/esta-apps-argocd/browse/applications/esta-tekton-helm"=
+ class=3D"external-link" rel=3D"nofollow">this example</a> for reference.</=
+p></li>
+<li>Add an application template to your app-of-apps chart for the cluster w=
+here Tekton is supposed to be installed (<a href=3D"https://code.sbb.ch/pro=
+jects/KD_ESTA/repos/esta-apps-argocd/browse/clusters/aws02t/applications/te=
+mplates/esta-tekton/u233658-dev-tekton.yaml" class=3D"external-link" rel=3D=
+"nofollow">example</a>)</li>
+<li>Permit your ArgoCD instance to manage the new Tekton namespace (see <a =
+href=3D"/display/CLEW/ArgoCD+Setup+and+Configuration#ArgoCDSetupandConfigur=
+ation-PermitArgoCDtodeploytoothernamespaces">Namespace management</a>)</li>
+<li>Sync your app-of-apps chart in ArgoCD and let the deployment start</li>
+</ol>
+<h2 id=3D"ESTATektonSelfManagedMigration-RestoretheTektonResultsDatabase">R=
+estore the Tekton Results Database</h2>
+<p>Similar to backing up the database, we use the (new) credentials from th=
+e "tekton-results-postgres" secret to connect to the new database and then =
+use <a href=3D"https://www.postgresql.org/docs/current/app-psql.html" class=
+=3D"external-link" rel=3D"nofollow">pgsql</a> to import the backupped recor=
+ds.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>restore-tekton-results.sh</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence"># 1. lo=
+g in to the cluster that hosts your current Tekton namespace
+# oc login ....
+
+export OLD_TEKTON_NAMESPACE=3D&lt;your-tekton-namespace&gt;
+export NEW_TEKTON_NAMESPACE=3D$OLD_TEKTON_NAMESPACE
+export OLD_POSTGRES_SCHEMA=3D$(echo "$OLD_TEKTON_NAMESPACE" | sed 's/-/_/g'=
+)
+export NEW_NAMESPACE_SNAKE=3D$(echo "$NEW_TEKTON_NAMESPACE" | sed 's/-/_/g'=
+)
+export NEW_POSTGRES_SCHEMA=3D"${NEW_NAMESPACE_SNAKE}_&lt;cluster&gt;"
+
+# migrate DB dump to be restored into new schema
+echo "TRUNCATE TABLE $NEW_POSTGRES_SCHEMA.results CASCADE;" &gt; tekton-res=
+ults-dump.sql.new
+cat tekton-results-dump.sql | sed "s/$OLD_POSTGRES_SCHEMA./$NEW_POSTGRES_SC=
+HEMA./" &gt;&gt; tekton-results-dump.sql.new
+
+for key in DB_HOST POSTGRES_DB POSTGRES_USER POSTGRES_PASSWORD; do
+  export $key=3D$(oc get secret tekton-results-postgres -n $NEW_TEKTON_NAME=
+SPACE -o jsonpath=3D"{.data.$key}" | base64 -d);
+done
+
+PGPASSWORD=3D"$POSTGRES_PASSWORD" psql -U $POSTGRES_USER -h $DB_HOST -p 543=
+2 -d $POSTGRES_DB -f tekton-results-dump.sql.new</pre>
+</div>
+</div>
+<p class=3D"auto-cursor-target">Finally, restart the controller to pick-up =
+the new records from the database:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: false; theme: Confluence" data-theme=3D"Confluence">oc roll=
+out resart deployment esta-tekton-pipeline-controller -n &lt;your-tekton-na=
+mespace&gt;</pre>
+</div>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8611_1071452315.1713959811579--

@@ -1,0 +1,518 @@
+Date: Wed, 24 Apr 2024 13:54:49 +0200 (CEST)
+Message-ID: <1167411644.8538.1713959689698@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8537_1753433017.1713959689698"
+
+------=_Part_8537_1753433017.1713959689698
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Azure AD App Registration Prozess</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Azure AD App Registration Prozess</h1>
+    <div class=3D"Section1">
+        <p>Die Authentifizierung am Tekton Control Panel und am Controller =
+API erfolgt =C3=BCber das Microsoft Login (SSO). Grundlage daf=C3=BCr ist e=
+ine <a href=3D"https://confluence.sbb.ch/x/TgjHY" rel=3D"nofollow">App Regi=
+stration</a>, welche =C3=BCber das IAM API angelegt und gepflegt wird. Jede=
+ ESTA Tekton Instanz ben=C3=B6tigt ihre eigene App Registration. Die automa=
+tisierte Erstellung einer App Registration ist bereits Teil des ESTA Tekton=
+ Setups und wird =C3=BCber das <a href=3D"https://code.sbb.ch/projects/KD_E=
+STA/repos/esta-tekton-pipeline-config/browse/charts/esta-tekton-pipeline-co=
+nfig/templates" class=3D"external-link" rel=3D"nofollow">esta-tekton-pipeli=
+ne-config</a> Helm Chart konfiguriert und mit einen Taskrun ausgef=C3=BChrt=
+.</p>
+<p>F=C3=BCr die Kommunikation mit dem Azure AD API wurden bisher statisch d=
+efinierte Credentials verwendet, welche f=C3=BCr alle Tekton Namespaces ide=
+ntisch sind und auch in jedem Namespace als Secret hinterlegt sind. Der App=
+ Registration Prozess soll nun auch die automatisierte Erstellung einer ind=
+ividuellen APIM Application f=C3=BCr Azure AD pro Tekton Namespace beinhalt=
+en. Der Setup Prozess sieht dann wie folgt aus:</p>
+<ol>
+<li>APIM Application f=C3=BCr Azure AD erstellen<br>
+ (via ArgoCD mit APIM Credentials im ArgoCD Namespace hinterlegt)</li>
+<li>Client ID und Secret f=C3=BCr Azure AD API als Secret <code>azure-ad-cl=
+ient-credentials</code> im Tekton Namespace anlegen<br>
+ (diese werden vom Controller auch f=C3=BCr die Manipulation von group-role=
+ Assignments verwendet)</li>
+<li>Azure AD App Registration via API registrieren<br>
+ (mit den Credentials aus Secret <code>azure-ad-client-credentials</code>)<=
+/li>
+<li>Client ID in Secret <code>esta-tekton-oauth-client-ids</code>&nbsp;spei=
+chern</li>
+<li>ESTA Tekton Controller startet mit Values aus <code>azure-ad-client-cre=
+dentials</code> und <code>esta-tekton-oauth-client-ids</code></li>
+</ol>
+<h2 id=3D"AzureADAppRegistrationProzess-Scriptsf=C3=BCrdasErstelleneinerAzu=
+reADApplicationviaAPIMAPI(1.und2.)">Scripts f=C3=BCr das Erstellen einer Az=
+ure AD Application via APIM API (1. und 2.)</h2>
+<p>(Client ID und Secret f=C3=BCr das APIM API sind in ESTA Passwords hinte=
+rlegt)</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">create-azure-app.sh</b><span class=3D"collapse-sour=
+ce expand-control" style=3D"display:none;"><span class=3D"expand-control-ic=
+on icon">&nbsp;</span><span class=3D"expand-control-text">Quelle erweitern<=
+/span></span><span class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: true; theme: Confluence; collapse: true" data-theme=3D"Conf=
+luence">#!/bin/bash
+set -e
+
+TEKTON_NAMESPACE=3D"$1"  # provide the Tekton namespace as argument
+APIM_ACCOUNT_ID=3D"603"
+APIM_API_URL=3D'https://api-backend.api.sbb.ch:443'
+OAUTH_URL=3D'https://sso.sbb.ch/auth/realms/SBB_Public/protocol/openid-conn=
+ect/token'
+CLIENT_ID=3D'&lt;apim-app-id&gt;'
+CLIENT_SECRET=3D'&lt;apim-app-secret&gt;'
+
+if [ -z "${TEKTON_NAMESPACE}" ]; then
+  echo "Missing TEKTON_NAMESPACE argument. Aborting."
+  exit 1
+fi
+
+##
+## Authenticate to APIM API
+##
+
+AUTH_TOKEN=3D$(curl -s -X POST ${OAUTH_URL} \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d grant_type=3Dclient_credentials \
+  -d client_id=3D${CLIENT_ID} \
+  -d client_secret=3D${CLIENT_SECRET} \
+  | grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+echo "Successfully obtained created an APIM access token"
+
+##
+## Create an APIM Azure AD Application
+##
+
+cat &gt; azure-app-request.json &lt;&lt;EOL
+{
+  "serviceId": 163,
+  "planId": 1114,
+  "name": "ESTA Tekton Azure AD ($TEKTON_NAMESPACE)",
+  "description": "Managing Azure AD App Registrations for ESTA Tekton",
+  "oauthFlow": "clientCredentials",
+  "authProvider": "AZURE_AD",
+  "megaId": "FEE502DB61786599"
+}
+EOL
+
+HTTP_STATUS=3D$(curl -sk -X POST "${APIM_API_URL}/accounts/${APIM_ACCOUNT_I=
+D}/applications" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer ${AUTH_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '@azure-app-request.json' \
+  -o azure-app-response.json \
+  -w "%{http_code}")
+
+if [[ ${HTTP_STATUS} -gt 299 ]]; then
+  echo "App creation request failed with error $HTTP_STATUS"
+  exit 2
+fi
+
+# extract application client ID and secret
+
+APP_CLIENT_ID=3D$(jq -r .applicationId azure-app-response.json)
+APP_CLIENT_SECRET=3D$(jq -r .secret azure-app-response.json)
+
+echo "New Application with ID $APP_CLIENT_ID created"
+=20
+##
+## Create azure-ad-client-credentials secret
+##
+
+cat &gt; azure-ad-client-credentials.yaml &lt;&lt;EOL
+kind: Secret
+apiVersion: v1
+metadata:
+  name: azure-ad-client-credentials
+  namespace: $TEKTON_NAMESPACE
+type: Opaque
+stringData:
+  clientId: '$APP_CLIENT_ID'
+  clientSecret: '$APP_CLIENT_SECRET'
+  scope: 'api://azure_ad_api.prod/.default'
+  tokenEndpoint: 'https://login.microsoftonline.com/2cda5d11-f0ac-46b3-967d=
+-af1b2e1bd01a/oauth2/v2.0/token'
+EOL
+
+echo "Successfully created secret azure-ad-client-credentials.yaml"
+
+# wait a bit for the new application to become active
+sleep 90
+
+
+# wait a bit for the new application to become active
+sleep 20
+
+##
+## Test the app credentials
+##
+
+RETRIES=3D0
+AUTH_TOKEN=3D""
+while [ -z "${AUTH_TOKEN}" ] &amp;&amp; [ $RETRIES -lt 20 ]; do
+  AUTH_TOKEN=3D$(curl -fs -X POST https://login.microsoftonline.com/2cda5d1=
+1-f0ac-46b3-967d-af1b2e1bd01a/oauth2/v2.0/token \
+    -H 'Content-Type: application/x-www-form-urlencoded' \
+    -d grant_type=3Dclient_credentials \
+    -d client_id=3D"${APP_CLIENT_ID}" \
+    -d client_secret=3D"${APP_CLIENT_SECRET}" \
+    -d scope=3D'api://azure_ad_api.prod/.default' \
+    | grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+  RETRIES=3D$[$RETRIES+1]
+  if [ -z "${AUTH_TOKEN}" ]; then
+    echo "No access access token obtained, retry #${RETRIES} in 10 seconds.=
+.."
+    sleep 10
+  fi
+done
+
+if [ -z "${AUTH_TOKEN}" ]; then
+  echo "Failed to obtain access token :-("
+  exit 1
+fi
+
+echo "Querying registered applications:"
+
+curl -fsv -X 'GET' \
+  'https://azure-ad.api.sbb.ch/v1/applications?displayNameStartsWith=3DSBB%=
+20ESTA%20Tekton&amp;listOnlyOwnApps=3Dtrue' \
+  -H 'accept: application/json' \
+  -H "Authorization: Bearer $AUTH_TOKEN"
+
+echo ""
+echo "All done."</pre>
+</div>
+</div>
+<h2 id=3D"AzureADAppRegistrationProzess-Migration">Migration</h2>
+<p>F=C3=BCr bestehende Tekton Namespaces sollten optimalerweise ebenfalls i=
+ndividuelle APIM Applications und neue App Registrations erstellt werden. I=
+m Taskrun, welcher die App Registration ausf=C3=BChrt, werden in einem erst=
+en Schritt die bestehenden Group-Role-Assignments gelesen und in die statis=
+che App Registration YAML gepatched. F=C3=BCr die Migration muss also die n=
+eue API Application ID als owner in die bestehenden App Registrations einge=
+tragen werden. Diese Modifikation muss mit den alten globalen API Credentia=
+ls erfolgen. Die vollst=C3=A4ndige Migration erfolgt also in zwei Schritten=
+:</p>
+<ol>
+<li>Re-Assign App Registration mit neuer APIM Application als Owner<br>
+<ol>
+<li>Copy <code>azure-ad-client-credentials</code> Secret</li>
+<li>Erstellen der APIM Application</li>
+<li>Download der App Registration (JSON)</li>
+<li>Hinzuf=C3=BCgen der neuen APIM Application als Owner</li>
+<li>Upload der App Registration (JSON)</li>
+</ol></li>
+<li>Entfernen der alten APIM Application als Owner=20
+<ol>
+<li>Download der App Registration (JSON)</li>
+<li>Entfernen der alten APIM Client ID als Owner</li>
+<li>Upload der App Registration (JSON)</li>
+<li>Entfernen des alten statischen <code>azure-ad-client-credentials</code>=
+ Secret (Copy)</li>
+</ol></li>
+</ol>
+<p><br></p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom" style=3D"borde=
+r-bottom-width: 1px;">
+<b class=3D"code-title">reassign-app-registration.sh</b><span class=3D"coll=
+apse-source expand-control" style=3D"display:none;"><span class=3D"expand-c=
+ontrol-icon icon">&nbsp;</span><span class=3D"expand-control-text">Quelle e=
+rweitern</span></span><span class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: true; theme: Confluence; collapse: true" data-theme=3D"Conf=
+luence">#!/bin/bash
+
+# authenticate to Azure API (with old APIM client)
+CLIENT_ID=3D'&lt;azure-ad-client-id&gt;'
+CLIENT_SECRET=3D'&lt;azure-ad-client-secret&gt;'
+
+AUTH_TOKEN=3D$(curl -sf -X POST https://login.microsoftonline.com/2cda5d11-=
+f0ac-46b3-967d-af1b2e1bd01a/oauth2/v2.0/token \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d grant_type=3Dclient_credentials \
+  -d client_id=3D"${CLIENT_ID}" \
+  -d client_secret=3D"${CLIENT_SECRET}" \
+  -d scope=3D'api://azure_ad_api.prod/.default' \
+  | grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+if [ -z "$AUTH_TOKEN" ]; then
+  echo "Failed to authenticate!"
+  exit 22
+else
+  echo "Got access token for azure_ad_api.prod"
+fi
+
+# export app registration
+APP_REG_CLIENT_ID=3D"$1"  # pass client ID to patch as argument
+NEW_CLIENT_ID=3D'&lt;new-tekton-azure-ad-client-id&gt;'
+
+curl -sf -X 'GET' \
+  "https://azure-ad.api.sbb.ch/v1/app-configs/json?clientId=3D${APP_REG_CLI=
+ENT_ID}" \
+  -H 'Accept: application/json' \
+  -H "Authorization: Bearer $AUTH_TOKEN" \
+  -o existing-app-registration.json
+
+echo "Downloaded app registration to existing-app-registration.json"
+
+# add new client as owner # remove old client ID and add new client as owne=
+r
+jq ".appRegistrations[0].owners =3D (.appRegistrations[0].owners | map(sele=
+ct(.clientId // "" | contains(\"${APP_REG_CLIENT_ID}\") | not)) + [{\"clien=
+tId\":\"${NEW_CLIENT_ID}\"}]" existing-app-registration.json &gt; updated-a=
+pp-registration.json
+
+# upload patched app registration
+curl -sf -X 'POST' \
+  "https://azure-ad.api.sbb.ch/v1/app-configs/json" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Bearer $AUTH_TOKEN" \
+  -d @updated-app-registration.json
+
+echo ""
+echo "Successfully updated app registration for client $APP_REG_CLIENT_ID"<=
+/pre>
+</div>
+</div>
+<p><br></p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_8537_1753433017.1713959689698--

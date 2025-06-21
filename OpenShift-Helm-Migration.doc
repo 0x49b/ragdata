@@ -1,0 +1,404 @@
+Date: Wed, 24 Apr 2024 15:08:07 +0200 (CEST)
+Message-ID: <2011296122.10051.1713964087049@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_10050_1113649190.1713964087049"
+
+------=_Part_10050_1113649190.1713964087049
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>OpenShift-Helm-Migration</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>OpenShift-Helm-Migration</h1>
+    <div class=3D"Section1">
+        <p>During the migration from OpenShift templates to Helm charts you=
+ need to take care of some details. In the following a summary of our findi=
+ngs.</p>
+<h1 id=3D"OpenShiftHelmMigration-Helm-Chart-Converter">Helm-Chart-Converter=
+</h1>
+<p>The&nbsp;<a href=3D"/display/CLEW/OpenShift+Templates+to+Helm+Chart+Conv=
+erter">ESTA-Helm-Chart-Converter</a>&nbsp;is very useful for the heavy lift=
+ing but some details needs to be checked a/o modified by hand. The conversi=
+on in general is done like this:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: true; theme: Confluence" data-theme=3D"Confluence"> =C2=BB =
+cd &lt;path-to-project-to-migrate&gt;/openshift
+ =C2=BB &lt;path-to-extracted-converter&gt;/bin/esta-openshift-to-helm \
+    defaults/app.yaml \
+    &lt;projektname&gt; \
+    -dv defaults/config.list \
+    -sv &lt;stage-1&gt;=3D&lt;stage-1&gt;/config.list \
+    -sv &lt;stage-2&gt;=3D&lt;stage-2&gt;/config.list \
+    -sv &lt;stage-n&gt;=3D&lt;stage-n&gt;/config.list</pre>
+</div>
+</div>
+<p>So it might look like this:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl hide-border-bottom">
+<b class=3D"code-title"></b><span class=3D"collapse-source expand-control" =
+style=3D"display:none;"><span class=3D"expand-control-icon icon">&nbsp;</sp=
+an><span class=3D"expand-control-text">Quelle erweitern</span></span><span =
+class=3D"collapse-spinner-wrapper"></span>
+</div>
+<div class=3D"codeContent panelContent pdl hide-toolbar">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: bash; gutter: true; theme: Confluence; collapse: true" data-theme=3D"Conf=
+luence"> =C2=BB /mnt/c/devsbb/apps/esta-openshift-to-helm-0.2.4-SNAPSHOT/bi=
+n/esta-openshift-to-helm \
+    defaults/app.yaml \
+    playground \
+    -dv defaults/config.list \
+    -sv kihub-rt=3Dkihub-rt/config.list \
+    -sv kihub-rt_otc_test_07=3Dkihub-rt_otc_test_07/config.list \
+    -sv kihub-test=3Dkihub-test/config.list \
+    -sv kihub-test_otc_test_07=3Dkihub-test_otc_test_07/config.list \
+    -sv kihub-prod=3Dkihub-prod/config.list \
+    -sv kihub-prod_otc_asterix=3Dkihub-prod_otc_asterix/config.list
+----------------
+Chart name: playground
+default values: defaults/config.list
+stage values: [kihub-rt=3Dkihub-rt/config.list, kihub-rt_otc_test_07=3Dkihu=
+b-rt_otc_test_07/config.list, kihub-test=3Dkihub-test/config.list, kihub-te=
+st_otc_test_07=3Dkihub-test_otc_test_07/config.list, kihub-prod=3Dkihub-pro=
+d/config.list, kihub-prod_otc_asterix=3Dkihub-prod_otc_asterix/config.list]
+output directory: generated-charts
+----------------
+Checking for properties file defaults/config.list
+Not overriding value REPLICAS with current content 1 with new value 1 from =
+defaults/config.list
+Checking for properties file kihub-rt/config.list
+Checking for properties file kihub-rt_otc_test_07/config.list
+Checking for properties file kihub-test/config.list
+Checking for properties file kihub-test_otc_test_07/config.list
+Checking for properties file kihub-prod/config.list
+Checking for properties file kihub-prod_otc_asterix/config.list
+Converting Deployment template
+Converting Route template
+Converting Route template
+Converting Route template
+Converting Route template
+Converting Route template
+Converting Route template
+Converting Route template
+Converting Route template
+Converting Route template
+Dumping chart for playground to generated-charts/playground/Chart.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values-kihub-rt.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values-kihub-rt_otc_test_07.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values-kihub-test.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values-kihub-test_otc_test_07.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values-kihub-prod.yaml
+Dumping values for generated-charts/playground to generated-charts/playgrou=
+nd/values-kihub-prod_otc_asterix.yaml
+Dumping #1 objects of kind Deployment to file 'generated-charts/playground/=
+templates/Deployment.yaml'
+Dumping #9 objects of kind Route to file 'generated-charts/playground/templ=
+ates/Route.yaml'
+Dumping #1 objects of kind Service to file 'generated-charts/playground/tem=
+plates/Service.yaml'
+Creating helper file 'generated-charts/playground/templates/_helpers.tpl' w=
+ith sample helper function
+
+-----ATTENTION-----
+Some properties have changed type in Helm
+An example is the 'replicas' flag, which now has to be an unquoted int
+Please check your values-files and any templates where the value is referen=
+ced
+Appologies for the inconvenience
+^^^^^ATTENTION^^^^^</pre>
+</div>
+</div>
+<p>After that the generated Helm charts needs to be moved to the proper loc=
+ation:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence"> =C2=BB=
+ mv generated-charts ../charts</pre>
+</div>
+</div>
+<p>Now some details needs to be fixed on the generated files:</p>
+<ul style=3D"list-style-type: square;">
+<li>Replicas must be given as integer instead of string, so you need to rem=
+ove the single quotes</li>
+<li><p class=3D"auto-cursor-target"><s>Wrong version property key on the im=
+age tag must be fixed</s> <span style=3D"color: rgb(23,43,77);">fixed: <a h=
+ref=3D"https://flow.sbb.ch/browse/CLEW-13271" class=3D"external-link" rel=
+=3D"nofollow">[CLEW-13271] OCP-Helm-Converter generiert falsches Image-Vers=
+ion-Property - Flow (sbb.ch)</a></span></p></li>
+</ul>
+<h1 id=3D"OpenShiftHelmMigration-MigrationofalreadyexistingDeployments">Mig=
+ration of already existing Deployments</h1>
+<p>If an application is already deployed, it cannot be managed by Helm out =
+of the box. In fact Helm requires some Labels and Annotations, which are mi=
+ssing if the application was deployed using another deployment approach (li=
+ke using the traditional ESTA cloud pipeline). Because of this there are tw=
+o approaches on how to go ahead:</p>
+<p>a) Remove the app on OpenShift completely: DeploymentConfig, Service, Ro=
+utes and ConfigMaps. After that the Helm based deployment is some kind of a=
+ "restart" of that app on OpenShift.</p>
+<p><strong>or</strong></p>
+<p>b) add Labels und Annotations manually to <em>the DeploymentConfig, the =
+Service, all Routes and ConfigMaps</em> on the already existing application=
+ right on OpenShift:</p>
+<ul>
+<li><p class=3D"auto-cursor-target">Label:&nbsp;</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">app.kub=
+ernetes.io/managed-by: Helm</pre>
+</div>
+</div></li>
+<li><p class=3D"auto-cursor-target">Annotations:&nbsp;</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">meta.he=
+lm.sh/release-name: &lt;application&gt;
+meta.helm.sh/release-namespace: &lt;namespace&gt;</pre>
+</div>
+</div></li>
+<li>If you deploy using Helm now, you have the Helm Deployment parallel to =
+the previous deployment, as the previous one is a so called "DeploymentConf=
+ig". This is a special OpenShift feature, which is not required/used anymor=
+e, so the DeploymentConfig can be removed afterwards.</li>
+</ul>
+<p>As it is neccessary to remove the DeploymentConfig after the first Helm =
+deployment, approach a) is suggested. But keep in mind that this approach i=
+ncludes a downtime of you application!</p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_10050_1113649190.1713964087049--

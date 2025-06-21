@@ -1,0 +1,544 @@
+Date: Wed, 24 Apr 2024 13:54:21 +0200 (CEST)
+Message-ID: <555534930.8528.1713959661387@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8527_159558066.1713959661387"
+
+------=_Part_8527_159558066.1713959661387
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Shared Caches f=C3=BCr Tekton Pipelines</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Shared Caches f=C3=BCr Tekton Pipelines</h1>
+    <div class=3D"Section1">
+        <div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh"><p>Fragestellung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p>Wie sollten geteilte und persistente Caches f=C3=BCr Tekton Pipelines au=
+fgebaut/konfiguriert werden, damit ein Optimum an Performance, Disk/Volume =
+Space und Parallelit=C3=A4t erreicht werden kann.</p>
+<p>Build Pipelines f=C3=BCr Maven, NPM und andere Technologien, welche Depe=
+ndencies herunterladen m=C3=BCssen, ist ein Cache in Form eines Persistent =
+Volumes notwendig, um die Build-Performance zu optimieren und damit nicht b=
+ei jedem Build alle Dependencies neu geladen werden m=C3=BCssen. Viele Proj=
+ekte haben eine gemeinsame Schnittmenge von Dependencies und somit ist es s=
+innvoll den Cache (z.B. Maven) f=C3=BCr alle Java-Projekte zu teilen. Das i=
+st aktuell so umgesetzt mit einem PVC "shared-XXX-cache", welches f=C3=BCr =
+Pipelines als Workspace gemountet wird. Auf Openshift (AWS) steht aktuell n=
+ur ReadWriteOnce Storage Class f=C3=BCr PVCs zur Verf=C3=BCgung und diese h=
+at <a href=3D"https://kubernetes.io/docs/concepts/storage/persistent-volume=
+s/#access-modes" class=3D"external-link" rel=3D"nofollow">gewisse Einschr=
+=C3=A4nkungen</a> f=C3=BCr den gleichzeitigen Zugriff von parallel laufende=
+n Pipelines: "the volume can be mounted as read-write by a single node". Wo=
+llen also mehrere Pipelines (Task Pods) dieses Volume read-write mounten, m=
+uss Pod2 warten, bis Pod1 terminiert, was potenziell zu Verz=C3=B6gerungen =
+in den Build Pipelines f=C3=BChrt.</p>
+<p>Es gilt nun weitere M=C3=B6glichkeiten zur Optimierung der Caching-Archi=
+tektur zu pr=C3=BCfen und abzuw=C3=A4gen.<br><span class=3D"aui-message aui=
+-message-warning jim-error-message jim-error-message-single"> <span class=
+=3D"icon-in-pdf"></span> <a href=3D"https://flow.sbb.ch/browse/ESTA-5103?sr=
+c=3Dconfmacro">ESTA-5103</a> - Der Jira-Vorgang existiert nicht oder Sie si=
+nd nicht anzeigeberechtigt. </span></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Rahmenbedingung</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Tekton l=C3=A4uft auf Openshift auf AWS Clustern</li>
+<li>Es steht keine Storage Class von Typ ReadWriteMany zur Verf=C3=BCgung</=
+li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Annahmen</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Pro Batch Node k=C3=B6nnen 8 Build Pods parallel laufen (allocatable: 1=
+6 CPU / 24Gi Memory; Pod limit: 2 CPU / 3 Gi)</li>
+<li>Bei hoher Last muss davon ausgegangen werden, dass Pipeline Tasks (Pods=
+) auf unterschiedlichen Nodes gestartet werden.</li>
+<li>Die Gr=C3=B6sse eines Projekt-Caches liegt zwischen wenigen MB und 2 GB=
+ (=C3=98 500M)</li>
+<li>Die verf=C3=BCgbare Ephemeral Storage Size pro Node ist relativ klein (=
+~1GB)</li>
+<li>Kosten f=C3=BCr Openshift Block Storage (PVC) gem=C3=A4ss <a href=3D"ht=
+tps://confluence.sbb.ch/display/CLEW/Costs+of+resources+on+Openshift+platfo=
+rm" rel=3D"nofollow">CON Preisliste</a> (SATA non-prod): CHF 2.91 / GB / Mo=
+nat</li>
+<li>F=C3=BCr S3 Datentransfer fallen <a href=3D"https://aws.amazon.com/s3/p=
+ricing/" class=3D"external-link" rel=3D"nofollow">keine Kosten an</a>, da "=
+intern" von S3 zu einem anderen AWS Service (EC2) transferiert wird</li>
+</ul><p>Einfache Analyse eines Maven Caches (ESTA Tekton Controller):<br><c=
+ode>du -sh /workspace/cache</code>: <strong>211M</strong><br><code>tar czf =
+cache-dump.tgz /workspace/cache/</code>: <strong>166M / 5.717s<br><br></str=
+ong>Analyse eines NPM Caches (ESTA Tekton UI):<strong><br></strong><code>du=
+ -sh /workspace/cache</code><strong>: 121M<br></strong><code>tar czf npm-ca=
+che-dump.tgz /workspace/cache</code>: <strong>112M / 3.765s</strong></p></t=
+d>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Alternativen / Varianten</p></th>
+<td class=3D"confluenceTd"><h2 id=3D"SharedCachesf=C3=BCrTektonPipelines-Va=
+riante1">Variante 1</h2><p><strong>Ein geteilter Cache f=C3=BCr alle Projek=
+te eines Build Stacks (Status quo)</strong></p><p>Konzept: ein gesharter Ca=
+che pro Build Namespace (=C3=A4hnlich wie auf einem lokalen Computer)</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine =C3=84nderungen erforderlich</td>
+<td class=3D"confluenceTd">Blockiert parallel laufende Pipelines (auf mehre=
+ren Nodes)</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine redundanten Daten</td>
+<td class=3D"confluenceTd">Grosses Cache Volume</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Schnelles Cache Warming</td>
+<td class=3D"confluenceTd">Cleanup: wipe all</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Processing Overhead</strong>: 0s</p><p><strong>Kosten pro =
+Montat</strong>: ~ CHF 28 (fix pro Namespace; 2 x 5G Cache Size)</p><h2 id=
+=3D"SharedCachesf=C3=BCrTektonPipelines-Variante2">Variante 2</h2><p><stron=
+g>Separate Caches pro Projekt/Repository</strong></p><p>Konzept: ein Cache =
+Volume pro Projekt resp. Repository. Dieser Cache enth=C3=A4lt (nur) die De=
+pendencies f=C3=BCr ein spezifisches Projekt und die read-write Einschr=C3=
+=A4nkungen verhindern lediglich parallele Builds desselben Projekts. Der Ca=
+che muss f=C3=BCr jedes Projekt neu aufgebaut werden, was Redundanz und lan=
+gsame erste Builds mit sich bringt.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Minimale =C3=84nderungen erforderlich</td>
+<td class=3D"confluenceTd">Viele redundante Daten</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kleine Cache Volumes</td>
+<td class=3D"confluenceTd">Langsames Cache Warming</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Blockierung auf ein Projekt beschr=C3=A4nkt</td>
+<td class=3D"confluenceTd"><p>Cleanup: wipe all (pro Repo)</p></td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Processing Overhead</strong>: 0s</p><p><strong>Kosten pro =
+Monat</strong>: ~ CHF 56 (dynamisch pro Repo; Annahme: 10 Repos =C3=A0 2G C=
+ache Size)</p><h2 id=3D"SharedCachesf=C3=BCrTektonPipelines-Variante3">Vari=
+ante 3</h2><p><strong>Mehrere dynamisch allozierte Caches (konfigurierbare =
+Anzahl)</strong></p><p>Konzept: mehrere gesharte Caches =C3=A4hnlich wie Va=
+riante 1, welche dynamisch den zu startenden Pipelines zugewiesen werden. D=
+ie Blockierung von parallelen Builds wird damit entsch=C3=A4rft. Der ESTA T=
+ekton Controller "verwaltet" die Caches und pr=C3=BCft vor dem Start einer =
+Pipeline, welches Cache Volume verf=C3=BCgbar ist. Das ergibt einen gewisse=
+n Verwaltungsaufwand und zus=C3=A4tzliche Logik im Controller die potenziel=
+l "out-of-sync" sein kann und im schlimmsten Fall einen Lock von Pipelines =
+zur Folge haben kann.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Blockierung kann per Config beeinflusst werden</=
+td>
+<td class=3D"confluenceTd">Redundante Daten</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Gute Verteilung von Cache Daten</td>
+<td class=3D"confluenceTd">Zus=C3=A4tzliche Logik im Controller</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">Nicht "frei gegebene" Caches blockieren neue Pip=
+elines</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">Cleanup: wipe all</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Processing Overhead</strong>: ~ 1s</p><p><strong>Kosten pr=
+o Monat</strong>: ~ CHF 56 (konfigurierbar pro Namespace; Annahme: 4 Caches=
+ =C3=A0 5G Cache Size)</p><p><strong>POC</strong> implementiert in Pipeline=
+ <a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline=
+-templates/compare/commits?sourceBranch=3Drefs%2Fheads%2Ffeature%2FESTA-510=
+3-cache-name-param-poc&amp;targetBranch=3Drefs%2Fheads%2Fmaster" class=3D"e=
+xternal-link" rel=3D"nofollow">Templates</a> und <a href=3D"https://code.sb=
+b.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/compare/commits=
+?sourceBranch=3Drefs%2Fheads%2Ffeature%2FESTA-5103-multiple-shared-caches-p=
+oc&amp;targetBranch=3Drefs%2Fheads%2Fmaster" class=3D"external-link" rel=3D=
+"nofollow">Controller</a>.</p><h2 id=3D"SharedCachesf=C3=BCrTektonPipelines=
+-Variante4">Variante 4</h2><p><strong> Cache-Dumps werden zentral gespeiche=
+rt und in Pipeline Workspace kopiert (Github Style)</strong></p><p>Konzept:=
+ Cache Daten werden beim Pipeline Start von einer zentralen Storage (Servic=
+e) mit einem bestimmten Key (pro Projekt/Artefakt/Version) in den Pipeline =
+Workspace oder ein Lokales Volume geladen und nach dem Build wieder gepackt=
+ und in die Storage zur=C3=BCck geschrieben. Dabei gibt es einen Fallback a=
+uf den Cache eines anderen Projekts desselben Build Stacks, um nicht wie Va=
+riante 2 f=C3=BCr jedes Projekt mit einem leeren Cache starten zu m=C3=BCss=
+en. Dieser Ansatz wird auch von <a href=3D"https://docs.github.com/en/actio=
+ns/using-workflows/caching-dependencies-to-speed-up-workflows" class=3D"ext=
+ernal-link" rel=3D"nofollow">Github Actions</a> angeboten.</p><p>Die genaue=
+ Technologie f=C3=BCr einen zentralen Storage Service muss noch evaluiert w=
+erden. AWS S3 oder etwas =C3=A4hnliches wie <a href=3D"https://azure.micros=
+oft.com/de-de/services/storage/blobs/" class=3D"external-link" rel=3D"nofol=
+low">Azure Blob Storage</a>. Es ben=C3=B6tigt zudem einen Dienst oder Job u=
+m nicht mehr verwendete Cache-Entries periodisch zu l=C3=B6schen, um die St=
+orage Gr=C3=B6sse unter Kontrolle zu halten.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine Blockierung durch PVCs</td>
+<td class=3D"confluenceTd">Komplexe Implementation</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kleine Caches</td>
+<td class=3D"confluenceTd">Zus=C3=A4tzlicher Dienst erforderlich</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Cleanup: inkrementell nach Usage</td>
+<td class=3D"confluenceTd">Datentransfer (copy) vor und nach dem Build</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Processing Overhead</strong>: ~ 11s (~ 3s (Query+Download)=
+ + 0.831s (Unpack) + 5.712s (Tar GZ) + 1.363s (Upload))</p><p><strong>Koste=
+n pro Monat</strong>: ~ USD 1.24 (Annahme: 10 Repos mit je 10 Cache Entries=
+ =C3=A0 500M =3D 50GB; 400 Builds pro Monat (=E2=86=92 4 COPY/LIST/PUT Oper=
+ations pro Build + je 1GB Datentransfer))</p><p class=3D"auto-cursor-target=
+"><strong>POC</strong> mit S3 implementiert in <a href=3D"https://code.sbb.=
+ch/projects/KD_ESTA/repos/esta-tekton-pipeline-templates/compare/commits?so=
+urceBranch=3Drefs%2Fheads%2Ffeature%2FESTA-5103-cache-download-upload-poc&a=
+mp;targetBranch=3Drefs%2Fheads%2Fmaster" class=3D"external-link" rel=3D"nof=
+ollow">Pipeline Templates</a>.</p><h2 class=3D"auto-cursor-target" id=3D"Sh=
+aredCachesf=C3=BCrTektonPipelines-Variante5">Variante 5</h2><p class=3D"aut=
+o-cursor-target"><strong>Varninsh Cache als Proxy f=C3=BCr bin.sbb.ch</stro=
+ng></p><p class=3D"auto-cursor-target">Pro Tekton Build Namespace wird ein =
+<a href=3D"https://varnish-cache.org" class=3D"external-link" rel=3D"nofoll=
+ow"> Varnish Cache </a>Deployment mit persistenter Storage (File Storage Ba=
+ckend via PVC) hochgefahren, welches als Proxy f=C3=BCr Maven und NPM Repos=
+ konfiguriert wird.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine Blockierung durch PVCs</td>
+<td class=3D"confluenceTd">Zus=C3=A4tzliches Deployment</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine Redundanz</td>
+<td class=3D"confluenceTd">Wenig Knwohow vorhanden</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd">Cleanup: automatisch</td>
+<td colspan=3D"1" class=3D"confluenceTd">Kann kein SSL; erfordert zus=C3=A4=
+tzlichen Proxy</td>
+</tr>
+</tbody>
+</table>
+</div><p class=3D"auto-cursor-target"><strong>Processing Overhead</strong>:=
+ 0s</p><p class=3D"auto-cursor-target"><strong>Kosten pro Monat</strong>: ~=
+ CHF 117 (fix pro Namespace; 5G Cache Size + zus=C3=A4tzliche CPU + Memory =
+f=C3=BCr Varnish Pods)</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Entscheidung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><strong>Variante 4</strong></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Begr=C3=BCndung</p></th>
+<td class=3D"confluenceTd"><p>Am ARCH-Sync wurde diese Variante mit S3 Stor=
+age als kosteng=C3=BCnstigste und am besten skalierbare Option gew=C3=A4hlt=
+ und in einem <a href=3D"https://confluence.sbb.ch/display/ESTA/2022-07-29+=
+ESTA+Tekton+Cache+Konzept" rel=3D"nofollow">Folgemeeting</a> im Detail besp=
+rochen. Eine Cache Eviction-Policy kann direkt in S3 konfiguriert werden, s=
+o dass nur wenige Logick f=C3=BCr das Management des Caches selbst implemen=
+tiert werden muss.</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wer</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"u231154" =
+href=3D"/display/~u231154" data-linked-resource-id=3D"1368528554" data-link=
+ed-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-=
+url=3D"https://confluence.sbb.ch">Jeanneret Julien (IT-PTR-CEN1-BDE3)</a> <=
+a class=3D"confluence-userlink user-mention" data-username=3D"u228304" href=
+=3D"/display/~u228304" data-linked-resource-id=3D"1093766913" data-linked-r=
+esource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=
+=3D"https://confluence.sbb.ch">Spirig Lukas (IT-PTR-CEN2-SL3)</a>&nbsp;</p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wann</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><time datetime=3D"2022-07-29" class=3D"date-past">29.07.2022</time>&nbsp=
+;</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8527_159558066.1713959661387--

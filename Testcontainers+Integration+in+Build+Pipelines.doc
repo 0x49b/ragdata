@@ -1,0 +1,433 @@
+Date: Wed, 24 Apr 2024 13:54:37 +0200 (CEST)
+Message-ID: <1557675289.8534.1713959677815@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8533_1876014596.1713959677814"
+
+------=_Part_8533_1876014596.1713959677814
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Testcontainers Integration in Build Pipelines</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Testcontainers Integration in Build Pipelines</h1>
+    <div class=3D"Section1">
+        <div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh"><p>Fragestellung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><strong>Wie sollen Sidecars f=C3=BCr die Unterst=C3=BCtzung von Testcont=
+ainers in den Build Pipelines integriert werden?</strong></p>
+<p>Einer erster PoC im Rahmen von ESTA-5359 hat gezeigt, dass mit Kubdock e=
+in Sidecar f=C3=BCr Build Tasks gestartet werden kann, welcher das notwendi=
+ge Docker API f=C3=BCr Testcontainers zur Verf=C3=BCgung stellt. Die Frage =
+ist nun, wie dieser Sidecar in den ESTA Tekton Pipelines konfiguriert werde=
+n soll. Sidecars lassen sich nicht via Task Parameter ein/ausschalten sonde=
+rn sind fix Bestandteil der Task Definition.</p>
+<p><span class=3D"jira-issue resolved" data-jira-key=3D"ESTA-5359"> <a href=
+=3D"https://flow.sbb.ch/browse/ESTA-5359" class=3D"jira-issue-key"><img cla=
+ss=3D"icon" src=3D"https://flow.sbb.ch/images/icons/issuetypes/story.svg">E=
+STA-5359</a> - <span class=3D"summary">ESTA Tekton: Unterst=C3=BCtzung test=
+container</span> <span class=3D"aui-lozenge aui-lozenge-subtle             =
+aui-lozenge-success
+     jira-macro-single-issue-export-pdf">Closed</span> </span></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Rahmenbedingung</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Tekton l=C3=A4uft auf Openshift auf AWS Clustern</li>
+<li>Build Stacks welche Testcontainers unterst=C3=BCtzen: Java, Node, Go, P=
+ython</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Annahmen</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Sidecars lassen sich nicht via Task Parameter ein/ausschalten</li>
+<li>kubedock Image ist 72.4MB gross</li>
+<li>kubedock server hat kaum messbaren Ressourcen-Verbrauch (Memory/CPU)</l=
+i>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Alternativen / Varianten</p></th>
+<td class=3D"confluenceTd"><h2 id=3D"TestcontainersIntegrationinBuildPipeli=
+nes-Variante1">Variante 1</h2><p><strong>Kubedock Sidecar ist Teil der Defa=
+ult Build Tasks und wird immer gestartet.</strong></p><p>Alle Build Tasks f=
+=C3=BCr Stacks, welche Testcontainers unterst=C3=BCtzen, werden fix mit ein=
+em Kubedock Sidecar erweitert. Dieser startet immer einen zus=C3=A4tzlichen=
+ Container, ungeachtet dessen, ob f=C3=BCr den Build Testcontainers verwend=
+et werden.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfache Integration</td>
+<td class=3D"confluenceTd">Ressourcen Overhead</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine spezifischen Konfiguration n=C3=B6tig</td>
+<td class=3D"confluenceTd">Wird in 9x% aller Builds nicht verwendet</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Keine Erweiterung an estaTektonPipeline.json n=
+=C3=B6tig</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+</tbody>
+</table>
+</div><h2 id=3D"TestcontainersIntegrationinBuildPipelines-Variante2">Varian=
+te 2</h2><p><strong>Je nach Pipeline Parameter werden spezifische Build Tas=
+ks mit Kubedock Sidecar referenziert.</strong></p><p>F=C3=BCr Stacks, welch=
+e Testcontainers unterst=C3=BCtzen, werden spezifischen Build Tasks in den =
+Pipeline Templates mit einem Kubedock Sidecar gef=C3=BChrt. Je nach Pipelin=
+e Parameter werden dann diese Tasks anstelle der normalen esta-*-build Task=
+s eingebunden.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kein unn=C3=B6tiger Ressourcenverbrauch</td>
+<td class=3D"confluenceTd">Duplicated Code in den Task Templates</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Explizite Aktivierung im Repo (via estaTektonPip=
+eline.json )</td>
+<td class=3D"confluenceTd">Erweiterung von estaTektonPipeline.json n=C3=B6t=
+ig</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">Spezifischen Konfiguration n=C3=B6tig</td>
+</tr>
+</tbody>
+</table>
+</div><h2 class=3D"auto-cursor-target" id=3D"TestcontainersIntegrationinBui=
+ldPipelines-Variante3">Variante 3</h2><p class=3D"auto-cursor-target"><stro=
+ng>Kubedock Server direkt in Build Task starten.</strong></p><p class=3D"au=
+to-cursor-target">Das Kubedock Binary wird bei Bedarf (z.B. Pipeline Parame=
+ter) direkt im entsprechenden Build Task gestartet und exposed das Docker A=
+PI lokal im Container. Es wird also kein Sidecar ben=C3=B6tigt, daf=C3=BCr =
+muss das Binary in den entsprechenden Builder Images der unterst=C3=BCtzten=
+ Build Stack integriert werden. Wichtig hier ist, dass am Ende des Tasks de=
+r Kubedock Server wieder sauber heruntergefahren wird, also auch im Fehlerf=
+all, wo das Task Script normalerweise abbricht (set -e).</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kein Sidecar notwendig</td>
+<td class=3D"confluenceTd">Builder Images +30MB gr=C3=B6sser</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Explizite Aktivierung im Repo (via estaTektonPip=
+eline.json)</td>
+<td class=3D"confluenceTd">Shutdown des Kubedock Servers muss sichergestell=
+t werden</td>
+</tr>
+</tbody>
+</table>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Entscheidung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><strong>Variante 3</strong></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Begr=C3=BCndung</p></th>
+<td class=3D"confluenceTd"><p>Direktes Einbinden von Utilities in die Build=
+er Image entspricht dem Pattern, was wir aktuell in ESTA Tekton verfolgen. =
+Impact bez=C3=BCglich Overhead ist in dieser Variante am kleinsten.</p></td=
+>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wer</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"u228304" =
+href=3D"/display/~u228304" data-linked-resource-id=3D"1093766913" data-link=
+ed-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-=
+url=3D"https://confluence.sbb.ch">Spirig Lukas (IT-PTR-CEN2-SL3)</a> <a cla=
+ss=3D"confluence-userlink user-mention" data-username=3D"ue64007" href=3D"/=
+display/~ue64007" data-linked-resource-id=3D"327718071" data-linked-resourc=
+e-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=3D"htt=
+ps://confluence.sbb.ch">Wallrapp Manuel (IT-PTR-EXT-EXT2 - Extern)</a> <a c=
+lass=3D"confluence-userlink user-mention" data-username=3D"u233658" href=3D=
+"/display/~u233658" data-linked-resource-id=3D"1607762183" data-linked-reso=
+urce-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=3D"=
+https://confluence.sbb.ch">Br=C3=BCderli Thomas (IT-PTR-CEN2-SL2)</a>&nbsp;=
+</p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wann</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><time datetime=3D"2023-06-22" class=3D"date-past">22.06.2023</time>&nbsp=
+;</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8533_1876014596.1713959677814--

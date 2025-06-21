@@ -1,0 +1,332 @@
+Date: Wed, 24 Apr 2024 13:56:22 +0200 (CEST)
+Message-ID: <1475180429.8598.1713959782398@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8597_644341597.1713959782398"
+
+------=_Part_8597_644341597.1713959782398
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>OpenShift Pipelines Operator Update</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>OpenShift Pipelines Operator Update</h1>
+    <div class=3D"Section1">
+        <p>So wird ein Update des Openshift Pipeline Operators (aka Tekton)=
+ durchgef=C3=BChrt:</p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">Readme First</p><span class=3D"aui-ico=
+n aui-icon-small aui-iconfont-info confluence-information-macro-icon"></spa=
+n>
+<div class=3D"confluence-information-macro-body">
+<p>Basis-Informationen mit Links zu den relevanten Repos und ArgoCD Instanz=
+en siehe <a href=3D"https://confluence.sbb.ch/display/CLOUDSBB/CON+Fact+She=
+et%3A+ESTA" rel=3D"nofollow">CON Fact Sheet for ESTA</a></p>
+</div>
+</div>
+<h2 id=3D"OpenShiftPipelinesOperatorUpdate-1.ChangesindenReleaseNoteslesen"=
+>1.&nbsp;Changes in den Release Notes lesen</h2>
+<p>Allenfalls Massnahmen in ESTA Tekton planen und umsetzen.</p>
+<h2 id=3D"OpenShiftPipelinesOperatorUpdate-2.UpdateInfosinOpenshiftlesen">2=
+. Update Infos in Openshift lesen</h2>
+<ol>
+<li><a href=3D"https://console-openshift-console.apps.aws01t.sbb-aws-test.n=
+et/k8s/ns/clew-tekton/operators.coreos.com~v1alpha1~ClusterServiceVersion" =
+class=3D"external-link" rel=3D"nofollow">Operators &gt; Installed Operators=
+</a> &gt; Red Hat OpenShift Pipelines &gt; Subscriptions</li>
+<li>Klick auf <em>Upgrade status / Upgrade available</em></li>
+<li>Neue Version: <em>openshift-pipelines-operator-XXXX</em></li>
+</ol>
+<h2 class=3D"with-breadcrumbs" id=3D"OpenShiftPipelinesOperatorUpdate-3.Ope=
+ratorVersioninGit/ArgoCDf=C3=BCrStage&quot;DEV&quot;aktualisieren">3. Opera=
+tor Version in Git/ArgoCD f=C3=BCr Stage "DEV" aktualisieren</h2>
+<ol>
+<li class=3D"with-breadcrumbs"><a href=3D"https://code.sbb.ch/projects/OM_P=
+AAS/repos/ocp-argocd/browse/projects/esta/values/groups/stage/dev/pipelines=
+-operator.yaml#8" class=3D"external-link" rel=3D"nofollow">stage-specific p=
+ipelines-operator values</a> updaten=20
+<ol>
+<li class=3D"with-breadcrumbs"><em>installPlanApprover.operatorVersion</em>=
+ auf die zu deployende Version =C3=A4ndern</li>
+<li class=3D"with-breadcrumbs">falls eine neue Major Version ver=C3=B6ffent=
+licht wurde, den <em>subscription.spec.channel</em> ebenfalls auf die neue =
+Verision anpassen</li>
+</ol></li>
+<li class=3D"with-breadcrumbs">PR erstellen und von CON approven lassen</li=
+>
+<li class=3D"with-breadcrumbs">ArgoCD Sync f=C3=BCr Dev Cluster (<a href=3D=
+"https://ocp-argocd.sbb-cloud-dev.net/applications/pipelines-operator-clew0=
+1d" class=3D"external-link" rel=3D"nofollow">clew01d</a>) ausf=C3=BChren</l=
+i>
+</ol>
+<h2 class=3D"with-breadcrumbs" id=3D"OpenShiftPipelinesOperatorUpdate-4.Int=
+egrationTestsaufDevClusterausf=C3=BChren">4. Integration Tests auf Dev Clus=
+ter ausf=C3=BChren</h2>
+<ol>
+<li class=3D"with-breadcrumbs">Checkout <a href=3D"https://code.sbb.ch/proj=
+ects/KD_ESTA/repos/esta-tekton-integrationtests/browse" class=3D"external-l=
+ink" rel=3D"nofollow">esta-tekton-integrationtests</a></li>
+<li class=3D"with-breadcrumbs">Anpassen des <a href=3D"https://code.sbb.ch/=
+projects/KD_ESTA/repos/esta-tekton-integrationtests/browse/statics/esta-tek=
+ton-integrationtests-clew01d-run.yaml" class=3D"external-link" rel=3D"nofol=
+low">Run Templates</a> mit aktuellen Versionen</li>
+<li class=3D"with-breadcrumbs">Oc Login auf dem Dev Cluster</li>
+<li class=3D"with-breadcrumbs"><code>$ oc create -f statics/esta-tekton-int=
+egrationtests-clew01d.yaml -n esta-tekton-it</code></li>
+<li class=3D"with-breadcrumbs">Pr=C3=BCfung der Resultate</li>
+<li class=3D"with-breadcrumbs">Falls n=C3=B6tig ESTA Tekton Komponenten fix=
+en und retest</li>
+</ol>
+<h2 id=3D"OpenShiftPipelinesOperatorUpdate-5.OperatorVersionf=C3=BCrStagesT=
+ESTundPRODaktualisieren">5. Operator Version f=C3=BCr Stages TEST und PROD =
+aktualisieren</h2>
+<ol>
+<li>Vorgehen analog 3. (ohne ArgoCD Sync)</li>
+<li>Neue Version f=C3=BCr ESTA Tekton erstellen</li>
+</ol>
+<h2 id=3D"OpenShiftPipelinesOperatorUpdate-6.Ank=C3=BCndigungdesUpdatesviaB=
+logpost">6. Ank=C3=BCndigung des Updates via Blogpost</h2>
+<ol>
+<li>Falls es Breaking Changes gibt, m=C3=BCssen diese angek=C3=BCndigt werd=
+en</li>
+<li>Zeitpunkt f=C3=BCr das Rollout des Updates festlegen (ca. 2 Wochen)</li=
+>
+</ol>
+<h2 id=3D"OpenShiftPipelinesOperatorUpdate-7.Rolloutzumangek=C3=BCndigtenZe=
+itpunkt">7. Rollout zum angek=C3=BCndigten Zeitpunkt</h2>
+<ol>
+<li>PRs aus 5. mergen</li>
+<li>ArgoCD Sync f=C3=BCr <a href=3D"https://ocp-argocd.int.sbb-cloud.net/ap=
+plications" class=3D"external-link" rel=3D"nofollow">Test</a> und <a href=
+=3D"https://ocp-argocd.sbb-cloud.net/" class=3D"external-link" rel=3D"nofol=
+low"><span class=3D"inline-comment-marker" data-ref=3D"9c729bfd-f099-4fa8-8=
+982-1f94cac69da2">Prod</span></a> Cluster ausf=C3=BChren</li>
+<li>ESTA Tekton Update ausrollen (via <a href=3D"https://argocd-server-clew=
+-esta-argocd.apps.aws01t.sbb-aws-test.net/applications" class=3D"external-l=
+ink" rel=3D"nofollow">clew-esta-argocd</a>)</li>
+</ol>
+    </div>
+</body>
+</html>
+------=_Part_8597_644341597.1713959782398--

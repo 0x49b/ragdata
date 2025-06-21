@@ -1,0 +1,317 @@
+Date: Wed, 24 Apr 2024 15:08:03 +0200 (CEST)
+Message-ID: <881060650.10049.1713964083185@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_10048_2027766001.1713964083185"
+
+------=_Part_10048_2027766001.1713964083185
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Migrating from ESTA Cloud Pipeline</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Migrating from ESTA Cloud Pipeline</h1>
+    <div class=3D"Section1">
+        <p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713964083183 {padding: 0px;}
+div.rbtoc1713964083183 ul {margin-left: 0px;}
+div.rbtoc1713964083183 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713964083183">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#MigratingfromESTACloudPipeline-MigratingestaCloudPipeline.j=
+son">Migrating estaCloudPipeline.json</a></li>
+<li><a href=3D"#MigratingfromESTACloudPipeline-DockerfileMigration">Dockerf=
+ile Migration</a></li>
+<li><a href=3D"#MigratingfromESTACloudPipeline-OpenShiftTemplatestoHelmChar=
+tMigration">OpenShift Templates to Helm Chart Migration</a></li>
+<li><a href=3D"#MigratingfromESTACloudPipeline-Kafka,APIM,IAMAppRegistratio=
+nDeploymentviaArgoCD">Kafka, APIM, IAM AppRegistration Deployment via ArgoC=
+D</a></li>
+</ul>
+</div>
+<p></p>
+<h2 id=3D"MigratingfromESTACloudPipeline-MigratingestaCloudPipeline.json">M=
+igrating estaCloudPipeline.json</h2>
+<p>The migration of projects already using the ESTA Cloud Pipeline with an =
+<code>estaCloudPipeline.json</code> is very easy. The Tekton Control Panel =
+provides a fully automated converter to generate your new <code>estaTektonP=
+ipeline.json</code>. Read more about the <a href=3D"/display/CLEW/Tekton+Co=
+ntrol+Panel#TektonControlPanel-ESTACloudPipelineMigrationTool">ESTA Cloud P=
+ipeline Migration Tool</a>.</p>
+<h2 id=3D"MigratingfromESTACloudPipeline-DockerfileMigration">Dockerfile <s=
+pan class=3D"inline-comment-marker" data-ref=3D"e79c93f5-911d-48bc-be4c-22d=
+40a850b38">Migration</span></h2>
+<p>As opposed to the ESTA Cloud Pipeline, the build process in Tekton diffe=
+rs a bit. While the Cloud Pipeline first pushed the build artifacts (e.g. t=
+he app jar) to Artifactory in order to pull it again for building the Docke=
+r image, the Docker build process in Tekton has direct access to the build =
+workspace and thus makes that step unnecessary. When using a custom Dockerf=
+ile (for Java projects you can omit this and use a standard template suitab=
+le for most apps) use the COPY command to copy the build artifacts file fro=
+m the build output directory into your Docker image.</p>
+<p>For a Java/Maven project, replace the <code>ADD <span class=3D"nolink"><=
+a href=3D"https://bin.sbb.ch/artifactory/...jar" class=3D"external-link" re=
+l=3D"nofollow">https://bin.sbb.ch/artifactory/...jar</a></span></code> comm=
+and with <code>COPY target/&lt;app-file-name&gt;*.jar</code> in your Docker=
+file. The value of the currently built version is passed as <code>APP_RELEA=
+SE_VERSION</code> build arg and can be consumed in the Dockerfile with <cod=
+e>ARG APP_RELEASE_VERSION</code>. An example Dockerfile can be found <a hre=
+f=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-json-e=
+xamples/browse/java/springboot-docker/docker" class=3D"external-link" rel=
+=3D"nofollow">here</a>.</p>
+<p>Another difference to the ESTA Cloud Pipeline is the context directory f=
+or Docker builds. While in the Cloud Pipeline all file references (e.g. ADD=
+ or COPY) in the Dockerfile were relative to the directory where the Docker=
+file resides, in Tekton the context directory is set to the project root un=
+less you specify it explicitly with the <a href=3D"/display/CLEW/ESTA+Tekto=
+n+Parameters+-+estaTektonPipeline.json#ESTATektonParametersestaTektonPipeli=
+ne.json-Dockerconfigurationstructure">contextDir property</a>. Therefore yo=
+u should review all <code>ADD</code> and <code>COPY</code> commands in your=
+ Dockerfile(s).</p>
+<p>Additionally, do these steps from &nbsp;<a class=3D"external-link" href=
+=3D"https://code.sbb.ch/projects/KD_ESTA_BLUEPRINTS/repos/esta-cloud-angula=
+r/browse/docker/Dockerfile" rel=3D"nofollow">https://code.sbb.ch/projects/K=
+D_ESTA_BLUEPRINTS/repos/esta-cloud-angular/browse/docker/Dockerfile</a></p>
+<h2 id=3D"MigratingfromESTACloudPipeline-OpenShiftTemplatestoHelmChartMigra=
+tion">OpenShift Templates to Helm Chart Migration</h2>
+<p>Although the ESTA Cloud Pipeline also supports deployments with Helm cha=
+rts, you may still use the deprecated OpenShift Templates for your deployme=
+nts. In order to move the deployment to <a href=3D"/display/CLEW/Deployment=
++with+ArgoCD+and+Helm+Charts">ArgoCD</a> these templates can be converted i=
+nto Helm charts using a small utility tool. This <a href=3D"/display/CLEW/O=
+penShift-Helm-Migration">guide describes</a> the migration in detail.</p>
+<h2 id=3D"MigratingfromESTACloudPipeline-Kafka,APIM,IAMAppRegistrationDeplo=
+ymentviaArgoCD">Kafka, APIM, IAM AppRegistration Deployment via ArgoCD</h2>
+<p>For the <code>kafkaDeployParameters</code> in estaCloudPipeline.json the=
+re's no equivalent in estaTektonPipeline.json because deployment topics are=
+ handled by ArgoCD. To manage these resources GitOps-style you can find det=
+ails linked here: <a href=3D"/display/CLEW/Kafka%2C+IAM+AppRegistrations+an=
+d+APIM+Deployments+with+Argocd">Kafka, IAM AppRegistrations and APIM Deploy=
+ments with Argocd</a></p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_10048_2027766001.1713964083185--

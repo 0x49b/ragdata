@@ -1,0 +1,415 @@
+Date: Wed, 24 Apr 2024 15:08:15 +0200 (CEST)
+Message-ID: <1697135555.10055.1713964095223@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_10054_296863184.1713964095223"
+
+------=_Part_10054_296863184.1713964095223
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Known Issues</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Known Issues</h1>
+    <div class=3D"Section1">
+        <p>This is a collection of issues or regressions known when buildin=
+g your projects with Tekton.</p>
+<p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713964095217 {padding: 0px;}
+div.rbtoc1713964095217 ul {margin-left: 0px;}
+div.rbtoc1713964095217 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713964095217">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#KnownIssues-Dockerfile:tarcommandfailswith&quot;Cannotchang=
+eownershiptouidxxx&quot;">Dockerfile: tar command fails with "Cannot change=
+ ownership to uid xxx"</a></li>
+<li><a href=3D"#KnownIssues-NPMBuildswithKarmaTeststime-out">NPM Builds wit=
+h Karma Tests time-out</a></li>
+<li><a href=3D"#KnownIssues-NPMBuildswithPlaywrightWebKittestsfail">NPM Bui=
+lds with Playwright WebKit tests fail</a></li>
+<li><a href=3D"#KnownIssues-Taggingpipelinefailswithrejectfromserver">Taggi=
+ng pipeline fails with reject from server</a></li>
+<li><a href=3D"#KnownIssues-Mavenbuildsfailwith&quot;invalidCENheader(encry=
+ptedentry)&quot;errors">Maven builds fail with "invalid CEN header (encrypt=
+ed entry)" errors</a></li>
+<li><a href=3D"#KnownIssues-maven-assembly-pluginfailswith&quot;groupid'100=
+1230000'istoobig&quot;errors">maven-assembly-plugin fails with "group id '1=
+001230000' is too big" errors</a></li>
+<li><a href=3D"#KnownIssues-Stagingpipelinefailsatargocd-sync-and-wait">Sta=
+ging pipeline fails at argocd-sync-and-wait</a></li>
+<li><a href=3D"#KnownIssues-Dockerbuildfailstodownloadfilesfromarchive.apac=
+he.org">Docker build fails to download files from archive.apache.org</a></l=
+i>
+</ul>
+</div>
+<p></p>
+<p><code class=3D"notranslate"> </code></p>
+<h3 id=3D"KnownIssues-Dockerfile:tarcommandfailswith&quot;Cannotchangeowner=
+shiptouidxxx&quot;">Dockerfile: tar command fails with "Cannot change owner=
+ship to uid xxx"</h3>
+<p>When running in a Docker build environment, tar tries to apply the owner=
+ship information from the archive. The following error may occur when proce=
+ssing your Dockerfile:</p>
+<p><code>[docker-build - build-push] &nbsp;tar: some/path: Cannot change ow=
+nership to uid 1000960000, gid 1000960000: Invalid argument</code></p>
+<h4 id=3D"KnownIssues-Workaround">Workaround</h4>
+<p>Execute tar with the <code>--no-same-owner</code> option in your Dockerf=
+ile.</p>
+<h3 id=3D"KnownIssues-NPMBuildswithKarmaTeststime-out">NPM Builds with Karm=
+a Tests time-out</h3>
+<p>The default test configuration from Angular uses the <em>ChromeHeadless<=
+/em> launcher. This one doesn't run properly in Tekton pipelines which lead=
+s to the test process either failing or timing out.</p>
+<h4 id=3D"KnownIssues-Workaround.1">Workaround</h4>
+<p>Create a <code>customLauncher</code> in your <code>karma.conf.js</code> =
+using <em>ChromiumHeadless</em> as base and adding the <code>--no-sandbox</=
+code> flag:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>karma.conf.js</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: js; gutter: false; theme: Confluence" data-theme=3D"Confluence">  customL=
+aunchers: {
+    ChromiumHeadlessCI: {
+      base: 'ChromiumHeadless',
+      flags: ['--no-sandbox']
+    },
+  },</pre>
+</div>
+</div>
+<p>Then use this launcher in the CI test config of your <code>angular.json<=
+/code> profile:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>angular.json</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: json; gutter: false; theme: Confluence" data-custom-language-resource=3D"=
+com.atlassian.confluence.ext.code.custom.Json.8823381252449680163:custom-co=
+de-syntax-resources" data-theme=3D"Confluence">  "test": {
+    "builder": "@angular-devkit/build-angular:karma",
+    "options": {
+      ...
+    },
+    "configurations": {
+      "ci": {
+        "browsers": "ChromiumHeadlessCI",
+        ...
+      }
+    }
+  },</pre>
+</div>
+</div>
+<p>When running <code>ng test -c ci</code>, the <em>ChromiumHeadless</em> b=
+rowser will be started which runs successfully in Tekton<em>.</em></p>
+<h3 id=3D"KnownIssues-NPMBuildswithPlaywrightWebKittestsfail">NPM Builds wi=
+th Playwright WebKit tests fail</h3>
+<p>If your e2e tests with playwright, and you use WebKit as the browser, th=
+e pipeline will fail because of missing dependencies.</p>
+<h4 id=3D"KnownIssues-Workaround.2">Workaround</h4>
+<p>Use Firefox or Chromium as the browser in the pipeline. These will work =
+correctly.</p>
+<h3 id=3D"KnownIssues-Taggingpipelinefailswithrejectfromserver">Tagging pip=
+eline fails with reject from server</h3>
+<p>If your tagging pipelines fail with the error "you can only push annotat=
+ed tags that you created", then your repository has the "Verify Committer a=
+ctivated which rejects the Git tags created by the Tekton pipeline.</p>
+<h4 id=3D"KnownIssues-Workaround.3">Workaround</h4>
+<p>Go to the&nbsp;<em>Repository settings</em> in Bitbucket, select <em>Hoo=
+ks</em> and then disable the "Verify Committer" hook.</p>
+<h3 id=3D"KnownIssues-Mavenbuildsfailwith&quot;invalidCENheader(encrypteden=
+try)&quot;errors">Maven builds fail with "invalid CEN header (encrypted ent=
+ry)" errors</h3>
+<p>This rather cryptic error message means that a specific maven dependency=
+ was blocked by CyberArt and cannot be used anymore.</p>
+<p>Check <a href=3D"https://bin.sbb.ch/artifactory/cyber-blocked.mvn/" clas=
+s=3D"external-link" rel=3D"nofollow">this repository</a> for a list of bloc=
+ked java modules.</p>
+<p><strong>Workaround</strong></p>
+<p>Update your project's dependencies to a more recent version that is not =
+on the blocked list or request an <a href=3D"/display/CYBR/Exception+to+Pol=
+icy+%28EtP%29+Prozess">Exception to Policy (EtP)</a>.</p>
+<h3 id=3D"KnownIssues-maven-assembly-pluginfailswith&quot;groupid'100123000=
+0'istoobig&quot;errors">maven-assembly-plugin fails with "group id '1001230=
+000' is too big" errors</h3>
+<p>By default the maven-assembly-plugin (and maybe other plugins) struggle =
+with the large UIDs randomly assigned to the pipeline containers by OpenShi=
+ft.</p>
+<p><strong>Workaround</strong></p>
+<p>As the full error messages suggests: Use STAR or POSIX extensions to ove=
+rcome this limit.<br>
+ An effektive fix is to add the <a href=3D"https://maven.apache.org/plugins=
+/maven-assembly-plugin/single-mojo.html#tarLongFileMode" class=3D"external-=
+link" rel=3D"nofollow">tarLongFileMode</a> configuration option for the acc=
+ording plugin in your pom.xml:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeHeader panelHeader pdl" style=3D"border-bottom-width: 1px=
+;"><b>pom.xml</b>
+</div>
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">&lt;con=
+figuration&gt;
+  ...
+  &lt;tarLongFileMode&gt;posix&lt;/tarLongFileMode&gt;
+&lt;/configuration&gt;</pre>
+</div>
+</div>
+<h3 id=3D"KnownIssues-Stagingpipelinefailsatargocd-sync-and-wait">Staging p=
+ipeline fails at argocd-sync-and-wait</h3>
+<p>Staging pipelines wich attempt to perform a sync in ArgoCD may fail with=
+ an error printed to the logs like this:</p>
+<pre>FailedPrecondition desc =3D Cannot sync to xxxxx: auto-sync currently =
+set to HEAD</pre>
+<p>This error occurs if the application in ArgoCD which Tekton wants to syn=
+c has the <a href=3D"https://argo-cd.readthedocs.io/en/stable/user-guide/au=
+to_sync/" class=3D"external-link" rel=3D"nofollow">automated sync policy</a=
+> set. In this case ArgoCD refuses to sync to an explicit revision and the =
+pipeline command fails with the given error.</p>
+<p><strong>Solution</strong></p>
+<p>Either disable the <a href=3D"/display/CLEW/ESTA+Tekton+Parameters+-+est=
+aTektonPipeline.json#ESTATektonParametersestaTektonPipeline.json-ArgoCDconf=
+igurationstructure">autoSync</a> flag in estaTektonPipeline.json or remove =
+the auto sync policy in your ArgoCD application resource.</p>
+<h3 id=3D"KnownIssues-Dockerbuildfailstodownloadfilesfromarchive.apache.org=
+">Docker build fails to download files from archive.apache.org</h3>
+<p>RUN or ADD commands which download a file from archive.apache.org fail w=
+ith an "i/o timeout" error. Unfortunately connections from OpenShift to <a =
+href=3D"http://archive.apache.org" class=3D"external-link" rel=3D"nofollow"=
+>archive.apache.org</a> cannot be established.</p>
+<p><strong>Solution</strong></p>
+<p>Use the mirrored repository at <em><span class=3D"nolink">https://bin.sb=
+b.ch/artifactory/apache-archive</span></em>. Read more in <a href=3D"/pages=
+/viewpage.action?pageId=3D2456130223">Use of artifactory remote repo for ar=
+chive.apache.org</a>.</p>
+<p><br></p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_10054_296863184.1713964095223--

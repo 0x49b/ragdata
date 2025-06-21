@@ -1,0 +1,368 @@
+Date: Wed, 24 Apr 2024 15:07:39 +0200 (CEST)
+Message-ID: <239389976.10027.1713964059583@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_10026_1431626728.1713964059583"
+
+------=_Part_10026_1431626728.1713964059583
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Environment Variables</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Environment Variables</h1>
+    <div class=3D"Section1">
+        <p>To each pipeline task, the following environment variables are e=
+xpose and can be consumed by the build tools or scripts (starting with vers=
+ion 0.27.0 of ESTA Tekton).</p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table confluenceTable" style=3D"width: 93.568%;">
+<colgroup>
+<col style=3D"width: 31.1747%;">
+<col style=3D"width: 68.8905%;">
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Name</th>
+<th scope=3D"col" class=3D"confluenceTh">Description</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_PLATFORM</td>
+<td class=3D"confluenceTd">Name of CI/CD Platform (Tekton).</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_KUBERNETES_NAMESPACE</td>
+<td class=3D"confluenceTd">Openshift namespace/project name where the pipel=
+ine runs.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_CONTROLLER_URL</td>
+<td class=3D"confluenceTd">The URL of the Controller.</td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lblaugr=C3=BCn 35 %" colspan=3D"2" data-highlight-colour=3D"#e6fcff">Commit=
+, Branch and Tag Information</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI</td>
+<td class=3D"confluenceTd">Indicating a CI environment.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_ACTOR</td>
+<td class=3D"confluenceTd">Email address of the user who started the pipeli=
+ne.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_AUTHOR</td>
+<td class=3D"confluenceTd">The author of the commit in name &lt;email&gt; f=
+ormat.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_BRANCH</td>
+<td class=3D"confluenceTd">The commit branch name. Available in branch pipe=
+lines, including pipelines, including pipelines for the default branch. Not=
+ available in merge request pipelines or tag pipelines.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_MESSAGE</td>
+<td class=3D"confluenceTd">The full commit message.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_SHA</td>
+<td class=3D"confluenceTd">The commit revision the project is built for.</t=
+d>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_REV_SHORT</td>
+<td class=3D"confluenceTd">The short git revision.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_TAG</td>
+<td class=3D"confluenceTd">The commit tag name. Available only in pipelines=
+ for tags.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_COMMIT_TIMESTAMP</td>
+<td class=3D"confluenceTd">The timestamp of the commit.</td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lblaugr=C3=BCn 35 %" colspan=3D"2" data-highlight-colour=3D"#e6fcff">Bitbuc=
+ket/Repo Information</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_REPOSITORY_NAME</td>
+<td class=3D"confluenceTd">Bitbucket/Git repository name.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_REPOSITORY_SLUG</td>
+<td class=3D"confluenceTd">Bitbucket/Git repository slug/key.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_REPOSITORY_OWNER</td>
+<td class=3D"confluenceTd">The Bitbucket project key.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_REPOSITORY_URL</td>
+<td class=3D"confluenceTd">The HTTP(S) address of the repository.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_GIT_URL</td>
+<td class=3D"confluenceTd">The Git/Checkout URL to the repository.</td>
+</tr>
+<tr>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Hintergrundfarbe: Hel=
+lblaugr=C3=BCn 35 %" colspan=3D"2" data-highlight-colour=3D"#e6fcff">Pipeli=
+ne Information</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_PIPELINE_ID</td>
+<td class=3D"confluenceTd">Tekton Pipeline Run name.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_PIPELINE_URL</td>
+<td class=3D"confluenceTd">The URL for the pipeline details.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_PIPELINE_CREATED_AT</td>
+<td class=3D"confluenceTd">The UTC datetime when the pipeline was created.<=
+/td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_PIPELINE_CONFIG_NAME</td>
+<td class=3D"confluenceTd">The name of the matching pipeline config in esta=
+TektonPipeline.json.</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">CI_PIPELINE_TRIGGER</td>
+<td class=3D"confluenceTd">Tekton Pipeline triggerType("GITEVENT", "USER" o=
+r "CRON").</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_10026_1431626728.1713964059583--

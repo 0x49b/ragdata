@@ -1,0 +1,418 @@
+Date: Wed, 24 Apr 2024 15:07:28 +0200 (CEST)
+Message-ID: <1693020093.10011.1713964048105@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_10010_1643473052.1713964048105"
+
+------=_Part_10010_1643473052.1713964048105
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Deployment with ArgoCD and Helm Charts</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Deployment with ArgoCD and Helm Charts</h1>
+    <div class=3D"Section1">
+        <p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713964048097 {padding: 0px;}
+div.rbtoc1713964048097 ul {margin-left: 0px;}
+div.rbtoc1713964048097 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713964048097">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-SetupArgoCDforyourDeploym=
+ents">Setup ArgoCD for your Deployments</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-EnableArgoCDSyncviaTekton=
+Pipelines">Enable ArgoCD Sync via Tekton Pipelines</a></li>
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-ConnecttodifferentArgoCDi=
+nstancesfromTektonPipelines">Connect to different ArgoCD instances from Tek=
+ton Pipelines</a></li>
+</ul></li>
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-CreateHelmCharts">Create =
+Helm Charts</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-UmbrellaCharts">Umbrella =
+Charts</a></li>
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-Bestpracticesuggestions">=
+Best practice suggestions</a></li>
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-MigrateOpenShiftTemplates=
+toHelmCharts">Migrate OpenShift Templates to Helm Charts</a></li>
+</ul></li>
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-ManageArgoCDDeploymentsin=
+Git(appofapps)">Manage ArgoCD Deployments in Git (app of apps)</a></li>
+<li><a href=3D"#DeploymentwithArgoCDandHelmCharts-UpdateArgoCDValuesfromTek=
+tonPipelines">Update ArgoCD Values from Tekton Pipelines</a></li>
+</ul>
+</div>
+<p></p>
+<p>Following the GitOps pattern, deployments to OpenShift shall be defined =
+as Helm charts and applied using ArgoCD.</p>
+<p>Note that ArgoCD only <em>uses</em> the templating functions of Helm cha=
+rts but does not actually perform a Helm deployment.</p>
+<h1 id=3D"DeploymentwithArgoCDandHelmCharts-SetupArgoCDforyourDeployments">=
+<span class=3D"inline-comment-marker" data-ref=3D"acae10c3-725b-4660-8ffd-5=
+14eab0814b5">Setup ArgoCD for your Deployments</span></h1>
+<p>Follow the <a href=3D"/display/CLEW/ArgoCD+Setup+and+Configuration">Argo=
+CD Setup and Configuration</a> guide to get your own ArgoCD instance up and=
+ running.</p>
+<h2 id=3D"DeploymentwithArgoCDandHelmCharts-EnableArgoCDSyncviaTektonPipeli=
+nes">Enable ArgoCD Sync via Tekton Pipelines</h2>
+<p><span class=3D"inline-comment-marker" data-ref=3D"57622d79-9122-4f34-afe=
+3-a52a2356e3e2">In order to allow Tekton to trigger app syncs in ArgoCD, a =
+specific user </span><em><span class=3D"inline-comment-marker" data-ref=3D"=
+57622d79-9122-4f34-afe3-a52a2356e3e2">tektoncontroller</span></em><span cla=
+ss=3D"inline-comment-marker" data-ref=3D"57622d79-9122-4f34-afe3-a52a2356e3=
+e2"> should be created in ArgoCD and its credentials added to your Tekton b=
+uild namespace</span>.</p>
+<ul>
+<li>When using the <a href=3D"https://code.sbb.ch/projects/OM_PAAS/repos/he=
+lm-argocd/browse" class=3D"external-link" rel=3D"nofollow">CLEW ArgoCD char=
+t</a>, the user <em>tektoncontroller</em> is already configured.</li>
+<li><p class=3D"auto-cursor-target">If you're not using this chart, you hav=
+e to create the user&nbsp;<em>tektoncontroller&nbsp;</em>manually:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">oc -n a=
+rgocd patch configmap argocd-cm -p '{ "data": { "accounts.tektoncontroller"=
+: "apiKey" } }'</pre>
+</div>
+</div></li>
+</ul>
+<p>Afterwards, you just have to generate a token for the user:</p>
+<ol>
+<li>Generate an access token for this user via the ArgoCD web UI:=20
+<ol>
+<li>navigate to <em>Settings &gt; Accounts &gt; tektoncontroller</em></li>
+<li>in the section <em>Tokens</em> click "Generate New"</li>
+<li>copy the new token<code><br></code></li>
+</ol></li>
+<li><p>Enter the ArgoCD host name (without https://) and the generated acce=
+ss token to the secret with the name <code>argocd-env-secret</code>.</p>
+<ol>
+<li><p>in the <a href=3D"/display/CLEW/Tekton+Control+Panel">Tekton Control=
+ Panel</a>, navigate to <em>Pipeline Secrets</em></p></li>
+<li><p>edit the secret <code>argocd-env-secret</code> and save the changes<=
+/p></li>
+</ol></li>
+</ol>
+<h2 id=3D"DeploymentwithArgoCDandHelmCharts-ConnecttodifferentArgoCDinstanc=
+esfromTektonPipelines">Connect to different ArgoCD instances from Tekton Pi=
+pelines</h2>
+<p>By default, Tekton pipelines use the <code>argocd-env-secret</code> to c=
+onnect to ArgoCD but you can create additional secrets with the keys <code>=
+ARGOCD_SERVER</code> and <code>ARGOCD_AUTH_TOKEN</code> and reference the s=
+ecret name in the <a href=3D"/display/CLEW/ESTA+Tekton+Parameters+-+estaTek=
+tonPipeline.json">stage config</a> of your <code>estaTektonPipeline.json</c=
+ode>:</p>
+<pre><span style=3D"color: rgb(135,16,148);">"stages"</span>: [<br>  {<br> =
+   <span style=3D"color: rgb(135,16,148);">"stageName"</span>: <span style=
+=3D"color: rgb(6,125,23);">"dev"</span>,<br>    <span style=3D"color: rgb(1=
+35,16,148);">"argoCD"</span>: {<br>      <span style=3D"color: rgb(135,16,1=
+48);">"argoCdAppName"</span>: <span style=3D"color: rgb(6,125,23);">"&lt;ar=
+gocd-appname&gt;"</span>,<br>      <span style=3D"color: rgb(135,16,148);">=
+"autoSync"</span>: <span style=3D"color: rgb(0,51,179);">true</span>,<br>  =
+    <span style=3D"color: rgb(135,16,148);">"argoCdSecret"</span>: <span st=
+yle=3D"color: rgb(6,125,23);">"argocd-env-secret-&lt;some-name&gt;"</span>
+  <span style=3D"color: rgb(6,125,23);">  </span>}<br>  }<br>],</pre>
+<p>You can manage these secrets directly in the <em>Pipeline Secrets</em> s=
+ection of your <a href=3D"/display/CLEW/Tekton+Control+Panel">Tekton Contro=
+l Panel</a>.</p>
+<h1 id=3D"DeploymentwithArgoCDandHelmCharts-CreateHelmCharts">Create Helm C=
+harts</h1>
+<p>If your start from scratch, have a look at the <a href=3D"https://code.s=
+bb.ch/projects/KD_ESTA_BLUEPRINTS/repos/esta-argocd/browse/applications" cl=
+ass=3D"external-link" rel=3D"nofollow"><span class=3D"inline-comment-marker=
+" data-ref=3D"5f4fa0dd-d827-484c-8b06-4dd63c7bf815">esta-argocd blueprint</=
+span></a> providing a sample Helm chart with the minimal required resources=
+ to get an application running on OpenShift.</p>
+<p>Another way is to use the <a href=3D"https://helm.sh/docs/intro/install/=
+" class=3D"external-link" rel=3D"nofollow">Helm CLI</a> to create a new cha=
+rt:</p>
+<pre>$ helm create &lt;chart-name&gt;.</pre>
+<p>The generated chart, however, might be too complex and includes resource=
+s like HorizontalPodAutoscaler and Ingress which are not needed in our envi=
+ronments.</p>
+<h2 id=3D"DeploymentwithArgoCDandHelmCharts-UmbrellaCharts">Umbrella Charts=
+</h2>
+<p>Helm charts have the ability to include other charts, referred to as sub=
+charts, via their <a href=3D"https://helm.sh/docs/helm/helm_dependency/" cl=
+ass=3D"external-link" rel=3D"nofollow">dependencies </a>section. When a cha=
+rt is created for the purpose of grouping together related subcharts/servic=
+es, such as to compose a whole set of micro-service deployments, we call th=
+is an umbrella chart. Use this technique to orchestrate complex deployments=
+ with cross-dependencies.</p>
+<p>In order to use a Helm chart of an application/service as a dependency i=
+n an umbrella helm chart, the former needs to packaged and published to a H=
+elm chart repository. Tekton build pipelines will do that for you and can p=
+ush versioned charts to Artifactory (bin.sbb.ch/artifactory/xxxx.helm). Ena=
+ble the <span> <code>packageAndDeployHelmChart</code> flag in your <code>es=
+taTektonPipeline.json</code> <a href=3D"https://confluence.sbb.ch/display/C=
+LEW/ESTA+Tekton+Parameters+-+estaTektonPipeline.json#ESTATektonParameterses=
+taTektonPipeline.json-Buildpipelineconfigurationstructure" rel=3D"nofollow"=
+>build pipeline config</a> and define the repository name using the <code>c=
+hartRepository</code> property in the <a href=3D"https://confluence.sbb.ch/=
+display/CLEW/ESTA+Tekton+Parameters+-+estaTektonPipeline.json#ESTATektonPar=
+ametersestaTektonPipeline.json-Helmconfigurationstructure" rel=3D"nofollow"=
+>Helm configuration structure</a>.</span></p>
+<h2 id=3D"DeploymentwithArgoCDandHelmCharts-Bestpracticesuggestions">Best p=
+ractice suggestions</h2>
+<p>Besides the <a href=3D"https://helm.sh/docs/chart_best_practices/templat=
+es/" class=3D"external-link" rel=3D"nofollow">Best Practices</a> suggested =
+by Helm, we'd like to highlight the following:</p>
+<ul>
+<li>Create a <code>values-xxx.yaml</code> file for each stage/environment (=
+e.g. dev, test, int. prod)</li>
+<li>Read the deployment version of the app (=E2=86=92 docker image tags, et=
+c.) from .Values to maintain them individually for each stage</li>
+</ul>
+<h2 id=3D"DeploymentwithArgoCDandHelmCharts-MigrateOpenShiftTemplatestoHelm=
+Charts">Migrate OpenShift Templates to Helm Charts</h2>
+<p>ESTA provides a tool to help you migrate existing OpenShift templates in=
+to Helm charts.<br>
+ See the <a href=3D"/display/CLEW/OpenShift-Helm-Migration">OpenShift-Helm-=
+Migration</a> section for details.</p>
+<h1 id=3D"DeploymentwithArgoCDandHelmCharts-ManageArgoCDDeploymentsinGit(ap=
+pofapps)">Manage ArgoCD Deployments in Git (app of apps)</h1>
+<p>Although new applications can easily be added to ArgoCD via the UI or as=
+ Kubernetes resources (kind: Application), they're only persisted in OpenSh=
+ift and may be lost during migration or due to accidental deletion. Therefo=
+re we recommend the declarative approach to manage them in Git and let Argo=
+CD sync its own configuration.</p>
+<p>Read more about the <strong>app of apps pattern</strong> in the <a href=
+=3D"https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootst=
+rapping/#app-of-apps-pattern" class=3D"external-link" rel=3D"nofollow">Argo=
+CD docs</a> or use fork the <a href=3D"https://code.sbb.ch/projects/KD_ESTA=
+_BLUEPRINTS/repos/esta-argocd/browse" class=3D"external-link" rel=3D"nofoll=
+ow">ESTA ArgoCD Blueprint</a>.</p>
+<h1 id=3D"DeploymentwithArgoCDandHelmCharts-UpdateArgoCDValuesfromTektonPip=
+elines">Update ArgoCD Values from Tekton Pipelines</h1>
+<p>See the Staging Section of <a href=3D"/display/CLEW/ESTA+Tekton+Paramete=
+rs+-+estaTektonPipeline.json">ESTA Tekton Parameters</a> to learn how to up=
+date deployment versions in ArgoCD after successful builds in ESTA Tekton.<=
+/p>
+    </div>
+</body>
+</html>
+------=_Part_10010_1643473052.1713964048105--

@@ -1,0 +1,453 @@
+Date: Wed, 24 Apr 2024 13:56:26 +0200 (CEST)
+Message-ID: <1491622120.8600.1713959786958@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8599_895519800.1713959786958"
+
+------=_Part_8599_895519800.1713959786958
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Sammlung von Esta-Tekton Issues</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Sammlung von Esta-Tekton Issues</h1>
+    <div class=3D"Section1">
+        <h2 id=3D"SammlungvonEstaTektonIssues-Inhalt">Inhalt</h2>
+<p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713959786950 {padding: 0px;}
+div.rbtoc1713959786950 ul {margin-left: 0px;}
+div.rbtoc1713959786950 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713959786950">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#SammlungvonEstaTektonIssues-Inhalt">Inhalt</a></li>
+<li><a href=3D"#SammlungvonEstaTektonIssues-Vert.xThreadhasbeenblockedformo=
+rethan2s.">Vert.x Thread has been blocked for more than 2s.</a></li>
+<li><a href=3D"#SammlungvonEstaTektonIssues-JSONSchemaValidationUnknownKeyw=
+ords(then,else)">JSON Schema Validation Unknown Keywords (then, else)</a></=
+li>
+<li><a href=3D"#SammlungvonEstaTektonIssues-EventsClosedExceptionvermeideni=
+ndemaufdenPodShutdowngeh=C3=B6rtwirdunddannderReaderclosedwird">Events Clos=
+ed Exception vermeiden indem auf den Pod Shutdown geh=C3=B6rt wird und dann=
+ der Reader closed wird</a></li>
+</ul>
+<li><a href=3D"#SammlungvonEstaTektonIssues-Resolved">Resolved</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#SammlungvonEstaTektonIssues-Theclientisusingresourcetypexyz=
+withunstableversionv1beta">The client is using resource type xyz with unsta=
+ble version v1beta</a></li>
+<li><a href=3D"#SammlungvonEstaTektonIssues-Pipelineruncleanupfailed">Pipel=
+inerun cleanup failed</a></li>
+<li><a href=3D"#SammlungvonEstaTektonIssues-Taskrunisnotareadiableressource=
+">Taskrun is not a readiable ressource</a></li>
+</ul></li>
+</div>
+<p></p>
+<h2 id=3D"SammlungvonEstaTektonIssues-Vert.xThreadhasbeenblockedformorethan=
+2s.">Vert.x Thread has been blocked for more than 2s.&nbsp;</h2>
+<p class=3D"auto-cursor-target">Korrektur f=C3=BCr failed pipelinerun <a hr=
+ef=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-contr=
+oller/pull-requests/397/overview" class=3D"external-link" rel=3D"nofollow">=
+Pull Request #397: fix: no streaming for failed pipeline - Code (sbb.ch)</a=
+><br>
+ Ticket f=C3=BCr running pipelinerun <a href=3D"https://flow.sbb.ch/browse/=
+ESTA-5393" class=3D"external-link" rel=3D"nofollow">[ESTA-5393] Tetkon: Log=
+ und Event streams blockieren die Thread - Flow (sbb.ch)</a></p>
+<p><br></p>
+<p><br></p>
+<h2 id=3D"SammlungvonEstaTektonIssues-JSONSchemaValidationUnknownKeywords(t=
+hen,else)">JSON Schema Validation Unknown Keywords (then, else)</h2>
+<p>Bug im library <a href=3D"https://github.com/networknt/json-schema-valid=
+ator/issues/333" class=3D"external-link" rel=3D"nofollow">"Unknown keyword =
+then" / "else" warning =C2=B7 Issue #333 =C2=B7 networknt/json-schema-valid=
+ator (github.com)</a></p>
+<p><a href=3D"https://search.splunk.sbb.ch/en-US/app/search/search?q=3Dsear=
+ch%20index%3D%22sbb_esta-tekton_internal_prod_events%22%20sourcetype%3D%22e=
+sta-tekton-pipeline-controller%22%20openshift_namespace%3D%22clew-tekton%22=
+%20Unknown%20keyword&amp;display.page.search.mode=3Dsmart&amp;dispatch.samp=
+le_ratio=3D1&amp;earliest=3D-7d%40h&amp;latest=3Dnow&amp;display.events.fie=
+lds=3D%5B%22host%22%2C%22source%22%2C%22sourcetype%22%2C%22message%22%2C%22=
+openshift_cluster%22%2C%22openshift_namespace%22%2C%22index%22%5D&amp;sid=
+=3D1675758172.66042_344C05D9-0E40-46BF-A6E3-67844054C5FA" class=3D"external=
+-link" rel=3D"nofollow">Search | Splunk 9.0.2 (sbb.ch)</a></p>
+<p><br></p>
+<h2 id=3D"SammlungvonEstaTektonIssues-EventsClosedExceptionvermeidenindemau=
+fdenPodShutdowngeh=C3=B6rtwirdunddannderReaderclosedwird">Events Closed Exc=
+eption vermeiden indem auf den Pod Shutdown geh=C3=B6rt wird und dann der R=
+eader closed wird</h2>
+<p><span>{</span><span>&nbsp;</span><a style=3D"text-decoration: none;" cla=
+ss=3D"external-link" href=3D"https://search.splunk.sbb.ch/en-US/app/monitor=
+ingopenshift/search?q=3Dsearch%20index%3Dsbb_*%20(sourcetype%3Dopenshift_lo=
+gs%20OR%20source%3D%2Fopenshift%2Flogs%2F*)%20openshift_container_name%3D%2=
+2esta-tekton-pipeline-controller%22%20openshift_namespace%3D%22kihub-tekton=
+%22%20level%3D%22WARN%22%20%7C%20spath%20message%20%7C%20search%20message!%=
+3D%22Thread%20Thread%5Bvert.x-eventloop-thread-1%2C5%2Cmain%5D%20has%20been=
+%20blocked%20for%20*%20ms%2C%20time%20limit%20is%202000%20ms%22%7C%20spath%=
+20message%20%7C%20search%20message!%3D%22TaskRun%20is%20not%20a%20Readiable=
+%20resource.%20It%20needs%20to%20be%20one%20of%20%5BNode%2C%20Deployment%2C=
+%20ReplicaSet%2C%20StatefulSet%2C%20Pod%2C%20ReplicationController%5D%22&am=
+p;earliest=3D1674051600&amp;latest=3D1674069780&amp;display.page.search.mod=
+e=3Dfast&amp;dispatch.sample_ratio=3D1&amp;display.prefs.events.count=3D50&=
+amp;sid=3D1674106778.140758_A44E233C-4188-4B57-A483-0EB12494FB6C" rel=3D"no=
+follow">[-]</a><span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">exception</span>:&nbsp;{&nbsp;<a class=3D"ext=
+ernal-link" style=3D"text-decoration: none;" href=3D"https://search.splunk.=
+sbb.ch/en-US/app/monitoringopenshift/search?q=3Dsearch%20index%3Dsbb_*%20(s=
+ourcetype%3Dopenshift_logs%20OR%20source%3D%2Fopenshift%2Flogs%2F*)%20opens=
+hift_container_name%3D%22esta-tekton-pipeline-controller%22%20openshift_nam=
+espace%3D%22kihub-tekton%22%20level%3D%22WARN%22%20%7C%20spath%20message%20=
+%7C%20search%20message!%3D%22Thread%20Thread%5Bvert.x-eventloop-thread-1%2C=
+5%2Cmain%5D%20has%20been%20blocked%20for%20*%20ms%2C%20time%20limit%20is%20=
+2000%20ms%22%7C%20spath%20message%20%7C%20search%20message!%3D%22TaskRun%20=
+is%20not%20a%20Readiable%20resource.%20It%20needs%20to%20be%20one%20of%20%5=
+BNode%2C%20Deployment%2C%20ReplicaSet%2C%20StatefulSet%2C%20Pod%2C%20Replic=
+ationController%5D%22&amp;earliest=3D1674051600&amp;latest=3D1674069780&amp=
+;display.page.search.mode=3Dfast&amp;dispatch.sample_ratio=3D1&amp;display.=
+prefs.events.count=3D50&amp;sid=3D1674106778.140758_A44E233C-4188-4B57-A483=
+-0EB12494FB6C" rel=3D"nofollow">[+]</a><br>
+ &nbsp;&nbsp;&nbsp;}</span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">hostName</span>:&nbsp;<span class=3D"t string=
+" style=3D"color: rgb(17,168,139);">esta-tekton-pipeline-controller-7d85676=
+464-v5d6h</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">level</span>:&nbsp;<span class=3D"t string" s=
+tyle=3D"color: rgb(17,168,139);">WARN</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">loggerClassName</span>:&nbsp;<span class=3D"t=
+ string" style=3D"color: rgb(17,168,139);">org.slf4j.impl.Slf4jLogger</span=
+></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">loggerName</span>:&nbsp;<span class=3D"t stri=
+ng" style=3D"color: rgb(17,168,139);">ch.sbb.esta.tekton.pipeline.service.o=
+penshift.events.TaskRunEventEmitter</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">mdc</span>:&nbsp;{&nbsp;<a href=3D"https://se=
+arch.splunk.sbb.ch/en-US/app/monitoringopenshift/search?q=3Dsearch%20index%=
+3Dsbb_*%20(sourcetype%3Dopenshift_logs%20OR%20source%3D%2Fopenshift%2Flogs%=
+2F*)%20openshift_container_name%3D%22esta-tekton-pipeline-controller%22%20o=
+penshift_namespace%3D%22kihub-tekton%22%20level%3D%22WARN%22%20%7C%20spath%=
+20message%20%7C%20search%20message!%3D%22Thread%20Thread%5Bvert.x-eventloop=
+-thread-1%2C5%2Cmain%5D%20has%20been%20blocked%20for%20*%20ms%2C%20time%20l=
+imit%20is%202000%20ms%22%7C%20spath%20message%20%7C%20search%20message!%3D%=
+22TaskRun%20is%20not%20a%20Readiable%20resource.%20It%20needs%20to%20be%20o=
+ne%20of%20%5BNode%2C%20Deployment%2C%20ReplicaSet%2C%20StatefulSet%2C%20Pod=
+%2C%20ReplicationController%5D%22&amp;earliest=3D1674051600&amp;latest=3D16=
+74069780&amp;display.page.search.mode=3Dfast&amp;dispatch.sample_ratio=3D1&=
+amp;display.prefs.events.count=3D50&amp;sid=3D1674106778.140758_A44E233C-41=
+88-4B57-A483-0EB12494FB6C" style=3D"text-decoration: none;" class=3D"extern=
+al-link" rel=3D"nofollow">[+]</a><br>
+ &nbsp;&nbsp;&nbsp;}</span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">message</span>:&nbsp;<span class=3D"t string"=
+ style=3D"color: rgb(17,168,139);">TaskRun/Pod Events Watcher closed for se=
+lector ki-kihub--vdv-v2017c-aus-chart-staging-2f0kqj-git-clone</span></span=
+><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">ndc</span>:</span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">processId</span>:&nbsp;<span class=3D"t numbe=
+r" style=3D"color: rgb(106,92,158);">1</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">processName</span>:&nbsp;<span class=3D"t str=
+ing" style=3D"color: rgb(17,168,139);">quarkus-run.jar</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">sequence</span>:&nbsp;<span class=3D"t number=
+" style=3D"color: rgb(106,92,158);">33735</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">threadId</span>:&nbsp;<span class=3D"t number=
+" style=3D"color: rgb(106,92,158);">894</span></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">threadName</span>:&nbsp;<span class=3D"t stri=
+ng" style=3D"color: rgb(17,168,139);">OkHttp <a href=3D"https://198.18.0.1/=
+" class=3D"external-link" rel=3D"nofollow">https://198.18.0.1/</a>...</span=
+></span><br>
+ &nbsp;&nbsp;&nbsp;<span class=3D"key level-1"><span class=3D"key-name" sty=
+le=3D"color: rgb(220,78,65);">timestamp</span>:&nbsp;<span class=3D"t strin=
+g" style=3D"color: rgb(17,168,139);">2023-01-18T15:26:18.966+01:00</span></=
+span></span><br><span>}</span></p>
+<p><a href=3D"https://search.splunk.sbb.ch/en-US/app/monitoringopenshift/se=
+arch?q=3Dsearch%20index%3Dsbb_*%20(sourcetype%3Dopenshift_logs%20OR%20sourc=
+e%3D%2Fopenshift%2Flogs%2F*)%20openshift_container_name%3D%22esta-tekton-pi=
+peline-controller%22%20openshift_namespace%3D%22kihub-tekton%22%20level%3D%=
+22WARN%22%20%7C%20spath%20message%20%7C%20search%20message!%3D%22Thread%20T=
+hread%5Bvert.x-eventloop-thread-1%2C5%2Cmain%5D%20has%20been%20blocked%20fo=
+r%20*%20ms%2C%20time%20limit%20is%202000%20ms%22%7C%20spath%20message%20%7C=
+%20search%20message!%3D%22TaskRun%20is%20not%20a%20Readiable%20resource.%20=
+It%20needs%20to%20be%20one%20of%20%5BNode%2C%20Deployment%2C%20ReplicaSet%2=
+C%20StatefulSet%2C%20Pod%2C%20ReplicationController%5D%22&amp;earliest=3D16=
+74051600&amp;latest=3D1674069780&amp;display.page.search.mode=3Dfast&amp;di=
+spatch.sample_ratio=3D1&amp;display.prefs.events.count=3D50&amp;sid=3D16741=
+06778.140758_A44E233C-4188-4B57-A483-0EB12494FB6C" class=3D"external-link" =
+style=3D"text-decoration: none;" rel=3D"nofollow">Show as raw text</a></p>
+<p>Sollte mit <a href=3D"https://flow.sbb.ch/browse/ESTA-5393" class=3D"ext=
+ernal-link" rel=3D"nofollow">[ESTA-5393] Tetkon: Log und Event streams bloc=
+kieren die Thread - Flow (sbb.ch)</a> gel=C3=B6st (kein watch mehr)</p>
+<p><br></p>
+<h1 id=3D"SammlungvonEstaTektonIssues-Resolved">Resolved</h1>
+<p>L=C3=B6schen wenn sie best=C3=A4tigt sind</p>
+<div id=3D"expander-995268054" class=3D"expand-container">
+<div role=3D"heading" aria-level=3D"6" id=3D"expander-control-995268054" cl=
+ass=3D"expand-control"><button type=3D"button" id=3D"expand-button-99526805=
+4" class=3D"aui-button aui-button-link aui-button-link-icon-text" aria-expa=
+nded=3D"true" aria-controls=3D"expander-content-995268054"><span class=3D"e=
+xpand-icon aui-icon aui-icon-small aui-iconfont-chevron-down" aria-hidden=
+=3D"true"></span><span class=3D"expand-control-text conf-macro-render">Klic=
+ken Sie hier, um zu erweitern...</span></button>
+</div>
+<div role=3D"region" id=3D"expander-content-995268054" class=3D"expand-cont=
+ent" aria-labelledby=3D"expand-button-995268054">
+<h2 id=3D"SammlungvonEstaTektonIssues-Theclientisusingresourcetypexyzwithun=
+stableversionv1beta">The client is using resource type xyz with unstable ve=
+rsion v1beta</h2>
+<p>nicht gesehen die letzte 7 tagen: <a href=3D"https://search.splunk.sbb.c=
+h/en-US/app/monitoringopenshift/search?q=3Dsearch%20index%3Dsbb_esta-tekton=
+_internal_prod_events%20openshift_container_name%3D%22esta-tekton-pipeline-=
+controller%22%20unstable%20version%20v1beta&amp;earliest=3D-7d%40h&amp;late=
+st=3Dnow&amp;display.page.search.mode=3Dfast&amp;dispatch.sample_ratio=3D1&=
+amp;display.prefs.events.count=3D50&amp;sid=3D1675697029.33123_344C05D9-0E4=
+0-46BF-A6E3-67844054C5FA" class=3D"external-link" rel=3D"nofollow">Search |=
+ Splunk 9.0.2 (sbb.ch)</a></p>
+<h2 id=3D"SammlungvonEstaTektonIssues-Pipelineruncleanupfailed">Pipelinerun=
+ cleanup failed</h2>
+<p>Ich denke man versucht die logs zu l=C3=B6schen wenn die Datei nicht da =
+sind. Die gzip sollte es l=C3=B6sen: <a href=3D"https://code.sbb.ch/project=
+s/KD_ESTA/repos/esta-tekton-pipeline-controller/pull-requests/393/overview?=
+commentId=3D997129" class=3D"external-link" rel=3D"nofollow">Pull Request #=
+393: feat: compress dumped pipeline/event logs with gzip - Code (sbb.ch)</a=
+></p>
+<h2 class=3D"auto-cursor-target" id=3D"SammlungvonEstaTektonIssues-Taskruni=
+snotareadiableressource">Taskrun is not a readiable ressource</h2>
+<p>should be fixed with <a href=3D"https://code.sbb.ch/projects/KD_ESTA/rep=
+os/esta-tekton-pipeline-controller/pull-requests/394/overview" class=3D"ext=
+ernal-link" rel=3D"nofollow">Pull Request #394: feat: remove taskrun is no =
+readiable resource warning by not call ready on the resource - Code (sbb.ch=
+)</a></p>
+</div>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8599_895519800.1713959786958--

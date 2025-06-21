@@ -1,0 +1,576 @@
+Date: Wed, 24 Apr 2024 13:54:30 +0200 (CEST)
+Message-ID: <1579337189.8532.1713959670462@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8531_1703180877.1713959670462"
+
+------=_Part_8531_1703180877.1713959670462
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Tekton Pipeline Log Persistance</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Tekton Pipeline Log Persistance</h1>
+    <div class=3D"Section1">
+        <div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh"><p>Fragestellung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><strong>Wie sollen Pipeline Logs vollst=C3=A4ndig und hochverf=C3=BCgbar=
+ gelesen und gespeichert werden?</strong></p>
+<p>In Tekton sind die Logs ausschliesslich in den Pods der jeweiligen TaskR=
+uns gespeichert. Nach Abschluss eines Pipeline Tasks sind diese nicht mehr =
+vollst=C3=A4ndig abrufbar, da sie auf der Node nicht komplett vorgehalten w=
+erden. Um die Logs auch nach L=C3=B6schung der Pods noch verf=C3=BCgbar zu =
+haben, sammelt der ESTA Tekton Controller nach Beendigung eines Pipeline Ru=
+ns die Logs aus allen Containern. Zu diesem Zeitpunkt sind diese aber schon=
+ nicht mehr vollst=C3=A4ndig. Die Logs m=C3=BCssen also bereits zur Laufzei=
+t der Pipeline aus den jeweiligen Containers gezogen und persistent gespeic=
+hert werden.</p>
+<p>Wie und mit welchen Hilfsmitteln kann dies nun am effizientesten und unt=
+erbrechungsfrei (HA) erreicht werden?</p>
+<p><span class=3D"jira-issue resolved" data-jira-key=3D"ESTA-5317"> <a href=
+=3D"https://flow.sbb.ch/browse/ESTA-5317" class=3D"jira-issue-key"><img cla=
+ss=3D"icon" src=3D"https://flow.sbb.ch/images/icons/issuetypes/story.svg">E=
+STA-5317</a> - <span class=3D"summary">ESTA Tekton Logging HA Konzept</span=
+> <span class=3D"aui-lozenge aui-lozenge-subtle             aui-lozenge-suc=
+cess
+     jira-macro-single-issue-export-pdf">Closed</span> </span></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Rahmenbedingung</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Betrifft ausschliesslich Logs aus Tekton Pipelines resp. TaskRuns</li>
+<li>Keine cluster-weite Logging L=C3=B6sung gesucht</li>
+<li>Am Cluster Setup soll wenn m=C3=B6glich nichts ge=C3=A4ndert werden m=
+=C3=BCssen</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Annahmen</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Logs eines PipelineRuns k=C3=B6nnen mehrere 100MB gross werden</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Alternativen / Varianten</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<h2 id=3D"TektonPipelineLogPersistance-Variante1">Variante 1</h2>
+<p><strong>ESTA Tekton Controller streamed die Logs zur Laufzeit</strong></=
+p>
+<p>Der Controller hat bereits einen Watcher auf Pipeline Events und kann so=
+ beim Start einer Pipeline den Log Stream lesen und laufend ins lokale Date=
+isystem schreiben.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfache Umsetzung</td>
+<td class=3D"confluenceTd">Nicht HA</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">Hoher Ressourcenverbrauch der Controllers</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"TektonPipelineLogPersistance-Variante2">Variante 2</h2>
+<p><strong>Ein einfacher Service streamed Logs Pod-basiert<br></strong></p>
+<p>Einfach umzusetzende L=C3=B6sung mit einem eigenen kleinen Service (Quar=
+kus native) der einen Watcher auf PipelineRun Events registriert und bei je=
+dem Start die Logs direkt von den Pods via fabric8 liest und pro Pod/Task i=
+n individuellen Dateien speichert. Die abgeschlossenen Logs werden gzipped =
+und nach S3 hochgeladen.</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfache Umsetzung</td>
+<td class=3D"confluenceTd">Nicht HA</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Deployment mit Tekton Helm Chart</td>
+<td class=3D"confluenceTd">Zus=C3=A4tzliches Deployment (Maintenance)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"TektonPipelineLogPersistance-Variante3a">Variante 3a</h2>
+<p><strong>Logging nach Splunk (full)<br></strong></p>
+<p>Bestehende Infrastruktur nutzen und die TaskRuns mit Annotations so konf=
+igurieren, dass sie nach Splunk loggen. Die Logs m=C3=BCssen dann vom Tekto=
+n Control Panel resp. dem Backend aus Splunk gelesen werden. Optimalerweise=
+ wird f=C3=BCr die Speicherung in Splunk ein spezifischer Index f=C3=BCr di=
+e Applikation (Tekton Namespace) verwendet, welcher explizit bestellt und k=
+onfiguriert wird. Siehe dazu&nbsp; <span class=3D"jira-issue" data-jira-key=
+=3D"ESTA-5185"> <a href=3D"https://flow.sbb.ch/browse/ESTA-5185" class=3D"j=
+ira-issue-key"><img class=3D"icon" src=3D"https://flow.sbb.ch/images/icons/=
+issuetypes/story.svg">ESTA-5185</a> - <span class=3D"summary">Esta Tekton O=
+ptional Splunk Logging</span> <span class=3D"aui-lozenge aui-lozenge-subtle=
+             aui-lozenge-default
+     jira-macro-single-issue-export-pdf">Open</span> </span></p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">HA</td>
+<td class=3D"confluenceTd">Teuer</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfach einzurichten</td>
+<td class=3D"confluenceTd">Refactoring des Controllers oder UI</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kosten beim Kunden</td>
+<td class=3D"confluenceTd">Lifetime nicht in Sync mit Tekton Config</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">Access von Tekton auf Splunk Logs?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"TektonPipelineLogPersistance-Variante3b">Variante 3b</h2>
+<p><strong>Logging nach Splunk (light)</strong></p>
+<p>Basierend auf ESTA-5185 kann vom Kunden ein Splunk Index konfiguriert we=
+rden, in welchen die Pipeline Logs geschrieben werden. Ist ein Splunk Index=
+ konfiguriert, wird im Tekton Control Panel beim PipelineRun ein Link auf e=
+in Search Query in Splunk angezeigt, =C3=A4hnlich wie diese in der Openshif=
+t Console gemacht wird.</p>
+<p>Das bisherige Logging in Tekton wird beibehalten mit dem Verweis, dass d=
+ie Openshift Infrastruktur das Logging nur im aktuellen Rahmen erm=C3=B6gli=
+cht. Wer grosse und vollst=C3=A4ndige Logs will, muss Splunk aktivieren (op=
+t-in).</p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">HA</td>
+<td class=3D"confluenceTd">Default Logging bleibt unvollst=C3=A4ndig</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfach einzurichten</td>
+<td class=3D"confluenceTd">Keine perfekte Integration in Tekton Control Pan=
+el</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kein Refactoring n=C3=B6tig</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Kosten beim Kunden</td>
+<td class=3D"confluenceTd"><br></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"TektonPipelineLogPersistance-Variante4">Variante 4</h2>
+<p><strong>Log Deamon mit fluentd und S3 als Output</strong></p>
+<p>Quellen:</p>
+<ul>
+<li><p class=3D"pw-post-title ie if ig bm ih ii ij ik il im in io ip iq ir =
+is it iu iv iw ix iy iz ja jb jc gh"><a href=3D"https://medium.com/@nachomi=
+llangarcia/fluentd-k8s-integration-via-annotations-9a035129f463" class=3D"e=
+xternal-link" rel=3D"nofollow">Fluentd &lt;&gt; K8S integration via annotat=
+ions</a></p></li>
+<li><p class=3D"pw-post-title ie if ig bm ih ii ij ik il im in io ip iq ir =
+is it iu iv iw ix iy iz ja jb jc gh"><a href=3D"https://medium.com/@joatmon=
+08/application-logging-in-kubernetes-with-fluentd-4556f1573672" class=3D"ex=
+ternal-link" rel=3D"nofollow">Application Logging in Kubernetes with fluent=
+d</a></p></li>
+<li><p class=3D"pw-post-title is it iu bm iv iw ix iy iz ja jb jc jd je jf =
+jg jh ji jj jk jl jm jn jo jp jq fw"><a href=3D"https://medium.com/kubernet=
+es-tutorials/cluster-level-logging-in-kubernetes-with-fluentd-e59aa2b6093a"=
+ class=3D"external-link" rel=3D"nofollow">Cluster-level Logging in Kubernet=
+es with Fluentd</a></p></li>
+</ul>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">HA</td>
+<td class=3D"confluenceTd">Refactoring des Controllers</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Native L=C3=B6sung</td>
+<td class=3D"confluenceTd">Ben=C3=B6tigt Node-Konfiguration (Deamonset)</td=
+>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"TektonPipelineLogPersistance-Variante5"><s>Variante 5</s></h2>
+<p><strong>Openshift Cluster Logging mit Elasticsearch<br></strong></p>
+<p>Quellen:</p>
+<ul>
+<li><a href=3D"https://docs.openshift.com/container-platform/4.11/logging/c=
+luster-logging.html" class=3D"external-link" rel=3D"nofollow">Logging subsy=
+stem for Red Hat OpenShift</a></li>
+<li><p><a href=3D"https://discuss.elastic.co/t/dec-16th-2020-en-monitoring-=
+tekton-tasks-and-pipelines-with-elastic-observability/257567" class=3D"exte=
+rnal-link" rel=3D"nofollow">Elastic Observability mit Elastic Cloud on Kube=
+rnetes (ECK)</a></p></li>
+</ul>
+<div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable" data-mce-resize=3D"false">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th scope=3D"col" class=3D"confluenceTh">Vorteile</th>
+<th scope=3D"col" class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Supportete L=C3=B6sung von RedHat</td>
+<td class=3D"confluenceTd">Ganzer Elasticsearch Stack auf Openshift</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd"><br></td>
+<td class=3D"confluenceTd">Wird von CON nicht approved</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Entscheidung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><strong>Variante 1 </strong>(mit evtl. Migration nach Variante 2)</p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Begr=C3=BCndung</p></th>
+<td class=3D"confluenceTd"><p>Einfachste und schnellste Umsetzung zum aktue=
+llen Zeitpunkt.<br>
+ Kann schrittweise mit Storage auf S3 (=E2=86=92 <a href=3D"https://flow.sb=
+b.ch/browse/ESTA-5267" class=3D"external-link" rel=3D"nofollow">ESTA-5267</=
+a>) und Leader-Election zu einer HA-L=C3=B6sung erweitert oder bei Bedarf i=
+n einen eigenen Service (=E2=86=92 Variante 2) ausgelagert werden.</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wer</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"u228304" =
+href=3D"/display/~u228304" data-linked-resource-id=3D"1093766913" data-link=
+ed-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-=
+url=3D"https://confluence.sbb.ch">Spirig Lukas (IT-PTR-CEN2-SL3)</a> , <a c=
+lass=3D"confluence-userlink user-mention" data-username=3D"ue64007" href=3D=
+"/display/~ue64007" data-linked-resource-id=3D"327718071" data-linked-resou=
+rce-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=3D"h=
+ttps://confluence.sbb.ch">Wallrapp Manuel (IT-PTR-EXT-EXT2 - Extern)</a> , =
+<a class=3D"confluence-userlink user-mention" data-username=3D"u231154" hre=
+f=3D"/display/~u231154" data-linked-resource-id=3D"1368528554" data-linked-=
+resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=
+=3D"https://confluence.sbb.ch">Jeanneret Julien (IT-PTR-CEN1-BDE3)</a> , <a=
+ class=3D"confluence-userlink user-mention" data-username=3D"u233658" href=
+=3D"/display/~u233658" data-linked-resource-id=3D"1607762183" data-linked-r=
+esource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=
+=3D"https://confluence.sbb.ch">Br=C3=BCderli Thomas (IT-PTR-CEN2-SL2)</a> ,=
+ <a class=3D"confluence-userlink user-mention" data-username=3D"u237004" hr=
+ef=3D"/display/~u237004" data-linked-resource-id=3D"1944066363" data-linked=
+-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-ur=
+l=3D"https://confluence.sbb.ch">H=C3=A4rtwig Mario (IT-PTR-CEN2-BDE5)</a> ,=
+ <a class=3D"confluence-userlink user-mention" data-username=3D"u236168" hr=
+ef=3D"/display/~u236168" data-linked-resource-id=3D"1850646263" data-linked=
+-resource-version=3D"1" data-linked-resource-type=3D"userinfo" data-base-ur=
+l=3D"https://confluence.sbb.ch">Burger Alain (IT-PTR-CEN2-YPT4)</a> , <a cl=
+ass=3D"confluence-userlink user-mention" data-username=3D"u239086" href=3D"=
+/display/~u239086" data-linked-resource-id=3D"2128615198" data-linked-resou=
+rce-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-url=3D"h=
+ttps://confluence.sbb.ch">Wattinger Matthias (IT-PTR-CEN1-YPT1)</a>&nbsp;</=
+p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wann</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><time datetime=3D"2022-11-24" class=3D"date-past">24.11.2022</time>&nbsp=
+;</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8531_1703180877.1713959670462--

@@ -1,0 +1,487 @@
+Date: Wed, 24 Apr 2024 13:55:33 +0200 (CEST)
+Message-ID: <1543218281.8560.1713959733622@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8559_490738669.1713959733622"
+
+------=_Part_8559_490738669.1713959733622
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>ESTA Tekton Releasing</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>ESTA Tekton Releasing</h1>
+    <div class=3D"Section1">
+        <p>Nachfolgend wird der Prozess beschrieben, wie ESTA Tekton releas=
+ed wird, inklusive der Kommunikation und dem Roll-out f=C3=BCr unsere Abneh=
+mer.</p>
+<p><style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1713959733614 {padding: 0px;}
+div.rbtoc1713959733614 ul {margin-left: 0px;}
+div.rbtoc1713959733614 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style></p>
+<div class=3D"toc-macro rbtoc1713959733614">
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonReleasing-Versionierung">Versionierung</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonReleasing-SemanticVersions">Semantic Versions</a>=
+</li>
+</ul></li>
+<li><a href=3D"#ESTATektonReleasing-UnstableReleases">Unstable Releases</a>=
+</li>
+<li><a href=3D"#ESTATektonReleasing-StableReleases">Stable Releases</a></li=
+>
+<li><a href=3D"#ESTATektonReleasing-Changelog">Changelog</a></li>
+<li><a href=3D"#ESTATektonReleasing-ReleaseAnnouncements">Release Announcem=
+ents</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonReleasing-Muster">Muster</a></li>
+</ul></li>
+</ul>
+<li>ESTA Tekton Version 1.14.0 released</li>
+<li><a href=3D"#ESTATektonReleasing-Summary">Summary</a></li>
+<li><a href=3D"#ESTATektonReleasing-Furtherinformation">Further information=
+</a>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#ESTATektonReleasing-Deployment">Deployment</a></li>
+</ul></li>
+</div>
+<p></p>
+<h2 id=3D"ESTATektonReleasing-Versionierung">Versionierung</h2>
+<p>Ein Release des Gesamtsystems ESTA Tekton wird =C3=BCber as Repo <a href=
+=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-config/=
+browse" class=3D"external-link" rel=3D"nofollow">esta-tekton-pipeline-confi=
+g</a> gemacht, welches ein Umbrella Helm Chart mit den Dependencies und Val=
+ues f=C3=BCr die einzelnen Komponenten enth=C3=A4lt. Die Versionierung folg=
+t dem Semantic Versioning. F=C3=BCr jedes Release wird ein Git Tag erstellt=
+ und das Helm Chart mit der entsprechenden Version nach <a href=3D"https://=
+bin.sbb.ch/artifactory/esta.helm/" class=3D"external-link" rel=3D"nofollow"=
+>bin.sbb.ch</a> gepushed.</p>
+<h3 id=3D"ESTATektonReleasing-SemanticVersions">Semantic Versions</h3>
+<p>major: MAJOR Milestones<br>
+ minor: Feature Releases<br>
+ patch: Patches, kleine Improvements oder Hotfixes<br><br></p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">TO BE DISCUSSED</p><span class=3D"aui-=
+icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></=
+span>
+<div class=3D"confluence-information-macro-body">
+<p>Monorepo erstellen? =E2=86=92&nbsp; <span class=3D"jira-issue" data-jira=
+-key=3D"ESTA-5275" data-client-id=3D"SINGLE_c2a784d2-9de8-3b3b-a53c-5925ae9=
+5bf55_2197686402_8a064d67472167ae0147216cf0875c13"> <a href=3D"https://flow=
+.sbb.ch/browse/ESTA-5275" class=3D"jira-issue-key"><span class=3D"aui-icon =
+aui-icon-wait issue-placeholder"></span>ESTA-5275</a> - <span class=3D"summ=
+ary">Abrufen der Vorgangsdetails...</span> <span class=3D"aui-lozenge aui-l=
+ozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span> </span><=
+/p>
+</div>
+</div>
+<p><br></p>
+<h2 id=3D"ESTATektonReleasing-UnstableReleases">Unstable Releases</h2>
+<p>"Release early, release often" ist das Credo von ESTA Tekton. F=C3=BCr d=
+ie laufende Entwicklung releasen wir oft, meistens beim Abschluss eines neu=
+e Features oder einer Anpassung, die aufgrund von Kundenfeedback oder -w=C3=
+=BCnschen notwendig wird. F=C3=BCr diese "unstable" Releases gibt es in uns=
+erem ArgoCD Helm Chart einen eigenen "<span class=3D"inline-comment-marker"=
+ data-ref=3D"b7988a28-164d-449a-88aa-06ce74e0370c">Cannel</span>", der von =
+einzelnen Tekton Instanzen benutzt werden kann, wenn gew=C3=BCnscht. Das ka=
+nn auch nur tempor=C3=A4r sein, um schnell einen Fix oder ein gew=C3=BCnsch=
+tes Feature zu deployen.</p>
+<p>Der Unstable Channel kann benutzt werden, indem in der jeweiligen <a hre=
+f=3D"https://code.sbb.ch/projects/KD_ESTA/repos/esta-apps-argocd/browse/app=
+lications/esta-tekton/application-template.yaml#48" class=3D"external-link"=
+ rel=3D"nofollow">ArgoCD App</a> die Value <code>.estaTekton.releaseVersion=
+Unstable</code> verwendet wird.</p>
+<h2 id=3D"ESTATektonReleasing-StableReleases">Stable Releases</h2>
+<p>Einen etwas langsameren Release-Zyklus bieten wir mit dem Stable Release=
+s an. Diese werden publiziert, sobald eine unstable Version eine Weile in <=
+em>clew-tekton</em> und anderen Instanzen ohne Probleme und Zwischenf=C3=A4=
+lle l=C3=A4uft. Genaue Regeln oder eine zeitliche Periodizit=C3=A4t f=C3=BC=
+r stable Releases sind nicht vorgesehen.</p>
+<p>Der Stable Channel ist der Default f=C3=BCr alle Tekton Instanzen und wi=
+rd =C3=BCber die Value <code>.estaTekton.releaseVersion</code> bezogen.</p>
+<p>Lose Regel f=C3=BCr Stable Releases: einmal pro Woche (Montags), wenn re=
+levante =C3=84nderungen in Unstable vorhanden.</p>
+<h2 id=3D"ESTATektonReleasing-Changelog">Changelog</h2>
+<p>Wie bisher wird im esta-tekton-pipeline-config Repo die Datei <a href=3D=
+"https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-config/bro=
+wse/CHANGELOG.md" class=3D"external-link" rel=3D"nofollow">CHANGELOG.md</a>=
+ mit Informationen zu Bugfixes, Features und Major Changes sowie mit den en=
+thaltenen Versionen der einzelnen Komponenten gef=C3=BChrt.</p>
+<p>Idee: neue Features im Tekton Control Panel anzeigen (Notifications)</p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">TO BE DISCUSSED</p><span class=3D"aui-=
+icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></=
+span>
+<div class=3D"confluence-information-macro-body">
+<ul>
+<li>Sollen CLEW- oder ESTA- Tickets im Changelog vermerkt werden? =E2=86=92=
+ Ja, gem=C3=A4ss Entscheid aus&nbsp; <span class=3D"jira-issue" data-jira-k=
+ey=3D"CLEW-24024" data-client-id=3D"SINGLE_c2a784d2-9de8-3b3b-a53c-5925ae95=
+bf55_2197686402_8a064d67472167ae0147216cf0875c13"> <a href=3D"https://flow.=
+sbb.ch/browse/CLEW-24024" class=3D"jira-issue-key"><span class=3D"aui-icon =
+aui-icon-wait issue-placeholder"></span>CLEW-24024</a> - <span class=3D"sum=
+mary">Abrufen der Vorgangsdetails...</span> <span class=3D"aui-lozenge aui-=
+lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span> </span>=
+</li>
+<li>Sollen (zumindest f=C3=BCr stable Releases) Release Notes wie diejenige=
+n f=C3=BCr die <a href=3D"https://confluence.sbb.ch/display/CLEW/Esta+Cloud=
++Releasenotes" rel=3D"nofollow">ESTA Cloud Pipeline</a> in Confluence publi=
+ziert werden? =E2=86=92 No</li>
+</ul>
+</div>
+</div>
+<h2 id=3D"ESTATektonReleasing-ReleaseAnnouncements">Release Announcements</=
+h2>
+<p>F=C3=BCr stable Releases wird eine Ank=C3=BCndigung in Form eines Blogpo=
+sts publiziert. Diese enth=C3=A4lt den Changelog seit dem letzten Release u=
+nd allenfalls wichtige Informationen falls Breaking Changes anfallen.</p>
+<p>Hier ein Beispiel: <a href=3D"/pages/viewpage.action?pageId=3D2141717127=
+">ESTA Cloud Pipeline 1.67.0 Release</a>.</p>
+<h3 id=3D"ESTATektonReleasing-Muster">Muster</h3>
+<div class=3D"block-element block-element-customizable skin-bernina =20
+                =20
+     " style=3D"
+        =20
+         " id=3D"Blockelement_2197686402_472991724">
+<div class=3D"block-element-header
+            " style=3D"
+                       =20
+           =20
+                ">
+<h1 style=3D"">ESTA Tekton Version 1.14.0 released</h1><br class=3D"clear" =
+style=3D"clear: both">
+</div>
+<div class=3D"block-element-content" style=3D"
+       =20
+       =20
+       =20
+            ">
+<div>
+<p><br></p>
+<div class=3D"table-wrap">
+<table class=3D"relative-table wrapped confluenceTable" style=3D"width: 963=
+.0px;">
+<colgroup class=3D"">
+<col class=3D"" style=3D"width: 135.0px;">
+<col class=3D"" style=3D"width: 827.0px;">
+</colgroup>
+<tbody class=3D"">
+<tr class=3D"">
+<th style=3D"text-align: left;" class=3D"confluenceTh">Affects:</th>
+<td style=3D"text-align: left;" class=3D"confluenceTd"><p>Users of the ESTA=
+ Tekton CI/CD system</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id=3D"ESTATektonReleasing-Summary">Summary</h1>
+<p>We just released the stable version 1.14.0 of the ESTA Tekton Build Syst=
+em.</p>
+<ul>
+<li><em>This release includes major/breaking changes that affect XXX</em></=
+li>
+<li><em>This is a service release with a number of new features and improve=
+ments which are listed below.</em></li>
+</ul>
+<h1 id=3D"ESTATektonReleasing-Furtherinformation">Further information</h1>
+<p><strong>Major changes</strong></p>
+<ul>
+<li>Controller: change defaultMavenGoals to "clean install"</li>
+</ul>
+<p><strong>Bugfixes</strong></p>
+<ul>
+<li>Pipeline: support nested multi-module Maven builds</li>
+<li>Pipeline: fix caching to make multistage Docker builds work</li>
+<li>Controller: avoid startup errors when bitbucket credentials are empty</=
+li>
+<li>Builder: fix permissions for non-root user (used for specific Maven bui=
+lds)</li>
+</ul>
+<p><strong>Features</strong></p>
+<ul>
+<li>UI: add info link explaining how to create a Bitbucket access tokens</l=
+i>
+</ul>
+<p>See the full Changelog <a href=3D"https://code.sbb.ch/projects/KD_ESTA/r=
+epos/esta-tekton-pipeline-config/browse/CHANGELOG.md" class=3D"external-lin=
+k" rel=3D"nofollow">here</a>.</p>
+<p>All ESTA Tekton instances on the stable release channel will be automati=
+cally updated with this new version.</p>
+</div>
+</div>
+</div>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">Buillder Image Tools Versionen</p><spa=
+n class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-information=
+-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p>Im Changelog oder in den Announcements sollten ebenfalls die Versionen d=
+er Build Tools (z.B. Maven, Chrome Headless, etc.) erw=C3=A4hnt werden, wel=
+che in den Builder Images aktuell verwendet werden.</p>
+</div>
+</div>
+<h2 id=3D"ESTATektonReleasing-Deployment">Deployment</h2>
+<p>Alle Tekton Instanzen werden =C3=BCber das <a href=3D"https://code.sbb.c=
+h/projects/KD_ESTA/repos/esta-apps-argocd/browse" class=3D"external-link" r=
+el=3D"nofollow">ESTA ArgoCD</a> deployed und sind standardm=C3=A4ssig auf a=
+utosync und entweder die stable und die unstable Release Version konfigurie=
+rt.</p>
+<p>Die <code>releaseVersionUnstable</code> Value wird via Staging Pipeline =
+bei einem Release des <a href=3D"https://code.sbb.ch/projects/KD_ESTA/repos=
+/esta-apps-argocd/browse/clusters/aws01t/values/esta-tekton.yaml" class=3D"=
+external-link" rel=3D"nofollow">Config Helm Charts</a> angepasst und somit =
+<strong>automatisch</strong> deployed.</p>
+<p>Die <code>releaseVersion</code> Value wird manuell via Pull Request in d=
+en Values der jeweiligen Cluster angepasst und zeitnah zum Release Announce=
+ment gemerged.</p>
+<p>Es bleibt jedoch einzelnen Abnehmern =C3=BCberlassen, ihre Instanz auf e=
+ine fixen Version zu konfigurieren und sie selbst=C3=A4ndig via Pull-Reques=
+t anzupassen.</p>
+<p><br></p>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<p class=3D"title conf-macro-render">Update Downtime</p><span class=3D"aui-=
+icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></=
+span>
+<div class=3D"confluence-information-macro-body">
+<p>Das Deployment des Tekton Controllers ist auf Recreate eingestellt, da d=
+ie Verwendung eines PVC den redundanten Betrieb von mehreren Pods verhinder=
+t. Bei einem Update ist also mit einer kurzen Downtime von einigen Sekunden=
+ bis wenigen Minuten zu rechnen. In dieser Zeit "verpasst" der Controller W=
+ebhooks von Bitbucket und PipelineRun Status Changes von Kubernetes, was zu=
+ fehlenden Status-Updates, Notifications oder verpassten Builds bei einem G=
+it Push f=C3=BChren kann.</p>
+<p>F=C3=BCr ein Update ist also ein Zeitpunkt zu w=C3=A4hlen, wo potenziell=
+ kein oder wenig Betrieb auf Tekton zu erwarten ist (z.B. Abends oder am fr=
+=C3=BChen Morgen).</p>
+</div>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8559_490738669.1713959733622--

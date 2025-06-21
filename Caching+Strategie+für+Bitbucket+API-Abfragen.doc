@@ -1,0 +1,385 @@
+Date: Wed, 24 Apr 2024 13:54:11 +0200 (CEST)
+Message-ID: <1815004012.8520.1713959651556@confluence-p>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_8519_566220513.1713959651556"
+
+------=_Part_8519_566220513.1713959651556
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Caching Strategie f=C3=BCr Bitbucket API-Abfragen</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Caching Strategie f=C3=BCr Bitbucket API-Abfragen</h1>
+    <div class=3D"Section1">
+        <div class=3D"table-wrap">
+<table class=3D"wrapped confluenceTable">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class=3D"confluenceTh"><p>Fragestellung</p></th>
+<td class=3D"confluenceTd"><p><strong>Wie sollen API-Abfragen auf Bitbucket=
+ (code.sbb.ch) im Controller optimal gecached werden?</strong></p><p>Der ES=
+TA Tekton Controller ben=C3=B6tigt vielf=C3=A4ltige Informationen =C3=BCber=
+ Repositories von Bitbucket, welche =C3=BCber dessen API abgefragt werden. =
+Es werden h=C3=A4ufig dieselben Anfragen gemacht oder mehrere API-Requests =
+hintereinander, um komplexe Informationen, wie z.B. ob ein Repository =C2=
+=ABtekton-enabled=C2=BB ist, zu gewinnen. Die teilweise langen Antwortzeite=
+n von Bitbucket, insbesondere bei kumulierten Abfragen und die potenziell h=
+ohe Last, die der ESTA Tekton Controller auf Bitbucket damit verursacht, le=
+gen ein Caching seitens Controller nahe. Dieses wurde bereits zu Beginn der=
+ Entwicklung sehr rudiment=C3=A4r eingebaut und soll nun verfeinert werden.=
+ Konkret stellt sich die Frage nach den richtigen Werten f=C3=BCr Vorhaltez=
+eit, Gr=C3=B6sse/Limits und Eviction Strategie.</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Rahmenbedingung</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Caching ist bereits vorhanden aber "schlecht" oder "falsch" eingesetzt<=
+/li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Annahmen</p></th>
+<td class=3D"confluenceTd">
+<ul>
+<li>Die Performance des Bitbucket APIs bleibt konstant</li>
+</ul></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Alternativen / Varianten</p></th>
+<td class=3D"confluenceTd"><h2 id=3D"CachingStrategief=C3=BCrBitbucketAPIAb=
+fragen-Variante0(statusquo)">Variante 0 (status quo)</h2><p>Die aktuelle Ca=
+che-Strategie sieht ein statisches Caching mit einer automatisierten Evicti=
+on/Refresh alle 10 Minuten via Scheduler f=C3=BCr alle gecachten Ressourcen=
+.<br>
+ Das Caching von Multi-Resultaten ist nicht korrekt implementiert (Quarkus =
+Cache kann kein Multi).</p>
+<div class=3D"table-wrap">
+<table class=3D"confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Einfach</td>
+<td class=3D"confluenceTd">Nicht sehr effektiv</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Out-of-sync f=C3=BCr max. 10 Minuten</td>
+<td class=3D"confluenceTd">Inkonstante Antwortzeiten</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">Multis (Repo-Listing, Branches) ni=
+cht richtig gecached</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id=3D"CachingStrategief=C3=BCrBitbucketAPIAbfragen-Variante2">Var=
+iante 2</h2><p>Die Caching Lifetime resp. Eviction-Strategie soll f=C3=BCr =
+die einzelnen Ressourcen individuell definiert und implementiert werden. Di=
+e von Bitbucket empfangenen Webhooks sollen als Informationsquelle f=C3=BCr=
+ die Invalidierung und den allf=C3=A4lligen Neuaufbau eines Caches herangez=
+ogen werden. =C3=9Cber die Webhooks wird der Controller proaktiv =C3=BCber =
+=C3=84nderungen an einem bestimmten Repo informiert. So kann z.B. der Cache=
+ f=C3=BCr die Branches oder Tags eines Repos l=C3=A4nger vorgehalten und er=
+st bei einem Update von Bitbucket invalidiert werden. Um das Risiko von ver=
+passten Webhooks zu vermindern, k=C3=B6nnen s=C3=A4mtliche Caches periodisc=
+h (z.B. 1x t=C3=A4glich) invalidiert und neu aufgebaut werden.</p><p>Gleich=
+zeit soll das Caching von Listen (tekton-enabled Repositories, Branches, Ta=
+gs) korrekt mit den Quarkus Caching Mittlen refactored werden.</p>
+<div class=3D"table-wrap">
+<table class=3D"confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">Vorteile</th>
+<th class=3D"confluenceTh">Nachteile</th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Optimierte Vorhaltezeit</td>
+<td class=3D"confluenceTd">M=C3=B6glicher out-of-sync f=C3=BCr eine limitie=
+rte Zeit</td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">Konstant schnelle Antwortzeiten</td>
+<td class=3D"confluenceTd">Komplexere Invalidierungslogik</td>
+</tr>
+<tr>
+<td colspan=3D"1" class=3D"confluenceTd"><br></td>
+<td colspan=3D"1" class=3D"confluenceTd">Quarkus 2.7.x Update notwendig</td=
+>
+</tr>
+</tbody>
+</table>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Entscheidung</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><strong>Variante 2</strong></p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Begr=C3=BCndung</p></th>
+<td class=3D"confluenceTd"><p>Beim Caching besteht eindeutig Handlungs- und=
+ Optimierungsbedarf. Die Verwendung von ESTA Tekton und somit auch die Last=
+ auf das Bitbucket API wird zuk=C3=BCnftig sicher zunehmen, so dass ein&nbs=
+p; optimiertes Caching als sinnvoll und notwendig erachtet wird.</p></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wer</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><a class=3D"confluence-userlink user-mention" data-username=3D"ue64007" =
+href=3D"/display/~ue64007" data-linked-resource-id=3D"327718071" data-linke=
+d-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-base-u=
+rl=3D"https://confluence.sbb.ch">Wallrapp Manuel (IT-PTR-EXT-EXT2 - Extern)=
+</a> <a class=3D"confluence-userlink user-mention" data-username=3D"u233658=
+" href=3D"/display/~u233658" data-linked-resource-id=3D"1607762183" data-li=
+nked-resource-version=3D"2" data-linked-resource-type=3D"userinfo" data-bas=
+e-url=3D"https://confluence.sbb.ch">Br=C3=BCderli Thomas (IT-PTR-CEN2-SL2)<=
+/a>&nbsp;</p>
+</div></td>
+</tr>
+<tr>
+<th class=3D"confluenceTh"><p>Wann</p></th>
+<td class=3D"confluenceTd">
+<div class=3D"content-wrapper">
+<p><time datetime=3D"2022-01-26" class=3D"date-past">26.01.2022</time>&nbsp=
+;</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_8519_566220513.1713959651556--
