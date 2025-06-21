@@ -1,0 +1,33 @@
+Environment Variables
+
+To each pipeline task, the following environment variables are expose
+and can be consumed by the build tools or scripts (starting with version
+0.27.0 of ESTA Tekton).
+
+  Name                                 Description
+  ------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  CI_PLATFORM                          Name of CI/CD Platform (Tekton).
+  CI_KUBERNETES_NAMESPACE              Openshift namespace/project name where the pipeline runs.
+  CI_CONTROLLER_URL                    The URL of the Controller.
+  Commit, Branch and Tag Information   
+  CI                                   Indicating a CI environment.
+  CI_ACTOR                             Email address of the user who started the pipeline.
+  CI_COMMIT_AUTHOR                     The author of the commit in name <email> format.
+  CI_COMMIT_BRANCH                     The commit branch name. Available in branch pipelines, including pipelines, including pipelines for the default branch. Not available in merge request pipelines or tag pipelines.
+  CI_COMMIT_MESSAGE                    The full commit message.
+  CI_COMMIT_SHA                        The commit revision the project is built for.
+  CI_COMMIT_REV_SHORT                  The short git revision.
+  CI_COMMIT_TAG                        The commit tag name. Available only in pipelines for tags.
+  CI_COMMIT_TIMESTAMP                  The timestamp of the commit.
+  Bitbucket/Repo Information           
+  CI_REPOSITORY_NAME                   Bitbucket/Git repository name.
+  CI_REPOSITORY_SLUG                   Bitbucket/Git repository slug/key.
+  CI_REPOSITORY_OWNER                  The Bitbucket project key.
+  CI_REPOSITORY_URL                    The HTTP(S) address of the repository.
+  CI_GIT_URL                           The Git/Checkout URL to the repository.
+  Pipeline Information                 
+  CI_PIPELINE_ID                       Tekton Pipeline Run name.
+  CI_PIPELINE_URL                      The URL for the pipeline details.
+  CI_PIPELINE_CREATED_AT               The UTC datetime when the pipeline was created.
+  CI_PIPELINE_CONFIG_NAME              The name of the matching pipeline config in estaTektonPipeline.json.
+  CI_PIPELINE_TRIGGER                  Tekton Pipeline triggerType("GITEVENT", "USER" or "CRON").

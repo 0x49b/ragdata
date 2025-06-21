@@ -1,0 +1,72 @@
+Calling the Tekton API from your application
+
+The controller of the ESTA Tekton build system provides a RESTful API
+which is documented with OpenAPI/Swagger. The URL to the controller is a
+bit hidden but follows this schema:
+
+https://esta-tekton-controller-<tekon-namespace>.sbb-cloud.net/
+
+The API requires authentication with OAuth2 JWT tokens issued by
+Microsoft Azure AD. Here's the process for an application
+(machine-2-machine) to successfully authenticate to the controller API:
+
+[]
+
+Prerequsites
+
+1.  Register an Azure AD client and obtain client credentials (ID and
+    secret) for the client credential flow.
+
+2.  Store the credentials to an OpenShift secret which is accessible for
+    the application which performs the API calls.
+
+3.  Add the client ID to the app registration config for your Tekton
+    instance (ask the ESTA team to do this for your managed Tekton
+    instance)
+
+Example shell script
+
+# (1) Obtain an access token
+
+export AUTH_TOKEN=$(curl -s --fail -X POST ${TOKEN_ENDPOINT} \
+
+-H 'Content-Type: application/x-www-form-urlencoded' \
+
+-d grant_type=client_credentials \
+
+-d client_id=${CLIENT_ID} \
+
+-d client_secret=${CLIENT_SECRET} \
+
+-d scope=${TEKTON_CLIENT_ID}/.default \
+
+| grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+# (2) Perform an API request to the Tekton controller
+
+curl ${TEKTON_CONTROLLER_URL}/api/bitbucket/projects/*/repos \
+
+-H "Authorization: Bearer $AUTH_TOKEN" \
+
+-H "Accept: application/json"
+
+The script expects the following env variables:
+
+-   TOKEN_ENDPOINT: URL to the Microsoft Login service (usually
+    https://login.microsoftonline.com/2cda5d11-f0ac-46b3-967d-af1b2e1bd01a/oauth2/v2.0/token)
+
+-   CLIENT_ID: UUID of your Azure AD client
+
+-   CLIENT_SECRET: Secret key of the client credentials
+
+-   TEKTON_CLIENT_ID: The Azure AD UUID of your Tekton instance (ask the
+    ESTA team to get it for you)
+
+-   TEKTON_CONTROLLER_URL: The URL to the ESTA Tekton controller (see
+    first paragraph)
+
+The scope to be requested for this token is
+"<tekton-client-id>/.default".
+
+The API documentation can be found when opening the controller URL in
+the browser and navigate to "Swagger UI".

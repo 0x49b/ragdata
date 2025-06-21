@@ -1,0 +1,36 @@
+Support Howto's
+
+Delete an Esta-Tekton Namespace
+
+1.  Usually we get a ticket to delete the namespace
+
+2.  Remove the xyz-namespace.yaml from esta-app-argocd repo, create a PR
+    and merge it
+
+3.  Afterwards you can create a new ticket on clew.sbb.ch for the CON
+    Team to delete the namespace on the cluster
+
+4.  Delete the Cache Bucket with the same name as the productive
+    namespace name on AWS S3
+
+5.  Delete the Tekton-Results Schema:
+
+    1.  Connect with following details to Postgres with your postgres
+        client (in our case Intellij)
+
+    2.  User: esta_tekton_creator
+
+    3.  URL:
+        jdbc:postgresql://esta-tekton-prod.czdfgxj0x1zx.eu-central-1.rds.amazonaws.com:5432/postgres
+
+    4.  PW: you'll find the password for the esta_tekton_creator in the
+        ESTA Keepass File
+
+    5.  Execute following script while the schema-name and user name is
+        the same as the namespace installation.
+
+    6.  DROP SCHEMA <schema-name> CASCADE;
+
+    7.  REVOKE CONNECT ON DATABASE esta_tekton FROM <schema-name>;
+
+    8.  DROP ROLE <user-name>;

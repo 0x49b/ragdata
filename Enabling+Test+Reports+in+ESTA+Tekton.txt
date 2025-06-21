@@ -1,0 +1,258 @@
+Enabling Test Reports in ESTA Tekton
+
+The pre-defined build pipelines in ESTA Tekton (since 0.20.0) now have
+support to generate browseable reports for test execution during builds.
+This however, needs to be enabled per repository and depending on the
+project type and setup also require some additional settings in the
+project's test-runner configuration.
+
+Enable testreport in estaTektonPipeline.json
+
+The build pipeline block provides an additional set of properties:
+
+Pipeline config with testreports
+
+"pipelines": [
+
+{
+
+...
+
+"build": {
+
+"testreport": {
+
+"enabled": true,
+
+"artifactoryRepository": "esta-test.generic",
+
+"resultsDir": "allure-report",
+
+"reportQualifiers": ["${BRANCH_LABEL}"],
+
+"previousQualifiers": ["${BRANCH_LABEL}", "master"]
+
+}
+
+}
+
+}
+
+...
+
+]
+
+In this example, test report creation is explicitly enabled with the
+"enabled": true flag. Reports are uploaded to a repository in
+Artifactory named "esta-test.generic".
+
+The reports are generated from JUnit/Surefire XML files created during
+the test run in the pipeline's build step with the help of the Allure
+Framework by Qameta. Use the "resultsDir" property to define where the
+XML files with test summaries are located after the build.
+
+Trend and history with qualifiers
+
+Test reports are stored under a unique file name and linked in the
+pipeline details of the Tekton Control panel. With the list of
+"reportQualifiers" you can specify aliases for the generated report
+files. Use them to create static links to project reports like "latest"
+or "release". When adding a list of "previousQualifiers", previously
+generated reports are considered to build a trend and history timeline
+in each new report. The list of aliases is searched until an existing
+report was found.
+
+With the above example, reports are also stored under the label of the
+current branch with a fallback to use the last report labelled as
+"master". On the first build of a branch, the last report from master is
+used to visualize the difference. All further builds of the same branch
+will compare to the previous reports of the particular branch showing
+improvement or regression.
+
+Artifactory repository for your reports
+
+The generated test reports are saved to a Artifactory repository of type
+generic. By default a shared repository is used with a limited retention
+time configured. We therefore recommend to use your own repository and
+specify its name with the "artifactoryRepository" property.
+
+1.  Order a new repository (type Generic) via the CLEW SSP
+
+2.  Request to allow content browsing on this repository
+
+3.  Grant write access to the repository to the Artifactory user
+    configured in ESTA Tekton
+
+Configure test reports in Maven projects
+
+For most Maven-based projects, no specific configuration needs to be
+added except enabling the testreport feature in estaTektonPipeline.json.
+Just make sure the maven-surefire-plugin is included in your pom.xml:
+
+pom.xml
+
+<plugin>
+
+<groupId>org.apache.maven.plugins</groupId>
+
+<artifactId>maven-surefire-plugin</artifactId>
+
+<version>${maven-surefire-plugin.version}</version>
+
+</plugin>
+
+The default value for the "resultsDir" property is set
+to target/surefire-reports which is the default location for surefire
+reports.
+
+Configure test reports in NPM/Angular projects
+
+For JavaScript/NPM projects, an according reporter need to be configured
+for the test runner used in the project. There are report generators
+available for Karma, Jasmine, Mocha and CucumberJS. See the Karma
+documentation for details.
+
+This example shows the changes required for Angular projects using
+Karma:
+
+enable-allure-report.diff
+
+--- a/.gitignore
+
++++ b/.gitignore
+
+@@ -41,6 +41,7 @@
+
+yarn-error.log
+
+testem.log
+
+/typings
+
++/allure-report
+
+# System Files
+
+.DS_Store
+
+--- a/angular.json
+
++++ b/angular.json
+
+@@ -123,7 +123,8 @@
+
+"watch": false,
+
+"reporters": [
+
+"dots",
+
+- "sonarqube"
+
++ "sonarqube",
+
++ "allure"
+
+]
+
+}
+
+}
+
+--- a/estaTektonPipeline.json
+
++++ b/estaTektonPipeline.json
+
+@@ -20,6 +20,11 @@
+
+"build": {
+
+"sonarScan": {
+
+"enabled": true
+
++ },
+
++ "testreport": {
+
++ "enabled": true,
+
++ "artifactoryRepository": "esta.generic",
+
++ "resultsDir": "allure-report"
+
+}
+
+}
+
+},
+
+--- a/karma.conf.js
+
++++ b/karma.conf.js
+
+@@ -14,6 +14,7 @@ module.exports = function (config) {
+
+require('karma-jasmine-html-reporter'),
+
+require('karma-sonarqube-reporter'),
+
+require('karma-coverage'),
+
++ require('karma-allure-reporter'),
+
+require('@angular-devkit/build-angular/plugins/karma'),
+
+],
+
+client: {
+
+@@ -45,7 +46,11 @@ module.exports = function (config) {
+
+{ type: 'cobertura' },
+
+],
+
+},
+
+- reporters: ['progress', 'kjhtml', 'sonarqube'],
+
++ allureReport: {
+
++ reportDir: 'allure-report',
+
++ useBrowserName: false,
+
++ },
+
++ reporters: ['progress', 'kjhtml', 'sonarqube', 'allure'],
+
+port: 9876,
+
+colors: true,
+
+logLevel: config.LOG_INFO,
+
+--- a/package.json
+
++++ b/package.json
+
+@@ -86,6 +86,7 @@
+
+"husky": "8.0.3",
+
+"jasmine-core": "5.0.1",
+
+"karma": "6.4.2",
+
++ "karma-allure-reporter": "^1.4.6",
+
+"karma-browserstack-launcher": "1.6.0",
+
+"karma-chrome-launcher": "3.2.0",
+
+"karma-coverage": "2.2.1",
+
+Configure test reports in Python/Poetry projects
+
+Coming Soon.

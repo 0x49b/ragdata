@@ -1,0 +1,12 @@
+ESTA Tekton Architekturentscheidungen
+
+Anforderungen und Entscheidungen bezüglich der Architektur von ESTA
+Tekton:
+
+-   Tagging Pipelines via estaTektonPipeline.json konfigurierbar
+
+-   Caching Strategie für Bitbucket API-Abfragen
+
+-   Performanceoptimierung PipelineRuns Listing
+
+-   Shared Caches für Tekton Pipelines

@@ -1,0 +1,2156 @@
+ESTA Tekton Parameters - estaTektonPipeline.json
+
+-   Pipelines
+
+    -   Trigger criteria
+
+    -   Build parameters
+
+-   Stages
+
+-   Helm Charts
+
+-   Sonar Analysis
+
+-   OWASP Dependency Check
+
+-   Docker Settings
+
+-   Examples
+
+    -   Java (Maven)
+
+    -   Node.js / NPM
+
+    -   Golang
+
+    -   Docker
+
+    -   Parametrized Builds
+
+    -   Custom Pipelines
+
+-   Parameter Documentation
+
+    -   Global Properties
+
+    -   Docker configuration structure
+
+    -   Helm configuration structure
+
+    -   Builder configuration structure
+
+    -   Maven configuration structure
+
+    -   NPM configuration structure
+
+    -   Flutter configuration structure
+
+    -   Go configuration structure
+
+    -   Python configuration structure
+
+    -   Parameters configuration structure
+
+    -   Buildpack configuration structure
+
+    -   Pipeline configuration structure
+
+    -   Build pipeline configuration structure
+
+    -   Tagging pipeline configuration structure
+
+    -   Custom pipeline configuration structure
+
+    -   Sonar configuration structure
+
+    -   GitGuardian secrets scan configuration structure
+
+    -   OWASP dependency check configuration structure
+
+    -   Testcontainers configuration structure
+
+    -   Testreport configuration structure
+
+    -   Custom task configuration structure
+
+    -   Stage configuration structure
+
+    -   ArgoCD configuration structure
+
+    -   Notification configuration structure
+
+    -   Advanced Build Settings configuration structure
+
+-   Pre-defined Pipeline Parameters
+
+The estaTektonPipeline.json is the single file used to configure the
+build, release and deployment cycles of a software project. It's
+interpreted by the ESTA Tekton Controller and translated into concrete
+actions and Tekton pipeline Parameters to start the Tekton Pipelines.
+
+A minimal example is shown in the Getting Started guide and the schema
+of this file shall be explained in detail here.
+
+The JSON schema for this file is published at
+https://clew-resources.sbb-cloud.net/tekton-schema.json. 
+
+The most stable way in Intellij Idea to support context sensitive
+completion for YAML and JSON files we suggest to configure the schema
+globally. Only then it also worked seamlessly for YAML files. As showed
+in the screenshot. Other IDE's like MS Visual Studio Code support the
+same feature. You will find setup guide here
+https://medium.com/@alexmolev/boost-your-yaml-with-autocompletion-and-validation-b74735268ad7. 
+
+[]
+
+Pipelines
+
+With the "pipelines" config blocks you can define individual "pipeline
+profiles" for different cases. Different than the "steps" in
+estaCloudPipeline.json, pipelines have no fixed type that implies a
+certain build workflow. The ESTA Tekton pipelines can be configured
+freely with individual names and settings.
+
+A pipeline block has certain properties to define the trigger criteria
+and additional properties define the type of the pipeline and it desired
+output:
+
+Build pipeline config block Quelle erweitern
+
+{
+
+"name": "continuous-integration",
+
+"enabled": true,
+
+"triggerType": [
+
+"USER",
+
+"GITEVENT"
+
+],
+
+"branchNamePrefixes": [
+
+"deploy"
+
+],
+
+"versionTagEventPatterns": [
+
+"^(\\d+\\.)(\\d+\\.)(\\*|\\d+)-SNAPSHOT$"
+
+],
+
+"build": {
+
+"buildDockerImage": true,
+
+"packageAndDeployHelmChart": false,
+
+"additionalBuildParams": "-DskipITs",
+
+   "additionalDeployParams": "-DskipITs",   }
+
+}
+
+Trigger criteria
+
+-   triggerType: defines which events trigger this build step:
+
+    -   USER: Control panel action
+
+    -   GITEVENT: Bitbucket webhook
+
+    -   PIPELINE: Git commit triggered by a Tekton pipeline
+
+-   branchNamePrefixes: filter events on Git branches starting with one
+    of the given values
+
+-   versionTagEventPatterns: for Git tag events, the tag name needs to
+    match one of the given regex patterns
+
+Build parameters
+
+The property "build" indicates a build pipeline to run with the
+following settings:
+
+-   buildDockerImage: build a Docker image and push it to Artifactory
+    (unless disabled by deployDockerImage:false)
+
+-   packageAndDeployHelmChart: create a Helm chart and push it to the
+    Helm repository in Artifactory
+
+-   deployArtifacts: deploy Maven or NPM artifacts to Artifactory
+
+Please note that for each event (Bitbucket webhook, Control panel action
+or API call) all matching pipeline profiles will start an according
+pipeline.
+
+Stages
+
+The stages configuration represent deployment targets for your
+applications. The task of actually rolling out a deployment is not part
+of the ESTA Tekton pipeline but uses ArgoCD and Helm Charts as the only
+option right now. You can still configure certain aspects of the
+deployment process in estaTektonPipeline.json which are executed after a
+successful build.
+
+The "stages" config blocks each describe a deployment target. Besides a
+unique "stageName", a stage config can contain an "argoCD" and a "helm"
+block. Here's an example:
+
+Stage config block Quelle erweitern
+
+{
+
+"stageName": "dev",
+
+"argoCD": {
+
+"argoCdAppName": "springboot-tekton-dev",
+
+   "autoSync": true
+
+},
+
+"helm": {
+
+"sourceRepository":
+"https://code.sbb.ch/scm/kd_example/argocd-apps-helm.git",
+
+"chartFilePath": "clusters/aws01t/values/springboot-tekton.yaml",
+
+"versionProperties": [
+
+".deploymentVersion"
+
+]
+
+}
+
+The "helm" block is merged with the top-level "helm" block described
+below. If present in a staging block, the staging pipeline will update
+the release version from the triggering build in the Helm chart
+(repositoy, chart file) referenced by this config. By default the Helm
+chart is searched in the project repository unless explicitly specified
+by the "sourceRepsitory" property. 
+
+With the "argoCD" block the staging pipeline is advised to trigger a
+sync in ArgoCD on the application with the specified name. The hostname
+of the ArgoCD instance and the access token used for the connection are
+taken from a Secret stored in the Tekton build namespace.
+
+See the JSON schema or Parameter Documentation for detailed description
+of these properties.
+
+In order to trigger the deployment (staging) after a successful build,
+define a list of stage names in the pipeline config block using the
+"stages" property.
+
+Helm Charts
+
+Tekton build pipelines can also package and deploy Helm charts. The
+"helm" block holds the configuration for this:
+
+Helm config block Quelle erweitern
+
+{
+
+"chartFilePath": "./charts/springboot-tekton-app/Chart.yaml",
+
+"chartRepository": "esta.helm.local"
+
+}
+
+See the JSON schema or Parameter Documentation for detailed description
+of these properties.
+
+Sonar Analysis
+
+Tekton can also be used to perform sonar analyses. The "sonarScan" holds
+the configuration for this. The sonarScan block can be configured for
+each build profile separately.
+
+SonarScan config block Quelle erweitern
+
+{
+
+"enabled": true,
+
+"projectKey": "springboot-tekton-app"
+
+}
+
+For Maven, NPM Go or Docker projects you can create a
+sonar-project.properties file to set additional sonar scan analysis
+parameters according to the official documentation:
+https://docs.sonarqube.org/latest/analysis/analysis-parameters/
+
+This also works for Maven, since we patch the maven configuration
+according to the sonar-project.properties. Even if you have a
+sonar-project.properties file, values like sonar.login, sonar.host.url,
+sonar.organization and so on will be automatically set through the
+esta-tekton build pipeline.
+
+For Dockerfile analysis, make sure your Dockerfiles are named
+Dockerfile, Dockerfile.* or *.dockerfile to get detected and processed
+by Sonarqube.
+
+See the JSON schema or Parameter Documentation for detailed description
+of these properties.
+
+OWASP Dependency Check
+
+You can also perform the OWASP Dependency Check to find vulnerabilities
+in your software. It is configured in the "owaspDependencyCheck" block.
+You can configure it for Javascript and Java projects.
+
+The check is documented here:
+https://jeremylong.github.io/DependencyCheck/index.html
+
+OWASP Dependency Check config block Quelle erweitern
+
+{
+
+"enabled": true
+
+"additionalParams": "--failOnCVSS 5"
+
+}
+
+Docker Settings
+
+Building and publishing Docker images as artifacts of the build process
+requires some configuration defined in the "docker" block. We support
+one single Docker build blocks but also multiple blocks which are
+defined as an array. Following some examples:
+
+Docker config block Quelle erweitern
+
+{
+
+"artifactoryDockerRepo": "esta.docker",
+
+"imageName": "springboot-tekton-app",
+
+"dockerFile": "docker/Dockerfile"
+
+}
+
+Alternatively you can also use multiple Docker Build Blocks.
+
+Docker config block Quelle erweitern
+
+[
+
+{
+
+"artifactoryDockerRepo": "esta.docker",
+
+"imageName": "springboot-tekton-app",
+
+"dockerFile": "docker/Dockerfile.spring"
+
+},
+
+{
+
+"artifactoryDockerRepo": "esta.docker",
+
+"imageName": "another-springboot-tekton-app",
+
+"dockerFile": "docker/Dockerfile.other"
+
+}
+
+]
+
+These docker builds run in parralel. If one docker image builds on top
+of another, specify that dependency with the runAfterImageName property
+referencing a imageName value.
+
+See the JSON schema or Parameter Documentation for detailed description
+of these properties.
+
+Examples
+
+A collection of example estaTektonPipeline.json files is maintained in
+this repository.
+
+Java (Maven)
+
+For Java projects the ESTA Tekton system currently only supports Maven.
+In JSON add a "mvn" block to define a Maven build.
+A project can either be configured to push a Docker image and/or a JAR
+file to Artifactory as build artifacts.
+
+-   SpringBoot application with Dockerfile and SonarScan
+
+-   Library/JAR project
+
+-   Nightly builds with Continuous Delivery
+
+Note the difference!
+
+When using a custom Dockerfile you may need to replace certain commands
+to work with Tekton. Read more about Dockerfile Migration.
+
+Node.js / NPM
+
+Node.js projects can be built with npm commands. To indicate an NPM
+project, add a "npm" block in JSON.
+The typical use case is for Angular applications which are compiled to
+static files and packed into an ngnix Docker image for serving.
+
+-   Angular application (Nginx Docker image)
+
+-   Angular application published on S3
+
+-   Node.js module
+
+Golang
+
+-   Go application
+
+Docker
+
+Pure Docker image builds can be done with Tekton, too. All it needs is a
+"docker" block in JSON pointing to the Dockerfile(s) to use and to which
+Artifactory docker repository the images shall be pushed.
+
+-   Simple Docker image build
+
+-   Multiple Docker images
+
+Parametrized Builds
+
+Since version 0.27.x you can start builds with parameters. In the UI
+there will be just a text field, which shows the parameters as a JSON
+value prefilled. In future versions you will have better UI support for
+this feature. The JSON will be not validated against the parameter
+definition.
+
+You find an example here. Also how you can iterate over the variables.
+
+https://code.sbb.ch/projects/KD_ESTA_TEST/repos/esta-tekton-helm-sample/browse/estaTektonPipeline.yaml#41
+
+Or this is how you define the parameters globally in your
+estaTektonPipeline.json.
+
+"parameters": [
+
+{
+
+"name": "env",
+
+"type": "Choice",
+
+"values": ["dev"],
+
+"label": "Environment",
+
+"description": "Target environment",
+
+"options": ["dev", "test", "prod"]
+
+},
+
+{
+
+"name": "notificationEmails",
+
+"type": "Multichoice",
+
+"values": ["john.doe@sbb.ch", "jane.doe@sbb.ch"],
+
+"options": ["john.doe@sbb.ch", "jane.doe@sbb.ch",
+"some-one.else@sbb.ch"]
+
+"description": "The email addresses which the notifications are sent to"
+
+},
+
+  {
+
+"name": "notificationSubject",
+
+"type": "String",
+
+"values": ["New release deployed"],
+
+"description": "Subject of the notification email"
+
+}
+
+],
+
+Details about the configuration you can find in the parameter
+documentation.
+
+Upon pipeline execution, the parameter values will be exposed to each
+pipeline task as JSON formatted string via the environment variable
+USER_PIPELINE_PARAMETERS_JSON.
+
+Also each parameter value get's exposed as a environment variable in the
+pod by it's name:
+
+The parameter name "env" get's exposed as environment variable UP_ENV.
+With UP_ENV_SIZE you get the size of the array values. With UP_ENV_0,
+UP_ENV_1 you access it's values.
+"notificationEmails" will be written in the environment variable
+UP_NOTIFICATIONEMAILS.
+
+You find an example here. Also how you can iterate over the variables.
+
+https://code.sbb.ch/projects/KD_ESTA_TEST/repos/esta-tekton-helm-sample/browse/estaTektonPipeline.yaml#41
+
+Custom Pipelines
+
+This is an experimental feature of ESTA Tekton. Read more in the
+Advanced Topics.
+
+-   Build multiple docker images
+
+Parameter Documentation
+
+This is the complete list of JSON properties supported by the
+estaTektonPipeline.json schema in the latest stable version.
+
+Global Properties
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| productName | Name of the | no       | Git         |             |
+|             | product/a   |          | repository  |             |
+|             | pplication. |          | name        |             |
+|             | Defaults to |          |             |             |
+|             | the git     |          |             |             |
+|             | repository  |          |             |             |
+|             | name if not |          |             |             |
+|             | set.        |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| docker      | Defines the | no       |             |             |
+|             | output of   |          |             |             |
+|             | the Docker  |          |             |             |
+|             | images.     |          |             |             |
+|             | See Docker  |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| helm        | Configures  | no       |             |             |
+|             | the         |          |             |             |
+|             | creation    |          |             |             |
+|             | and         |          |             |             |
+|             | deployment  |          |             |             |
+|             | of Helm     |          |             |             |
+|             | charts.     |          |             |             |
+|             | See Helm    |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| builder     | Configures  | no       |             |             |
+|             | the         |          |             |             |
+|             | builders    |          |             |             |
+|             | like java,  |          |             |             |
+|             | kotlin,     |          |             |             |
+|             | python,     |          |             |             |
+|             | node, go    |          |             |             |
+|             |             |          |             |             |
+|             | See Builder |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| mvn         | Settings    | no       |             |             |
+|             | for Java    |          |             |             |
+|             | builds      |          |             |             |
+|             | using       |          |             |             |
+|             | Maven.      |          |             |             |
+|             | See Maven   |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| npm         | Settings    | no       |             |             |
+|             | for Node.js |          |             |             |
+|             | NPM builds. |          |             |             |
+|             | See NPM     |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| flutter     | Settings    | no       |             |             |
+|             | for Flutter |          |             |             |
+|             | builds.     |          |             |             |
+|             | See Flutter |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| go          | Settings    | no       |             |             |
+|             | for Golang  |          |             |             |
+|             | builds.     |          |             |             |
+|             | See Go      |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| buildpack   | Settings    | no       |             |             |
+|             | for         |          |             |             |
+|             | container   |          |             |             |
+|             | image       |          |             |             |
+|             | builds with |          |             |             |
+|             | Buildpacks. |          |             |             |
+|             | See         |          |             |             |
+|             | Buildpack   |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| pipelines   | Defines a   | no       | []          |             |
+|             | list of     |          |             |             |
+|             | pipeline    |          |             |             |
+|             | conf        |          |             |             |
+|             | igurations. |          |             |             |
+|             | See         |          |             |             |
+|             | Pipeline    |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| stages      | Defines a   | no       | []          |             |
+|             | list of     |          |             |             |
+|             | staging     |          |             |             |
+|             | /deployment |          |             |             |
+|             | conf        |          |             |             |
+|             | igurations. |          |             |             |
+|             | See Stage   |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| no          | Defines a   | no       | []          |             |
+| tifications | list of     |          |             |             |
+|             | n           |          |             |             |
+|             | otification |          |             |             |
+|             | settings.   |          |             |             |
+|             | See         |          |             |             |
+|             | N           |          |             |             |
+|             | otification |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| advancedBu  | Defines the | no       | []          |             |
+| ildSettings | advanced    |          |             |             |
+|             | build       |          |             |             |
+|             | settings.   |          |             |             |
+|             | See         |          |             |             |
+|             | Advanced    |          |             |             |
+|             | Build       |          |             |             |
+|             | Settings    |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Docker configuration structure
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name           Description                                                                                                                                  Required   Default value                                       Since version
+  ----------------------- -------------------------------------------------------------------------------------------------------------------------------------------- ---------- --------------------------------------------------- ---------------
+  artifactoryDockerRepo   Repository where the Docker image should be pushed to                                                                                        yes                                                            
+                          Must include the suffix ".docker"                                                                                                                                                                           
+
+  dockerFile              The path to the Dockerfile e.g. ./Dockerfile or docker/Dockerfile                                                                            no         "./Dockerfile"                                      
+                          If the given Dockerfile is not found for Maven projects, a Selfrunning Jar build is started where a Dockerfile is automatically generated.                                                                  
+
+  imageName               Name of the docker image to create.                                                                                                          no         .productName                                        
+                          If omitted, the productName property will be used.                                                                                                                                                          
+
+  baseImageFrom           The base docker image used in the Selfrunning Jar build case                                                                                 no         "esta.docker.bin.sbb.ch/esta/ubi9/java-17:latest"   
+
+  contextDir              Directory for the Docker build to be executed from.                                                                                          no         "."                                                 
+                          The path to the Dockerfile as well as all files referenced from within the Dockerfile are resolved from this directory.                                                                                     
+
+  ocBuildVars             List of own image build arguments in the KEY=value format.                                                                                   no         []                                                  
+                          Extra values passed as build args to the build command. Use them with ARG KEY inside the Dockerfile.                                                                                                        
+
+  pomArtifactId           In case of a Maven multi-module project, you can choose the artifactId which is used to build the image.                                     no                                                             
+                          The property has no effect in case of a Selfrunning Jar build (see dockerFile property).                                                                                                                    
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+If your Dockerfile is not on the root folder and you're using copy steps
+in it, contextDir must be set and define the directory on which the
+Dockerfile is located! Otherwise the build will fail as it can't find
+the content to copy into the image during the build.
+
+Helm configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| ch          | This is the | no       |             |             |
+| artFilePath | path from   |          |             |             |
+|             | your root   |          |             |             |
+|             | folder to   |          |             |             |
+|             | your Chart  |          |             |             |
+|             | file. For   |          |             |             |
+|             | example:    |          |             |             |
+|             | ./chart     |          |             |             |
+|             | s/your-repo |          |             |             |
+|             | /Chart.yaml |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| char        | The name of | no       |             |             |
+| tRepository | the Helm    |          |             |             |
+|             | repository  |          |             |             |
+|             | in          |          |             |             |
+|             | A           |          |             |             |
+|             | rtifactory. |          |             |             |
+|             | If          |          |             |             |
+|             | specified   |          |             |             |
+|             | the chart   |          |             |             |
+|             | is packaged |          |             |             |
+|             | and         |          |             |             |
+|             | uploaded to |          |             |             |
+|             | this        |          |             |             |
+|             | repository  |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| versio      | List of     | no       | ".version"  |             |
+| nProperties | properties  |          |             |             |
+|             | of the Helm |          |             |             |
+|             | chart file  |          |             |             |
+|             | to set the  |          |             |             |
+|             | release     |          |             |             |
+|             | version to. |          |             |             |
+|             | Each        |          |             |             |
+|             | property is |          |             |             |
+|             | defined as  |          |             |             |
+|             | a yq        |          |             |             |
+|             | expression  |          |             |             |
+|             | (see        |          |             |             |
+|             | doc         |          |             |             |
+|             | umentation) |          |             |             |
+|             | which is    |          |             |             |
+|             | similar to  |          |             |             |
+|             | jq syntax.  |          |             |             |
+|             |             |          |             |             |
+|             | When used   |          |             |             |
+|             | in          |          |             |             |
+|             | .sta        |          |             |             |
+|             | ges[*].helm |          |             |             |
+|             | config      |          |             |             |
+|             | block you   |          |             |             |
+|             | can use the |          |             |             |
+|             | following   |          |             |             |
+|             | code        |          |             |             |
+|             | segment to  |          |             |             |
+|             | update the  |          |             |             |
+|             | dependecies |          |             |             |
+|             | in an       |          |             |             |
+|             | Umbr        |          |             |             |
+|             | ella-Chart: |          |             |             |
+|             |             |          |             |             |
+|             | "versionP   |          |             |             |
+|             | roperties": |          |             |             |
+|             | [           |          |             |             |
+|             |             |          |             |             |
+|             | ".dep       |          |             |             |
+|             | endencies[] |          |             |             |
+|             | |           |          |             |             |
+|             | sele        |          |             |             |
+|             | ct(.name==\ |          |             |             |
+|             | "name-of-yo |          |             |             |
+|             | ur-project\ |          |             |             |
+|             | ").version" |          |             |             |
+|             |             |          |             |             |
+|             | ]           |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| sourc       | The Git     | no       |             |             |
+| eRepository | repository  |          |             |             |
+|             | where Helm  |          |             |             |
+|             | charts for  |          |             |             |
+|             | staging     |          |             |             |
+|             | /deployment |          |             |             |
+|             | are         |          |             |             |
+|             | maintained. |          |             |             |
+|             | Only        |          |             |             |
+|             | allowed in  |          |             |             |
+|             | .sta        |          |             |             |
+|             | ges[*].helm |          |             |             |
+|             | config      |          |             |             |
+|             | block.      |          |             |             |
+|             | Default is  |          |             |             |
+|             | the current |          |             |             |
+|             | Git         |          |             |             |
+|             | repository. |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| source      | Git branch  | no       | "master"    |             |
+| BranchOrTag | where the   |          |             |             |
+|             | Helm charts |          |             |             |
+|             | should be   |          |             |             |
+|             | updated.    |          |             |             |
+|             | Only        |          |             |             |
+|             | allowed in  |          |             |             |
+|             | .sta        |          |             |             |
+|             | ges[*].helm |          |             |             |
+|             | config      |          |             |             |
+|             | block.      |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| lintArgs    | Additional  | no       |             |             |
+|             | arguments   |          |             |             |
+|             | for the     |          |             |             |
+|             | helm lint   |          |             |             |
+|             | command     |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Builder configuration structure
+
+  Property name        Description                                                                                                                                             Required   Default value   Since version
+  -------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  java                 Java major version you want to use to build: 11, 17, 21, 17-Graal, 21-Graal                                                                             no         "17"            
+  maven                Maven minor version you want to use to build: 3.8, 3.9                                                                                                  no         "3.8"           
+  kotlin               Kotlin minor version you want to use to build: 1.7                                                                                                      no         "1.7"           
+  node                 Node major version you want to use to build: 14, 16, 18, 20                                                                                             no         "18"            
+  python               Python minor version you want to use to build: 3.7, 3.8, 3.9, 3.10, 3.11, 3.12                                                                          no         "3.10"          
+  go                   Go minor version you want to use to build: 1.16, 1.18, 1.19, 1.20, 1.21, 1.22                                                                           no         "1.18"          
+  customBuilderImage   You can define your own custom builder image which behaves the same as the esta-builder-image but has for example different sdk versions preinstalled   no                         
+
+Maven configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| parentPom   | Path to the | no       | "pom.xml"   |             |
+|             | parent pom  |          |             |             |
+|             | file. In    |          |             |             |
+|             | most cases  |          |             |             |
+|             | you don't   |          |             |             |
+|             | need to set |          |             |             |
+|             | this. By    |          |             |             |
+|             | default the |          |             |             |
+|             | pom.xml is  |          |             |             |
+|             | taken. But  |          |             |             |
+|             | if you have |          |             |             |
+|             | a parent    |          |             |             |
+|             | pom.xml in  |          |             |             |
+|             | another     |          |             |             |
+|             | subfolder,  |          |             |             |
+|             | you can     |          |             |             |
+|             | configure   |          |             |             |
+|             | it here.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| deployableA | Path to pom | no       | "pom.xml"   |             |
+| rtifactsPom | file which  |          |             |             |
+|             | specifies   |          |             |             |
+|             | the         |          |             |             |
+|             | deployable  |          |             |             |
+|             | jar         |          |             |             |
+|             | artifacts   |          |             |             |
+|             | for         |          |             |             |
+|             | A           |          |             |             |
+|             | rtifactory. |          |             |             |
+|             | This has no |          |             |             |
+|             | direct      |          |             |             |
+|             | influence   |          |             |             |
+|             | on the      |          |             |             |
+|             | Docker      |          |             |             |
+|             | build.      |          |             |             |
+|             |             |          |             |             |
+|             | This        |          |             |             |
+|             | property is |          |             |             |
+|             | not meant   |          |             |             |
+|             | to          |          |             |             |
+|             | determine   |          |             |             |
+|             | the         |          |             |             |
+|             | artifact    |          |             |             |
+|             | which get's |          |             |             |
+|             | packed into |          |             |             |
+|             | the Docker  |          |             |             |
+|             | image.      |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| artifacto   | The Maven   | no       |             |             |
+| ryMavenRepo | repository  |          |             |             |
+|             | in          |          |             |             |
+|             | Artifactory |          |             |             |
+|             | where the   |          |             |             |
+|             | Maven       |          |             |             |
+|             | artifacts   |          |             |             |
+|             | will be     |          |             |             |
+|             | published   |          |             |             |
+|             | to.         |          |             |             |
+|             | Required    |          |             |             |
+|             | when        |          |             |             |
+|             | depl        |          |             |             |
+|             | oyArtifacts |          |             |             |
+|             | in step     |          |             |             |
+|             | config is   |          |             |             |
+|             | enabled.    |          |             |             |
+|             | Must end    |          |             |             |
+|             | with the    |          |             |             |
+|             | suffix      |          |             |             |
+|             | ".mvn"      |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| i           | Check if    | no       | false       |             |
+| sTychoBuild | Repository  |          |             |             |
+|             | use Tycho   |          |             |             |
+|             | Build       |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| forceUn     | Let builds  | no       | false       |             |
+| stableBuild | succeed     |          |             |             |
+|             | even if     |          |             |             |
+|             | tests fail  |          |             |             |
+|             | but report  |          |             |             |
+|             | pipeline    |          |             |             |
+|             | status as   |          |             |             |
+|             | UNSTABLE    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| bu          | N           | no       | "esta-m     | 0.24.0      |
+| ildTaskName | ame/variant |          | aven-build" |             |
+|             | of the      |          |             |             |
+|             | Tekton task |          |             |             |
+|             | used to     |          |             |             |
+|             | perform the |          |             |             |
+|             | build step. |          |             |             |
+|             | Default     |          |             |             |
+|             | tasks       |          |             |             |
+|             | available   |          |             |             |
+|             | for         |          |             |             |
+|             | selection:  |          |             |             |
+|             |             |          |             |             |
+|             | -           |          |             |             |
+|             |    "esta-ma |          |             |             |
+|             | ven-build": |          |             |             |
+|             |     2G      |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max. 4G |          |             |             |
+|             |     memory  |          |             |             |
+|             |     and 2   |          |             |             |
+|             |     CPU     |          |             |             |
+|             |             |          |             |             |
+|             | -   "es     |          |             |             |
+|             | ta-maven-bu |          |             |             |
+|             | ild-small": |          |             |             |
+|             |     600M    |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max.    |          |             |             |
+|             |     1.5G    |          |             |             |
+|             |     memory  |          |             |             |
+|             |     and 1   |          |             |             |
+|             |     CPU     |          |             |             |
+|             |             |          |             |             |
+|             | -   "es     |          |             |             |
+|             | ta-maven-bu |          |             |             |
+|             | ild-large": |          |             |             |
+|             |     6G      |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max. 9G |          |             |             |
+|             |     memory  |          |             |             |
+|             |     4 CPU   |          |             |             |
+|             |             |          |             |             |
+|             | -           |          |             |             |
+|             |   "esta-mav |          |             |             |
+|             | en-build-ex |          |             |             |
+|             | tra-large": |          |             |             |
+|             |     20G     |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max.    |          |             |             |
+|             |     24G     |          |             |             |
+|             |     memory  |          |             |             |
+|             |     and 6   |          |             |             |
+|             |     CPU     |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+NPM configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| packageJson | Specifies   | no       | "./pa       |             |
+|             | the path    |          | ckage.json" |             |
+|             | where the   |          |             |             |
+|             | p           |          |             |             |
+|             | ackage.json |          |             |             |
+|             | is located. |          |             |             |
+|             | Needs to    |          |             |             |
+|             | end with    |          |             |             |
+|             | 'pa         |          |             |             |
+|             | ckage.json' |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| p           | Specifies   | no       |             |             |
+| ublishableP | the         |          |             |             |
+| ackageJsons | p           |          |             |             |
+|             | ackage.json |          |             |             |
+|             | files for   |          |             |             |
+|             | publishable |          |             |             |
+|             | projects    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| additiona   | Additional  | no       |             |             |
+| lNpmScripts | NPM         |          |             |             |
+|             | commands to |          |             |             |
+|             | run at      |          |             |             |
+|             | build time  |          |             |             |
+|             | as          |          |             |             |
+|             | specified   |          |             |             |
+|             | in          |          |             |             |
+|             | pa          |          |             |             |
+|             | ckage.json. |          |             |             |
+|             | Multiple    |          |             |             |
+|             | commands    |          |             |             |
+|             | can be      |          |             |             |
+|             | provided    |          |             |             |
+|             | separated   |          |             |             |
+|             | by a space. |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| targetRepo  | The target  | no       |             |             |
+|             | repository  |          |             |             |
+|             | in          |          |             |             |
+|             | Artifactory |          |             |             |
+|             | where the   |          |             |             |
+|             | NPM         |          |             |             |
+|             | artifacts   |          |             |             |
+|             | will be     |          |             |             |
+|             | published   |          |             |             |
+|             | to.         |          |             |             |
+|             | Required    |          |             |             |
+|             | when        |          |             |             |
+|             | depl        |          |             |             |
+|             | oyArtifacts |          |             |             |
+|             | in step     |          |             |             |
+|             | config is   |          |             |             |
+|             | enabled.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| bu          | N           | no       | "esta       | 0.25.2      |
+| ildTaskName | ame/variant |          | -npm-build" |             |
+|             | of the      |          |             |             |
+|             | Tekton task |          |             |             |
+|             | used to     |          |             |             |
+|             | perform the |          |             |             |
+|             | build step. |          |             |             |
+|             | Default     |          |             |             |
+|             | tasks       |          |             |             |
+|             | available   |          |             |             |
+|             | for         |          |             |             |
+|             | selection:  |          |             |             |
+|             |             |          |             |             |
+|             | -   "esta-  |          |             |             |
+|             | npm-build": |          |             |             |
+|             |     3G      |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max. 6G |          |             |             |
+|             |     memory  |          |             |             |
+|             |     and 2   |          |             |             |
+|             |     CPU     |          |             |             |
+|             |             |          |             |             |
+|             | -   "       |          |             |             |
+|             | esta-npm-bu |          |             |             |
+|             | ild-large": |          |             |             |
+|             |     5G      |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max. 9G |          |             |             |
+|             |     memory  |          |             |             |
+|             |     4 CPU   |          |             |             |
+|             |             |          |             |             |
+|             | -   "esta-n |          |             |             |
+|             | pm-build-ex |          |             |             |
+|             | tra-large": |          |             |             |
+|             |     12G     |          |             |             |
+|             |     memory; |          |             |             |
+|             |     max.    |          |             |             |
+|             |     20G     |          |             |             |
+|             |     memory  |          |             |             |
+|             |     and 6   |          |             |             |
+|             |     CPU     |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Flutter configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| b           | List of     | no       | pre         |             |
+| uildScripts | build       |          | pare-zip.sh |             |
+|             | scripts     |          |             |             |
+|             | which       |          |             |             |
+|             | should run  |          |             |             |
+|             | in the      |          |             |             |
+|             | flutter     |          |             |             |
+|             | build task. |          |             |             |
+|             | For         |          |             |             |
+|             | example:    |          |             |             |
+|             |             |          |             |             |
+|             | ["prepa     |          |             |             |
+|             | re-zip.sh", |          |             |             |
+|             | "prepare-d  |          |             |             |
+|             | ev-zip.sh"] |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| pubs        | The path to | no       | p           |             |
+| pecYamlPath | the flutter |          | ubspec.yaml |             |
+|             | p           |          |             |             |
+|             | ubspec.yaml |          |             |             |
+|             | file        |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Go configuration structure
+
+  ---------------------------------------------------------------------------------------------------------------
+  Property name        Description                                     Required   Default value   Since version
+  -------------------- ----------------------------------------------- ---------- --------------- ---------------
+  buildPackages        The packages to build                           no         "./cmd/..."     
+
+  useMage              Enforce use of the build tool mage              no         false           
+
+  additionalGoParams   Go build orders.                                no                         
+                       Multiple commands can be separated by spaces.                              
+  ---------------------------------------------------------------------------------------------------------------
+
+Python configuration structure
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name            Description                                                                             Required   Default value   Since version
+  ------------------------ --------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  targetRepo               The target repository in Artifactory where the Python artifacts will be published to.   no                         
+                           Required when deployArtifacts in step config is enabled.                                                           
+
+  additionalPythonParams   Multiple commands can be separated by spaces.                                           no                         
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Parameters configuration structure
+
+The full functional parameter UI will be released in a future release as
+for the moment, we display a simple json structure in the UI.
+
+  Property name   Description                                                                                                                                                                                                                                                                       Required   Default value   Since version
+  --------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  name            A unique name for this parameter. i.E. environments, emailadresses, and so on.                                                                                                                                                                                                    yes                        0.27.x
+  type            Type of the parameter to define how the parameter will be displayed in the UI and processed in the templates. Possible values are: String, Multiline, Choice, Multichoice, Boolean                                                                                                yes                        0.27.x
+  options         The options which will be displayed in the UI to select from. Here you can define for example for a parameter named environment the options: dev, test , int, prod which will be then displayed as a multichoice or choice checkbox or radiobutton selection control in the UI.   no                         0.27.x
+  values          The values array holds the preselected or predefined values which will be displayed in the UI. If you have the options dev, test , int, prod you can for example specify the preselected values: dev, test                                                                        no                         0.27.x
+  label           The labels value defines the label which is displayed in the UI. If not defined, the name will be used as label in the UI.                                                                                                                                                        no                         0.27.x
+  description     Just to describe the parameter. This will be shown as a tooltip in the ui when hovering over the question mark in the UI.                                                                                                                                                         no                         0.27.x
+
+Buildpack configuration structure
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name   Description                                                                              Required   Default value                     Since version
+  --------------- ---------------------------------------------------------------------------------------- ---------- --------------------------------- ---------------
+  builder         The builder image to use. Currently Paketo and Heroku buildpack builders are supported   no         "paketobuildpacks/builder:base"   
+
+  envVars         A list of environment variables to be set for the Buildpack lifecycle process.           no         []                                
+                  Specify them as strings of the format "VAR_NAME=value".                                                                               
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Pipeline configuration structure
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name              Description                                                                                                                                                                   Required   Default value                Since version
+  -------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------- ---------------------------- ---------------
+  name                       Unique name for this pipeline config.                                                                                                                                         yes                                     
+                             You can choose your own names.                                                                                                                                                                                        
+
+  enabled                    Should this build profile be switched on or off (true / false)                                                                                                                no         true                         
+
+  triggerType                List of triggers that will start this pipeline.                                                                                                                               no         "USER"                       
+                             "USER": is triggered through the REST API, usually from the Tekton Control Panel                                                                                                                                      
+                             "GITEVENT": is triggered by pushes (branch or tag) to the Git repository                                                                                                                                              
+                             "PIPELINE": is triggered by Git branch pushes issued by a Tekton pipeline                                                                                                                                             
+                             "CRON": is triggered by the ESTA Tekton Controller at the time configuered by cronTab. The CRON configuration will be only read from the default branch (main, master, ...)                                           
+
+  branchNamePrefixes         List of prefixes of Git branches on which the pipeline should be executed                                                                                                     no                                      
+
+  branchNamePatterns         List of regex patterns to match or not match Git branches on which the pipeline should be executed.                                                                           no                                      
+                             Has precedence over branchNamePatterns.                                                                                                                                                                               
+
+  versionTagEventPatterns    List of regex patterns for Git tags when pushed to Bitbucket.                                                                                                                 no                                      
+                             A regex like "^(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)$" would match a tag like 10.5.100                                                                                                                                       
+
+  cron                       Unix-style Cron expression to define times when automated pipeline runs should start. The cron configuration will be only read from the default branch (master, main, ...)    no                                      
+                             Required in conjunction with triggerType "CRON".                                                                                                                                                                      
+                             Please note: nicknames like "@midnight" are not supported.                                                                                                                                                            
+
+  stages                     Define a list of stage names to trigger if pipeline run was successful                                                                                                        no         []                           
+
+  build                      Start a build pipeline with these settings.                                                                                                                                   no                                      
+                             See Build pipeline configuration structure for details.                                                                                                                                                               
+
+  tagging                    Start a tagging pipeline with these settings.                                                                                                                                 no                                      
+                             See Tagging pipeline configuration structure for details.                                                                                                                                                             
+
+  custom                     Start a custom pipeline with these settings.                                                                                                                                  no                                      
+                             See Custom pipeline configuration structure for details.                                                                                                                                                              
+
+  envSecret                  OpenShift secret name holding env variables to be exposed in pipeline steps.                                                                                                  no         "esta-tekton-pipeline-env"   
+                             The name needs to start with "pipeline-env".                                                                                                                                                                          
+
+  tasks                      List of additional tasks to be inserted into the pipeline.                                                                                                                    no         []                           
+                             See Custom task configuration structure for details and README.md for task documentation.                                                                                                                             
+
+  failOnQualityGateFailure   Whether to fail the pipeline if the quality gate fails.                                                                                                                       no         false                        
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Build pipeline configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| build       | Build a     | no       | false       |             |
+| DockerImage | Docker      |          | (true for   |             |
+|             | image       |          | docker-only |             |
+|             |             |          | re          |             |
+|             |             |          | positories) |             |
++-------------+-------------+----------+-------------+-------------+
+| deploy      | Push the    | no       | true        |             |
+| DockerImage | built       |          |             |             |
+|             | Docker      |          |             |             |
+|             | image to    |          |             |             |
+|             | Artifactory |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| depl        | Should the  | no       | false       |             |
+| oyArtifacts | generated   |          |             |             |
+|             | artifacts   |          |             |             |
+|             | (Mvn, NPM,  |          |             |             |
+|             | Go) be      |          |             |             |
+|             | deployed to |          |             |             |
+|             | Artifactory |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| pac         | Package a   | no       | false       |             |
+| kageAndDepl | Helm chart  |          |             |             |
+| oyHelmChart | and deploy  |          |             |             |
+|             | it to       |          |             |             |
+|             | Artifactory |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| additional  | Additional  | no       |             |             |
+| BuildParams | parameters  |          |             |             |
+|             | appended to |          |             |             |
+|             | commands    |          |             |             |
+|             | that        |          |             |             |
+|             | execute     |          |             |             |
+|             | builds      |          |             |             |
+|             | (mvn, npm   |          |             |             |
+|             | run, go     |          |             |             |
+|             | build)      |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| additionalD | Additional  | no       |             |             |
+| eployParams | deploy      |          |             |             |
+|             | parameters  |          |             |             |
+|             | added to    |          |             |             |
+|             | Maven       |          |             |             |
+|             | commands.   |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| add         | List of     | no       | []          |             |
+| itionalDock | additional  |          |             |             |
+| erImageTags | tags the    |          |             |             |
+|             | Docker      |          |             |             |
+|             | image shall |          |             |             |
+|             | be pushed   |          |             |             |
+|             | to          |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| sonarScan   | You can     | no       |             |             |
+|             | configure   |          |             |             |
+|             | the         |          |             |             |
+|             | sonarScan   |          |             |             |
+|             | for each    |          |             |             |
+|             | build step  |          |             |             |
+|             | separately. |          |             |             |
+|             | A simple    |          |             |             |
+|             | example     |          |             |             |
+|             | looks like  |          |             |             |
+|             | this:       |          |             |             |
+|             |             |          |             |             |
+|             | "           |          |             |             |
+|             | sonarScan": |          |             |             |
+|             | {           |          |             |             |
+|             |             |          |             |             |
+|             | "enabled":  |          |             |             |
+|             | true        |          |             |             |
+|             | }           |          |             |             |
+|             | For further |          |             |             |
+|             | information |          |             |             |
+|             | see the     |          |             |             |
+|             | sonar       |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | description |          |             |             |
+|             | below or    |          |             |             |
+|             | the sonar   |          |             |             |
+|             | details     |          |             |             |
+|             | above:      |          |             |             |
+|             | So          |          |             |             |
+|             | narAnalysis |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| owaspDepe   | You can     | no       |             |             |
+| ndencyCheck | configure   |          |             |             |
+|             | the         |          |             |             |
+|             | owaspDepe   |          |             |             |
+|             | ndencyCheck |          |             |             |
+|             | for each    |          |             |             |
+|             | build step  |          |             |             |
+|             | separately. |          |             |             |
+|             | A simple    |          |             |             |
+|             | example     |          |             |             |
+|             | looks like  |          |             |             |
+|             | this:       |          |             |             |
+|             |             |          |             |             |
+|             | "           |          |             |             |
+|             | owaspDepend |          |             |             |
+|             | encyCheck": |          |             |             |
+|             | {           |          |             |             |
+|             |             |          |             |             |
+|             | "enabled":  |          |             |             |
+|             | true        |          |             |             |
+|             | }           |          |             |             |
+|             | For further |          |             |             |
+|             | information |          |             |             |
+|             | see the     |          |             |             |
+|             | owasp       |          |             |             |
+|             | dependecy   |          |             |             |
+|             | check       |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | description |          |             |             |
+|             | below or    |          |             |             |
+|             | the details |          |             |             |
+|             | above:      |          |             |             |
+|             | OWASPDepe   |          |             |             |
+|             | ndencyCheck |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| gitguardian | Configure   | no       |             | 0.28.0      |
+|             | GitGuardian |          |             |             |
+|             | secrets     |          |             |             |
+|             | scan during |          |             |             |
+|             | build.      |          |             |             |
+|             | For details |          |             |             |
+|             | and further |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | options see |          |             |             |
+|             | the         |          |             |             |
+|             | GitGuardian |          |             |             |
+|             | secrets     |          |             |             |
+|             | scan        |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| tes         | Enable and  | no       |             |             |
+| tcontainers | configure   |          |             |             |
+|             | an          |          |             |             |
+|             | environment |          |             |             |
+|             | for running |          |             |             |
+|             | Tes         |          |             |             |
+|             | tcontainers |          |             |             |
+|             | in the      |          |             |             |
+|             | build step. |          |             |             |
+|             | Enabling    |          |             |             |
+|             | tes         |          |             |             |
+|             | tcontainers |          |             |             |
+|             | looks like  |          |             |             |
+|             | this:       |          |             |             |
+|             |             |          |             |             |
+|             | "testc      |          |             |             |
+|             | ontainers": |          |             |             |
+|             | {           |          |             |             |
+|             |             |          |             |             |
+|             | "enabled":  |          |             |             |
+|             | true        |          |             |             |
+|             | }           |          |             |             |
+|             | For details |          |             |             |
+|             | and further |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | options see |          |             |             |
+|             | the Tes     |          |             |             |
+|             | tcontainers |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| testreport  | Enable and  | no       |             |             |
+|             | configure   |          |             |             |
+|             | visual test |          |             |             |
+|             | reports     |          |             |             |
+|             | creation.   |          |             |             |
+|             | For details |          |             |             |
+|             | and         |          |             |             |
+|             | c           |          |             |             |
+|             | onfguration |          |             |             |
+|             | options see |          |             |             |
+|             | the         |          |             |             |
+|             | Testreport  |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | and this    |          |             |             |
+|             | how-to      |          |             |             |
+|             | article.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| versionTag  | Version tag | no       |             |             |
+|             | to use for  |          |             |             |
+|             | docker      |          |             |             |
+|             | builds with |          |             |             |
+|             | this        |          |             |             |
+|             | profile. If |          |             |             |
+|             | set, this   |          |             |             |
+|             | overrides   |          |             |             |
+|             | the version |          |             |             |
+|             | tag         |          |             |             |
+|             | derrived    |          |             |             |
+|             | from the    |          |             |             |
+|             | Git tag or  |          |             |             |
+|             | project     |          |             |             |
+|             | meta files. |          |             |             |
+|             | Can contain |          |             |             |
+|             | p           |          |             |             |
+|             | laceholders |          |             |             |
+|             | for         |          |             |             |
+|             | pre-defined |          |             |             |
+|             | pipeline    |          |             |             |
+|             | parameters  |          |             |             |
+|             | like        |          |             |             |
+|             | "snapsh     |          |             |             |
+|             | ot-${DATE}" |          |             |             |
+|             | or          |          |             |             |
+|             | "           |          |             |             |
+|             | build-${BRA |          |             |             |
+|             | NCH_LABEL}" |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| docker      | Override    | no       |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | docker      |          |             |             |
+|             | build       |          |             |             |
+|             | con         |          |             |             |
+|             | figuration. |          |             |             |
+|             | See Docker  |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| helm        | Override    | no       |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | Helm charts |          |             |             |
+|             | con         |          |             |             |
+|             | figuration. |          |             |             |
+|             | See Helm    |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| mvn         | Override    | no       |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | Maven build |          |             |             |
+|             | settings.   |          |             |             |
+|             | See Maven   |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| npm         | Override    | no       |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | settings    |          |             |             |
+|             | for NPM     |          |             |             |
+|             | builds.     |          |             |             |
+|             | See NPM     |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| flutter     | Override    | no       |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | settings    |          |             |             |
+|             | for Flutter |          |             |             |
+|             | builds.     |          |             |             |
+|             | See Flutter |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| go          | Override    | no       |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | settings    |          |             |             |
+|             | for Golang  |          |             |             |
+|             | builds.     |          |             |             |
+|             | See Go      |          |             |             |
+|             | co          |          |             |             |
+|             | nfiguration |          |             |             |
+|             | structure   |          |             |             |
+|             | for         |          |             |             |
+|             | details.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Tagging pipeline configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| v           | Regex       | no       | "^(\\       |             |
+| ersionIncre | pattern     |          | d+)\\.(\\d+ |             |
+| mentPattern | defining    |          | )\\.(\\d+)" |             |
+|             | how the     |          |             |             |
+|             | version is  |          |             |             |
+|             | i           |          |             |             |
+|             | ncremented. |          |             |             |
+|             | The first   |          |             |             |
+|             | segment in  |          |             |             |
+|             | brackets    |          |             |             |
+|             | will be     |          |             |             |
+|             | incremented |          |             |             |
+|             | by one and  |          |             |             |
+|             | the         |          |             |             |
+|             | following   |          |             |             |
+|             | brackets    |          |             |             |
+|             | will be set |          |             |             |
+|             | to 0.       |          |             |             |
+|             | Example:    |          |             |             |
+|             | "REL-\      |          |             |             |
+|             | \d+\\.(\\d+ |          |             |             |
+|             | )\\.(\\d+)" |          |             |             |
+|             | – this will |          |             |             |
+|             | increment   |          |             |             |
+|             | "           |          |             |             |
+|             | REL-2.1.13" |          |             |             |
+|             | to          |          |             |             |
+|             | "REL-2.2.0" |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| ve          | Which       | no       | "minor"     |             |
+| rsionIncrem | segment     |          |             |             |
+| entPosition | (major,     |          |             |             |
+|             | minor,      |          |             |             |
+|             | patch) to   |          |             |             |
+|             | increment   |          |             |             |
+|             | from the    |          |             |             |
+|             | ve          |          |             |             |
+|             | rsionIncrem |          |             |             |
+|             | entPattern. |          |             |             |
+|             |             |          |             |             |
+|             | If not      |          |             |             |
+|             | using       |          |             |             |
+|             | strict      |          |             |             |
+|             | semantic    |          |             |             |
+|             | versioning, |          |             |             |
+|             | the         |          |             |             |
+|             | position    |          |             |             |
+|             | can be      |          |             |             |
+|             | denoted     |          |             |             |
+|             | with "one", |          |             |             |
+|             | "two",      |          |             |             |
+|             | "three",    |          |             |             |
+|             | "four" or   |          |             |             |
+|             | "five". The |          |             |             |
+|             | used number |          |             |             |
+|             | must match  |          |             |             |
+|             | the number  |          |             |             |
+|             | of the      |          |             |             |
+|             | referenced  |          |             |             |
+|             | pair of     |          |             |             |
+|             | braces on   |          |             |             |
+|             | ve          |          |             |             |
+|             | rsionIncrem |          |             |             |
+|             | entPattern! |          |             |             |
+|             |             |          |             |             |
+|             | To disable  |          |             |             |
+|             | this        |          |             |             |
+|             | fu          |          |             |             |
+|             | nctionality |          |             |             |
+|             | you can use |          |             |             |
+|             | `none`.     |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| preR        | Should the  | no       |             |             |
+| eleaseVersi | next        |          |             |             |
+| onIncrement | pre-release |          |             |             |
+|             | version     |          |             |             |
+|             | (-SNAPSHOT) |          |             |             |
+|             | be set on   |          |             |             |
+|             | automatic   |          |             |             |
+|             | increment   |          |             |             |
+|             | and which   |          |             |             |
+|             | position    |          |             |             |
+|             | (major,     |          |             |             |
+|             | minor,      |          |             |             |
+|             | patch).     |          |             |             |
+|             | This option |          |             |             |
+|             | is only     |          |             |             |
+|             | considered  |          |             |             |
+|             | for Maven   |          |             |             |
+|             | projects    |          |             |             |
+|             | using       |          |             |             |
+|             | strict      |          |             |             |
+|             | sematic     |          |             |             |
+|             | versioning. |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| upda        | Should Helm | no       | true        |             |
+| teHelmChart | charts (if  |          |             |             |
+|             | defined in  |          |             |             |
+|             | helm block) |          |             |             |
+|             | be updated  |          |             |             |
+|             | in this     |          |             |             |
+|             | tagging     |          |             |             |
+|             | pipeline    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+For pure Maven builds, these settings should be something like this:
+
+"tagging": {
+
+"updateHelmChart": true,
+
+"versionIncrementPosition": "none",
+
+"preReleaseVersionIncrement": "minor"
+
+},
+
+With these settings the release build will just remove the -SNAPSHOT
+suffix, increment the version after the releasebuild and add -SNAPSHOT
+suffix again.
+
+Custom pipeline configuration structure
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name      Description                                                                                                     Required   Default value   Since version
+  ------------------ --------------------------------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  pipelineTemplate   Name of an OpenShift template defining a custom PipelineRun to process for this step.                           no                         
+                     When ending with .yaml, the template is resolved to a file located in the 'tekton' folder of this repository.                              
+
+  pipelineRef        Name of a custom Pipeline to run for this step.                                                                 no                         
+                     A Tekton pipeline with the given name must be defined in the build namespace.                                                              
+
+  params             Map (key: value) of parameters passed to the PipelineRun template.                                              no         {}              
+                     Values can contain placeholders for pre-defined pipeline parameters like "rel-${VERSION_TAG}".                                             
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Sonar configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| enabled     | This flag   | yes      | false       |             |
+|             | decides     |          |             |             |
+|             | whether a   |          |             |             |
+|             | sonar       |          |             |             |
+|             | analysis is |          |             |             |
+|             | performed   |          |             |             |
+|             | or not.     |          |             |             |
+|             | Please also |          |             |             |
+|             | consult the |          |             |             |
+|             | details:    |          |             |             |
+|             | So          |          |             |             |
+|             | narAnalysis |          |             |             |
+|             |             |          |             |             |
+|             | If you want |          |             |             |
+|             | to do       |          |             |             |
+|             | Sonarscan   |          |             |             |
+|             | in a        |          |             |             |
+|             | release     |          |             |             |
+|             | build,      |          |             |             |
+|             | don't       |          |             |             |
+|             | forget to   |          |             |             |
+|             | set the     |          |             |             |
+|             | release     |          |             |             |
+|             | BranchName! |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| projectKey  | The         | no       | .           |             |
+|             | projectKey  |          | productName |             |
+|             | is the      |          |             |             |
+|             | project     |          |             |             |
+|             | into which  |          |             |             |
+|             | the         |          |             |             |
+|             | analysis    |          |             |             |
+|             | report is   |          |             |             |
+|             | loaded.     |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| ~~additio   | Additional  | no       |             | 0.25.0      |
+| nalParams~~ | maven       |          |             | (           |
+|             | options     |          |             | deprecated) |
+|             | like        |          |             |             |
+|             | "-Dskip     |          |             |             |
+|             | Tests=true" |          |             |             |
+|             | DEPRECATED! |          |             |             |
+|             | Set Sonar   |          |             |             |
+|             | options for |          |             |             |
+|             | Maven       |          |             |             |
+|             | builds to   |          |             |             |
+|             | buil        |          |             |             |
+|             | d.additiona |          |             |             |
+|             | lProperties |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| releas      | Specify the | no       |             |             |
+| eBranchName | branch name |          |             |             |
+|             | used for    |          |             |             |
+|             | SonarQube   |          |             |             |
+|             | in case     |          |             |             |
+|             | there is no |          |             |             |
+|             | git branch  |          |             |             |
+|             | in the      |          |             |             |
+|             | pipeline    |          |             |             |
+|             | context.    |          |             |             |
+|             | For all     |          |             |             |
+|             | builds      |          |             |             |
+|             | based on a  |          |             |             |
+|             | tag this    |          |             |             |
+|             | property is |          |             |             |
+|             | required to |          |             |             |
+|             | execute the |          |             |             |
+|             | sonar scan. |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+GitGuardian secrets scan configuration structure
+
+  ------------------------------------------------------------------------------------------------------------------------------------
+  Property name   Description                                                               Required   Default value   Since version
+  --------------- ------------------------------------------------------------------------- ---------- --------------- ---------------
+  enabled         Enable the GitGuardian secrets scan on the current repository             yes        false           0.28.0
+
+  reportMode      How to report GitGuardian warnings.                                       no         "UNSTABLE"      0.28.0
+                  FAILED: make the pipeline fail with an error                                                         
+                  UNSTABLE: report the pipeline to be unstable                                                         
+                  LOG: only print the findings in the log                                                              
+
+  secretName      Alternative secret name to read GitGuardian credentials from.             no                         0.28.0
+                  Must contain entries named GITGUARDIAN_API_KEY and GITGUARDIAN_INSTANCE                              
+  ------------------------------------------------------------------------------------------------------------------------------------
+
+OWASP dependency check configuration structure
+
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name      Description                                                                                                                                                                                                                                                                                                                                                                                                             Required   Default value   Since version
+  ------------------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  enabled            Do you want run the OWASP Dependency Check? (true / false)                                                                                                                                                                                                                                                                                                                                                              yes        false           
+                     The OWASP Dependency Check will by default just generate a report which can be displayed in Sonarqube. You need to click in Sonarqube on "More" → "Dependency Check". The OWASP Dependency Check Report will be displayed. If you want to fail the build if the dependency check finds too many issues, you need to set the according property in additionalParams. See the following documentation of the parameter.                              
+
+  additionalParams   Additional Parameter options like "--failOnCVSS 5 --disableRetireJS". You can find the possible parameter documentation on: https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html                                                                                                                                                                                                            no                         
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Testcontainers configuration structure
+
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name    Description                                                                                                                                            Required   Default value   Since version
+  ---------------- ------------------------------------------------------------------------------------------------------------------------------------------------------ ---------- --------------- ---------------
+  enabled          Enable pipeline environment for running Testcontainers.                                                                                                yes        false           
+                   This option only has an effect in Maven, Npm and Go projects.                                                                                                                     
+
+  kubedockParams   Additional arguments passed to the kubedock server command in order to tweak the containers environment. See the Kubedock documentation for details.   no                         
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Testreport configuration structure
+
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name           Description                                                                                                       Required   Default value               Since version
+  ----------------------- ----------------------------------------------------------------------------------------------------------------- ---------- --------------------------- ---------------
+  enabled                 Enable the creation of test reports.                                                                              yes        false                       
+                          This option only has an effect in Maven, Npm and Go projects.                                                                                            
+
+  artifactoryRepository   Name of the Artifactory repository where the generated reports are uploaded to.                                   no         "esta-tekton.generic"       
+                          Must end with .generic                                                                                                                                   
+
+  resultsDir              Location where the result XMLs are located, from which the report should be created.                              no         "target/surefire-reports"   
+
+  reportQualifiers        Additional qualifiers (aliases) to store the generated report with.                                               no         []                          
+                          These qualifiers can be used to connect new reports with in order to show Trend and history.                                                             
+
+  previousQualifiers      Copy history from the last report generated with these qualifiers to make the trend and history graphs working.   no         []                          
+                          The first matching qualifier will be used.                                                                                                               
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Custom task configuration structure
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name   Description                                                                                                                                                                        Required   Default value   Since version
+  --------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  name            Name of this task. Needs to be unique within the pipeline spec.                                                                                                                    yes                        
+
+  taskRef         Name of the Tekton task to execute. The according task needs to be present in the build namespace. See README.md for documentation of available tasks.                             yes                        
+
+  params          Map (key: value) of parameters passed to the pipeline task.                                                                                                                        no         {}              
+                  Values can contain placeholders for pre-defined pipeline parameters like "rel-${VERSION_TAG}".                                                                                                                
+
+  executionMode   Mode how this task is executed.                                                                                                                                                    no         "REGULAR"       
+                  REGULAR = injected into the regular pipeline execution (further specify with runAfter and runBefore)                                                                                                          
+                  FINALLY = runs in the finally block (guarded with runConditions)                                                                                                                                              
+
+  runBefore       Name(s) of the pipeline task(s) this task must be preceded.                                                                                                                        no                         
+                  Look at past pipeline runs to see the names and order of the standard pipeline tasks.                                                                                                                         
+                  Only supported with executionMode "REGULAR".                                                                                                                                                                  
+
+  runAfter        Name(s) of the pipeline task(s) this task shall execute after.                                                                                                                     no                         
+                  If omitted, the task is appended to the end of the pipeline.                                                                                                                                                  
+                  Only supported with executionMode "REGULAR".                                                                                                                                                                  
+
+  runConditions   Condition(s) when this task should run.                                                                                                                                            no         "success()"     
+                  Use short condition aliases "success()", "failure()", "always()" or expressions like "$(tasks.build.status) in None,Succeed". You can use Tekton variables in these expressions.                              
+                  Only supported with executionMode "FINALLY".                                                                                                                                                                  
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Stage configuration structure
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name   Description                                                                               Required   Default value   Since version
+  --------------- ----------------------------------------------------------------------------------------- ---------- --------------- ---------------
+  stageName       Unique name for this stage config                                                         yes                        
+
+  argoCD          ArgoCD configuration structure used for deyploment.                                       no                         
+                  See ArgoCD configuration structure below.                                                                            
+
+  helm            Helm configuration defining charts used for deployment.                                   no                         
+                  These stage settings overwrite properties from the global Helm configuration structure.                              
+                  See Helm configuration structure below.                                                                              
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+ArgoCD configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| ar          | The app     | yes      | .           |             |
+| goCdAppName | name which  |          | productName |             |
+|             | will be     |          |             |             |
+|             | referenced  |          |             |             |
+|             | in ArgoCD.  |          |             |             |
+|             | Default     |          |             |             |
+|             | value is    |          |             |             |
+|             | the         |          |             |             |
+|             | top-level   |          |             |             |
+|             | productName |          |             |             |
+|             | property    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| autoSync    | If true,    | no       | false       |             |
+|             | the         |          |             |             |
+|             | deployment  |          |             |             |
+|             | pipeline    |          |             |             |
+|             | will        |          |             |             |
+|             | initiate an |          |             |             |
+|             | ArgoCD sync |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| a           | OpenShift   | no       | "argocd-    |             |
+| rgoCdSecret | secret name |          | env-secret" |             |
+|             | holding env |          |             |             |
+|             | variables   |          |             |             |
+|             | for the     |          |             |             |
+|             | argocd task |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| argoCdA     | ArgoCd app  | no       |             |             |
+| ppSyncFlags | sync flags  |          |             |             |
+|             | i.e.        |          |             |             |
+|             | --force     |          |             |             |
+|             | --replace,  |          |             |             |
+|             | with which  |          |             |             |
+|             | you can     |          |             |             |
+|             | control the |          |             |             |
+|             | way your    |          |             |             |
+|             | app should  |          |             |             |
+|             | be synced   |          |             |             |
+|             | by ArgoCD.  |          |             |             |
+|             | You find    |          |             |             |
+|             | the flags   |          |             |             |
+|             | documented  |          |             |             |
+|             | here:       |          |             |             |
+|             | https://arg |          |             |             |
+|             | o-cd.readth |          |             |             |
+|             | edocs.io/en |          |             |             |
+|             | /stable/use |          |             |             |
+|             | r-guide/com |          |             |             |
+|             | mands/argoc |          |             |             |
+|             | d_app_sync/ |          |             |             |
+|             |             |          |             |             |
+|             | For example |          |             |             |
+|             | if you are  |          |             |             |
+|             | using       |          |             |             |
+|             | --force     |          |             |             |
+|             | --replace,  |          |             |             |
+|             | it would    |          |             |             |
+|             | redeploy    |          |             |             |
+|             | also in     |          |             |             |
+|             | SNAPSHOT    |          |             |             |
+|             | case.       |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Notification configuration structure
+
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Property name         Description                                                                                                              Required   Default value   Since version
+  --------------------- ------------------------------------------------------------------------------------------------------------------------ ---------- --------------- ----------------------
+  type                  Type/delivery of notification messages.                                                                                  yes                        
+                        Currently supported are "EMAIL" or "TEAMS"                                                                                                          
+
+  enabled               Enable or disable sending of notifications                                                                               no         true            
+
+  eventTypes            Filter for events that trigger this notification.                                                                        no                         
+                        Possible values are "SUCCESS", "FAILURE", "ABORTED". If empty, all events will trigger notifications.                                               
+
+  pipelineTypes         Filter for pipeline types to trigger this notification.                                                                  no                         
+                        Possible values are "TAGGING", "BUILD", "STAGING", "CUSTOM"). If empty, all pipeline types will trigger notifications.                              
+
+  branchNameExcludes    List of prefixes of Git branches on which NO notifications shall be sent                                                 no         []              
+
+  recipients            List of recipient email addresses for EMAIL type notifications.                                                          (yes)      []              
+                        Use "$actor" as a placeholder for the user who triggered the pipeline event.                                                                        
+
+  ~~webhookUrl~~        Webhook URL for TEAMS type notifications.                                                                                (yes)                      Deprecated in 0.24.0
+                        DEPRECATED. Save the webhook URL to a secret and reference with webhookSecretName and webhookUrlSecretKey instead.                                  
+
+  webhookSecretName     Secret name providing the webhook URL for TEAMS type notifications                                                       (yes)                      0.24.0
+
+  webhookUrlSecretKey   Key of the secret entry holding the webhook URL for TEAMS type notifications                                             no         "URL"           0.24.0
+
+  title                 Override default title/subject for this notification.                                                                    no                         
+                        See the supported placeholders that will be replaced with the actual values.                                                                        
+
+  message               Override default message text for this notification.                                                                     no                         
+                        See the supported placeholders that will be replaced with the actual values.                                                                        
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Advanced Build Settings configuration structure
+
++-------------+-------------+----------+-------------+-------------+
+| Property    | Description | Required | Default     | Since       |
+| name        |             |          | value       | version     |
++=============+=============+==========+=============+=============+
+| buildWo     | Here you    | no       | 4Gi (mvn)   |             |
+| rkspaceSize | can define  |          | 3Gi (npm)   |             |
+|             | the build   |          | 3Gi         |             |
+|             | workspace   |          | (python)    |             |
+|             | size. You   |          | 2Gi (go)    |             |
+|             | need to do  |          | 1Gi         |             |
+|             | that in     |          | (others)    |             |
+|             | case your   |          |             |             |
+|             | build       |          |             |             |
+|             | process     |          |             |             |
+|             | produces    |          |             |             |
+|             | big         |          |             |             |
+|             | artifacts   |          |             |             |
+|             | and the     |          |             |             |
+|             | default     |          |             |             |
+|             | size of the |          |             |             |
+|             | build       |          |             |             |
+|             | pipeline    |          |             |             |
+|             | workspace   |          |             |             |
+|             | is not big  |          |             |             |
+|             | enough. You |          |             |             |
+|             | can set     |          |             |             |
+|             | something   |          |             |             |
+|             | like 2Gi or |          |             |             |
+|             | 500Mi as a  |          |             |             |
+|             | value.      |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| taggingWo   | Here you    | no       | 500Mi       |             |
+| rkspaceSize | can define  |          |             |             |
+|             | the tagging |          |             |             |
+|             | workspace   |          |             |             |
+|             | size. You   |          |             |             |
+|             | need to do  |          |             |             |
+|             | that in     |          |             |             |
+|             | case your   |          |             |             |
+|             | git         |          |             |             |
+|             | repository  |          |             |             |
+|             | contains    |          |             |             |
+|             | large files |          |             |             |
+|             | and the     |          |             |             |
+|             | default     |          |             |             |
+|             | size of the |          |             |             |
+|             | tagging     |          |             |             |
+|             | pipeline    |          |             |             |
+|             | workspace   |          |             |             |
+|             | is not big  |          |             |             |
+|             | enough. You |          |             |             |
+|             | can set     |          |             |             |
+|             | something   |          |             |             |
+|             | like 2Gi or |          |             |             |
+|             | 500Mi as a  |          |             |             |
+|             | value.      |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| bui         | Sets the    | no       | 2Gi         |             |
+| ldCacheSize | size of the |          |             |             |
+|             | cache       |          |             |             |
+|             | volume used |          |             |             |
+|             | for build   |          |             |             |
+|             | pipelines.  |          |             |             |
+|             | The cache   |          |             |             |
+|             | serves as a |          |             |             |
+|             | persistent  |          |             |             |
+|             | store for   |          |             |             |
+|             | downloaded  |          |             |             |
+|             | de          |          |             |             |
+|             | pendencies. |          |             |             |
+|             | Depending   |          |             |             |
+|             | on the      |          |             |             |
+|             | application |          |             |             |
+|             | the size of |          |             |             |
+|             | all         |          |             |             |
+|             | d           |          |             |             |
+|             | ependencies |          |             |             |
+|             | can vary    |          |             |             |
+|             | and         |          |             |             |
+|             | therfore    |          |             |             |
+|             | the cache   |          |             |             |
+|             | size can be |          |             |             |
+|             | adjusted    |          |             |             |
+|             | i           |          |             |             |
+|             | ndividually |          |             |             |
+|             | in case you |          |             |             |
+|             | see disk    |          |             |             |
+|             | space       |          |             |             |
+|             | errors. Set |          |             |             |
+|             | values like |          |             |             |
+|             | 800Mi or    |          |             |             |
+|             | 6Gi.        |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| pipe        | This sets   | no       | no value    |             |
+| lineTimeout | the global  |          | set         |             |
+|             | timeout of  |          | (1h0m0s)    |             |
+|             | the         |          |             |             |
+|             | Pipeline.   |          |             |             |
+|             | The Default |          |             |             |
+|             | of Tekton   |          |             |             |
+|             | Pipelines   |          |             |             |
+|             | is 1h0m0s   |          |             |             |
+|             | which       |          |             |             |
+|             | stands for  |          |             |             |
+|             | 1 hours 0   |          |             |             |
+|             | minutes 0   |          |             |             |
+|             | seconds. So |          |             |             |
+|             | you could   |          |             |             |
+|             | set for     |          |             |             |
+|             | example a   |          |             |             |
+|             | global      |          |             |             |
+|             | timeout to  |          |             |             |
+|             | 2h30m0s.    |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+| t           | This sets   | no       | no value    | 0.28.0      |
+| askTimeouts | the timeout |          | set         |             |
+|             | of specific |          | (every task |             |
+|             | tasks. The  |          | 1h0m0s)     |             |
+|             | default for |          |             |             |
+|             | each is     |          |             |             |
+|             | task is     |          |             |             |
+|             | 1h0m0s      |          |             |             |
+|             | which       |          |             |             |
+|             | stands for  |          |             |             |
+|             | 1 hours 0   |          |             |             |
+|             | minutes 0   |          |             |             |
+|             | seconds.    |          |             |             |
+|             | The values  |          |             |             |
+|             | are to be   |          |             |             |
+|             | set in an   |          |             |             |
+|             | object. The |          |             |             |
+|             | name of the |          |             |             |
+|             | task is the |          |             |             |
+|             | key, and    |          |             |             |
+|             | the timeout |          |             |             |
+|             | time is the |          |             |             |
+|             | value:      |          |             |             |
+|             |             |          |             |             |
+|             | "tas        |          |             |             |
+|             | kTimeouts": |          |             |             |
+|             | {           |          |             |             |
+|             |             |          |             |             |
+|             | "doc        |          |             |             |
+|             | ker-build": |          |             |             |
+|             | "2h0m0s"    |          |             |             |
+|             | }           |          |             |             |
++-------------+-------------+----------+-------------+-------------+
+
+Pre-defined Pipeline Parameters
+
+The following parameters are provided by the ESTA Tekton Controller and
+passed to pipeline templates when starting a pipeline. They can be used
+in custom pipeline templates as well as for placeholder substitution in
+values from estaTektonPipeline.json. Insert these parameters in JSON
+with this syntax: ${PARAM_NAME}
+
+REPOSITORY - Bitbucket repository key in the form
+<project-key>--<repository-slug> (all lower-cased)
+
+PRODUCT - The productName from estaTektonPipeline.json or the repository
+slug if not defined
+
+RANDOMNAME - A random alpha-numeric value of 6 characters
+
+GIT_URL - The git clone URL to the source repository
+
+GIT_REVISION - The git revision (sha) to be cloned into the pipeline
+workspace
+
+GIT_REV_SHORT - The short version of the GIT_REVISION (first 10
+characters)
+
+GIT_COMMIT_MESSAGE - The first line of the last commit message
+
+GIT_BRANCH - Git branch name (not set when pipeline started from a Git
+tag)
+
+DATE - The current date of the pipeline execution (yyyyMMdd)
+
+DATETIME - The current date/time of the pipeline execution
+(yyyyMMddHHmmss)
+
+ACTOR - Email address of the person/account who initiated the pipeline
+run
+
+USER_ID - User ID (SBB employee number/unique identifier for system
+users) of the person/account who initiated the pipeline (since 0.28.0)
+
+VERSION_TAG - Release version (for tagging) or Git tag (for release
+builds) – ATTENTION: This parameter is not available for builds based on
+a branch
+
+BRANCH_LABEL - Normalized name of the Git branch (lower-cased,
+alpha-numeric)
+
+CI - Could be used to determine if running on Tekton or not. Comparable
+to former check for BUILD_NUMBER on Jenkins based build systems.
+
+PACKAGE_VERSION - Package Version is the current Version. The Version is
+written in pom.xml, package.json or estaTektonPipeline.json

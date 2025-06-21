@@ -1,0 +1,145 @@
+Build ENV
+
+Namen und Beschreibung ist noch von Github/Gitlab
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Name                                 Beschreibung                                                                                                                                                                                                                                                                                                                         
+  ------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ --------
+  CI_CONCURRENT_ID                     The unique ID of build execution in a single executor.                                                                                                                                                                                                                                                                               
+
+  CI_CONCURRENT_PROJECT_ID             The unique ID of build execution in a single executor and project.                                                                                                                                                                                                                                                                   
+
+  CI_CONFIG_PATH                       The path to the CI/CD configuration file. Defaults to  .gitlab-ci.yml . Read-only inside a running pipeline                                                                                                                                                                                                                          
+
+  CI_ENVIRONMENT_NAME                  The name of the environment for this job. Available if  environment:name  is set.                                                                                                                                                                                                                                                    
+
+  CI_ENVIRONMENT_SLUG                  The simplified version of the environment name, suitable for inclusion in DNS, URLs, Kubernetes labels, and so on. Available if  environment:name  is set. The slug is  truncated to 24 characters . A random suffix is automatically added to  uppercase environment names .                                                        
+
+  CI_ENVIRONMENT_URL                   The URL of the environment for this job. Available if  environment:url  is set                                                                                                                                                                                                                                                       
+
+  CI_RELEASE_DESCRIPTION               The description of the release. Available only on pipelines for tags. Description length is limited to first 1024 characters                                                                                                                                                                                                         
+
+  CI_KUBERNETES_ACTIVE                 Only available if the pipeline has a Kubernetes cluster available for deployments.  true  when available.                                                                                                                                                                                                                            
+
+  CI_OPEN_MERGE_REQUESTS               A comma-separated list of up to four merge requests that use the current branch and project as the merge request source. Only available in branch and merge request pipelines if the branch has an associated merge request. For example,  gitlab-org/gitlab!333,gitlab-org/gitlab-foss!11 .                                         
+
+  CI_PLATFORM                          Name of the CI/CD Platform ("Tekton" or "Jenkins")                                                                                                                                                                                                                                                                                   :tick:
+
+  CI_KUBERNETES_CLUSTER                OpenShift cluster name where the pipeline runs (TODO: im Pod abrufbar? oder sonst inject via Helm Value → Controller Env Var)                                                                                                                                                                                                        :tick:
+
+  CI_KUBERNETES_NAMESPACE              OpenShift namespace/project name where the pipeline runs                                                                                                                                                                                                                                                                             :tick:
+
+  CI_CONTROLLER_URL                    The URL of the controller                                                                                                                                                                                                                                                                                                            :tick:
+
+  Workflow Information                                                                                                                                                                                                                                                                                                                                                      
+
+  GITHUB_ACTIONS                       Indicates if GitHub Actions is running.                                                                                                                                                                                                                                                                                              
+
+  GITHUB_WORKFLOW                      Name of the event that triggered the workflow.                                                                                                                                                                                                                                                                                       
+
+  GITHUB_EVENT_NAME                    Name of the event that triggered the workflow.                                                                                                                                                                                                                                                                                       
+
+  GITHUB_EVENT_PATH                    Name of the event that triggered the workflow.                                                                                                                                                                                                                                                                                       
+
+  GITHUB_WORKSPACE                     Default working directory on the runner.                                                                                                                                                                                                                                                                                             
+
+  GITHUB_REPOSITORY                    Repository name                                                                                                                                                                                                                                                                                                                      
+
+  GITHUB_REPOSITORY_OWNER              Repository owner's name                                                                                                                                                                                                                                                                                                              
+
+  GITHUB_REPOSITORY_ID                 Repository ID                                                                                                                                                                                                                                                                                                                        
+
+  GITHUB_REPOSITORY_OWNER_ID           GITHUB_REPOSITORY_OWNER_ID                                                                                                                                                                                                                                                                                                           
+
+  Commit, Branch und Tag Information                                                                                                                                                                                                                                                                                                                                        
+
+  CI                                   Fixed value "true" indicating a CI environment                                                                                                                                                                                                                                                                                       :tick:
+
+  CI_ACTOR                             Email address of the user who started the pipeline                                                                                                                                                                                                                                                                                   :tick:
+
+  CI_COMMIT_AUTHOR                     The author of the commit in  Name <email>  format.                                                                                                                                                                                                                                                                                   :tick:
+
+  CI_COMMIT_BEFORE_SHA                 The previous latest commit present on a branch or tag. Is always  0000000000000000000000000000000000000000  for merge request pipelines, the first commit in pipelines for branches or tags, or when manually running a pipeline.                                                                                                    
+
+  CI_COMMIT_BRANCH                     The commit branch name. Available in branch pipelines, including pipelines for the default branch. Not available in merge request pipelines or tag pipelines.                                                                                                                                                                        :tick:
+
+  CI_COMMIT_DESCRIPTION                The description of the commit. If the title is shorter than 100 characters, the message without the first line.                                                                                                                                                                                                                      
+
+  CI_COMMIT_MESSAGE                    The full commit message.                                                                                                                                                                                                                                                                                                             :tick:
+
+  CI_COMMIT_REF_NAME                   The branch or tag name for which project is built.                                                                                                                                                                                                                                                                                   
+
+  CI_COMMIT_SHA                        The commit revision the project is built for.                                                                                                                                                                                                                                                                                        :tick:
+
+  CI_COMMIT_TAG                        The commit tag name. Available only in pipelines for tags.                                                                                                                                                                                                                                                                           :tick:
+
+  CI_COMMIT_TAG_MESSAGE                The commit tag message. Available only in pipelines for tags.                                                                                                                                                                                                                                                                        
+
+  CI_COMMIT_TIMESTAMP                  The timestamp of the commit in the  ISO 8601  format. For example,  2022-01-31T16:47:55Z.                                                                                                                                                                                                                                            :tick:
+
+  CI_COMMIT_TITLE                      The title of the commit. The full first line of the message.                                                                                                                                                                                                                                                                         
+
+  Bitbucket/Repo Information                                                                                                                                                                                                                                                                                                                                                
+
+  CI_REPOSITORY_NAME                   Bitbucket/Git repository name                                                                                                                                                                                                                                                                                                        :tick:
+
+  CI_REPOSITORY_SLUG                   Bitbucket/Git repository slug/key                                                                                                                                                                                                                                                                                                    :tick:
+
+  CI_REPOSITORY_OWNER                  The Bitbucket project key                                                                                                                                                                                                                                                                                                            :tick:
+
+  CI_REPOSITORY_URL                    The HTTP(S) address of the repository                                                                                                                                                                                                                                                                                                :tick:
+
+  CI_GIT_URL                           The Git /checkout) URL to the repository                                                                                                                                                                                                                                                                                             :tick:
+
+  Project Information (Gitlab)                                                                                                                                                                                                                                                                                                                                              
+
+  CI_DEFAULT_BRANCH                    The name of the project’s default branch.                                                                                                                                                                                                                                                                                            
+
+  CI_PROJECT_ID                        The ID of the current project. This ID is unique across all projects on the GitLab instance.                                                                                                                                                                                                                                         
+
+  CI_PROJECT_NAME                      The name of the directory for the project. For example if the project URL is  gitlab.example.com/group-name/project-1 ,  CI_PROJECT_NAME  is  project-1 .                                                                                                                                                                            
+
+  CI_PROJECT_NAMESPACE                 The project namespace (username or group name) of the job.                                                                                                                                                                                                                                                                           
+
+  CI_PROJECT_NAMESPACE_ID              The project namespace ID of the job.                                                                                                                                                                                                                                                                                                 
+
+  CI_PROJECT_PATH_SLUG                 $CI_PROJECT_PATH  in lowercase with characters that are not  a-z  or  0-9  replaced with  -  and shortened to 63 bytes. Use in URLs and domain names.                                                                                                                                                                                
+
+  CI_PROJECT_PATH                      The project namespace with the project name included.                                                                                                                                                                                                                                                                                
+
+  CI_PROJECT_REPOSITORY_LANGUAGES      A comma-separated, lowercase list of the languages used in the repository. For example  ruby,javascript,html,css . The maximum number of languages is limited to 5. An issue  proposes to increase the limit .                                                                                                                       
+
+  CI_PROJECT_URL                       The HTTP(S) address of the project.                                                                                                                                                                                                                                                                                                  
+
+  CI_PROJECT_VISIBILITY                The project visibility. Can be  internal ,  private , or  public .                                                                                                                                                                                                                                                                   
+
+  CI_JOB_STAGE                         The name of the job’s stage.                                                                                                                                                                                                                                                                                                         
+
+  CI_JOB_STATUS                        The status of the job as each runner stage is executed. Use with  after_script . Can be  success ,  failed , or  canceled .                                                                                                                                                                                                          
+
+  CI_JOB_TIMEOUT                       The job timeout, in seconds.                                                                                                                                                                                                                                                                                                         
+
+  CI_JOB_TOKEN                         A token to authenticate with  certain API endpoints. The token is valid as long as the job is running.                                                                                                                                                                                                                               
+
+  CI_JOB_URL                           The job details URL.                                                                                                                                                                                                                                                                                                                 
+
+  CI_JOB_STARTED_AT                    The UTC datetime when a job started, in  ISO 8601  format. For example,  2022-01-31T16:47:55Z .                                                                                                                                                                                                                                      
+
+  Pipeline Information                                                                                                                                                                                                                                                                                                                                                      
+
+  CI_PIPELINE_ID                       The instance-level ID of the current pipeline →  Tekton PipelineRun name                                                                                                                                                                                                                                                             :tick:
+
+  CI_PIPELINE_SOURCE                   How the pipeline was triggered. Can be  push ,  web ,  schedule ,  api ,  external ,  chat ,  webide ,  merge_request_event ,  external_pull_request_event ,  parent_pipeline ,  trigger, or  pipeline . For a description of each value, see  Common  if  clauses for  rules , which uses this variable to control when jobs run.   
+
+  CI_PIPELINE_TRIGGERED                true  if the job was  triggered .                                                                                                                                                                                                                                                                                                    
+
+  CI_PIPELINE_URL                      The URL for the pipeline details (→ Tekton Control Panel Pipeline Run)                                                                                                                                                                                                                                                               :tick:
+
+  CI_PIPELINE_CREATED_AT               The UTC datetime when the pipeline was created, in  ISO 8601  format. For example,  2022-01-31T16:47:55Z.                                                                                                                                                                                                                            :tick:
+
+  CI_PIPELINE_CONFIG_NAME              The name of the matching pipeline config in estaTektonPipeline.json                                                                                                                                                                                                                                                                  :tick:
+
+  CI_PIPELINE_TRIGGER                  Tekton Pipeline triggerType ("GITEVENT", "USER" or "CRON")                                                                                                                                                                                                                                                                           :tick:
+
+                                                                                                                                                                                                                                                                                                                                                                            
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

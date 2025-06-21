@@ -1,0 +1,389 @@
+Esta Tekton Results - Setup and Evaluation
+
+Content
+
+-   Content
+
+-   Introduction
+
+    -   Result
+
+    -   Record
+
+    -   Tekton-Results instances
+
+-   Setup
+
+-   Setup Namespaced Tekton Results
+
+-   Some usefull SQL commands
+
+    -   Test with Index creations
+
+    -   Delete Schema and User
+
+    -   Reset Password of user
+
+-   Tekton Result Setup Strategies
+
+    -   Global Results
+
+    -   Namespace Scoped Watcher
+
+-   DB Setup Options Tekton Result - Namespaced
+
+    -   Option 1 Standard - Postgresql Setup per Namespace by Deployment
+
+    -   Option 2 PGO Operator - Postgresql Setup per Namespace by Custom
+        Resource (schematic picture same as above)
+
+    -   Option 3 Single Cluster DB Instance - Self managed Postgresql
+        Instance on Aws01t
+
+    -   Option 4 Sigle RDS Instance - Multiple Schemas in one DB
+
+-   Setup Esta-Tekton RDS Schemas
+
+Introduction
+
+To store the Tekton PipelineRun and TaskRun informations we will use
+either our own solution or a standard solution like Tekton-Results.
+
+Tekton Results watches all the Tekton Resources for changes and stores
+them into it's Postgresql DB. Tekton-Results DB fills two tables. 
+
+Result
+
+In the Result table all parent objects and its relations to its child
+objects are stored. In our case PipelineRuns with the relations to its
+TaskRuns and PipelineRuns which are stored as YAML in the records table.
+
+Record
+
+In the record table all PipelineRun and TaskRun Yamls are stored. 
+
+Tekton-Results consist of 2 main components: the api and the watcher
+service. The Watcher service listens to all Tekton resource changes and
+reads the resources, stores them over the api service into the DB. The
+api service offers read and write access through GRPC or REST Api.
+
+Tekton-Results instances
+
+We built up 2 Tekton-Results instances with following details:
+
++----------------------+----------------------+----------------------+
+|                      | DEV - Clew01d        | PRD - Aws01t         |
++======================+======================+======================+
+| Openshift Namespace  | htt                  | h                    |
+|                      | ps://console-openshi | ttps://console-opens |
+|                      | ft-console.apps.clew | hift-console.apps.aw |
+|                      | 01d.sbb-aws-dev.net/ | s01t.sbb-aws-test.ne |
+|                      | k8s/cluster/projects | t/project-details/ns |
+|                      | /esta-tekton-results | /esta-tekton-results |
++----------------------+----------------------+----------------------+
+| PostgreSQL Db        | https://ssp.dbms.sb  | https://ssp.dbms.sbb |
+|                      | b.ch/manageinstancea | .ch/manageinstanceaw |
+|                      | ws?i=esta-tekton-dev | s?i=esta-tekton-prod |
+|                      |                      |                      |
+|                      | The credentials you  |                      |
+|                      | can find in the      |                      |
+|                      | Keypass file.        |                      |
++----------------------+----------------------+----------------------+
+| S3 Bucket for the    | S3_BUCKET_NAME=est   | Not yet setup        |
+| PipelineRun/TaskRun  | a-tekton-results-dev |                      |
+| Logs                 |                      |                      |
+|                      | S3_ENDPOI            |                      |
+| Config happens in    | NT=https://s3.eu-cen |                      |
+|                      | tral-1.amazonaws.com |                      |
+| tekto                |                      |                      |
+| n-results-api-config | S3_HOST              |                      |
+|                      | NAME_IMMUTABLE=false |                      |
+|                      |                      |                      |
+|                      | S3                   |                      |
+|                      | _REGION=eu-central-1 |                      |
+|                      |                      |                      |
+|                      | S3_ACC               |                      |
+|                      | ESS_KEY_ID=<Keypass> |                      |
+|                      |                      |                      |
+|                      | S3_SECRET_           |                      |
+|                      | ACCESS_KEY=<Keypass> |                      |
++----------------------+----------------------+----------------------+
+| The Watcher is       | args:                |                      |
+| mainly configured    |                      |                      |
+| through the start    |   - -api_addr        |                      |
+| parameter of the     |                      |                      |
+| docker image which   |   -                  |                      |
+| you can see in this  | tekton-re            |                      |
+| piece of             | sults-api-service.{{ |                      |
+| sourcecode:          | .Values.namespace    |                      |
+|                      | }}.svc               |                      |
+| https                | .cluster.local:50051 |                      |
+| ://code.sbb.ch/proje |                      |                      |
+| cts/KD_ESTA/repos/es |   -                  |                      |
+| ta-tekton-results/br | -comple              |                      |
+| owse/charts/esta-tek | ted_run_grace_period |                      |
+| ton-results/template |                      |                      |
+| s/deployment.yaml#94 |   - '120h'           |                      |
+|                      |                      |                      |
+|                      |   - -namespace       |                      |
+|                      |                      |                      |
+|                      |   -                  |                      |
+|                      | esta-tekton-predev   |                      |
+|                      |                      |                      |
+|                      |   - -auth_mode       |                      |
+|                      |                      |                      |
+|                      |   - insecure         |                      |
++----------------------+----------------------+----------------------+
+| REST Urls            | https://             | https://rest         |
+|                      | tekton-results-api-s | -esta-tekton-results |
+|                      | ervice-tekton-pipeli | .apps.aws01t.sbb-aws |
+|                      | nes.apps.clew01d.sbb | -test.net/apis/resul |
+|                      | -aws-dev.net/apis/re | ts.tekton.dev/v1alph |
+|                      | sults.tekton.dev/v1a | a2/parents/-/results |
+|                      | lpha2/parents/esta-t |                      |
+|                      | ekton-predev/results |                      |
++----------------------+----------------------+----------------------+
+| Argocd Repo          | ht                   | ht                   |
+|                      | tps://code.sbb.ch/pr | tps://code.sbb.ch/pr |
+|                      | ojects/KD_PAAS/repos | ojects/KD_PAAS/repos |
+|                      | /ocp-argocd/browse/p | /ocp-argocd/browse/p |
+|                      | rojects/esta/applica | rojects/esta/applica |
+|                      | tions/tekton-results | tions/tekton-results |
+|                      |                      |                      |
+|                      | https://code.sbb.c   | https://code.sbb.ch  |
+|                      | h/projects/KD_PAAS/r | /projects/KD_PAAS/re |
+|                      | epos/ocp-argocd/brow | pos/ocp-argocd/brows |
+|                      | se/projects/esta/val | e/projects/esta/valu |
+|                      | ues/groups/stage/dev | es/groups/stage/test |
+|                      | /tekton-results.yaml | /tekton-results.yaml |
++----------------------+----------------------+----------------------+
+| ArgoCD's             | https://ocp-argoc    | https://ocp-argoc    |
+|                      | d.sbb-cloud-dev.net/ | d.int.sbb-cloud.net/ |
+|                      | applications?showFav | applications?showFav |
+|                      | orites=false&proj=&s | orites=false&proj=&s |
+|                      | ync=&health=&namespa | ync=&health=&namespa |
+|                      | ce=&cluster=&labels= | ce=&cluster=&labels= |
++----------------------+----------------------+----------------------+
+
+Setup
+
+The setup happens mainly through the ocp-argcd repo and Argocd
+instances. Afterwards some modifications are needed:
+
+1.  DB Secret: Adapt the Secret: tekton-results-postgres
+
+2.  Create the key/certificate and then the secret with the keys
+
+Setup Namespaced Tekton Results
+
+To Setup the new User we created a esta_tekton_creator user with special
+privileges to create new users. This is a one time thing per database. 
+We created this user already for the dev and the prod database.
+
+CREATE ROLE esta_tekton_creator PASSWORD 'secret' NOSUPERUSER CREATEDB
+CREATEROLE INHERIT LOGIN;
+GRANT CONNECT ON DATABASE esta_tekton TO esta_tekton_creator;
+GRANT ALL PRIVILEGES ON DATABASE esta_tekton TO esta_tekton_creator WITH
+GRANT OPTION;
+
+For the namespaced Tekton-Results Setup I created a repository to deploy
+tekton-results with the Helm Chart:
+
+https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-results/browse
+
+Then I also created a new schema esta-tekton-predev and a user
+esta-tekton-predev which then needed to be granted with following SQL
+Statements:
+
+DO
+$do$
+BEGIN
+IF EXISTS (
+SELECT FROM pg_catalog.pg_roles
+WHERE rolname = 'test7_tekton') THEN
+RAISE NOTICE 'Role "test7_tekton" already exists. Skipping.';
+ELSE
+CREATE ROLE test7_tekton PASSWORD 'abcdefg' INHERIT LOGIN;
+CREATE SCHEMA test7_tekton;
+GRANT CONNECT ON DATABASE esta_tekton TO test7_tekton;
+ALTER ROLE test7_tekton set SEARCH_PATH = 'test7_tekton';
+PERFORM pg_catalog.set_config('search_path', 'public', false);
+grant usage on schema test7_tekton to test7_tekton;
+GRANT ALL ON SCHEMA test7_tekton TO test7_tekton;
+END IF;
+END
+$do$;
+
+Ticket which describes the creation of user esta_tekton_creator: DB-654
+- Abrufen der Vorgangsdetails... STATUS
+
+Some usefull SQL commands
+
+Test with Index creations
+
+I created several indexes:
+
+CREATE INDEX idx_results_name ON esta_tekton.results(name);
+CREATE INDEX idx_records_name ON esta_tekton.records(name);
+CREATE INDEX idx_records_updated_time ON
+esta_tekton.records(updated_time);
+But all queries used for fetching the PipelineRuns were not using the
+Indexes:
+
+explain select rc.id, rc.name, rc.data, rc.type, rc.data from
+esta_tekton.results as rs inner join esta_tekton.records as rc on
+rs.name = rc.name order by rc.updated_time desc;
+explain select rc.id, rc.name, rc.data, rc.type, rc.data from
+esta_tekton.results as rs inner join esta_tekton.records as rc on
+rs.name = rc.name order by rc.updated_time desc;
+explain select rc.id, rc.name, rc.data, rc.type, rc.data from
+esta_tekton.results as rs, esta_tekton.records as rc where rs.name =
+rc.name order by rc.updated_time desc limit 1000;
+So the indexes have no impact.
+
+Delete Schema and User
+
+This SQL commands drop the schema and it's tables. And then also drop
+the user.
+
+DROP SCHEMA <schema_name> CASCADE;
+REVOKE CONNECT ON DATABASE esta_tekton FROM <user_name>;
+DROP ROLE <user_name>;
+
+Reset Password of user
+
+To reset the password of the Db User:
+
+ALTER USER <user> WITH PASSWORD 'yourNewPassword';
+
+Tekton Result Setup Strategies
+
+Global Results
+
+With the actual POC Setup we have a global Tekton Resource Watcher,
+which process all resources in all namespaces.
+
+[]
+
+Namespace Scoped Watcher
+
+Another Setup would be, to install tekton results namespace scoped with
+its own schema per namespace. Also the watcher and api would run with
+namespace limited service account. This would be security wise a much
+better solution. 
+Also stability wise we wouldn't have a single point of failure, except
+the database. The esta-tekton-pipeline-controller could actually access
+directly the database.
+
+[]
+
+DB Setup Options Tekton Result - Namespaced
+
+Option 1 Standard - Postgresql Setup per Namespace by Deployment
+
+Here we would just setup a Postgresql Pod for each namespace with it's
+own PV which is then accessed by the Tekton-Results Api. Of course at
+first, this seems to be simple, but in case of a problem we need to
+manage 80-100 Postgresql instances. 
+Also this solution will consume unnecessary lot's of hardware ressources
+and seems to me like unnecessary overhead.
+
+  Pro                                                   Con
+  ----------------------------------------------------- ----------------------------------------------------------------------------------------
+  Simple Setup by Deployment and ArgoCd                 Managed by Esta
+  Ressource usage are billed directly to the project    Very high resource usage and overhead since 1 Postgresql instance per Tekton namespace
+  Reduced network traffic and latency for SQL Queries   Need to manage 80 Postgres Instances by ourselves
+                                                        Postgres Knowhow needed
+                                                        Updates need to be managed by Esta
+
+[]
+
+Option 2 PGO Operator - Postgresql Setup per Namespace by Custom Resource (schematic picture same as above)
+
+With this setup we would use the same operator as PGO uses to manage the
+Postgresql instances for all Tekton namespaces. But still we would have
+in each tekton-namespace it's own Postgresql instance.
+
+  Pro                                                   Con
+  ----------------------------------------------------- ----------------------------------------------------------------------------------------
+  Simple Setup by Custom Resource and ArgoCD            Managed by Operator and Esta
+  Ressource usage are billed directly to the project    Very high resource usage and overhead since 1 Postgresql instance per Tekton namespace
+  Reduced network traffic and latency for SQL Queries   Need to manage 80 Postgres Instances by ourselves
+  Updates are handled by the Operator                   Postgres Knowhow needed
+                                                        
+
+Option 3 Single Cluster DB Instance - Self managed Postgresql Instance on Aws01t  
+
+With this setup we would have a self managed Postgresql DB instance on
+the aws01t Cluster. It can be selfmanaged or with the PGO Operator.
+But in the end, the setup happens by ourselves and is also managed by
+ESTA.
+The schematic setup is the same as with the Amazon RDS, just the
+instance is managed by ourselves. Also here we need to build up some DB
+Knowhow to manage, migrate, update the Postgresql DB. 
+
+So in the end we will have one Postgresql Server instance with one
+Database. The Esta-Tekton Setup process will create a new Scheme and DB
+User for each Tekton-Namespace. 
+
+  Pro                                                           Con
+  ------------------------------------------------------------- ---------------------------------------------------------------------------------------
+  Simple Setup by DeploymentConfig or Operator                  Managed by Esta
+  Reduced network traffic and latency for SQL Queries           Postgressql Knowhow needed 
+  Low Resource usage with one PGSQL Instance and many schemas   Updates managed by Esta
+  Full controll over the PGSQL Instance                         Shared costs
+                                                                If this single instance is not working, access to historic Pipelineruns not possible 
+
+[]
+
+Option 4 Sigle RDS Instance - Multiple Schemas in one DB
+
+The actual discussed solution and most probably most straight forward
+solution is to use one single RDS instance with many DB schemas and a DB
+User for each schema.
+
+  Pro                                            Cons
+  ---------------------------------------------- -------------------------------------------------------
+  Already setup                                  Network Latency since it runs outside of cluster
+  Separation of Data through Schemas and Users   Need to give rights to Admin user to create new users
+  PGSQL Instance managed by Amazon               PGSQL Instance managed by Amazon
+  Schema Setup through SQL already tested        
+  Setup already tested                           
+  Relatively affordable costs                    
+
+[]
+
+Setup Esta-Tekton RDS Schemas
+
+At the moment my favorable solution is Option 4 with a single RDS DB
+instance and multiple Schemas. This solution makes it also easy to
+maintain this Database from outside, has low resource costs and also
+allows to run statistics over all Tekton-Namespaces without making cross
+Database Queries.
+
+The schema setup seems also relatively easy to maintain and a possible
+solution I would like to show in following graphic. The idea behind is,
+that we have the full DB User which at the moment can create schemas and
+change users search path to the schema. At the moment the full DB User
+cannot create new users, but that can be solved. So to handle old and
+new tekton instances migrating to tekton-results, we would need to write
+an operator. This operator should do following things:
+
+-   Look for new Schema creation CR's on the tekton clusters
+
+-   Create a new DB User: xxx_tekton
+
+-   Create a new Schmema: xxx_tekton
+
+-   Grant created User to created schema
+
+-   Change searchpath of the default schema from the user to the newly
+    created schema
+
+-   Create the DB secret in the xxx_tekton namespace so tekton-results
+    and the esta-tekton-pipeline-controller can access it
+
+This Operator accesses the Database with a privileged user to create new
+users and schemas.
+
+[]

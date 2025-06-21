@@ -1,0 +1,62 @@
+Esta-Tekton Quarkus Native Build
+
+Vieles kann auf dem Standardguide von Quarkus nachgelesen werden. Ich
+möchte hier trotzdemnochmals die Erfahrungen kurz zusammenfassen.
+
+Der Standardguide für Quarkus-Native kann hier gefunden werden:
+https://quarkus.io/guides/native-reference
+
+Umstellung auf Nativebuild
+
+1.  Anpassung des Dockerfiles
+
+2.  GraalVm selektieren:
+    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/browse/estaTektonPipeline.json#5
+
+3.  Quarkus Buildparameter setzen:
+    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/browse/estaTektonPipeline.json#58
+
+4.  Quarkus Native Block im application.yml konfigurieren:
+    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/browse/src/main/resources/application.yaml#55
+
+5.  Externe Library Klassen welche per Reflection instanziert werden
+    registrieren:
+    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/browse/src/main/java/ch/sbb/esta/tekton/pipeline/nativebuild/RegisterReflections.java
+
+6.  Eigene Klassen welche per Reflection instanziert werden annotieren:
+    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/browse/src/main/java/ch/sbb/esta/tekton/pipeline/service/appregistration/model/AccessToken.java#5
+
+Dann kann der lokale Build per: 
+
+mvn package -DskipTests -Dnative -Dquarkus.native.debug.enabled=true
+-Dquarkus-profile=dev 
+
+gestartet werden. Sobald der Build erfolgreich durchlief kann das native
+image wie folgt gestartet werden:
+
+./target/esta-tekton-pipeline-controller-x.y.z-SNAPSHOT-runner
+
+Tekton-Client für Quarkus Nativebuild aufbereiten
+
+Da die tekton-client library nicht in der aktuellen Version für den
+Quarkus Nativebuild aufbereitet ist, wurde ein eigenes repo mit einem
+eigenen Build angelegt, um den tekton-client für den nativebuild
+konfiguriert zu haben. 
+
+https://code.sbb.ch/projects/KD_ESTA/repos/esta-quarkus-tekton-client/browse
+
+Debuggen einer Native App
+
+Das debuggen einer Nativeapp geht nur unter Linux. Leider hat auch unter
+Linux mit GDB das debuggen per Intellij Debugger nicht funktioniert. Das
+attachen des Debugger klappt nicht.
+
+Man führt den debugger wie folgt aus 'gdb
+target/esta-tekton-pipeline-controller-x.y.z-SNAPSHOT-runner' dann
+erhält man eine Konsole und tippt dort 'run' das Programm wird
+ausgeführt, aber leider konnte der debugger nicht attached werden. 
+
+Erfolgreiches publishen der App
+
+Im Endeffekt konnten wir die App erfolgreich auf esta-tekton-dev und
+clew-tekton ausrollen.

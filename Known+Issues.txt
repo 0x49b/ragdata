@@ -1,0 +1,179 @@
+Known Issues
+
+This is a collection of issues or regressions known when building your
+projects with Tekton.
+
+-   Dockerfile: tar command fails with "Cannot change ownership to uid
+    xxx"
+
+-   NPM Builds with Karma Tests time-out
+
+-   NPM Builds with Playwright WebKit tests fail
+
+-   Tagging pipeline fails with reject from server
+
+-   Maven builds fail with "invalid CEN header (encrypted entry)" errors
+
+-   maven-assembly-plugin fails with "group id '1001230000' is too big"
+    errors
+
+-   Staging pipeline fails at argocd-sync-and-wait
+
+-   Docker build fails to download files from archive.apache.org
+
+Dockerfile: tar command fails with "Cannot change ownership to uid xxx"
+
+When running in a Docker build environment, tar tries to apply the
+ownership information from the archive. The following error may occur
+when processing your Dockerfile:
+
+[docker-build - build-push]  tar: some/path: Cannot change ownership to
+uid 1000960000, gid 1000960000: Invalid argument
+
+Workaround
+
+Execute tar with the --no-same-owner option in your Dockerfile.
+
+NPM Builds with Karma Tests time-out
+
+The default test configuration from Angular uses the ChromeHeadless
+launcher. This one doesn't run properly in Tekton pipelines which leads
+to the test process either failing or timing out.
+
+Workaround
+
+Create a customLauncher in your karma.conf.js using ChromiumHeadless as
+base and adding the --no-sandbox flag:
+
+karma.conf.js
+
+customLaunchers: {
+
+ChromiumHeadlessCI: {
+
+base: 'ChromiumHeadless',
+
+flags: ['--no-sandbox']
+
+},
+
+},
+
+Then use this launcher in the CI test config of your angular.json
+profile:
+
+angular.json
+
+"test": {
+
+"builder": "@angular-devkit/build-angular:karma",
+
+"options": {
+
+...
+
+},
+
+"configurations": {
+
+"ci": {
+
+"browsers": "ChromiumHeadlessCI",
+
+...
+
+}
+
+}
+
+},
+
+When running ng test -c ci, the ChromiumHeadless browser will be started
+which runs successfully in Tekton.
+
+NPM Builds with Playwright WebKit tests fail
+
+If your e2e tests with playwright, and you use WebKit as the browser,
+the pipeline will fail because of missing dependencies.
+
+Workaround
+
+Use Firefox or Chromium as the browser in the pipeline. These will work
+correctly.
+
+Tagging pipeline fails with reject from server
+
+If your tagging pipelines fail with the error "you can only push
+annotated tags that you created", then your repository has the "Verify
+Committer activated which rejects the Git tags created by the Tekton
+pipeline.
+
+Workaround
+
+Go to the Repository settings in Bitbucket, select Hooks and then
+disable the "Verify Committer" hook.
+
+Maven builds fail with "invalid CEN header (encrypted entry)" errors
+
+This rather cryptic error message means that a specific maven dependency
+was blocked by CyberArt and cannot be used anymore.
+
+Check this repository for a list of blocked java modules.
+
+Workaround
+
+Update your project's dependencies to a more recent version that is not
+on the blocked list or request an Exception to Policy (EtP).
+
+maven-assembly-plugin fails with "group id '1001230000' is too big" errors
+
+By default the maven-assembly-plugin (and maybe other plugins) struggle
+with the large UIDs randomly assigned to the pipeline containers by
+OpenShift.
+
+Workaround
+
+As the full error messages suggests: Use STAR or POSIX extensions to
+overcome this limit.
+An effektive fix is to add the tarLongFileMode configuration option for
+the according plugin in your pom.xml:
+
+pom.xml
+
+<configuration>
+
+...
+
+<tarLongFileMode>posix</tarLongFileMode>
+
+</configuration>
+
+Staging pipeline fails at argocd-sync-and-wait
+
+Staging pipelines wich attempt to perform a sync in ArgoCD may fail with
+an error printed to the logs like this:
+
+FailedPrecondition desc = Cannot sync to xxxxx: auto-sync currently set
+to HEAD
+
+This error occurs if the application in ArgoCD which Tekton wants to
+sync has the automated sync policy set. In this case ArgoCD refuses to
+sync to an explicit revision and the pipeline command fails with the
+given error.
+
+Solution
+
+Either disable the autoSync flag in estaTektonPipeline.json or remove
+the auto sync policy in your ArgoCD application resource.
+
+Docker build fails to download files from archive.apache.org
+
+RUN or ADD commands which download a file from archive.apache.org fail
+with an "i/o timeout" error. Unfortunately connections from OpenShift to
+archive.apache.org cannot be established.
+
+Solution
+
+Use the mirrored repository at
+https://bin.sbb.ch/artifactory/apache-archive. Read more in Use of
+artifactory remote repo for archive.apache.org.

@@ -1,0 +1,460 @@
+ESTA Tekton E2E User Stories
+
++----+-------------------------------+-------------------------------+
+| ID | Beschreibung                  | Szenario/Akzeptanzkriterien   |
++====+===============================+===============================+
+| 3  | Ein eingeloggter User möchte  | 1.  Navigiert zum Pipelines   |
+|    | einen Tagging Pipeline Run    |     Fenster                   |
+|    | finden. Der User weiss  in    |                               |
+|    | welchem Repository sich der   | 2.  Filtert nach Repository   |
+|    | Build befindet, deshalb       |                               |
+|    | filtert er die Suche.         | 3.  gibt "tagging" in das     |
+|    |                               |     Suchfeld ein              |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  User wird von der         |
+|    |                               |     Startseite zur Pipeline   |
+|    |                               |     Seite geführt             |
+|    |                               |                               |
+|    |                               | 2.  Nur die gefailten Builds  |
+|    |                               |     eines Repositories werden |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 3.  Nur der Build mit dem     |
+|    |                               |     gesuchtem Namen           |
+|    |                               |     erscheint                 |
++----+-------------------------------+-------------------------------+
+| 4  | Als eingeloggter User möchte  | 1.  Navigiert zum Pipelines   |
+|    | ich das Pipelinerun YAML File |     Fenster                   |
+|    | von einem Build sehen         |                               |
+|    |                               | 2.  Klickt auf sein gesuchten |
+|    |                               |     Pipeline Build            |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf das YAML       |
+|    |                               |     Fenster                   |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  User wird von der         |
+|    |                               |     Startseite zur Pipeline   |
+|    |                               |     Seite geführt             |
+|    |                               |                               |
+|    |                               | 2.  Der User wird auf eine    |
+|    |                               |     Seite weitergeleitet, wo  |
+|    |                               |     er Details zum Pipeline   |
+|    |                               |     Build findet              |
+|    |                               |                               |
+|    |                               | 3.  Das YAML File wird        |
+|    |                               |     angezeigt                 |
++----+-------------------------------+-------------------------------+
+| 1  | Eingeloggter User möchte      | 1.  Navigiert zum Projects    |
+|    | einen Build laufen lassen     |     Fenster                   |
+|    |                               |                               |
+|    |                               | 2.  Klickt auf das richtige   |
+|    |                               |     Project                   |
+|    |                               |                               |
+|    |                               | 3.  Hovert auf das richtige   |
+|    |                               |     Repository bei der Last   |
+|    |                               |     Pipeline Runs Spalte      |
+|    |                               |                               |
+|    |                               | 4.  Klickt auf das Play Icon  |
+|    |                               |     um den Build laufen zu    |
+|    |                               |     lasssen                   |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  User wird von der         |
+|    |                               |     Startseite zur Projects   |
+|    |                               |     Seite geführt             |
+|    |                               |                               |
+|    |                               | 2.  User sieht eine Liste von |
+|    |                               |     Repositories welche zum   |
+|    |                               |     Project gehören           |
+|    |                               |                               |
+|    |                               | 3.  4 Icons tauchen auf in    |
+|    |                               |     der letzten Spalte        |
+|    |                               |                               |
+|    |                               | 4.  Der Build wird gestartet  |
++----+-------------------------------+-------------------------------+
+| 2  | Der User erstellt einen       | 1.  Navigiert zum Projects    |
+|    | Release Tag auf einem         |     Fenster                   |
+|    | Repository                    |                               |
+|    |                               | 2.  Klickt auf das richtige   |
+|    |                               |     Project                   |
+|    |                               |                               |
+|    |                               | 3.  Hovert auf das richtige   |
+|    |                               |     Repository bei der Last   |
+|    |                               |     Pipeline Runs Spalte      |
+|    |                               |                               |
+|    |                               | 4.  Klickt auf den Tag Button |
+|    |                               |                               |
+|    |                               | 5.  Wählt den Branch aus      |
+|    |                               |                               |
+|    |                               | 6.  Wählt einen Radiobutton   |
+|    |                               |     für den Version Tag       |
+|    |                               |                               |
+|    |                               | 7.  Wählt einen Radiobutton   |
+|    |                               |     für die Developer Version |
+|    |                               |                               |
+|    |                               | 8.  Klickt auf den Next       |
+|    |                               |     Button                    |
+|    |                               |                               |
+|    |                               | 9.  Klickt auf den Execute    |
+|    |                               |     Button                    |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  User wird von der         |
+|    |                               |     Startseite zur Projects   |
+|    |                               |     Seite geführt             |
+|    |                               |                               |
+|    |                               | 2.  User sieht eine Liste von |
+|    |                               |     Repositories welche zum   |
+|    |                               |     Project gehören           |
+|    |                               |                               |
+|    |                               | 3.  4 Icons tauchen auf in    |
+|    |                               |     der letzten Spalte        |
+|    |                               |                               |
+|    |                               | 4.  Ein neues Fenster öffnet  |
+|    |                               |     sich, wo man den Tag      |
+|    |                               |     erstellen kann            |
+|    |                               |                               |
+|    |                               | 5.  Branch wird ausgewählt    |
+|    |                               |                               |
+|    |                               | 6.  Radiobutton Eingabe wird  |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 7.  Radiobutton Eingabe wird  |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 8.  Die getätigte Eingabe     |
+|    |                               |     wird stichpunktartig      |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 9.  Neuer Tag wird erstellt   |
++----+-------------------------------+-------------------------------+
+| 5  | Der User möchte eine Pipeline | 1.  Navigiert zum Pipeline    |
+|    | Secret Key kopieren           |     Secrets Fenster           |
+|    |                               |                               |
+|    |                               | 2.  Klickt auf das gewünschte |
+|    |                               |     Pipeline Secret           |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf das Auge Icon  |
+|    |                               |     um den Value eines Keys   |
+|    |                               |     anzuzeigen                |
+|    |                               |                               |
+|    |                               | 4.  Kopiert den Key           |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird von der     |
+|    |                               |     Startseite zur Secrets    |
+|    |                               |     Seite geführt             |
+|    |                               |                               |
+|    |                               | 2.  Die verschiedenen Keys    |
+|    |                               |     eines Secrets werden      |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 3.  Der Value des Key wird    |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 4.  Value im Input-Feld       |
+|    |                               |     entspricht dem erwarteten |
+|    |                               |     Wert                      |
+|    |                               |                               |
+|    |                               | (Secret muss beim             |
+|    |                               | Initialisieren der Tests      |
+|    |                               | erstellt werden → Helm Chart) |
++----+-------------------------------+-------------------------------+
+| 6  | Der User fügt ein Secret      | 1.  Navigiert zum Pipeline    |
+|    | hinzu und löscht es wieder    |     Secrets Fenster           |
+|    |                               |                               |
+|    |                               | 2.  Klickt auf das gewünschte |
+|    |                               |     Pipeline Secret           |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf das Add        |
+|    |                               |     Key/Value Pair Button     |
+|    |                               |                               |
+|    |                               | 4.  Gibt beim Key Input Field |
+|    |                               |     einen Namen für das       |
+|    |                               |     Secret                    |
+|    |                               |                               |
+|    |                               | 5.  Gibt beim Value Input     |
+|    |                               |     Field den Value ein       |
+|    |                               |                               |
+|    |                               | 6.  Klickt auf den Save       |
+|    |                               |     Button um die Änderungen  |
+|    |                               |     zu speichern              |
+|    |                               |                               |
+|    |                               | 7.  Klickt auf den Löschen    |
+|    |                               |     Button                    |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zum Secret  |
+|    |                               |     Fenster weitergeleitet    |
+|    |                               |                               |
+|    |                               | 2.  Die verschiedenen Keys    |
+|    |                               |     eines Secrets werden      |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 3.  2 leere Input Felder      |
+|    |                               |     werden der Seite          |
+|    |                               |     hinzugefügt, eines namens |
+|    |                               |     Key das andere Value      |
+|    |                               |                               |
+|    |                               | 4.  Der neue Key ist sichtbar |
+|    |                               |                               |
+|    |                               | 5.  Secret wird in der Liste  |
+|    |                               |     angezeigt                 |
+|    |                               |                               |
+|    |                               | 6.  Nach Löschung ist das     |
+|    |                               |     Secret wieder entfernt    |
++----+-------------------------------+-------------------------------+
+| 7  | ~~Der User gibt einer Gruppe  | 1.  Navigiert zum User        |
+|    | die Admin Rolle~~             |     Permissions Fenster       |
+|    |                               |                               |
+|    |                               | 2.  Wählt die Admin Rolle aus |
+|    |                               |                               |
+|    |                               | 3.  Schreibt die              |
+|    |                               |     zuberechtigende Gruppe in |
+|    |                               |     das Input Field           |
+|    |                               |                               |
+|    |                               | 4.  Klickt auf den Add Group  |
+|    |                               |     Button                    |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Permission Seite          |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  Der Radiobutton mit dem   |
+|    |                               |     Wert Admin ist ausgewählt |
+|    |                               |                               |
+|    |                               | 3.  Der Name der              |
+|    |                               |     zuberechtigenden Gruppe   |
+|    |                               |     ist im Input Feld         |
+|    |                               |     sichtbar, der Add Group   |
+|    |                               |     Button wechselt seinen    |
+|    |                               |     State von disabled zu     |
+|    |                               |     activated                 |
+|    |                               |                               |
+|    |                               | 4.  Zusammen mit der Rolle    |
+|    |                               |     wird die neue Gruppe in   |
+|    |                               |     der untenstehenden Liste  |
+|    |                               |     angezeigt                 |
++----+-------------------------------+-------------------------------+
+| 8  | ~~User sieht sich die         | 1.  Navigiert zum Pipelines   |
+|    | PipelineRun Details in        |     Fenster                   |
+|    | Openshift an~~                |                               |
+|    |                               | 2.  Hovert auf dem            |
+|    |                               |     gewünschten Pipeline Run  |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf Openshift      |
+|    |                               |     Konsole                   |
+|    |                               |                               |
+|    |                               | 4.  Gelangt zum Openshift     |
+|    |                               |     Fenster mit den           |
+|    |                               |     PipelineRun Details       |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Pipelines Seite           |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  2 Icons erscheinen in der |
+|    |                               |     letzten Spalte            |
+|    |                               |                               |
+|    |                               | 3.  Ein neuer Tab führt den   |
+|    |                               |     User zur Openshift Seite  |
+|    |                               |                               |
+|    |                               | 4.  Sieht die Details des     |
+|    |                               |     PipelineRuns auf          |
+|    |                               |     Openshift                 |
++----+-------------------------------+-------------------------------+
+| 9  | User sieht sich die Tekton    | 1.  Navigiert zur Repository  |
+|    | Pipeline Runs in einem        |     Seite                     |
+|    | Repository an                 |                               |
+|    |                               | 2.  Hovert über dem           |
+|    |                               |     gewünschtem Repository    |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf den Show       |
+|    |                               |     Pipelines Button          |
+|    |                               |                               |
+|    |                               | 4.  Klickt den Filter Button  |
+|    |                               |     auf dem master Branch     |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Repositories Seite        |
+|    |                               |     geführt, wo die           |
+|    |                               |     verschiedenen             |
+|    |                               |     Repositories angezeigt    |
+|    |                               |     werden                    |
+|    |                               |                               |
+|    |                               | 2.  4 Icons erscheinen in der |
+|    |                               |     letzten Spalte            |
+|    |                               |                               |
+|    |                               | 3.  Der User wird auf die     |
+|    |                               |     Repo-Details Seite        |
+|    |                               |     weitergeleitet wo er alle |
+|    |                               |     Pipeline Runs in dem      |
+|    |                               |     Repository sieht          |
+|    |                               |                               |
+|    |                               | 4.  Pipelines Listing passt   |
+|    |                               |     sich der Branch-Selektion |
+|    |                               |     an                        |
++----+-------------------------------+-------------------------------+
+| 10 | User löscht ein Repository in | 1.  Navigiert zur Repository  |
+|    | der Liste                     |     Seite                     |
+|    |                               |                               |
+|    |                               | 2.  Hovert über das           |
+|    |                               |     zulöschende Repository    |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf das X Icon     |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Repositories Seite        |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  4 Icons erscheinen in der |
+|    |                               |     letzten Spalte            |
+|    |                               |                               |
+|    |                               | 3.  Das gelöschte Repository  |
+|    |                               |     verschwindet von der      |
+|    |                               |     Liste                     |
++----+-------------------------------+-------------------------------+
+| 11 | ~~User rescant die            | 1.  Navigiert zur Projects    |
+|    | Repositories eines            |     Seite                     |
+|    | Projektes~~                   |                               |
+|    | :tick: bereist vorhanden      | 2.  Hovert über das           |
+|    |                               |     gewünschte Projekt        |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf das Icon mit   |
+|    |                               |     den 2 im Kreis drehenden  |
+|    |                               |     Pfeile, um den Scan zu    |
+|    |                               |     starten                   |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Projects Seite            |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  3 Icons erscheinen        |
+|    |                               |                               |
+|    |                               | 3.  Scan wird gestartet       |
++----+-------------------------------+-------------------------------+
+| 12 | ~~User konvertiert sein       | 1.  Navigiert zur Migration   |
+|    | estaCloudPipeline.json zu     |     Seite                     |
+|    | estaTektonPipeline.json und   |                               |
+|    | lädt die Datei herunter~~     | 2.  kopiert den Inhalt seiner |
+|    | → in UI Playwright Tests      |     estaCloudPipeline.json    |
+|    |                               |                               |
+|    |                               | 3.  fügt den kopierten Inhalt |
+|    |                               |     in das                    |
+|    |                               |     estaCloudPipeline.json    |
+|    |                               |     Input Field               |
+|    |                               |                               |
+|    |                               | 4.  Klickt auf den Download   |
+|    |                               |     Button                    |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Migration Seite           |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  Der Inhalt des            |
+|    |                               |     estaCloudPipeline.json    |
+|    |                               |     Datei befindet sich in    |
+|    |                               |     der Zwischenablage des    |
+|    |                               |     Users                     |
+|    |                               |                               |
+|    |                               | 3.  Der Inhalt des            |
+|    |                               |     estaCloudPipeline.json    |
+|    |                               |     Datei ist im Input Feld   |
+|    |                               |     ersichtlich               |
+|    |                               |                               |
+|    |                               | 4.  Das File wird vom Browser |
+|    |                               |     heruntergeladen           |
++----+-------------------------------+-------------------------------+
+| 13 | User vermutet Probleme mit    | 1.  Navigiert zur             |
+|    | den Caches, deshalb löscht er |     Repositories Seite        |
+|    | Pipeline Caches für ein Repo  |                               |
+|    |                               | 2.  Wählt ein Repo aus        |
+|    |                               |                               |
+|    |                               | 3.  Klickt auf den Button     |
+|    |                               |     "Manage pipeline cache"   |
+|    |                               |                               |
+|    |                               | 4.  Wählt alle Cache-Einträge |
+|    |                               |     aus                       |
+|    |                               |                               |
+|    |                               | 5.  Klickt auf Delete         |
+|    |                               |     selected                  |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Die Liste der Pipeline    |
+|    |                               |     Caches zeigt mind. 1      |
+|    |                               |     Eintrag                   |
+|    |                               |                               |
+|    |                               | 2.  Nach dem Löschen ist die  |
+|    |                               |     Liste leer                |
++----+-------------------------------+-------------------------------+
+| 14 | User will einige Repositories | 1.  Navigiert zur System      |
+|    | ausblenden                    |     Configuration Seite       |
+|    |                               |                               |
+|    |                               | 2.  User erstellt ein Regex   |
+|    |                               |     welches gewisse           |
+|    |                               |     Repositories ausblendet   |
+|    |                               |                               |
+|    |                               | 3.  Einfügen des Regexes in   |
+|    |                               |     das Exclude Git           |
+|    |                               |     Repository regular        |
+|    |                               |     expression patterns Input |
+|    |                               |     Field                     |
+|    |                               |                               |
+|    |                               | 4.  Betätigt Enter Taste um   |
+|    |                               |     den Chip zu speichern     |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur         |
+|    |                               |     Configuration Seite       |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  -                         |
+|    |                               |                               |
+|    |                               | 3.  -                         |
+|    |                               |                               |
+|    |                               | 4.  Der Regex wird zu einem   |
+|    |                               |     Chip mit den man die      |
+|    |                               |     gewünschten Repositories  |
+|    |                               |     ausblenden kann (Die      |
+|    |                               |     Repositories werden nicht |
+|    |                               |     mehr in der Liste         |
+|    |                               |     angezeigt)                |
++----+-------------------------------+-------------------------------+
+| 15 | Templates importieren         | 1.  Navigiert zur System      |
+|    |                               |     Configuration Seite       |
+|    |                               |                               |
+|    |                               | 2.  Klickt auf den Import     |
+|    |                               |     templates now Button      |
+|    |                               |                               |
+|    |                               | Resultat:                     |
+|    |                               |                               |
+|    |                               | 1.  Der User wird zur System  |
+|    |                               |     Configuration Seite       |
+|    |                               |     weitergeleitet            |
+|    |                               |                               |
+|    |                               | 2.  Die angezeigte Last       |
+|    |                               |     Import Zeit wird          |
+|    |                               |     aktualisiert              |
++----+-------------------------------+-------------------------------+

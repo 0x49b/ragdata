@@ -1,0 +1,368 @@
+Azure AD App Registration Prozess
+
+Die Authentifizierung am Tekton Control Panel und am Controller API
+erfolgt über das Microsoft Login (SSO). Grundlage dafür ist eine App
+Registration, welche über das IAM API angelegt und gepflegt wird. Jede
+ESTA Tekton Instanz benötigt ihre eigene App Registration. Die
+automatisierte Erstellung einer App Registration ist bereits Teil des
+ESTA Tekton Setups und wird über das esta-tekton-pipeline-config Helm
+Chart konfiguriert und mit einen Taskrun ausgeführt.
+
+Für die Kommunikation mit dem Azure AD API wurden bisher statisch
+definierte Credentials verwendet, welche für alle Tekton Namespaces
+identisch sind und auch in jedem Namespace als Secret hinterlegt sind.
+Der App Registration Prozess soll nun auch die automatisierte Erstellung
+einer individuellen APIM Application für Azure AD pro Tekton Namespace
+beinhalten. Der Setup Prozess sieht dann wie folgt aus:
+
+1.  APIM Application für Azure AD erstellen
+    (via ArgoCD mit APIM Credentials im ArgoCD Namespace hinterlegt)
+
+2.  Client ID und Secret für Azure AD API als Secret
+    azure-ad-client-credentials im Tekton Namespace anlegen
+    (diese werden vom Controller auch für die Manipulation von
+    group-role Assignments verwendet)
+
+3.  Azure AD App Registration via API registrieren
+    (mit den Credentials aus Secret azure-ad-client-credentials)
+
+4.  Client ID in Secret esta-tekton-oauth-client-ids speichern
+
+5.  ESTA Tekton Controller startet mit Values aus
+    azure-ad-client-credentials und esta-tekton-oauth-client-ids
+
+Scripts für das Erstellen einer Azure AD Application via APIM API (1. und 2.)
+
+(Client ID und Secret für das APIM API sind in ESTA Passwords
+hinterlegt)
+
+create-azure-app.sh Quelle erweitern
+
+#!/bin/bash
+
+set -e
+
+TEKTON_NAMESPACE="$1" # provide the Tekton namespace as argument
+
+APIM_ACCOUNT_ID="603"
+
+APIM_API_URL='https://api-backend.api.sbb.ch:443'
+
+OAUTH_URL='https://sso.sbb.ch/auth/realms/SBB_Public/protocol/openid-connect/token'
+
+CLIENT_ID='<apim-app-id>'
+
+CLIENT_SECRET='<apim-app-secret>'
+
+if [ -z "${TEKTON_NAMESPACE}" ]; then
+
+echo "Missing TEKTON_NAMESPACE argument. Aborting."
+
+exit 1
+
+fi
+
+##
+
+## Authenticate to APIM API
+
+##
+
+AUTH_TOKEN=$(curl -s -X POST ${OAUTH_URL} \
+
+-H 'Content-Type: application/x-www-form-urlencoded' \
+
+-d grant_type=client_credentials \
+
+-d client_id=${CLIENT_ID} \
+
+-d client_secret=${CLIENT_SECRET} \
+
+| grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+echo "Successfully obtained created an APIM access token"
+
+##
+
+## Create an APIM Azure AD Application
+
+##
+
+cat > azure-app-request.json <<EOL
+
+{
+
+"serviceId": 163,
+
+"planId": 1114,
+
+"name": "ESTA Tekton Azure AD ($TEKTON_NAMESPACE)",
+
+"description": "Managing Azure AD App Registrations for ESTA Tekton",
+
+"oauthFlow": "clientCredentials",
+
+"authProvider": "AZURE_AD",
+
+"megaId": "FEE502DB61786599"
+
+}
+
+EOL
+
+HTTP_STATUS=$(curl -sk -X POST
+"${APIM_API_URL}/accounts/${APIM_ACCOUNT_ID}/applications" \
+
+-H "Accept: application/json" \
+
+-H "Authorization: Bearer ${AUTH_TOKEN}" \
+
+-H "Content-Type: application/json" \
+
+-d '@azure-app-request.json' \
+
+-o azure-app-response.json \
+
+-w "%{http_code}")
+
+if [[ ${HTTP_STATUS} -gt 299 ]]; then
+
+echo "App creation request failed with error $HTTP_STATUS"
+
+exit 2
+
+fi
+
+# extract application client ID and secret
+
+APP_CLIENT_ID=$(jq -r .applicationId azure-app-response.json)
+
+APP_CLIENT_SECRET=$(jq -r .secret azure-app-response.json)
+
+echo "New Application with ID $APP_CLIENT_ID created"
+
+##
+
+## Create azure-ad-client-credentials secret
+
+##
+
+cat > azure-ad-client-credentials.yaml <<EOL
+
+kind: Secret
+
+apiVersion: v1
+
+metadata:
+
+name: azure-ad-client-credentials
+
+namespace: $TEKTON_NAMESPACE
+
+type: Opaque
+
+stringData:
+
+clientId: '$APP_CLIENT_ID'
+
+clientSecret: '$APP_CLIENT_SECRET'
+
+scope: 'api://azure_ad_api.prod/.default'
+
+tokenEndpoint:
+'https://login.microsoftonline.com/2cda5d11-f0ac-46b3-967d-af1b2e1bd01a/oauth2/v2.0/token'
+
+EOL
+
+echo "Successfully created secret azure-ad-client-credentials.yaml"
+
+# wait a bit for the new application to become active
+
+sleep 90
+
+# wait a bit for the new application to become active
+
+sleep 20
+
+##
+
+## Test the app credentials
+
+##
+
+RETRIES=0
+
+AUTH_TOKEN=""
+
+while [ -z "${AUTH_TOKEN}" ] && [ $RETRIES -lt 20 ]; do
+
+AUTH_TOKEN=$(curl -fs -X POST
+https://login.microsoftonline.com/2cda5d11-f0ac-46b3-967d-af1b2e1bd01a/oauth2/v2.0/token
+\
+
+-H 'Content-Type: application/x-www-form-urlencoded' \
+
+-d grant_type=client_credentials \
+
+-d client_id="${APP_CLIENT_ID}" \
+
+-d client_secret="${APP_CLIENT_SECRET}" \
+
+-d scope='api://azure_ad_api.prod/.default' \
+
+| grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+RETRIES=$[$RETRIES+1]
+
+if [ -z "${AUTH_TOKEN}" ]; then
+
+echo "No access access token obtained, retry #${RETRIES} in 10
+seconds..."
+
+sleep 10
+
+fi
+
+done
+
+if [ -z "${AUTH_TOKEN}" ]; then
+
+echo "Failed to obtain access token :-("
+
+exit 1
+
+fi
+
+echo "Querying registered applications:"
+
+curl -fsv -X 'GET' \
+
+'https://azure-ad.api.sbb.ch/v1/applications?displayNameStartsWith=SBB%20ESTA%20Tekton&listOnlyOwnApps=true'
+\
+
+-H 'accept: application/json' \
+
+-H "Authorization: Bearer $AUTH_TOKEN"
+
+echo ""
+
+echo "All done."
+
+Migration
+
+Für bestehende Tekton Namespaces sollten optimalerweise ebenfalls
+individuelle APIM Applications und neue App Registrations erstellt
+werden. Im Taskrun, welcher die App Registration ausführt, werden in
+einem ersten Schritt die bestehenden Group-Role-Assignments gelesen und
+in die statische App Registration YAML gepatched. Für die Migration muss
+also die neue API Application ID als owner in die bestehenden App
+Registrations eingetragen werden. Diese Modifikation muss mit den alten
+globalen API Credentials erfolgen. Die vollständige Migration erfolgt
+also in zwei Schritten:
+
+1.  Re-Assign App Registration mit neuer APIM Application als Owner
+
+    1.  Copy azure-ad-client-credentials Secret
+
+    2.  Erstellen der APIM Application
+
+    3.  Download der App Registration (JSON)
+
+    4.  Hinzufügen der neuen APIM Application als Owner
+
+    5.  Upload der App Registration (JSON)
+
+2.  Entfernen der alten APIM Application als Owner
+
+    1.  Download der App Registration (JSON)
+
+    2.  Entfernen der alten APIM Client ID als Owner
+
+    3.  Upload der App Registration (JSON)
+
+    4.  Entfernen des alten statischen azure-ad-client-credentials
+        Secret (Copy)
+
+reassign-app-registration.sh Quelle erweitern
+
+#!/bin/bash
+
+# authenticate to Azure API (with old APIM client)
+
+CLIENT_ID='<azure-ad-client-id>'
+
+CLIENT_SECRET='<azure-ad-client-secret>'
+
+AUTH_TOKEN=$(curl -sf -X POST
+https://login.microsoftonline.com/2cda5d11-f0ac-46b3-967d-af1b2e1bd01a/oauth2/v2.0/token
+\
+
+-H 'Content-Type: application/x-www-form-urlencoded' \
+
+-d grant_type=client_credentials \
+
+-d client_id="${CLIENT_ID}" \
+
+-d client_secret="${CLIENT_SECRET}" \
+
+-d scope='api://azure_ad_api.prod/.default' \
+
+| grep -o -E '"access_token":"[^"]+"' | cut -f 2 -d ":" | tr -d '"\n')
+
+if [ -z "$AUTH_TOKEN" ]; then
+
+echo "Failed to authenticate!"
+
+exit 22
+
+else
+
+echo "Got access token for azure_ad_api.prod"
+
+fi
+
+# export app registration
+
+APP_REG_CLIENT_ID="$1" # pass client ID to patch as argument
+
+NEW_CLIENT_ID='<new-tekton-azure-ad-client-id>'
+
+curl -sf -X 'GET' \
+
+"https://azure-ad.api.sbb.ch/v1/app-configs/json?clientId=${APP_REG_CLIENT_ID}"
+\
+
+-H 'Accept: application/json' \
+
+-H "Authorization: Bearer $AUTH_TOKEN" \
+
+-o existing-app-registration.json
+
+echo "Downloaded app registration to existing-app-registration.json"
+
+# add new client as owner # remove old client ID and add new client as
+owner
+
+jq ".appRegistrations[0].owners = (.appRegistrations[0].owners |
+map(select(.clientId // "" | contains(\"${APP_REG_CLIENT_ID}\") | not))
++ [{\"clientId\":\"${NEW_CLIENT_ID}\"}]" existing-app-registration.json
+> updated-app-registration.json
+
+# upload patched app registration
+
+curl -sf -X 'POST' \
+
+"https://azure-ad.api.sbb.ch/v1/app-configs/json" \
+
+-H 'accept: application/json' \
+
+-H 'Content-Type: application/json' \
+
+-H "Authorization: Bearer $AUTH_TOKEN" \
+
+-d @updated-app-registration.json
+
+echo ""
+
+echo "Successfully updated app registration for client
+$APP_REG_CLIENT_ID"

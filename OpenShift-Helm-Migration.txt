@@ -1,0 +1,207 @@
+OpenShift-Helm-Migration
+
+During the migration from OpenShift templates to Helm charts you need to
+take care of some details. In the following a summary of our findings.
+
+Helm-Chart-Converter
+
+The ESTA-Helm-Chart-Converter is very useful for the heavy lifting but
+some details needs to be checked a/o modified by hand. The conversion in
+general is done like this:
+
+» cd <path-to-project-to-migrate>/openshift
+
+» <path-to-extracted-converter>/bin/esta-openshift-to-helm \
+
+defaults/app.yaml \
+
+<projektname> \
+
+-dv defaults/config.list \
+
+-sv <stage-1>=<stage-1>/config.list \
+
+-sv <stage-2>=<stage-2>/config.list \
+
+-sv <stage-n>=<stage-n>/config.list
+
+So it might look like this:
+
+ Quelle erweitern
+
+»
+/mnt/c/devsbb/apps/esta-openshift-to-helm-0.2.4-SNAPSHOT/bin/esta-openshift-to-helm
+\
+
+defaults/app.yaml \
+
+playground \
+
+-dv defaults/config.list \
+
+-sv kihub-rt=kihub-rt/config.list \
+
+-sv kihub-rt_otc_test_07=kihub-rt_otc_test_07/config.list \
+
+-sv kihub-test=kihub-test/config.list \
+
+-sv kihub-test_otc_test_07=kihub-test_otc_test_07/config.list \
+
+-sv kihub-prod=kihub-prod/config.list \
+
+-sv kihub-prod_otc_asterix=kihub-prod_otc_asterix/config.list
+
+----------------
+
+Chart name: playground
+
+default values: defaults/config.list
+
+stage values: [kihub-rt=kihub-rt/config.list,
+kihub-rt_otc_test_07=kihub-rt_otc_test_07/config.list,
+kihub-test=kihub-test/config.list,
+kihub-test_otc_test_07=kihub-test_otc_test_07/config.list,
+kihub-prod=kihub-prod/config.list,
+kihub-prod_otc_asterix=kihub-prod_otc_asterix/config.list]
+
+output directory: generated-charts
+
+----------------
+
+Checking for properties file defaults/config.list
+
+Not overriding value REPLICAS with current content 1 with new value 1
+from defaults/config.list
+
+Checking for properties file kihub-rt/config.list
+
+Checking for properties file kihub-rt_otc_test_07/config.list
+
+Checking for properties file kihub-test/config.list
+
+Checking for properties file kihub-test_otc_test_07/config.list
+
+Checking for properties file kihub-prod/config.list
+
+Checking for properties file kihub-prod_otc_asterix/config.list
+
+Converting Deployment template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Converting Route template
+
+Dumping chart for playground to generated-charts/playground/Chart.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values-kihub-rt.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values-kihub-rt_otc_test_07.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values-kihub-test.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values-kihub-test_otc_test_07.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values-kihub-prod.yaml
+
+Dumping values for generated-charts/playground to
+generated-charts/playground/values-kihub-prod_otc_asterix.yaml
+
+Dumping #1 objects of kind Deployment to file
+'generated-charts/playground/templates/Deployment.yaml'
+
+Dumping #9 objects of kind Route to file
+'generated-charts/playground/templates/Route.yaml'
+
+Dumping #1 objects of kind Service to file
+'generated-charts/playground/templates/Service.yaml'
+
+Creating helper file
+'generated-charts/playground/templates/_helpers.tpl' with sample helper
+function
+
+-----ATTENTION-----
+
+Some properties have changed type in Helm
+
+An example is the 'replicas' flag, which now has to be an unquoted int
+
+Please check your values-files and any templates where the value is
+referenced
+
+Appologies for the inconvenience
+
+^^^^^ATTENTION^^^^^
+
+After that the generated Helm charts needs to be moved to the proper
+location:
+
+» mv generated-charts ../charts
+
+Now some details needs to be fixed on the generated files:
+
+-   Replicas must be given as integer instead of string, so you need to
+    remove the single quotes
+
+-   ~~Wrong version property key on the image tag must be fixed~~ fixed:
+    [CLEW-13271] OCP-Helm-Converter generiert falsches
+    Image-Version-Property - Flow (sbb.ch)
+
+Migration of already existing Deployments
+
+If an application is already deployed, it cannot be managed by Helm out
+of the box. In fact Helm requires some Labels and Annotations, which are
+missing if the application was deployed using another deployment
+approach (like using the traditional ESTA cloud pipeline). Because of
+this there are two approaches on how to go ahead:
+
+a) Remove the app on OpenShift completely: DeploymentConfig, Service,
+Routes and ConfigMaps. After that the Helm based deployment is some kind
+of a "restart" of that app on OpenShift.
+
+or
+
+b) add Labels und Annotations manually to the DeploymentConfig, the
+Service, all Routes and ConfigMaps on the already existing application
+right on OpenShift:
+
+-   Label: 
+
+  app.kubernetes.io/managed-by: Helm
+
+-   Annotations: 
+
+-   meta.helm.sh/release-name: <application>
+
+  meta.helm.sh/release-namespace: <namespace>
+
+-   If you deploy using Helm now, you have the Helm Deployment parallel
+    to the previous deployment, as the previous one is a so called
+    "DeploymentConfig". This is a special OpenShift feature, which is
+    not required/used anymore, so the DeploymentConfig can be removed
+    afterwards.
+
+As it is neccessary to remove the DeploymentConfig after the first Helm
+deployment, approach a) is suggested. But keep in mind that this
+approach includes a downtime of you application!

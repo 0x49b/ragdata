@@ -1,0 +1,428 @@
+Tagging Pipelines via estaTektonPipeline.json konfigurierbar
+
++--------------------------+------------------------------------------+
+| Fragestellung            | Aus ersten Pilotprojekten ergibt sich    |
+|                          | die Anforderung, den Release-Prozess (→  |
+|                          | Tagging Pipelines) auch automatisiert    |
+|                          | aus Git Events starten zu können.        |
+|                          | Aktuell ist dies nur über das Tekton     |
+|                          | Control Panel oder über das REST API des |
+|                          | Controllers möglich und es gibt keine    |
+|                          | Einstellungsmöglichkeiten. Tagging       |
+|                          | Pipelines sollen daher auch über die     |
+|                          | Step Konfiguration im                    |
+|                          | estaTektonPipeline.json gesteuert werden |
+|                          | können. Bislang definieren die Steps     |
+|                          | lediglich Build Pipelines. Auch für das  |
+|                          | automatisierte Tagging sollen            |
+|                          | Trigger-Kriterien wie triggerTypes und   |
+|                          | branchNamePrefixes konfiguriert werden   |
+|                          | können.                                  |
+|                          |                                          |
+|                          | ESTA-4906 - Der Jira-Vorgang existiert   |
+|                          | nicht oder Sie sind nicht                |
+|                          | anzeigeberechtigt.                       |
++==========================+==========================================+
+| Rahmenbedingungen        | -   Konfiguration über                   |
+|                          |     estaTektonPipeline.json              |
+|                          |                                          |
+|                          | -   Anpassungen rückwärtskompatibel zum  |
+|                          |     bisherigen Schema von                |
+|                          |     estaTektonPipeline.json              |
+|                          |                                          |
+|                          | -   Steuerung über den ESTA Tekton       |
+|                          |     Controller                           |
+|                          |                                          |
+|                          | -   Die automatische Versionierung       |
+|                          |     (major, minor, patch) muss           |
+|                          |     konfigurierbar sein                  |
++--------------------------+------------------------------------------+
+| Annahmen                 | --                                       |
++--------------------------+------------------------------------------+
+| Varianten / Alternativen | Variante 1                               |
+|                          |                                          |
+|                          | Die bestehende Step                      |
+|                          | Konfigurationsstruktur wird um ein       |
+|                          | Property "pipelineType" ("TAGGING" |     |
+|                          | "BUILD") ergänzt.                        |
+|                          |                                          |
+|                          | Beispiel:                                |
+|                          |                                          |
+|                          | Step Config mit pipelineType Quelle      |
+|                          | erweitern                                |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "name": "continuous-release",            |
+|                          |                                          |
+|                          | "pipelineType": "TAGGING",               |
+|                          |                                          |
+|                          | "enabled": true,                         |
+|                          |                                          |
+|                          | "updateHelmChart": false,                |
+|                          |                                          |
+|                          | "versionIncrement": "minor",             |
+|                          |                                          |
+|                          | "triggerType": [                         |
+|                          |                                          |
+|                          | "USER",                                  |
+|                          |                                          |
+|                          | "GITEVENT"                               |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "branchNamePrefixes": [                  |
+|                          |                                          |
+|                          | "master",                                |
+|                          |                                          |
+|                          | "hotifx"                                 |
+|                          |                                          |
+|                          | ]                                        |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          |   Vorteile                               |
+|                          |                                Nachteile |
+|                          |   -----------------                      |
+|                          | --------------------------------- ------ |
+|                          | ---------------------------------------- |
+|                          |   Einfache Int                           |
+|                          | egration → wenig Entwicklungsaufwand   S |
+|                          | chlechte Unterscheidung der Step-Configs |
+|                          |   Explizite Angab                        |
+|                          | e                                   Inko |
+|                          | nsistenz mit dem Staging Konzept im JSON |
+|                          |   Vollständig                            |
+|                          |  rückwärtskompatibel                     |
+|                          |                                          |
+|                          | Variante 2                               |
+|                          |                                          |
+|                          | Separate Step Konfigurationsstrukturen   |
+|                          | für Tagging und Build Pipelines.         |
+|                          |                                          |
+|                          | Im JSON Schema gibt es eine neue Liste   |
+|                          | "releases" mit Step configs für          |
+|                          | Tagging/Release Pipelines und "builds"   |
+|                          | für Build Pipelines. Diese Terminologie  |
+|                          | integriert sich gut mit den bestehenden  |
+|                          | "stages" für die Staging Pipelines. Die  |
+|                          | bisherigen "steps" würden in "builds"    |
+|                          | umbenannt, was eine Breaking Change      |
+|                          | darstellt.                               |
+|                          |                                          |
+|                          | Release, Build, Staging                  |
+|                          | Konfiguration Quelle erweitern           |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "stages": [                              |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "stageName": "dev",                      |
+|                          |                                          |
+|                          | "argoCD": {                              |
+|                          |                                          |
+|                          | "autoSync": true                         |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "builds": [                              |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "name": "continuous-build",              |
+|                          |                                          |
+|                          | "enabled": true,                         |
+|                          |                                          |
+|                          | "additionalBuildParams": "-DskipITs",    |
+|                          |                                          |
+|                          | "triggerType": [                         |
+|                          |                                          |
+|                          | "USER",                                  |
+|                          |                                          |
+|                          | "GITEVENT"                               |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "branchNamePrefixes": [                  |
+|                          |                                          |
+|                          | "feature",                               |
+|                          |                                          |
+|                          | "hotfix"                                 |
+|                          |                                          |
+|                          | ]                                        |
+|                          |                                          |
+|                          | },                                       |
+|                          |                                          |
+|                          | { ... }                                  |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "releases": [                            |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "name": "continuous-release",            |
+|                          |                                          |
+|                          | "enabled": true,                         |
+|                          |                                          |
+|                          | "versionIncrement": "patch",             |
+|                          |                                          |
+|                          | "triggerType": [                         |
+|                          |                                          |
+|                          | "USER",                                  |
+|                          |                                          |
+|                          | "GITEVENT"                               |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "branchNamePrefixes": [                  |
+|                          |                                          |
+|                          | "master",                                |
+|                          |                                          |
+|                          | "hotfix"                                 |
+|                          |                                          |
+|                          | ]                                        |
+|                          |                                          |
+|                          | },                                       |
+|                          |                                          |
+|                          | { ... }                                  |
+|                          |                                          |
+|                          | ]                                        |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | Die Rückwärtskompatibilität zum          |
+|                          | bisherigen Schema von                    |
+|                          | estaTektonPipeline.json kann             |
+|                          | gewährleistet werden, indem die          |
+|                          | bisherige "steps" Liste vom Controller   |
+|                          | als "builds" gelesen und sinngemäss als  |
+|                          | Alias behandelt wird.                    |
+|                          |                                          |
+|                          |   Vorteile                               |
+|                          |                                          |
+|                          |                                Nachteile |
+|                          |   -------------------------------        |
+|                          | ---------------------------------------- |
+|                          | ------------------------------- -------- |
+|                          | ---------------------------------------- |
+|                          |   Konsequentes und verständliches Naming |
+|                          |                                          |
+|                          |                          Breaking Change |
+|                          |   Klare Unterscheidung                   |
+|                          |                                          |
+|                          |                                   Grösse |
+|                          | re Abweichung von estaCloudPipeline.json |
+|                          |   Individuelle Schema De                 |
+|                          | finitionen (build, release, stage) und s |
+|                          | omit bessere Validierungsmöglichkeiten   |
+|                          |  Custom Pipelines unter "builds" geführt |
+|                          |                                          |
+|                          | Variante 3                               |
+|                          |                                          |
+|                          | Die Step Konfigurationsstruktur wird     |
+|                          | komplett neu strukturiert                |
+|                          |                                          |
+|                          | -   Die Liste "steps" wird in            |
+|                          |     "pipelines" umbenannt                |
+|                          |                                          |
+|                          | -   Die bisherige "step" Config erhält   |
+|                          |     neue Unterobjekte je nach            |
+|                          |     Pipeline-Typ:                        |
+|                          |                                          |
+|                          |     -   "build": buildDockerImage,       |
+|                          |         packageAndDeployHelmChart,       |
+|                          |         additionalBuildParams,           |
+|                          |         deployArtifacts                  |
+|                          |                                          |
+|                          |     -   "tagging":                       |
+|                          |         versionIncrementPattern,         |
+|                          |         updateHelm Chart                 |
+|                          |                                          |
+|                          |     -   "custom": pipelineRef,           |
+|                          |         pipelineTemplate, params         |
+|                          |                                          |
+|                          | -   Folgende Properties sind allgemein   |
+|                          |     für alle Pipeline Configs:           |
+|                          |     name, enabled, triggerType,          |
+|                          |     branchNamePrefixes,                  |
+|                          |     versionTagEventPatterns, stages      |
+|                          |                                          |
+|                          | Beispiel:                                |
+|                          |                                          |
+|                          | Pipelines Config Quelle erweitern        |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "stages": [                              |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "stageName": "dev",                      |
+|                          |                                          |
+|                          | "argoCD": {                              |
+|                          |                                          |
+|                          | "autoSync": true                         |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "pipelines": [                           |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "name": "continuous-build",              |
+|                          |                                          |
+|                          | "enabled": true,                         |
+|                          |                                          |
+|                          | "triggerType": [                         |
+|                          |                                          |
+|                          | "USER",                                  |
+|                          |                                          |
+|                          | "GITEVENT"                               |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "branchNamePrefixes": [                  |
+|                          |                                          |
+|                          | "feature",                               |
+|                          |                                          |
+|                          | "development"                            |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "build": {                               |
+|                          |                                          |
+|                          | "additionalBuildParams": "-DskipITs"     |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | },                                       |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "name": "continuous-release",            |
+|                          |                                          |
+|                          | "enabled": true,                         |
+|                          |                                          |
+|                          | "triggerType": [                         |
+|                          |                                          |
+|                          | "USER",                                  |
+|                          |                                          |
+|                          | "GITEVENT"                               |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "branchNamePrefixes": [                  |
+|                          |                                          |
+|                          | "master",                                |
+|                          |                                          |
+|                          | "hotfix"                                 |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "tagging": {                             |
+|                          |                                          |
+|                          | "versionIncrementPattern":               |
+|                          | "\\d+\\.(\\d+)-saturn-2"                 |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | },                                       |
+|                          |                                          |
+|                          | {                                        |
+|                          |                                          |
+|                          | "name": "custom-build",                  |
+|                          |                                          |
+|                          | "enabled": true,                         |
+|                          |                                          |
+|                          | "triggerType": [                         |
+|                          |                                          |
+|                          | "GITEVENT"                               |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "versionTagEventPatterns": [             |
+|                          |                                          |
+|                          | "^custom-(\\d+\\.)(\\d+\\.)(\\*|\\d+)$"  |
+|                          |                                          |
+|                          | ],                                       |
+|                          |                                          |
+|                          | "custom": {                              |
+|                          |                                          |
+|                          | "pipelineTemplate":                      |
+|                          | "foo-bar-pipeline.yaml",                 |
+|                          |                                          |
+|                          | "params": {                              |
+|                          |                                          |
+|                          | "FOO": "BAR"                             |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | },                                       |
+|                          |                                          |
+|                          | "stages": ["dev"]                        |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | ]                                        |
+|                          |                                          |
+|                          | }                                        |
+|                          |                                          |
+|                          | Die Rückwärtskompatibilität ist mit      |
+|                          | dieser Variante nicht gewährleistet. Es  |
+|                          | ist somit eine Migration der bestehenden |
+|                          | Tekton-enabled Projekte notwendig. Eine  |
+|                          | automatisierter Check von alten Schemas  |
+|                          | mit Konvertierung ins neue Schema (es    |
+|                          | wird ein PR erstellt) könnte im ESTA     |
+|                          | Tekton Controller implementiert werden   |
+|                          | und auch für spätere Schema-Anpassungen  |
+|                          | nützlich sein.                           |
+|                          |                                          |
+|                          |   Vo                                     |
+|                          | rteile                                   |
+|                          |                                Nachteile |
+|                          |   ------------------------               |
+|                          | ---------------------------------------- |
+|                          | -------- ------------------------------- |
+|                          | ---------------------------------------- |
+|                          |   Konseque                               |
+|                          | ntes und verständliches Naming           |
+|                          |                          Breaking Change |
+|                          |   Bessere Struktur f                     |
+|                          | ür Custom Pipelines                      |
+|                          |                Hoher Entwicklungsaufwand |
+|                          |   Individuelle Schema De                 |
+|                          | finitionen und bessere Validierungsmögli |
+|                          | chkeiten   Pipeline Config etwas unübers |
+|                          | ichtlich wegen zusätzlicher Unterobjekte |
+|                          |                                          |
+|                          |                                          |
+|                          | Migration bestehender Projekte notwendig |
++--------------------------+------------------------------------------+
+| Entscheidung             | Es wurde Variante 3 gewählt              |
++--------------------------+------------------------------------------+
+| Begründung               | Mit dieser strukturellen Änderung legen  |
+|                          | wir eine solide Basis für die Umsetzung  |
+|                          | dieser Anforderung sowie für die         |
+|                          | Weiterentwicklung des ESTA Tekton        |
+|                          | Pipeline. Solche grundlegenden           |
+|                          | Anpassungen können wir in der aktuellen  |
+|                          | Phase des Projekts noch machen, später   |
+|                          | wird es dann schwieriger.                |
++--------------------------+------------------------------------------+
+| Wer/Wann                 | 30.09.2021  Brüderli Thomas              |
+|                          | (IT-PTR-CEN2-SL2) Wallrapp Manuel        |
+|                          | (IT-PTR-EXT-EXT2 - Extern) Spirig Lukas  |
+|                          | (IT-PTR-CEN2-SL3)                        |
++--------------------------+------------------------------------------+

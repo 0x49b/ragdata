@@ -1,0 +1,126 @@
+Esta-Tekton AzureAd-, APIM-, Kafka-Registration Prototyp - Technologieauswahl
+
+ESTA-5242 - Esta-Tekton AzureAd-, APIM-, Kafka-Registration Prototyp
+Closed Nach dem Workshop mit Spirig Lukas (IT-PTR-CEN2-SL3)  Jeanneret
+Julien (IT-PTR-CEN1-BDE3)  Brüderli Thomas (IT-PTR-CEN2-SL2) Masen Igor
+(IT-PTR-CEN2-SL11) Barahona José Luis (IT-PTR-CEN2-BDE16) Wallrapp
+Manuel (IT-PTR-EXT-EXT2 - Extern) 
+
+haben wir entscheiden auf Openshift Operators als Technologie für
+AzureAd, APIM und Kafka Registrations zu setzen. Wir werden eine
+Beispielimplementierung anhand AzureAd Registration für einen Workshop
+mit den jeweiligen Teams vorbereiten.
+
+Uns stehen zur Zeit 3 Technologien zur Auswahl: 
+
+-   Operatorhttps://flow.sbb.ch/browse/ESTA-5242
+
+-   Tekton Taskrun
+
+-   Openshift Job.
+
+Jede dieser Technologien bringt vor on und Nachteile. Dabei wollen wir
+evaluieren welchen technologischen Weg wir gehen wollen.
+
++--------------------+-----------------+---------+---------------+
+|                    | Operator        | Tekton  | Openshift Job |
+|                    |                 | Taskrun |               |
++====================+=================+=========+===============+
+| Entwicklungsstart  | :cross:         | :tick:  | :tick:        |
+| ohne CON           |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Rollout über alle  | :tick:          | :tick:  | :tick:        |
+| Cluster ohne CON   |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Namespace          | :tick:          | :tick:  | :tick:        |
+| spezifisches       |                 |         |               |
+| Rollout            |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Technologische     | (:cross:)       | :tick:  | :tick:        |
+| Expertise ESTA     |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Expertise SBB /    | :cross:         | :cross: | :tick:        |
+| Azure AD, Kafka,   |                 |         |               |
+| APIM Team          |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Releases von Helm  | :question:      | :tick:  | :tick:        |
+| & Docker in        |                 |         |               |
+| Artifactory        |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Existierender      | :cross:         | :tick:  | :tick:        |
+| Esta-Standard      |                 |         |               |
+| Build&Deployment   |                 |         |               |
+| Prozess            |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Gitops über Argocd | :tick:          | :tick:  | :tick:        |
++--------------------+-----------------+---------+---------------+
+| Gitops über Argocd | :tick:          | :cross: | :cross:       |
+| & CRD              |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Endprojekt         | :cross:         | :tick:  | :tick:        |
+| kann/muss          |                 |         |               |
+| verwendete Version |                 |         |               |
+| selber managen     |                 |         |               |
+| (z.B. per Angabe   |                 |         |               |
+| der                |                 |         |               |
+| Helmchartversion   |                 |         |               |
+| 2.2.^)             |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Können Breaking    | (:cross:):tick: | :tick:  | :tick:        |
+| Changes bei Logik  |                 |         |               |
+| / Format der       |                 |         |               |
+| Konfiguration      |                 |         |               |
+| gemanaged werden?  |                 |         |               |
+|                    |                 |         |               |
+| Beim Operator      |                 |         |               |
+| müssten im         |                 |         |               |
+| Sourcecode Weichen |                 |         |               |
+| eingebaut werden,  |                 |         |               |
+| um                 |                 |         |               |
+| Abw                |                 |         |               |
+| ärtskompatibilität |                 |         |               |
+| zu gwährleisten.   |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Kein erhöhtes      | :tick:          | :tick:  | :tick:        |
+| Risiko für System  |                 |         |               |
+| Wide Failure       |                 |         |               |
+|                    |                 |         |               |
+| (Bsp Tekton        |                 |         |               |
+| Namespace Operator |                 |         |               |
+| ->                 |                 |         |               |
+| Secrets Voiding in |                 |         |               |
+| allen Tekton       |                 |         |               |
+| Namespaces)        |                 |         |               |
+| Ein Bug im         |                 |         |               |
+| Operator kann alle |                 |         |               |
+| Instanzen auf      |                 |         |               |
+| einmal zerstören.  |                 |         |               |
+| Bei einem Job oder |                 |         |               |
+| Pipelinerun        |                 |         |               |
+| release, betrifft  |                 |         |               |
+| es nicht alle auf  |                 |         |               |
+| einmal.            |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Fehlerhandling des | :tick:          | :tick:  | :tick:        |
+| Job-/Operators     |                 |         |               |
+| (Logs) wenn z.B.   |                 |         |               |
+| eine               |                 |         |               |
+| appRegistration    |                 |         |               |
+| nicht applied      |                 |         |               |
+| werden konnte      |                 |         |               |
+| (Im Operatorfall   |                 |         |               |
+| als Annotation auf |                 |         |               |
+| ConfigMap oder     |                 |         |               |
+| Status in der CRD) |                 |         |               |
++--------------------+-----------------+---------+---------------+
+| Vorgesehen für     | :tick:          | :tick:  | :tick:        |
+| Funktionalität um  |                 |         |               |
+| Modifikationen     |                 |         |               |
+| ausserhalb des     |                 |         |               |
+| Clusters           |                 |         |               |
+| durchzuführen      |                 |         |               |
++--------------------+-----------------+---------+---------------+
+
+[]
+
+[]

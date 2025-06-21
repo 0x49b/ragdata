@@ -1,0 +1,129 @@
+Dynamisches Laden von Tasks aus Repository (Rejected)
+
+Es soll möglich sein einen Task dynamisch via einer Repository Referenz
+zu laden. Dies baut auf dem Konzept Dynamische Pipeline Tasks (Draft)
+auf.
+
+Dabei soll via taskRef eine Referenz zu einem Repository angegeben
+werden können, z.B. "taskRef": "KD_ESTA/echo@v1". Der Wert nach @ kann
+eine beliebige Git Ref sein (also Tag, Commit Hash oder Branch). 
+Während der Interpretation des estaTektonJson.json Files, soll vom
+entsprechenden Repository (und Git Ref) ein File names task.yml geladen
+und angewandt werden (vor oder mit PipelineRun).
+Dabei soll jedoch der Name des Tasks mit dem konkreten Git Hash (welcher
+durch die Git Ref aufgelöst wurde) postfixed werden: z.B. echo wird zu
+echo-52f09d56f5257fea936433878081ea7fcd972dc3 (dabei muss natürlich die
+TaskRef des PipelineRun angepasst werden).
+Damit soll sichergestellt werden, dass keine Konflikte durch Task
+Definitionen entstehen, wenn auf unterschiedlichen Branches oder
+Repositories unterschiedliche Versionen des Tasks verwendet werden.
+
+Notizen
+
+BitBucket unterstützt folgenden Aufruf zum auflösen einer Git Ref ("git
+rev-list -n 1
+v1"): https://code.sbb.ch/projects/KD_ESTA/repos/echo/commits?until=v1&limit=1
+
+BitBucket unterstützt folgenden Aufruf zum laden einer einzelnen
+Datei: https://code.sbb.ch/projects/KD_ESTA/repos/echo/raw/task.yml?at=52f09d56f5257fea936433878081ea7fcd972dc3
+
+Beispiel
+
+Repository KD_ESTA/echo mit Git Tag v1
+(Hash 52f09d56f5257fea936433878081ea7fcd972dc3)
+
+task.yaml
+
+apiVersion: tekton.dev/v1beta1
+
+kind: Task
+
+metadata:
+
+name: echo
+
+spec:
+
+description: |
+
+Echos the parameters
+
+....
+
+estaTektonPipeline.json File eines beliebigen Projektes
+
+estaTektonPipeline.json
+
+{
+
+"$schema": "https://clew-resources.sbb-cloud.net/tekton-schema.json",
+
+...
+
+"pipelines": [
+
+{
+
+"name": "release",
+
+"triggerType": ["GITEVENT"],
+
+"versionTagEventPatterns": "^(\\d+\\.)(\\d+\\.)(\\*|\\d+)",
+
+"build": {
+
+},
+
+"tasks": [
+
+{
+
+"name": "echo",
+
+"taskRef": "KD_ESTA/echo@v1",
+
+"params": {
+
+"BUCKET_URL": "s3://test-bucket/static-www",
+
+"SOURCE_DIR": "./dist",
+
+"AWS_DEFAULT_REGION": "us-east-1",
+
+"AWS_CREDENTIALS_SECRET": "pipeline-env-aws-credentails"
+
+},
+
+"runAfter": "quality-gate-check",
+
+"runBefore": "helm-package-deploy"
+
+}
+
+]
+
+}
+
+]
+
+}
+
+Angewandtes YAML im Tekton Namespace
+
+task.yaml
+
+apiVersion: tekton.dev/v1beta1
+
+kind: Task
+
+metadata:
+
+name: echo-52f09d56f5257fea936433878081ea7fcd972dc3
+
+spec:
+
+description: |
+
+Echos the parameters
+
+....

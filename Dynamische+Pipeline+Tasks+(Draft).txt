@@ -1,0 +1,301 @@
+Dynamische Pipeline Tasks (Draft)
+
+tekton.dev/v1beta1Idee/Entwurf für frei konfigurierbare Pipeline
+Tasks/Steps/Actions (→ analog GitHub Actions) innerhalb der ESTA Tekton
+Standard Pipelines.
+
+Anforderungen
+
+Abnehmer von ESTA Tekton sollen einfach die standardisierten Pipelines
+via estaTektonPipeline.json um weitere Tasks erweitern können, ohne eine
+Custom Pipeline selbst bauen und pflegen zu müssen.
+
+ESTA pflegt eine Palette von Tekton Tasks für unterschiedliche
+Funktionen, die nicht zum Standard Buildprozess gehören. Abnehmer können
+zudem eigene Tekton Tasks erstellen und über ein Custom Template
+Repository in ihrem Build Namespace verfügbar machen.
+
+Die Tasks können an beliebiger Stelle in die Pipeline eingehängt werden
+(→ runAfter/runBefore).
+
+Beispiel (S3 Push)
+
+Tekton Task Definition
+
+Inspired by https://hub.tekton.dev/tekton/task/aws-cli
+
+esta-s2-push.yaml
+
+apiVersion: tekton.dev/v1beta1
+
+kind: Task
+
+metadata:
+
+name: esta-s3-push
+
+spec:
+
+description: |
+
+This task can push files from the workspace directory to a given S3
+bucket
+
+params:
+
+- name: BUCKET_URL
+
+description: URL to destination bucket and subdirectory (e.g.
+s3://bucket-name/subdir)
+
+- name: SOURCE_DIR
+
+description: Source directory for files to push
+
+- name: GLOB_PATTERN
+
+description: Glob pattern for files to push from SOURCE_DIR
+
+default: '*'
+
+- name: AWS_DEFAULT_REGION
+
+description: AWS region
+
+default: us-east-1
+
+- name: AWS_CREDENTIALS_SECRET
+
+description: |
+
+Secret name to read AWS credentails from.
+
+Must contain entries named AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+
+workspaces:
+
+- name: source
+
+- name: env-vars
+
+optional: true
+
+steps:
+
+- name: push
+
+image: remote.docker.bin.sbb.ch/amazon/aws-cli:2.0.5
+
+workingDir: $(workspaces.source.path)
+
+env:
+
+- name: AWS_DEFAULT_REGION
+
+value: $(params.AWS_DEFAULT_REGION)
+
+- name: AWS_ACCESS_KEY_ID
+
+valueFrom:
+
+secretKeyRef:
+
+name: $(params.AWS_CREDENTIALS_SECRET)
+
+key: AWS_ACCESS_KEY_ID
+
+- name: AWS_ACCESS_KEY_ID
+
+valueFrom:
+
+secretKeyRef:
+
+name: $(params.AWS_CREDENTIALS_SECRET)
+
+key: AWS_SECRET_ACCESS_KEY
+
+script: |
+
+aws s3 cp $(params.SOURCE_DIR)/$(params.GLOB_PATTERN)
+$(params.BUCKET_URL)/
+
+Action in estaTektonPipeline.json
+
+estaTektonPipeline.json
+
+{
+
+"$schema": "https://clew-resources.sbb-cloud.net/tekton-schema.json",
+
+...
+
+"pipelines": [
+
+{
+
+"name": "release",
+
+"triggerType": ["GITEVENT"],
+
+"versionTagEventPatterns": "^(\\d+\\.)(\\d+\\.)(\\*|\\d+)",
+
+"build": {
+
+},
+
+"tasks": [
+
+{
+
+"name": "s3-push",
+
+"taskRef": "esta-s3-push",
+
+"params": {
+
+"BUCKET_URL": "s3://test-bucket/static-www",
+
+"SOURCE_DIR": "./dist",
+
+"AWS_DEFAULT_REGION": "us-east-1",
+
+"AWS_CREDENTIALS_SECRET": "pipeline-env-aws-credentails"
+
+},
+
+"runAfter": "quality-gate-check",
+
+"runBefore": "helm-package-deploy"
+
+}
+
+]
+
+}
+
+]
+
+}
+
+→ per Template Modifier wird folgendes ins Pipelinerun Template
+eingefügt:
+
+- kind: PipelineRun
+
+...
+
+spec:
+
+params:
+
+...
+
+- name: S3_PUSH_BUCKET_URL
+
+value: ${S3_PUSH_BUCKET_URL}
+
+- name: S3_PUSH_SOURCE_DIR
+
+value: ${S3_PUSH_SOURCE_DIR}
+
+- name: S3_PUSH_AWS_DEFAULT_REGION
+
+value: ${S3_PUSH_AWS_DEFAULT_REGION}
+
+- name: S3_PUSH_AWS_CREDENTIALS_SECRET
+
+value: ${S3_PUSH_AWS_CREDENTIALS_SECRET}
+
+pipelineSpec:
+
+params:
+
+...
+
+- name: S3_PUSH_BUCKET_URL
+
+- name: S3_PUSH_SOURCE_DIR
+
+- name: S3_PUSH_AWS_DEFAULT_REGION
+
+- name: S3_PUSH_AWS_CREDENTIALS_SECRET
+
+tasks:
+
+...
+
+- name: helm-package-deploy
+
+...
+
+runAfter:
+
+...
+
+- s3-push
+
+# injected task from json action
+
+- name: s3-push
+
+taskRef:
+
+name: esta-s3-push
+
+runAfter:
+
+- quality-gate-check
+
+params:
+
+- name: BUCKET_URL
+
+value: $(params.S3_PUSH_BUCKET_URL)
+
+- name: SOURCE_DIR
+
+value: $(params.S3_PUSH_SOURCE_DIR)
+
+- name: AWS_DEFAULT_REGION
+
+value: $(params.S3_PUSH_AWS_DEFAULT_REGION)
+
+- name: AWS_CREDENTIALS_SECRET
+
+value: $(params.S3_PUSH_AWS_CREDENTIALS_SECRET)
+
+workspaces:
+
+- name: source
+
+workspace: pipeline-workspace
+
+- name: env-vars
+
+workspace: pipeline-env
+
+parameters:
+
+...
+
+- name: S3_PUSH_BUCKET_URL
+
+type: string
+
+- name: S3_PUSH_SOURCE_DIR
+
+type: string
+
+- name: S3_PUSH_AWS_DEFAULT_REGION
+
+type: string
+
+- name: S3_PUSH_AWS_CREDENTIALS_SECRET
+
+type: string
+
+Konventionen für Tasks
+
+-   Definiert genau einen Workspace mit den Namen "source"
+
+-   Akzeptiert nur Parameter vom type: string

@@ -1,0 +1,2802 @@
+Esta Tekton Development
+
+Notizen, Vorgehen, Ideen zur Esta Tekton Pipeline. 
+
+-   Gesamtarchitektur Esta Tekton Pipeline
+
+-   Esta Tekton Tagging Process Detailed
+
+-   Esta Tekton Controller Architektur
+
+    -   Start einer Tekton Pipeline
+
+-   Deployment Setup von ESTA Tekton
+
+-   Ablauf Release/Deployment Prozess mit ESTA Tekton, Helm und ArgoCD
+
+-   Source Repositories
+
+-   Feature Matrix (Draft)
+
+-   Custom Pipelines (Draft)
+
+    -   Custom Pipeline Templates im Projekt-Repository
+
+    -   Custom Repository mit Pipeline und Task Definitionen
+
+    -   Integration in estaTektonPipeline.json
+
+-   Controller REST API (Draft)
+
+Gesamtarchitektur Esta Tekton Pipeline
+
+[]
+
+Esta Tekton Tagging Process Detailed
+
+[]
+
+Esta Tekton Controller Architektur
+
+[]
+
+REST API (Klassen)
+
+Definieren und bedienen das REST API. Für den Datenaustausch werden
+interne Models in DTO (Data Transfer Objects) gemapped und umgekehrt.
+
+Services (Module)
+
+Enthalten Service-Klassen, welche die Businesslogik des Controllers
+implementieren und mit Umsystemen wie Bitbucket oder Openshift/Tekton
+kommunizieren.
+
+Eventbus
+
+Asynchrone Ereignisse werden über den Eventbus gesendet, wo einzelne
+Service-Klassen Subscriptions registrieren, um die Ereignisse und deren
+Daten zu empfangen und zu verarbeiten.
+
+Start einer Tekton Pipeline
+
+TBD.
+
+Deployment Setup von ESTA Tekton
+
+Wir wollen die Möglichkeit bieten, dass jedes Team ihre eigenes ESTA
+Tekton Build System aufsetzen können. Dies geschieht über ein Umbrella
+Chart und eine ArgoCD Konfiguration.
+
+Ein mögliches Setup soll anhand dieser Grafik aufgezeigt werden:
+
+[]
+
+Ablauf Release/Deployment Prozess mit ESTA Tekton, Helm und ArgoCD
+
+[]
+
+Source Repositories
+
+  -------------------------------------------------------------------------------------------------------------------------------
+  Beschreibung                      Link
+  --------------------------------- ---------------------------------------------------------------------------------------------
+  ESTA Tekton Controller            https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-controller/browse
+
+  Tekton Control Panel UI           https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-ui/browse
+
+  Tekton Pipeline Templates         https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-templates/browse
+
+  Tekton Builder Images             https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-java-builder-image/browse
+                                    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-helm-builder-image/browse
+                                    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-go-builder-image/browse
+                                    https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-python-builder-image/browse
+
+  Build Namespace Config            https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-pipeline-config/browse
+
+  Tekton Test/Dev Projects          https://code.sbb.ch/projects/KD_ESTA_TEST
+
+  Tekton Integrationtests           https://code.sbb.ch/projects/KD_ESTA/repos/esta-tekton-integrationtests/browse
+
+  Tekton Integrationtest Projects   https://code.sbb.ch/projects/KD_ESTA_TEKTON_IT/
+  -------------------------------------------------------------------------------------------------------------------------------
+
+Feature Matrix (Draft)
+
+Auf Basis des estaCloudPipeline.json ist in nachfolgender Matrix
+sichtbar welche Version der EstaTektonPipeline welche Features
+supported.
+
+V1: Produktiver Pilot (1-5 Projekte builden mit Tekton) 
+V2: Rampup interner Release für CLEW Projekte
+Final: Release für erste public Migrationen
+
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Root  | Fe    | Esta  | V1    | V2    | Final | De    | JSON  |
+| Prope | ature | Cloud |       |       |       | fault | Path  |
+| rties | Be    | Pip   |       |       |       |       | /     |
+|       | schre | eline |       |       |       |       | B     |
+|       | ibung |       |       |       |       |       | emerk |
+|       |       |       |       |       |       |       | ungen |
++=======+=======+=======+=======+=======+=======+=======+=======+
+| p     | Name  | :c    | :     | :     | :     |       | .p    |
+| roduc | der   | ross: | tick: | tick: | tick: |       | roduc |
+| tName | Appli |       |       |       |       |       | tName |
+|       | katio |       |       |       |       |       |       |
+|       | n/des |       |       |       |       |       |       |
+|       | Pro   |       |       |       |       |       |       |
+|       | ducts |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| mainB | A     | :     | :c    | :c    | :c    |       |       |
+| ranch | ngabe | tick: | ross: | ross: | ross: |       |       |
+|       | des   |       |       |       |       |       |       |
+|       | Haupt |       |       |       |       |       |       |
+|       | Bra   |       |       |       |       |       |       |
+|       | nches |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ho    | An    | :     | :c    | :c    | :c    |       | Wird  |
+| tfixB | geabe | tick: | ross: | ross: | ross: |       | in    |
+| ranch | des   |       |       |       |       |       | Stepk |
+|       | H     |       |       |       |       |       | onfig |
+|       | otfix |       |       |       |       |       | g     |
+|       | Bra   |       |       |       |       |       | elöst |
+|       | nches |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| vers  | A     | :     | :     | :     | :     |       | Wird  |
+| ionin | ngabe | tick: | tick: | tick: | tick: |       | über  |
+| creme | der   |       |       |       |       |       | Ta    |
+| ntPos | Ve    |       |       |       |       |       | gging |
+| ition | rsion |       |       |       |       |       | A     |
+|       | ma    |       |       |       |       |       | ssist |
+|       | jor.m |       |       |       |       |       | enten |
+|       | inor. |       |       |       |       |       | im    |
+|       | patch |       |       |       |       |       | GUI   |
+|       | w     |       |       |       |       |       | und   |
+|       | elche |       |       |       |       |       | Auto  |
+|       | ink   |       |       |       |       |       | -rele |
+|       | remen |       |       |       |       |       | asing |
+|       | tiert |       |       |       |       |       | Fe    |
+|       | w     |       |       |       |       |       | ature |
+|       | erden |       |       |       |       |       | ge    |
+|       | soll  |       |       |       |       |       | löst. |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ad    | Ermög | :     | :c    | :c    | :c    |       |       |
+| vance | licht | tick: | ross: | ross: | ross: |       |       |
+| dMode | im    |       |       |       |       |       |       |
+|       | Jenki |       |       |       |       |       |       |
+|       | nsgui |       |       |       |       |       |       |
+|       | mehr  |       |       |       |       |       |       |
+|       | Para  |       |       |       |       |       |       |
+|       | meter |       |       |       |       |       |       |
+|       | die   |       |       |       |       |       |       |
+|       | man   |       |       |       |       |       |       |
+|       | zum   |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | etzen |       |       |       |       |       |       |
+|       | kann  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| esta  | Gibt  | :     | :c    | :c    | :c    |       | Wird  |
+| Debug | ein   | tick: | ross: | ross: | ross: |       | über  |
+|       | detai |       |       |       |       |       | addit |
+|       | llier |       |       |       |       |       | ional |
+|       | teres |       |       |       |       |       | B     |
+|       | Bui   |       |       |       |       |       | uildp |
+|       | ldlog |       |       |       |       |       | arams |
+|       | aus   |       |       |       |       |       | g     |
+|       |       |       |       |       |       |       | elöst |
+|       |       |       |       |       |       |       | oder  |
+|       |       |       |       |       |       |       | aber  |
+|       |       |       |       |       |       |       | den   |
+|       |       |       |       |       |       |       | Log   |
+|       |       |       |       |       |       |       | level |
+|       |       |       |       |       |       |       | des   |
+|       |       |       |       |       |       |       | Con   |
+|       |       |       |       |       |       |       | troll |
+|       |       |       |       |       |       |       | ers.  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| keep  | Pro   | :     | :c    | :c    | :c    |       |       |
+| Relea | perty | tick: | ross: | ross: | ross: |       |       |
+| seBui | we    |       |       |       |       |       |       |
+| ldLog | lches |       |       |       |       |       |       |
+| sOnJe | bis   |       |       |       |       |       |       |
+| nkins | zu 5  |       |       |       |       |       |       |
+|       | R     |       |       |       |       |       |       |
+|       | eleas |       |       |       |       |       |       |
+|       | ebuil |       |       |       |       |       |       |
+|       | dlogs |       |       |       |       |       |       |
+|       | spei  |       |       |       |       |       |       |
+|       | chert |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| send  | Per   | :     | :     | :     | :     | true  | .n    |
+| Build | De    | tick: | tick: | tick: | tick: |       | otifi |
+| Statu | fault |       |       |       |       |       | catio |
+| sMail | wird  |       |       |       |       |       | ns[*] |
+|       | ein   |       |       |       |       |       | .send |
+|       | B     |       |       |       |       |       | ingEn |
+|       | uilds |       |       |       |       |       | abled |
+|       | tatus |       |       |       |       |       |       |
+|       | Email |       |       |       |       |       |       |
+|       | gese  |       |       |       |       |       |       |
+|       | ndet, |       |       |       |       |       |       |
+|       | hier  |       |       |       |       |       |       |
+|       | kann  |       |       |       |       |       |       |
+|       | das   |       |       |       |       |       |       |
+|       | aus   |       |       |       |       |       |       |
+|       | gesch |       |       |       |       |       |       |
+|       | alten |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | erden |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| integ | Hier  | :     | :     | :     | :     |       | .ste  |
+| ratio | kann  | tick: | tick: | tick: | tick: |       | ps[*] |
+| nBuil | e     |       |       |       |       |       | .cron |
+| dCron | inges |       |       |       |       |       |       |
+|       | tellt |       |       |       |       |       |       |
+|       | we    |       |       |       |       |       |       |
+|       | rden, |       |       |       |       |       |       |
+|       | ob    |       |       |       |       |       |       |
+|       | der   |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | näch  |       |       |       |       |       |       |
+|       | tlich |       |       |       |       |       |       |
+|       | per   |       |       |       |       |       |       |
+|       | Cr    |       |       |       |       |       |       |
+|       | onjob |       |       |       |       |       |       |
+|       | ausge |       |       |       |       |       |       |
+|       | führt |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | erden |       |       |       |       |       |       |
+|       | soll  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| jdk   | Au    | :     | :     | :     | :     |       | .mvn  |
+| Label | swahl | tick: | tick: | tick: | tick: |       | .jdkL |
+|       | des   |       |       |       |       |       | abel  |
+|       | JDK's |       |       |       |       |       |       |
+|       | für   |       |       |       |       |       |       |
+|       | den   |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | (Soll |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | Zu    |       |       |       |       |       |       |
+|       | kunft |       |       |       |       |       |       |
+|       | über  |       |       |       |       |       |       |
+|       | Maven |       |       |       |       |       |       |
+|       | gesc  |       |       |       |       |       |       |
+|       | hehen |       |       |       |       |       |       |
+|       | und   |       |       |       |       |       |       |
+|       | aussc |       |       |       |       |       |       |
+|       | hlies |       |       |       |       |       |       |
+|       | slich |       |       |       |       |       |       |
+|       | Op    |       |       |       |       |       |       |
+|       | enJdk |       |       |       |       |       |       |
+|       | verw  |       |       |       |       |       |       |
+|       | endet |       |       |       |       |       |       |
+|       | we    |       |       |       |       |       |       |
+|       | rden) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| op    | Open  | :     | :c    | :c    | :c    |       | T     |
+| enshi | shift | tick: | ross: | ross: | ross: |       | ekton |
+| ftTem | Tem   |       |       |       |       |       | baut  |
+| plate | plate |       |       |       |       |       | auf   |
+| Valid | Valid |       |       |       |       |       | Helm  |
+| ation | ation |       |       |       |       |       | auf.  |
+|       | prüft |       |       |       |       |       |       |
+|       | jedes |       |       |       |       |       |       |
+|       | Tem   |       |       |       |       |       |       |
+|       | plate |       |       |       |       |       |       |
+|       | vor   |       |       |       |       |       |       |
+|       | V     |       |       |       |       |       |       |
+|       | alidi |       |       |       |       |       |       |
+|       | erung |       |       |       |       |       |       |
+|       | (     |       |       |       |       |       |       |
+|       | Deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | per   |       |       |       |       |       |       |
+|       | Ar    |       |       |       |       |       |       |
+|       | goCD) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| K     |       |       |       |       |       |       |       |
+| onfig |       |       |       |       |       |       |       |
+| struk |       |       |       |       |       |       |       |
+| turen |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| d     | Do    | :     | :     | :     | :     |       | .d    |
+| ocker | cker- | tick: | tick: | tick: | tick: |       | ocker |
+|       | Build |       |       |       |       |       |       |
+|       | Konf  |       |       |       |       |       |       |
+|       | igstr |       |       |       |       |       |       |
+|       | utkur |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| mvn   | M     | :     | :     | :     | :     |       | .mvn  |
+|       | aven- | tick: | tick: | tick: | tick: |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | Konf  |       |       |       |       |       |       |
+|       | igstr |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| npm   | NPM-  | :     | :     | :     | :     |       | .npm  |
+|       | Build | tick: | tick: | tick: | tick: |       |       |
+|       | Konf  |       |       |       |       |       |       |
+|       | igstr |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| go    | Go-   | :     | :     | :     | :     |       | .go   |
+|       | Build | tick: | tick: | tick: | tick: |       |       |
+|       | Konf  |       |       |       |       |       |       |
+|       | igstr |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| s     | S     | :     | :     | :     | :     |       | .s    |
+| tages | tages | tick: | tick: | tick: | tick: |       | tages |
+|       | Str   |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
+|       | für   |       |       |       |       |       |       |
+|       | das   |       |       |       |       |       |       |
+|       | St    |       |       |       |       |       |       |
+|       | aging |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| steps | Steps | :     | :     | :     | :     |       | .     |
+|       | Str   | tick: | tick: | tick: | tick: |       | steps |
+|       | uktur |       |       |       |       |       | →     |
+|       | für   |       |       |       |       |       | .pipe |
+|       | das   |       |       |       |       |       | lines |
+|       | Setup |       |       |       |       |       |       |
+|       | von   |       |       |       |       |       |       |
+|       | ver   |       |       |       |       |       |       |
+|       | schie |       |       |       |       |       |       |
+|       | denen |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | typen |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| helm  | Helm  | :     | :     | :     | :     |       | .helm |
+|       | Ko    | tick: | tick: | tick: | tick: |       |       |
+|       | nfigu |       |       |       |       |       |       |
+|       | ratio |       |       |       |       |       |       |
+|       | nsstr |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| c     | C     | :     | :     | :     | :     |       | .pi   |
+| reden | reden | tick: | tick: | tick: | tick: |       | pelin |
+| tials | tials |       |       |       |       |       | es[*] |
+|       | Ko    |       |       |       |       |       | .envS |
+|       | nfigu |       |       |       |       |       | ecret |
+|       | ratio |       |       |       |       |       |       |
+|       | nsstr |       |       |       |       |       |       |
+|       | utkur |       |       |       |       |       |       |
+|       | um    |       |       |       |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | reden |       |       |       |       |       |       |
+|       | tials |       |       |       |       |       |       |
+|       | der   |       |       |       |       |       |       |
+|       | Pip   |       |       |       |       |       |       |
+|       | eline |       |       |       |       |       |       |
+|       | mitzu |       |       |       |       |       |       |
+|       | geben |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| not   | Not   | :c    | :     | :     | :     |       | .not  |
+| ifica | ifica | ross: | tick: | tick: | tick: |       | ifica |
+| tions | tions |       |       |       |       |       | tions |
+|       | Ko    |       |       |       |       |       |       |
+|       | nfigu |       |       |       |       |       |       |
+|       | ratio |       |       |       |       |       |       |
+|       | nsstr |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| tea   | Teams | :     | :     | :     | :     |       | .     |
+| msNot | Ko    | tick: | tick: | tick: | tick: |       | notif |
+| ifica | nfigu |       |       |       |       |       | icati |
+| tions | ratio |       |       |       |       |       | ons[t |
+|       | nsstr |       |       |       |       |       | ype=t |
+|       | uktur |       |       |       |       |       | eams] |
+|       | um    |       |       |       |       |       |       |
+|       | Not   |       |       |       |       |       |       |
+|       | ifica |       |       |       |       |       |       |
+|       | tions |       |       |       |       |       |       |
+|       | einem |       |       |       |       |       |       |
+|       | Teams |       |       |       |       |       |       |
+|       | Ch    |       |       |       |       |       |       |
+|       | annel |       |       |       |       |       |       |
+|       | mitzu |       |       |       |       |       |       |
+|       | geben |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Do    | Fe    | Esta  | V1    | V2    | Final | De    | .d    |
+| cker- | ature | Cloud |       |       |       | fault | ocker |
+| Build | Be    | Pip   |       |       |       |       |       |
+| Str   | schre | eline |       |       |       |       |       |
+| uktur | ibung |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| a     | D     | :     | :     | :     | :     |       |       |
+| rtifa | ocker | tick: | tick: | tick: | tick: |       |       |
+| ctory | Repo  |       |       |       |       |       |       |
+| Docke | von   |       |       |       |       |       |       |
+| rRepo | A     |       |       |       |       |       |       |
+| (requ | rtifa |       |       |       |       |       |       |
+| ired) | ctory |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| o     | Open  | :     | :     | :     | :     | $.p   |       |
+| penSh | shift | tick: | tick: | tick: | tick: | roduc |       |
+| iftAp | A     |       |       |       |       | tName |       |
+| pName | pplik |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | sname |       |       |       |       |       |       |
+|       | (neu  |       |       |       |       |       |       |
+|       | opti  |       |       |       |       |       |       |
+|       | onal) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| docke | Falls | :     | :     | :     | :     | "D    |       |
+| rFile | nicht | tick: | tick: | tick: | tick: | ocker |       |
+|       | ange  |       |       |       |       | file" |       |
+|       | geben |       |       |       |       |       |       |
+|       | S     |       |       |       |       |       |       |
+|       | elfru |       |       |       |       |       |       |
+|       | nning |       |       |       |       |       |       |
+|       | Jar   |       |       |       |       |       |       |
+|       | wird  |       |       |       |       |       |       |
+|       | erst  |       |       |       |       |       |       |
+|       | ellt, |       |       |       |       |       |       |
+|       | sonst |       |       |       |       |       |       |
+|       | Docke |       |       |       |       |       |       |
+|       | rfile |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| imag  | Def   | :     | :     | :     | :     |       |       |
+| eName | ault: | tick: | tick: | tick: | tick: |       |       |
+|       | o     |       |       |       |       |       |       |
+|       | pensh |       |       |       |       |       |       |
+|       | iftAp |       |       |       |       |       |       |
+|       | pName |       |       |       |       |       |       |
+|       | ;     |       |       |       |       |       |       |
+|       | anso  |       |       |       |       |       |       |
+|       | nsten |       |       |       |       |       |       |
+|       | Name  |       |       |       |       |       |       |
+|       | des   |       |       |       |       |       |       |
+|       | Do    |       |       |       |       |       |       |
+|       | ckeri |       |       |       |       |       |       |
+|       | mages |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| bas   | Im    | :     | :     | :     | :     |       |       |
+| eImag | Fall  | tick: | tick: | tick: | tick: |       |       |
+| eFrom | des   |       |       |       |       |       |       |
+|       | Self  |       |       |       |       |       |       |
+|       | runni |       |       |       |       |       |       |
+|       | ngjar |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
+|       | ist   |       |       |       |       |       |       |
+|       | das   |       |       |       |       |       |       |
+|       | das   |       |       |       |       |       |       |
+|       | Base  |       |       |       |       |       |       |
+|       | image |       |       |       |       |       |       |
+|       | we    |       |       |       |       |       |       |
+|       | lches |       |       |       |       |       |       |
+|       | wir   |       |       |       |       |       |       |
+|       | erben |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| o     | E     | :     | :ques | :     | :     |       |       |
+| cBuil | igene | tick: | tion: | tick: | tick: |       |       |
+| dVars | Umg   |       |       |       |       |       |       |
+|       | ebung |       |       |       |       |       |       |
+|       | svari |       |       |       |       |       |       |
+|       | ablen |       |       |       |       |       |       |
+|       | für   |       |       |       |       |       |       |
+|       | den   |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | -     |       |       |       |       |       |       |
+|       | Beis  |       |       |       |       |       |       |
+|       | piel: |       |       |       |       |       |       |
+|       | "ocB  |       |       |       |       |       |       |
+|       | uildV |       |       |       |       |       |       |
+|       | ars:" |       |       |       |       |       |       |
+|       | "S    |       |       |       |       |       |       |
+|       | NAPSH |       |       |       |       |       |       |
+|       | OTVER |       |       |       |       |       |       |
+|       | SION= |       |       |       |       |       |       |
+|       | 1234, |       |       |       |       |       |       |
+|       | TIMES |       |       |       |       |       |       |
+|       | TAMP= |       |       |       |       |       |       |
+|       | 12134 |       |       |       |       |       |       |
+|       | 2323" |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| new   | New   | :     | :c    | :ques | :ques |       |       |
+| Relic | Relic | tick: | ross: | tion: | tion: |       |       |
+|       | Ko    |       |       |       |       |       |       |
+|       | nfigu |       |       |       |       |       |       |
+|       | ratio |       |       |       |       |       |       |
+|       | nsstr |       |       |       |       |       |       |
+|       | uktur |       |       |       |       |       |       |
+|       | für   |       |       |       |       |       |       |
+|       | den   |       |       |       |       |       |       |
+|       | Self  |       |       |       |       |       |       |
+|       | Runni |       |       |       |       |       |       |
+|       | ngJar |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| c     | Build | :     | :c    | :c    | :c    |       |       |
+| heckO | wird  | tick: | ross: | ross: | ross: |       |       |
+| penSh | nur   |       |       |       |       |       |       |
+| iftDe | e     |       |       |       |       |       |       |
+| ploym | rfolg |       |       |       |       |       |       |
+| entRe | reich |       |       |       |       |       |       |
+| adyEn | sein, |       |       |       |       |       |       |
+| abled | wenn  |       |       |       |       |       |       |
+|       | das   |       |       |       |       |       |       |
+|       | Open  |       |       |       |       |       |       |
+|       | shift |       |       |       |       |       |       |
+|       | Deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | Ready |       |       |       |       |       |       |
+|       | ist   |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ar    | Supr  | :     | :c    | :     | :     |       |       |
+| tifac | esses | tick: | ross: | tick: | tick: |       |       |
+| toryS | the   |       |       |       |       |       |       |
+| upres | su    |       |       |       |       |       |       |
+| sProj | bfold |       |       |       |       |       |       |
+| ectSu | ercre |       |       |       |       |       |       |
+| bfold | ation |       |       |       |       |       |       |
+| erCre | in    |       |       |       |       |       |       |
+| ation | Ar    |       |       |       |       |       |       |
+|       | tifac |       |       |       |       |       |       |
+|       | tory. |       |       |       |       |       |       |
+|       | If    |       |       |       |       |       |       |
+|       | set   |       |       |       |       |       |       |
+|       | true  |       |       |       |       |       |       |
+|       |  your |       |       |       |       |       |       |
+|       | image |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | publ  |       |       |       |       |       |       |
+|       | ished |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | i.e.  |       |       |       |       |       |       |
+|       | est   |       |       |       |       |       |       |
+|       | a.doc |       |       |       |       |       |       |
+|       | ker.b |       |       |       |       |       |       |
+|       | in.sb |       |       |       |       |       |       |
+|       | b.ch/ |       |       |       |       |       |       |
+|       | youra |       |       |       |       |       |       |
+|       | ppnam |       |       |       |       |       |       |
+|       | e:ver |       |       |       |       |       |       |
+|       | sion, |       |       |       |       |       |       |
+|       | if    |       |       |       |       |       |       |
+|       | false |       |       |       |       |       |       |
+|       |  your |       |       |       |       |       |       |
+|       | image |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | publ  |       |       |       |       |       |       |
+|       | ished |       |       |       |       |       |       |
+|       | t     |       |       |       |       |       |       |
+|       | o est |       |       |       |       |       |       |
+|       | a.doc |       |       |       |       |       |       |
+|       | ker.b |       |       |       |       |       |       |
+|       | in.sb |       |       |       |       |       |       |
+|       | b.ch/ |       |       |       |       |       |       |
+|       | esta  |       |       |       |       |       |       |
+|       | /your |       |       |       |       |       |       |
+|       | appna |       |       |       |       |       |       |
+|       | me:ve |       |       |       |       |       |       |
+|       | rsion |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |
+|       | Evtl. |       |       |       |       |       |       |
+|       | m     |       |       |       |       |       |       |
+|       | üssen |       |       |       |       |       |       |
+|       | wird  |       |       |       |       |       |       |
+|       | das   |       |       |       |       |       |       |
+|       | so    |       |       |       |       |       |       |
+|       | derso |       |       |       |       |       |       |
+|       | an    |       |       |       |       |       |       |
+|       | derse |       |       |       |       |       |       |
+|       | lösen |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Ne    | Fe    | Esta  | V1    | V2    | Final | De    |       |
+| wReli | ature | Cloud |       |       |       | fault |       |
+| c-Con | Be    | Pip   |       |       |       |       |       |
+| figur | schre | eline |       |       |       |       |       |
+| ation | ibung |       |       |       |       |       |       |
+| Str   |       |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ap    | Name  | :     | :c    | :c    | :c    |       |       |
+| pName | of    | tick: | ross: | ross: | ross: |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | a     |       |       |       |       |       |       |
+|       | pplic |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | New   |       |       |       |       |       |       |
+|       | R     |       |       |       |       |       |       |
+|       | elic. |       |       |       |       |       |       |
+|       | If    |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | spec  |       |       |       |       |       |       |
+|       | ified |       |       |       |       |       |       |
+|       | o     |       |       |       |       |       |       |
+|       | pensh |       |       |       |       |       |       |
+|       | iftAp |       |       |       |       |       |       |
+|       | pName |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | used. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| app   | A     | :     | :c    | :c    | :c    |       |       |
+| Label | pplic | tick: | ross: | ross: | ross: |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | L     |       |       |       |       |       |       |
+|       | abels |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | New   |       |       |       |       |       |       |
+|       | Relic |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | ormat |       |       |       |       |       |       |
+|       | "ca   |       |       |       |       |       |       |
+|       | tegor |       |       |       |       |       |       |
+|       | y1:va |       |       |       |       |       |       |
+|       | lue1, |       |       |       |       |       |       |
+|       | cate  |       |       |       |       |       |       |
+|       | gory2 |       |       |       |       |       |       |
+|       | :valu |       |       |       |       |       |       |
+|       | e2".  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| licen | New   | :     | :c    | :c    | :c    |       |       |
+| seKey | Relic | tick: | ross: | ross: | ross: |       |       |
+|       | Li    |       |       |       |       |       |       |
+|       | cense |       |       |       |       |       |       |
+|       | Key   |       |       |       |       |       |       |
+|       | (requ |       |       |       |       |       |       |
+|       | ired) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| a     | New   | :     | :c    | :c    | :c    |       |       |
+| piKey | Relic | tick: | ross: | ross: | ross: |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | Key.  |       |       |       |       |       |       |
+|       | Only  |       |       |       |       |       |       |
+|       | n     |       |       |       |       |       |       |
+|       | eeded |       |       |       |       |       |       |
+|       | if    |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | ecord |       |       |       |       |       |       |
+|       | Deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | InNew |       |       |       |       |       |       |
+|       | Relic |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | set   |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | true. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| r     | If    | :     | :c    | :c    | :c    |       |       |
+| ecord | true, | tick: | ross: | ross: | ross: |       |       |
+| Deplo | a     |       |       |       |       |       |       |
+| yment | m     |       |       |       |       |       |       |
+| InNew | arker |       |       |       |       |       |       |
+| Relic | is    |       |       |       |       |       |       |
+|       | set   |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | New   |       |       |       |       |       |       |
+|       | Relic |       |       |       |       |       |       |
+|       | d     |       |       |       |       |       |       |
+|       | uring |       |       |       |       |       |       |
+|       | de    |       |       |       |       |       |       |
+|       | ploym |       |       |       |       |       |       |
+|       | ent.  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Mvn   | Fe    | Esta  | V1    | V2    | Final | De    | .mvn  |
+| Kon   | ature | Cloud |       |       |       | fault |       |
+| figur | Be    | Pip   |       |       |       |       |       |
+| ation | schre | eline |       |       |       |       |       |
+| s-Str | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| pare  | Path  | :     | :     | :     | :     | "pom  |       |
+| ntPom | to    | tick: | tick: | tick: | tick: | .xml" |       |
+| (requ | p     |       |       |       |       |       |       |
+| ired) | arent |       |       |       |       |       |       |
+|       | pom,  |       |       |       |       |       |       |
+|       | def   |       |       |       |       |       |       |
+|       | ault: |       |       |       |       |       |       |
+|       | po    |       |       |       |       |       |       |
+|       | m.xml |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| de    | Path  | :     | :     | :     | :     |       |       |
+| ploya | to    | tick: | tick: | tick: | tick: |       |       |
+| bleAr | pom   |       |       |       |       |       |       |
+| tifac | which |       |       |       |       |       |       |
+| tsPom | spec  |       |       |       |       |       |       |
+|       | ifies |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | deplo |       |       |       |       |       |       |
+|       | yable |       |       |       |       |       |       |
+|       | artif |       |       |       |       |       |       |
+|       | acts, |       |       |       |       |       |       |
+|       | def   |       |       |       |       |       |       |
+|       | ault: |       |       |       |       |       |       |
+|       | po    |       |       |       |       |       |       |
+|       | m.xml |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| artif | The   | :     | :     | :     | :     |       |       |
+| actor | Maven | tick: | tick: | tick: | tick: |       |       |
+| yMave | repos |       |       |       |       |       |       |
+| nRepo | itory |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rtifa |       |       |       |       |       |       |
+|       | ctory |       |       |       |       |       |       |
+|       | where |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | Maven |       |       |       |       |       |       |
+|       | arti  |       |       |       |       |       |       |
+|       | facts |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | publi |       |       |       |       |       |       |
+|       | shed. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| maven | The   |       | :c    | :ques | :     |       | Maven |
+| Label | used  |       | ross: | tion: | tick: |       | wird  |
+|       | Maven |       |       |       |       |       | erst  |
+|       | Ve    |       |       |       |       |       | wenn  |
+|       | rsion |       |       |       |       |       | nötig |
+|       | can   |       |       |       |       |       | konfi |
+|       | be    |       |       |       |       |       | gurie |
+|       | sel   |       |       |       |       |       | rbar. |
+|       | ected |       |       |       |       |       |       |
+|       | (     |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |
+|       | (     |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |
+|       | "A    |       |       |       |       |       |       |
+|       | pache |       |       |       |       |       |       |
+|       | Maven |       |       |       |       |       |       |
+|       | 3.5", |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |
+|       | "A    |       |       |       |       |       |       |
+|       | pache |       |       |       |       |       |       |
+|       | Maven |       |       |       |       |       |       |
+|       | 3.6"  |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |
+|       | )     |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| NP    | Fe    | Esta  | V1    | V2    | Final | De    | .npm  |
+| M-Kon | ature | Cloud |       |       |       | fault |       |
+| figur | Be    | Pip   |       |       |       |       |       |
+| ation | schre | eline |       |       |       |       |       |
+| s-Str | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| targe | Path  | :     | :     | :     | :     |       |       |
+| tRepo | to    | tick: | tick: | tick: | tick: |       |       |
+|       | t     |       |       |       |       |       |       |
+|       | arget |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| addit | Npm   | :     | :     | :     | :     |       |       |
+| ional | build | tick: | tick: | tick: | tick: |       |       |
+| NpmSc | com   |       |       |       |       |       |       |
+| ripts | mands |       |       |       |       |       |       |
+|       | spec  |       |       |       |       |       |       |
+|       | ified |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | pac   |       |       |       |       |       |       |
+|       | kage. |       |       |       |       |       |       |
+|       | json. |       |       |       |       |       |       |
+|       | Comma |       |       |       |       |       |       |
+|       | sepa  |       |       |       |       |       |       |
+|       | rated |       |       |       |       |       |       |
+|       | mul   |       |       |       |       |       |       |
+|       | tiple |       |       |       |       |       |       |
+|       | com   |       |       |       |       |       |       |
+|       | mands |       |       |       |       |       |       |
+|       | can   |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | speci |       |       |       |       |       |       |
+|       | fied. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| p     | Spec  | :     | :     | :     | :     | "pac  |       |
+| ackag | ifies | tick: | tick: | tick: | tick: | kage. |       |
+| eJson | where |       |       |       |       | json" |       |
+|       | the   |       |       |       |       |       |       |
+|       | P     |       |       |       |       |       |       |
+|       | ackag |       |       |       |       |       |       |
+|       | eJson |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | lo    |       |       |       |       |       |       |
+|       | cated |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| pub   | Spec  | :     | :     | :     | :     |       |       |
+| lisha | ifies | tick: | tick: | tick: | tick: |       |       |
+| blePa | where |       |       |       |       |       |       |
+| ckage | the   |       |       |       |       |       |       |
+| Jsons | P     |       |       |       |       |       |       |
+|       | ackag |       |       |       |       |       |       |
+|       | eJson |       |       |       |       |       |       |
+|       | are   |       |       |       |       |       |       |
+|       | for   |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | ublis |       |       |       |       |       |       |
+|       | hable |       |       |       |       |       |       |
+|       | pro   |       |       |       |       |       |       |
+|       | jects |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| inst  | Will  | :     | :ques | :ques | :ques |       | Abk   |
+| allDe | exc   | tick: | tion: | tion: | tion: |       | lären |
+| pende | ecute |       |       |       |       |       | was   |
+| ncies | npm   |       |       |       |       |       | das   |
+|       | ci in |       |       |       |       |       | genau |
+|       | the   |       |       |       |       |       | m     |
+|       | b     |       |       |       |       |       | acht? |
+|       | ackgr |       |       |       |       |       |       |
+|       | ound. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | v     |       |       |       |       |       |       |
+|       | alue: |       |       |       |       |       |       |
+|       | true  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Sta   | Fe    | Esta  | V1    | V2    | Final | De    | .stag |
+| ge Ko | ature | Cloud |       |       |       | fault | es[*] |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| stag  | Name  | :     | :     | :     | :     |       |       |
+| eName | der   | tick: | tick: | tick: | tick: |       |       |
+|       | Stage |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| isO   | Deplo | :     | :c    | :c    | :c    |       |       |
+| pensh | yment | tick: | ross: | ross: | ross: |       |       |
+| iftDe | kann  |       |       |       |       |       |       |
+| ploym | hier  |       |       |       |       |       |       |
+| entEn | gen   |       |       |       |       |       |       |
+| abled | erell |       |       |       |       |       |       |
+|       | ein   |       |       |       |       |       |       |
+|       | oder  |       |       |       |       |       |       |
+|       | aus   |       |       |       |       |       |       |
+|       | gesch |       |       |       |       |       |       |
+|       | altet |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | erden |       |       |       |       |       |       |
+|       | -     |       |       |       |       |       |       |
+|       | soll  |       |       |       |       |       |       |
+|       | über  |       |       |       |       |       |       |
+|       | ArgoC |       |       |       |       |       |       |
+|       | DSync |       |       |       |       |       |       |
+|       | gest  |       |       |       |       |       |       |
+|       | euert |       |       |       |       |       |       |
+|       | we    |       |       |       |       |       |       |
+|       | rden. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| o     | Open  | :     | :c    | :c    | :c    |       |       |
+| pensh | shift | tick: | ross: | ross: | ross: |       |       |
+| iftPr | Name  |       |       |       |       |       |       |
+| oject | space |       |       |       |       |       |       |
+|       | wohin |       |       |       |       |       |       |
+|       | ges   |       |       |       |       |       |       |
+|       | taged |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | erden |       |       |       |       |       |       |
+|       | soll  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| o     | Open  | :     | :c    | :c    | :c    |       |       |
+| pensh | shift | tick: | ross: | ross: | ross: |       |       |
+| iftCl | Clus  |       |       |       |       |       |       |
+| uster | ter:  |       |       |       |       |       |       |
+|       | ot    |       |       |       |       |       |       |
+|       | c_obe |       |       |       |       |       |       |
+|       | lix,  |       |       |       |       |       |       |
+|       | otc   |       |       |       |       |       |       |
+|       | _test |       |       |       |       |       |       |
+|       | _04,  |       |       |       |       |       |       |
+|       | aws   |       |       |       |       |       |       |
+|       |  or   |       |       |       |       |       |       |
+|       |  vias |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| open  | The   | :     | :c    | :c    | :c    |       |       |
+| shift | Je    | tick: | ross: | ross: | ross: |       |       |
+| Jenki | nkins |       |       |       |       |       |       |
+| nsCre | Cre   |       |       |       |       |       |       |
+| denti | denti |       |       |       |       |       |       |
+| alsId | alId: |       |       |       |       |       |       |
+|       | 3     |       |       |       |       |       |       |
+|       | 4b644 |       |       |       |       |       |       |
+|       | 77-39 |       |       |       |       |       |       |
+|       | 60-4f |       |       |       |       |       |       |
+|       | ec-87 |       |       |       |       |       |       |
+|       | 91-cc |       |       |       |       |       |       |
+|       | 859e2 |       |       |       |       |       |       |
+|       | abcde |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| pre   | Je    | :     | :c    | :c    | :ques |       |       |
+| CiDep | nkins | tick: | ross: | ross: | tion: |       |       |
+| loyme | Job   |       |       |       |       |       |       |
+| ntJob | we    |       |       |       |       |       |       |
+| (pre  | lcher |       |       |       |       |       |       |
+| Tekto | vor   |       |       |       |       |       |       |
+| nPipe | dem   |       |       |       |       |       |       |
+| line) | St    |       |       |       |       |       |       |
+|       | aging |       |       |       |       |       |       |
+|       | ausge |       |       |       |       |       |       |
+|       | führt |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | erden |       |       |       |       |       |       |
+|       | soll  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| post  | Je    | :     | :c    | :c    | :ques |       |       |
+| CiDep | nkins | tick: | ross: | ross: | tion: |       |       |
+| loyme | Job   |       |       |       |       |       |       |
+| ntJob | we    |       |       |       |       |       |       |
+| (post | lcher |       |       |       |       |       |       |
+| Tekto | nach  |       |       |       |       |       |       |
+| nPipe | dem   |       |       |       |       |       |       |
+| line) | St    |       |       |       |       |       |       |
+|       | aging |       |       |       |       |       |       |
+|       | ausge |       |       |       |       |       |       |
+|       | führt |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | erden |       |       |       |       |       |       |
+|       | soll  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| preDe | Ein   | :     | :c    | :c    | :ques |       | Das   |
+| ployC | Be    | tick: | ross: | ross: | tion: |       | Deplo |
+| onfir | stäti |       |       |       |       |       | yment |
+| mUser | gungs |       |       |       |       |       | wird  |
+| Mails | Email |       |       |       |       |       | über  |
+|       | wird  |       |       |       |       |       | u     |
+|       | gesch |       |       |       |       |       | nters |
+|       | ickt, |       |       |       |       |       | chied |
+|       | in    |       |       |       |       |       | liche |
+|       | we    |       |       |       |       |       | A     |
+|       | lchem |       |       |       |       |       | rgoCD |
+|       | der   |       |       |       |       |       | Inst  |
+|       | Ben   |       |       |       |       |       | anzen |
+|       | utzer |       |       |       |       |       | mit   |
+|       | vor   |       |       |       |       |       | un    |
+|       | einem |       |       |       |       |       | tersc |
+|       | Deplo |       |       |       |       |       | hiedl |
+|       | yment |       |       |       |       |       | ichen |
+|       | das   |       |       |       |       |       | Bere  |
+|       | Deplo |       |       |       |       |       | chtig |
+|       | yment |       |       |       |       |       | ungen |
+|       | bestä |       |       |       |       |       | gel   |
+|       | tigen |       |       |       |       |       | öst.  |
+|       | m     |       |       |       |       |       |       |
+|       | uss.  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| k     | A     | :     | :c    | :c    | :ques |       | Soll  |
+| afkaD | list  | tick: | ross: | ross: | tion: |       | nur   |
+| eploy | of    |       |       |       |       |       | noch  |
+| Param | K     |       |       |       |       |       | per   |
+| eters | afkaD |       |       |       |       |       | H     |
+|       | eploy |       |       |       |       |       | elm/A |
+|       | Param |       |       |       |       |       | rgoCD |
+|       | eters |       |       |       |       |       | g     |
+|       | . Det |       |       |       |       |       | elöst |
+|       | ailed |       |       |       |       |       | w     |
+|       | doc   |       |       |       |       |       | erden |
+|       | ument |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       | Wir   |
+|       | from  |       |       |       |       |       | w     |
+|       | the   |       |       |       |       |       | ürden |
+|       | Kafka |       |       |       |       |       | aller |
+|       | Team, |       |       |       |       |       | dings |
+|       | see   |       |       |       |       |       | die   |
+|       | here  |       |       |       |       |       | Tasks |
+|       | .     |       |       |       |       |       | /Pipe |
+|       |       |       |       |       |       |       | lines |
+|       |       |       |       |       |       |       | berei |
+|       |       |       |       |       |       |       | tstel |
+|       |       |       |       |       |       |       | len.  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| api   | A     | :     | :c    | :c    | :ques |       | Soll  |
+|       | list  | tick: | ross: | ross: | tion: |       | nur   |
+|       | of    |       |       |       |       |       | noch  |
+|       | APIM  |       |       |       |       |       | per   |
+|       | deplo |       |       |       |       |       | H     |
+|       | yment |       |       |       |       |       | elm/A |
+|       | p     |       |       |       |       |       | rgoCD |
+|       | arame |       |       |       |       |       | g     |
+|       | ters. |       |       |       |       |       | elöst |
+|       | For a |       |       |       |       |       | w     |
+|       | more  |       |       |       |       |       | erden |
+|       | det   |       |       |       |       |       |       |
+|       | ailed |       |       |       |       |       | Wir   |
+|       | docu  |       |       |       |       |       | w     |
+|       | menta |       |       |       |       |       | ürden |
+|       | tion, |       |       |       |       |       | aller |
+|       | see   |       |       |       |       |       | dings |
+|       | here. |       |       |       |       |       | die   |
+|       |       |       |       |       |       |       | Tasks |
+|       |       |       |       |       |       |       | /Pipe |
+|       |       |       |       |       |       |       | lines |
+|       |       |       |       |       |       |       | berei |
+|       |       |       |       |       |       |       | tstel |
+|       |       |       |       |       |       |       | len.  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| in    | In    | :     | :c    | :c    | :ques |       | Soll  |
+| stana | stana | tick: | ross: | ross: | tion: |       | nur   |
+|       | re    |       |       |       |       |       | noch  |
+|       | lease |       |       |       |       |       | per   |
+|       | p     |       |       |       |       |       | H     |
+|       | arame |       |       |       |       |       | elm/A |
+|       | ters. |       |       |       |       |       | rgoCD |
+|       | Also  |       |       |       |       |       | g     |
+|       | chec  |       |       |       |       |       | elöst |
+|       | k Pip |       |       |       |       |       | w     |
+|       | eline |       |       |       |       |       | erden |
+|       | H     |       |       |       |       |       |       |
+|       | elper |       |       |       |       |       | Wir   |
+|       | #clou |       |       |       |       |       | w     |
+|       | d_cre |       |       |       |       |       | ürden |
+|       | ateIn |       |       |       |       |       | aller |
+|       | stana |       |       |       |       |       | dings |
+|       | Relea |       |       |       |       |       | die   |
+|       | se-Cr |       |       |       |       |       | Tasks |
+|       | eatea |       |       |       |       |       | /Pipe |
+|       | nInst |       |       |       |       |       | lines |
+|       | anare |       |       |       |       |       | berei |
+|       | lease |       |       |       |       |       | tstel |
+|       |       |       |       |       |       |       | len.  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| appRe | A     | :     | :c    | :c    | :ques |       | Soll  |
+| gistr | list  | tick: | ross: | ross: | tion: |       | nur   |
+| ation | of    |       |       |       |       |       | noch  |
+|       | "     |       |       |       |       |       | per   |
+|       | Apply |       |       |       |       |       | H     |
+|       | Azure |       |       |       |       |       | elm/A |
+|       | AD    |       |       |       |       |       | rgoCD |
+|       | Ap    |       |       |       |       |       | g     |
+|       | p-Reg |       |       |       |       |       | elöst |
+|       | istra |       |       |       |       |       | we    |
+|       | tion" |       |       |       |       |       | rden. |
+|       | p     |       |       |       |       |       | Wir   |
+|       | arame |       |       |       |       |       | w     |
+|       | ters. |       |       |       |       |       | ürden |
+|       |       |       |       |       |       |       | aller |
+|       |       |       |       |       |       |       | dings |
+|       |       |       |       |       |       |       | die   |
+|       |       |       |       |       |       |       | Tasks |
+|       |       |       |       |       |       |       | /Pipe |
+|       |       |       |       |       |       |       | lines |
+|       |       |       |       |       |       |       | berei |
+|       |       |       |       |       |       |       | tstel |
+|       |       |       |       |       |       |       | len.  |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| a     | A     | :c    | :     | :     | :     |       |       |
+| rgoCD | rgoCD | ross: | tick: | tick: | tick: |       |       |
+|       | Kon   |       |       |       |       |       |       |
+|       | figur |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | für   |       |       |       |       |       |       |
+|       | diese |       |       |       |       |       |       |
+|       | Stage |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Step  | Fe    | Esta  | V1    | V2    | Final | De    | .ste  |
+| Ko    | ature | Cloud |       |       |       | fault | ps[*] |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| name  | E     | :c    | :     | :     | :     |       |       |
+| (requ | indeu | ross: | tick: | tick: | tick: |       |       |
+| ired) | tiger |       |       |       |       |       |       |
+|       | Name  |       |       |       |       |       |       |
+|       | des   |       |       |       |       |       |       |
+|       | Steps |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ste   | Es    | :     | :c    | :c    | :c    |       |       |
+| pType | gibt  | tick: | ross: | ross: | ross: |       |       |
+| (requ | u     |       |       |       |       |       |       |
+| ired) | nters |       |       |       |       |       |       |
+|       | chied |       |       |       |       |       |       |
+|       | liche |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | typen |       |       |       |       |       |       |
+|       | (rel  |       |       |       |       |       |       |
+|       | ease, |       |       |       |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | ontin |       |       |       |       |       |       |
+|       | uous, |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | tegra |       |       |       |       |       |       |
+|       | tion, |       |       |       |       |       |       |
+|       | cu    |       |       |       |       |       |       |
+|       | stom) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| isBu  | Ob    | :     | :     | :     | :     | false | .s    |
+| ildEn | diese | tick: | tick: | tick: | tick: |       | teps[ |
+| abled | Bui   |       |       |       |       |       | *].en |
+| (requ | ldkon |       |       |       |       |       | abled |
+| ired) | figur |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | gen   |       |       |       |       |       |       |
+|       | erell |       |       |       |       |       |       |
+|       | aktiv |       |       |       |       |       |       |
+|       | ist   |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| fail  | S     | :     | :c    | :c    | :c    |       |       |
+| OnXra | hould | tick: | ross: | ross: | ross: |       |       |
+| yScan | the   |       |       |       |       |       |       |
+| (d    | build |       |       |       |       |       |       |
+| eprec | fail  |       |       |       |       |       |       |
+| ated) | if    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | XRa   |       |       |       |       |       |       |
+|       | yscan |       |       |       |       |       |       |
+|       | finds |       |       |       |       |       |       |
+|       | v     |       |       |       |       |       |       |
+|       | iolat |       |       |       |       |       |       |
+|       | ions? |       |       |       |       |       |       |
+|       | (true |       |       |       |       |       |       |
+|       | /     |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | alse) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| de    | Do    | :     | :c    | :     | :     |       | Q     |
+| pende | you   | tick: | ross: | tick: | tick: |       | ualit |
+| ncyCh | want  |       |       |       |       |       | yscan |
+| eckEn | to    |       |       |       |       |       | Konf  |
+| abled | run   |       |       |       |       |       | igstr |
+|       | the   |       |       |       |       |       | uktur |
+|       | OWASP |       |       |       |       |       | um    |
+|       | depen |       |       |       |       |       | bauen |
+|       | dency |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | heck? |       |       |       |       |       |       |
+|       | (true |       |       |       |       |       |       |
+|       | /     |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | alse) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| d     | De    | :     | :c    | :     | :     |       |       |
+| epend | fine  | tick: | ross: | tick: | tick: |       |       |
+| encyC | addit |       |       |       |       |       |       |
+| heckA | ional |       |       |       |       |       |       |
+| dditi | scan  |       |       |       |       |       |       |
+| onalP | p     |       |       |       |       |       |       |
+| arams | arams |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| s     | Do    | :     | :c    | :     | :     |       | Qu    |
+| onarS | you   | tick: | ross: | tick: | tick: |       | ality |
+| canEn | want  |       |       |       |       |       | Scans |
+| abled | the   |       |       |       |       |       | prio? |
+|       | sonar |       |       |       |       |       |       |
+|       | scan  |       |       |       |       |       |       |
+|       | done? |       |       |       |       |       |       |
+|       | (true |       |       |       |       |       |       |
+|       | /     |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | alse) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| fail  | If    | :     | :c    | :     | :     |       | Qu    |
+| OnQua | en    | tick: | ross: | tick: | tick: |       | ality |
+| lityG | abled |       |       |       |       |       | S     |
+| ateFa | the   |       |       |       |       |       | cans? |
+| ilure | build |       |       |       |       |       | Wie   |
+|       | waits |       |       |       |       |       | oft   |
+|       | for   |       |       |       |       |       | ben   |
+|       | the   |       |       |       |       |       | utzt? |
+|       | r     |       |       |       |       |       |       |
+|       | esult |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | Qu    |       |       |       |       |       |       |
+|       | ality |       |       |       |       |       |       |
+|       | Gate  |       |       |       |       |       |       |
+|       | ana   |       |       |       |       |       |       |
+|       | lysis |       |       |       |       |       |       |
+|       | and   |       |       |       |       |       |       |
+|       | fails |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
+|       | if it |       |       |       |       |       |       |
+|       | has   |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | been  |       |       |       |       |       |       |
+|       | pas   |       |       |       |       |       |       |
+|       | sed.  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| a     | Addit | :     | :     | :     | :     |       |       |
+| dditi | ional | tick: | tick: | tick: | tick: |       |       |
+| onalB | build |       |       |       |       |       |       |
+| uildP | param |       |       |       |       |       |       |
+| arams | eters |       |       |       |       |       |       |
+|       | such  |       |       |       |       |       |       |
+|       | as    |       |       |       |       |       |       |
+|       | -Dsk  |       |       |       |       |       |       |
+|       | ipITs |       |       |       |       |       |       |
+|       | which |       |       |       |       |       |       |
+|       | curr  |       |       |       |       |       |       |
+|       | ently |       |       |       |       |       |       |
+|       | only  |       |       |       |       |       |       |
+|       | a     |       |       |       |       |       |       |
+|       | ffect |       |       |       |       |       |       |
+|       | Maven |       |       |       |       |       |       |
+|       | and   |       |       |       |       |       |       |
+|       | NPM   |       |       |       |       |       |       |
+|       | bu    |       |       |       |       |       |       |
+|       | ilds. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| add   | Addit | :     | :c    | :     | :     |       | Was   |
+| ition | ional | tick: | ross: | tick: | tick: |       | m     |
+| alBui | build |       |       |       |       |       | achen |
+| ldPar | param |       |       |       |       |       | wir   |
+| amsFo | eters |       |       |       |       |       | mit   |
+| rSona | such  |       |       |       |       |       | den   |
+| rScan | as    |       |       |       |       |       | g     |
+|       | -     |       |       |       |       |       | anzen |
+|       | Dskip |       |       |       |       |       | Quali |
+|       | Tests |       |       |       |       |       | tysca |
+|       | =true |       |       |       |       |       | nner? |
+|       | ap    |       |       |       |       |       | V2    |
+|       | plied |       |       |       |       |       | wird  |
+|       | for   |       |       |       |       |       | s     |
+|       | Sona  |       |       |       |       |       | icher |
+|       | rQube |       |       |       |       |       | ein   |
+|       | scans |       |       |       |       |       | Teil  |
+|       | for   |       |       |       |       |       | impl  |
+|       | all   |       |       |       |       |       | ement |
+|       | build |       |       |       |       |       | iert. |
+|       | t     |       |       |       |       |       |       |
+|       | ypes. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | value |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | mpty. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| addit | Addit | :c    | :     | :     | :     |       |       |
+| ional | ional | ross: | tick: | tick: | tick: |       |       |
+| Docke | tags  |       |       |       |       |       |       |
+| rImag | the   |       |       |       |       |       |       |
+| eTags | D     |       |       |       |       |       |       |
+|       | ocker |       |       |       |       |       |       |
+|       | image |       |       |       |       |       |       |
+|       | shall |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | ushed |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | (     |       |       |       |       |       |       |
+|       | comma |       |       |       |       |       |       |
+|       | separ |       |       |       |       |       |       |
+|       | ated) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| tr    | S     | :     | :c    | :c    | :c    |       |       |
+| igger | hould | tick: | ross: | ross: | ross: |       |       |
+| Build | a     |       |       |       |       |       |       |
+| OnCom | Je    |       |       |       |       |       |       |
+| mitEn | nkins |       |       |       |       |       |       |
+| abled | build |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | exe   |       |       |       |       |       |       |
+|       | cuted |       |       |       |       |       |       |
+|       | at a  |       |       |       |       |       |       |
+|       | Bitb  |       |       |       |       |       |       |
+|       | ucket |       |       |       |       |       |       |
+|       | event |       |       |       |       |       |       |
+|       | on    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | m     |       |       |       |       |       |       |
+|       | ainBr |       |       |       |       |       |       |
+|       | anch? |       |       |       |       |       |       |
+|       | (true |       |       |       |       |       |       |
+|       | |     |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | alse) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| t     | We    | :c    | :     | :     | :     |       |       |
+| rigge | can   | ross: | tick: | tick: | tick: |       |       |
+| rType | have  |       |       |       |       |       |       |
+|       | here  |       |       |       |       |       |       |
+|       | diff  |       |       |       |       |       |       |
+|       | erent |       |       |       |       |       |       |
+|       | Tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | types |       |       |       |       |       |       |
+|       | like  |       |       |       |       |       |       |
+|       | (GITE |       |       |       |       |       |       |
+|       | VENT, |       |       |       |       |       |       |
+|       | US    |       |       |       |       |       |       |
+|       | ER/MA |       |       |       |       |       |       |
+|       | NUAL, |       |       |       |       |       |       |
+|       | CRON) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| st    | Das   | :     | :c    | :c    | :c    |       | Ar    |
+| aging | Stagi | tick: | ross: | ross: | ross: |       | goCD, |
+| (si   | ngpro |       |       |       |       |       | Ar    |
+| mple, | perty |       |       |       |       |       | goRol |
+| blueg | wird  |       |       |       |       |       | louts |
+| reen, | ben   |       |       |       |       |       |       |
+| cus   | ötigt |       |       |       |       |       |       |
+| tombr | um    |       |       |       |       |       |       |
+| anch, | die   |       |       |       |       |       |       |
+| s     | ver   |       |       |       |       |       |       |
+| ubseq | schie |       |       |       |       |       |       |
+| uent) | denen |       |       |       |       |       |       |
+|       | St    |       |       |       |       |       |       |
+|       | aging |       |       |       |       |       |       |
+|       | typen |       |       |       |       |       |       |
+|       | zu    |       |       |       |       |       |       |
+|       | unt   |       |       |       |       |       |       |
+|       | erstü |       |       |       |       |       |       |
+|       | tzen. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| s     | Diff  | :c    | :     | :     | :     |       |       |
+| tages | erent | ross: | tick: | tick: | tick: |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | tages |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rgoCd |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| deplo | S     | :     | :c    | :c    | :c    |       | Wird  |
+| yArti | hould | tick: | ross: | ross: | ross: |       | mit   |
+| facts | the   |       |       |       |       |       | b     |
+|       | gene  |       |       |       |       |       | uildD |
+|       | rated |       |       |       |       |       | ocker |
+|       | arti  |       |       |       |       |       | Image |
+|       | facts |       |       |       |       |       | und   |
+|       | (Mvn, |       |       |       |       |       | packa |
+|       | NPM,  |       |       |       |       |       | geAnd |
+|       | Go)   |       |       |       |       |       | Deplo |
+|       | be    |       |       |       |       |       | yHelm |
+|       | dep   |       |       |       |       |       | Chart |
+|       | loyed |       |       |       |       |       | ers   |
+|       | to    |       |       |       |       |       | etzt. |
+|       | Ar    |       |       |       |       |       |       |
+|       | tifac |       |       |       |       |       |       |
+|       | tory? |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | alse, |       |       |       |       |       |       |
+|       | since |       |       |       |       |       |       |
+|       | this  |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | hould |       |       |       |       |       |       |
+|       | n     |       |       |       |       |       |       |
+|       | eeded |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | case  |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | li    |       |       |       |       |       |       |
+|       | brary |       |       |       |       |       |       |
+|       | bu    |       |       |       |       |       |       |
+|       | ilds. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| b     | If    | :c    | :     | :     | :     | false |       |
+| uildD | true, | ross: | tick: | tick: | tick: |       |       |
+| ocker | D     |       |       |       |       |       |       |
+| Image | ocker |       |       |       |       |       |       |
+|       | Image |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | built |       |       |       |       |       |       |
+|       | and   |       |       |       |       |       |       |
+|       | dep   |       |       |       |       |       |       |
+|       | loyed |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rtifa |       |       |       |       |       |       |
+|       | ctory |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| packa | If    | :c    | :     | :     | :     | false |       |
+| geAnd | true, | ross: | tick: | tick: | tick: |       |       |
+| Deplo | Helm  |       |       |       |       |       |       |
+| yHelm | Chart |       |       |       |       |       |       |
+| Chart | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | pac   |       |       |       |       |       |       |
+|       | kaged |       |       |       |       |       |       |
+|       | and   |       |       |       |       |       |       |
+|       | dep   |       |       |       |       |       |       |
+|       | loyed |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rtifa |       |       |       |       |       |       |
+|       | ctory |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| juni  | With  | :     | :c    | :ques |       |       |       |
+| tTest | that  | tick: | ross: | tion: |       |       |       |
+| Repor | pro   |       |       |       |       |       |       |
+| tPath | perty |       |       |       |       |       |       |
+|       | you   |       |       |       |       |       |       |
+|       | can   |       |       |       |       |       |       |
+|       | dec   |       |       |       |       |       |       |
+|       | lare, |       |       |       |       |       |       |
+|       | where |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | surfi |       |       |       |       |       |       |
+|       | re-re |       |       |       |       |       |       |
+|       | ports |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | this  |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | ound. |       |       |       |       |       |       |
+|       | The   |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | eport |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | shown |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | Je    |       |       |       |       |       |       |
+|       | nkins |       |       |       |       |       |       |
+|       | a     |       |       |       |       |       |       |
+|       | fterw |       |       |       |       |       |       |
+|       | ards. |       |       |       |       |       |       |
+|       |       |       |       |       |       |       |       |
+|       | e. g. |       |       |       |       |       |       |
+|       | :     |       |       |       |       |       |       |
+|       | "j    |       |       |       |       |       |       |
+|       | unitT |       |       |       |       |       |       |
+|       | estRe |       |       |       |       |       |       |
+|       | portP |       |       |       |       |       |       |
+|       | ath": |       |       |       |       |       |       |
+|       | "**   |       |       |       |       |       |       |
+|       | /sure |       |       |       |       |       |       |
+|       | fire- |       |       |       |       |       |       |
+|       | repor |       |       |       |       |       |       |
+|       | ts/*. |       |       |       |       |       |       |
+|       | xml", |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| h     | Falls | :     | :     | :ques |       |       | Statt |
+| otfix | true  | tick: | tick: | tion: |       |       | Flag  |
+| Creat | wird  |       |       |       |       |       | ein   |
+| ionEn | am    |       |       |       |       |       | Pa    |
+| abled | Ende  |       |       |       |       |       | ttern |
+| (Re   | des   |       |       |       |       |       | für   |
+| lease | b     |       |       |       |       |       | den   |
+| Build | uilds |       |       |       |       |       | zu    |
+| only) | ein   |       |       |       |       |       | k     |
+|       | h     |       |       |       |       |       | reier |
+|       | otfix |       |       |       |       |       | enden |
+|       | B     |       |       |       |       |       | H     |
+|       | ranch |       |       |       |       |       | otfix |
+|       | ers   |       |       |       |       |       | B     |
+|       | tellt |       |       |       |       |       | ranch |
+|       | wird. |       |       |       |       |       | ang   |
+|       |       |       |       |       |       |       | eben. |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| tr    | Falls | :     | :c    | :ques |       |       |       |
+| igger | true  | tick: | ross: | tion: |       |       |       |
+| Integ | wird  |       |       |       |       |       |       |
+| ratio | am    |       |       |       |       |       |       |
+| nBuil | Ende  |       |       |       |       |       |       |
+| dAfte | des   |       |       |       |       |       |       |
+| rRele | B     |       |       |       |       |       |       |
+| aseEn | uilds |       |       |       |       |       |       |
+| abled | ein   |       |       |       |       |       |       |
+| (Re   | I     |       |       |       |       |       |       |
+| lease | ntegr |       |       |       |       |       |       |
+| Build | ation |       |       |       |       |       |       |
+| only) | Build |       |       |       |       |       |       |
+|       | get   |       |       |       |       |       |       |
+|       | rigge |       |       |       |       |       |       |
+|       | red.  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| branc | Branc | :     | :     | :     | :     |       |       |
+| hName | hname | tick: | tick: | tick: | tick: |       |       |
+| Prefi | F     |       |       |       |       |       |       |
+| xes ( | ilter |       |       |       |       |       |       |
+| Conti | Liste |       |       |       |       |       |       |
+| nuous | auf   |       |       |       |       |       |       |
+| Build | we    |       |       |       |       |       |       |
+| only) | lchen |       |       |       |       |       |       |
+|       | d     |       |       |       |       |       |       |
+|       | ieser |       |       |       |       |       |       |
+|       | Bui   |       |       |       |       |       |       |
+|       | ldtyp |       |       |       |       |       |       |
+|       | hören |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | oll.  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ver   | Re    | :c    | :     | :     | :     |       |       |
+| sionT | gular | ross: | tick: | tick: | tick: |       |       |
+| agEve | expre |       |       |       |       |       |       |
+| ntPat | ssion |       |       |       |       |       |       |
+| terns | to    |       |       |       |       |       |       |
+|       | match |       |       |       |       |       |       |
+|       | Git   |       |       |       |       |       |       |
+|       | tags  |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | order |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | ex    |       |       |       |       |       |       |
+|       | ecute |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | step. |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | regex |       |       |       |       |       |       |
+|       | like  |       |       |       |       |       |       |
+|       | ^     |       |       |       |       |       |       |
+|       | (\d+\ |       |       |       |       |       |       |
+|       | .)?(\ |       |       |       |       |       |       |
+|       | d+\.) |       |       |       |       |       |       |
+|       | ?(\*| |       |       |       |       |       |       |
+|       | \d+)$ |       |       |       |       |       |       |
+|       | would |       |       |       |       |       |       |
+|       | match |       |       |       |       |       |       |
+|       | a     |       |       |       |       |       |       |
+|       | ve    |       |       |       |       |       |       |
+|       | rsion |       |       |       |       |       |       |
+|       | like  |       |       |       |       |       |       |
+|       | 10.   |       |       |       |       |       |       |
+|       | 5.100 |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| pr    | Jenki | :     | :c    | :     | :     |       | Kann  |
+| eCiSt | nsjob | tick: | ross: | tick: | tick: |       | mit   |
+| epJob | we    |       |       |       |       |       | C     |
+| (pre  | lcher |       |       |       |       |       | ustom |
+| Tekto | vor   |       |       |       |       |       | Tasks |
+| nPipe | dem   |       |       |       |       |       | reali |
+| line) | Build |       |       |       |       |       | siert |
+|       | ausge |       |       |       |       |       | w     |
+|       | führt |       |       |       |       |       | erden |
+|       | wird. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| pos   | Jenki | :     | :c    | :     | :     |       | Kann  |
+| tCiSt | nsjob | tick: | ross: | tick: | tick: |       | mit   |
+| epJob | we    |       |       |       |       |       | C     |
+| (post | lcher |       |       |       |       |       | ustom |
+| Tekto | nach  |       |       |       |       |       | Tasks |
+| nPipe | dem   |       |       |       |       |       | reali |
+| line) | Build |       |       |       |       |       | siert |
+|       | ausge |       |       |       |       |       | w     |
+|       | führt |       |       |       |       |       | erden |
+|       | wird. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| i     | S     | :     | :c    | :c    | :c    |       |       |
+| sS2IB | ource | tick: | ross: | ross: | ross: |       |       |
+| uildA | to    |       |       |       |       |       |       |
+| ctive | Image |       |       |       |       |       |       |
+|       | Build |       |       |       |       |       |       |
+|       | aktiv |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Helm  | Fe    | Esta  | V1    | V2    | Final | De    | .helm |
+| Ko    | ature | Cloud |       |       |       | fault |       |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| re    | Helm  | :     | :     | :     | :     |       |       |
+| lease | re    | tick: | tick: | tick: | tick: |       |       |
+|       | lease |       |       |       |       |       |       |
+|       | name  |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | de    |       |       |       |       |       |       |
+|       | ploy. |       |       |       |       |       |       |
+|       | (     |       |       |       |       |       |       |
+|       | manda |       |       |       |       |       |       |
+|       | tory) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| chart | Rel   | :     | :     | :     | :     |       |       |
+| RootF | ative | tick: | tick: | tick: | tick: |       |       |
+| older | path  |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | Helm  |       |       |       |       |       |       |
+|       | Chart |       |       |       |       |       |       |
+|       | root  |       |       |       |       |       |       |
+|       | fo    |       |       |       |       |       |       |
+|       | lder. |       |       |       |       |       |       |
+|       | (Def  |       |       |       |       |       |       |
+|       | ault: |       |       |       |       |       |       |
+|       | ./ch  |       |       |       |       |       |       |
+|       | arts) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| chart | Rel   | :     | :     | :     | :     |       |       |
+|       | ative | tick: | tick: | tick: | tick: |       |       |
+|       | path  |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | chart |       |       |       |       |       |       |
+|       | w     |       |       |       |       |       |       |
+|       | ithin |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | hartR |       |       |       |       |       |       |
+|       | ootFo |       |       |       |       |       |       |
+|       | lder. |       |       |       |       |       |       |
+|       | If    |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | spec  |       |       |       |       |       |       |
+|       | ified |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | roduc |       |       |       |       |       |       |
+|       | tName |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | used  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| versi | Name  | :c    | :c    | :     | :     |       |       |
+| onPro | of    | ross: | ross: | tick: | tick: |       |       |
+| perty | the   |       |       |       |       |       |       |
+|       | prop  |       |       |       |       |       |       |
+|       | erty/ |       |       |       |       |       |       |
+|       | field |       |       |       |       |       |       |
+|       | i     |       |       |       |       |       |       |
+|       | nside |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | char  |       |       |       |       |       |       |
+|       | tFile |       |       |       |       |       |       |
+|       | which |       |       |       |       |       |       |
+|       | holds |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | ve    |       |       |       |       |       |       |
+|       | rsion |       |       |       |       |       |       |
+|       | st    |       |       |       |       |       |       |
+|       | ring. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| repos | The   | :     | :     | :     | :     |       |       |
+| itory | name  | tick: | tick: | tick: | tick: |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | Helm  |       |       |       |       |       |       |
+|       | repos |       |       |       |       |       |       |
+|       | itory |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | Ar    |       |       |       |       |       |       |
+|       | tifac |       |       |       |       |       |       |
+|       | tory. |       |       |       |       |       |       |
+|       | If    |       |       |       |       |       |       |
+|       | spec  |       |       |       |       |       |       |
+|       | ified |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | chart |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | pac   |       |       |       |       |       |       |
+|       | kaged |       |       |       |       |       |       |
+|       | and   |       |       |       |       |       |       |
+|       | upl   |       |       |       |       |       |       |
+|       | oaded |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | this  |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | eposi |       |       |       |       |       |       |
+|       | tory. |       |       |       |       |       |       |
+|       | Make  |       |       |       |       |       |       |
+|       | sure  |       |       |       |       |       |       |
+|       | that  |       |       |       |       |       |       |
+|       | you   |       |       |       |       |       |       |
+|       | do    |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | sp    |       |       |       |       |       |       |
+|       | ecify |       |       |       |       |       |       |
+|       | a     |       |       |       |       |       |       |
+|       | vi    |       |       |       |       |       |       |
+|       | rtual |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | eposi |       |       |       |       |       |       |
+|       | tory. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| t     | Time  | :     | :c    | :c    | :c    |       |       |
+| imeou | to    | tick: | ross: | ross: | ross: |       |       |
+| tInSe | wait  |       |       |       |       |       |       |
+| conds | for   |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | to be |       |       |       |       |       |       |
+|       | compl |       |       |       |       |       |       |
+|       | eted. |       |       |       |       |       |       |
+|       | Def   |       |       |       |       |       |       |
+|       | aults |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | 600s. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Go    | Fe    | Esta  | V1    | V2    | Final | De    | .go   |
+| Ko    | ature | Cloud |       |       |       | fault |       |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| targe | T     | :     | :     | :     | :     |       |       |
+| tRepo | arget | tick: | tick: | tick: | tick: |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rtifa |       |       |       |       |       |       |
+|       | ctory |       |       |       |       |       |       |
+|       | repos |       |       |       |       |       |       |
+|       | itory |       |       |       |       |       |       |
+|       | name. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| bui   |       | :c    | :     | :     | :     |       |       |
+| ldPac |       | ross: | tick: | tick: | tick: |       |       |
+| kages |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| us    |       | :     | :     | :     | :     |       |       |
+| eMage |       | tick: | tick: | tick: | tick: |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| add   |       | :     | :     | :     | :     |       |       |
+| ition |       | tick: | tick: | tick: | tick: |       |       |
+| alGoP |       |       |       |       |       |       |       |
+| arams |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ana   |       | :     | :c    | :ques | :     |       |       |
+| lysis |       | tick: | ross: | tion: | tick: |       |       |
+| Exclu |       |       |       |       |       |       |       |
+| sions |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| A     | Fe    | Esta  | V1    | V2    | Final | De    | .s    |
+| rgoCD | ature | Cloud |       |       |       | fault | tages |
+| Ko    | Be    | Pip   |       |       |       |       | [*].a |
+| nfigu | schre | eline |       |       |       |       | rgoCD |
+| ratio | ibung |       |       |       |       |       |       |
+| nsstr |       |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| arg   | The   | :c    | :     | :     | :     | $.p   |       |
+| oCdAp | app   | ross: | tick: | tick: | tick: | roduc |       |
+| pName | name  |       |       |       |       | tName |       |
+|       | which |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | refer |       |       |       |       |       |       |
+|       | enced |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | Ar    |       |       |       |       |       |       |
+|       | goCd. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | value |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | top-  |       |       |       |       |       |       |
+|       | level |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | roduc |       |       |       |       |       |       |
+|       | tName |       |       |       |       |       |       |
+|       | prop  |       |       |       |       |       |       |
+|       | erty. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| chart | The   | :c    | :     | :     | :     |       |       |
+| Repos | repos | ross: | tick: | tick: | tick: |       |       |
+| itory | itory |       |       |       |       |       |       |
+|       | where |       |       |       |       |       |       |
+|       | your  |       |       |       |       |       |       |
+|       | helm  |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | harts |       |       |       |       |       |       |
+|       | for   |       |       |       |       |       |       |
+|       | d     |       |       |       |       |       |       |
+|       | eploy |       |       |       |       |       |       |
+|       | ments |       |       |       |       |       |       |
+|       | are.  |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | cu    |       |       |       |       |       |       |
+|       | rrent |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | eposi |       |       |       |       |       |       |
+|       | tory. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| c     | Git   | :c    | :     | :     | :     | "ma   |       |
+| hartB | b     | ross: | tick: | tick: | tick: | ster" |       |
+| ranch | ranch |       |       |       |       |       |       |
+| OrTag | where |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rgoCD |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | hould |       |       |       |       |       |       |
+|       | fetch |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | harts |       |       |       |       |       |       |
+|       | from. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| aut   | If    | :c    | :     | :     | :     | false |       |
+| oSync | true, | ross: | tick: | tick: | tick: |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | pip   |       |       |       |       |       |       |
+|       | eline |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | an    |       |       |       |       |       |       |
+|       | A     |       |       |       |       |       |       |
+|       | rgoCD |       |       |       |       |       |       |
+|       | sync. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Cred  | Fe    | Esta  | V1    | V2    | Final | De    | C     |
+| entia | ature | Cloud |       |       |       | fault | reden |
+| ls Ko | Be    | Pip   |       |       |       |       | tials |
+| nfigu | schre | eline |       |       |       |       | w     |
+| ratio | ibung |       |       |       |       |       | erden |
+| nsstr |       |       |       |       |       |       | in    |
+| uktur |       |       |       |       |       |       | Open  |
+|       |       |       |       |       |       |       | Shift |
+|       |       |       |       |       |       |       | Se    |
+|       |       |       |       |       |       |       | crets |
+|       |       |       |       |       |       |       | g     |
+|       |       |       |       |       |       |       | espei |
+|       |       |       |       |       |       |       | chert |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| id    | Id of | :     | :c    |       |       |       |       |
+|       | Je    | tick: | ross: |       |       |       |       |
+|       | nkins |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | ecret |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | l     |       |       |       |       |       |       |
+|       | ookup |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| type  | Je    | :     | :c    |       |       |       |       |
+|       | nkins | tick: | ross: |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | reden |       |       |       |       |       |       |
+|       | tials |       |       |       |       |       |       |
+|       | type, |       |       |       |       |       |       |
+|       | pos   |       |       |       |       |       |       |
+|       | sible |       |       |       |       |       |       |
+|       | va    |       |       |       |       |       |       |
+|       | lues: |       |       |       |       |       |       |
+|       | st    |       |       |       |       |       |       |
+|       | ring, |       |       |       |       |       |       |
+|       | u     |       |       |       |       |       |       |
+|       | serna |       |       |       |       |       |       |
+|       | mePas |       |       |       |       |       |       |
+|       | sword |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| var   | Name  | :     | :c    |       |       |       |       |
+| iable | of    | tick: | ross: |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | nviro |       |       |       |       |       |       |
+|       | nment |       |       |       |       |       |       |
+|       | var   |       |       |       |       |       |       |
+|       | iable |       |       |       |       |       |       |
+|       | conta |       |       |       |       |       |       |
+|       | ining |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | ecret |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | set   |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| u     | Name  | :     | :c    |       |       |       |       |
+| serna | of    | tick: | ross: |       |       |       |       |
+| meVar | the   |       |       |       |       |       |       |
+| iable | e     |       |       |       |       |       |       |
+|       | nviro |       |       |       |       |       |       |
+|       | nment |       |       |       |       |       |       |
+|       | var   |       |       |       |       |       |       |
+|       | iable |       |       |       |       |       |       |
+|       | conta |       |       |       |       |       |       |
+|       | ining |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | use   |       |       |       |       |       |       |
+|       | rname |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | set   |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| p     | Name  | :     | :c    |       |       |       |       |
+| asswo | of    | tick: | ross: |       |       |       |       |
+| rdVar | the   |       |       |       |       |       |       |
+| iable | e     |       |       |       |       |       |       |
+|       | nviro |       |       |       |       |       |       |
+|       | nment |       |       |       |       |       |       |
+|       | var   |       |       |       |       |       |       |
+|       | iable |       |       |       |       |       |       |
+|       | conta |       |       |       |       |       |       |
+|       | ining |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | pas   |       |       |       |       |       |       |
+|       | sword |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | set   |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Teams | Fe    | Esta  | V1    | V2    | Final | De    | .     |
+| Notif | ature | Cloud |       |       |       | fault | notif |
+| icati | Be    | Pip   |       |       |       |       | icati |
+| on Ko | schre | eline |       |       |       |       | ons[t |
+| nfigu | ibung |       |       |       |       |       | ype=t |
+| ratio |       |       |       |       |       |       | eams] |
+| nsstr |       |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| url   | URL   | :     | :c    |       |       |       | .no   |
+|       | from  | tick: | ross: |       |       |       | tific |
+|       | the   |       |       |       |       |       | ation |
+|       | Micr  |       |       |       |       |       | s[*]. |
+|       | osoft |       |       |       |       |       | webho |
+|       | Teams |       |       |       |       |       | okUrl |
+|       | conn  |       |       |       |       |       |       |
+|       | ector |       |       |       |       |       |       |
+|       | conf  |       |       |       |       |       |       |
+|       | igura |       |       |       |       |       |       |
+|       | tion. |       |       |       |       |       |       |
+|       | Requ  |       |       |       |       |       |       |
+|       | ired. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| st    | N     | :     | :c    |       |       |       |       |
+| artNo | otify | tick: | ross: |       |       |       |       |
+| tific | build |       |       |       |       |       |       |
+| ation | start |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| not   | N     | :     | :c    |       |       |       |       |
+| ifySu | otify | tick: | ross: |       |       |       |       |
+| ccess | a     |       |       |       |       |       |       |
+|       | succe |       |       |       |       |       |       |
+|       | ssful |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| not   | N     | :     | :c    |       |       |       |       |
+| ifyAb | otify | tick: | ross: |       |       |       |       |
+| orted | an    |       |       |       |       |       |       |
+|       | ab    |       |       |       |       |       |       |
+|       | orted |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| noti  | N     | :     | :c    |       |       |       |       |
+| fyNot | otify | tick: | ross: |       |       |       |       |
+| Built | a     |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
+|       | that  |       |       |       |       |       |       |
+|       | was   |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | built |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| noti  | N     | :     | :c    |       |       |       |       |
+| fyUns | otify | tick: | ross: |       |       |       |       |
+| table | an    |       |       |       |       |       |       |
+|       | uns   |       |       |       |       |       |       |
+|       | table |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| not   | N     | :     | :c    |       |       |       |       |
+| ifyFa | otify | tick: | ross: |       |       |       |       |
+| ilure | a     |       |       |       |       |       |       |
+|       | build |       |       |       |       |       |       |
+|       | fa    |       |       |       |       |       |       |
+|       | ilure |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| not   | N     | :     | :c    |       |       |       |       |
+| ifyBa | otify | tick: | ross: |       |       |       |       |
+| ckToN | back  |       |       |       |       |       |       |
+| ormal | to    |       |       |       |       |       |       |
+|       | n     |       |       |       |       |       |       |
+|       | ormal |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | tatus |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| n     | N     | :     | :c    |       |       |       |       |
+| otify | otify | tick: | ross: |       |       |       |       |
+| Repea | rep   |       |       |       |       |       |       |
+| tedFa | eated |       |       |       |       |       |       |
+| ilure | fa    |       |       |       |       |       |       |
+|       | ilure |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| AP    | Fe    | Esta  | V1    | V2    | Final | De    |       |
+| IM Ko | ature | Cloud |       |       |       | fault |       |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ins   | Ins   | :     | :c    |       |       |       |       |
+| tance | tance | tick: | ross: |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | APIM  |       |       |       |       |       |       |
+|       | plat  |       |       |       |       |       |       |
+|       | form. |       |       |       |       |       |       |
+|       | Va    |       |       |       |       |       |       |
+|       | lues: |       |       |       |       |       |       |
+|       | int / |       |       |       |       |       |       |
+|       | prod  |       |       |       |       |       |       |
+|       | (dev  |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | only  |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | open  |       |       |       |       |       |       |
+|       | for   |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | pub   |       |       |       |       |       |       |
+|       | lic)  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| cl    | S     | :     | :c    |       |       |       |       |
+| ientS | ecret | tick: | ross: |       |       |       |       |
+| ecret | of    |       |       |       |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| cli   | ID of | :     | :c    |       |       |       |       |
+| entId | API   | tick: | ross: |       |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | with  |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | ermis |       |       |       |       |       |       |
+|       | sions |       |       |       |       |       |       |
+|       | on    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | (C    |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | Cr    |       |       |       |       |       |       |
+|       | edent |       |       |       |       |       |       |
+|       | ials, |       |       |       |       |       |       |
+|       | Se    |       |       |       |       |       |       |
+|       | rvice |       |       |       |       |       |       |
+|       | Owner |       |       |       |       |       |       |
+|       | Role  |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | API)  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| clien | S     | :     | :c    |       |       |       |       |
+| tJenk | ecret | tick: | ross: |       |       |       |       |
+| insId | ID of |       |       |       |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | with  |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | ermis |       |       |       |       |       |       |
+|       | sions |       |       |       |       |       |       |
+|       | on    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | (C    |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | Cr    |       |       |       |       |       |       |
+|       | edent |       |       |       |       |       |       |
+|       | ials, |       |       |       |       |       |       |
+|       | Se    |       |       |       |       |       |       |
+|       | rvice |       |       |       |       |       |       |
+|       | Owner |       |       |       |       |       |       |
+|       | Role  |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | API)  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| class | C     | :     | :c    |       |       |       |       |
+| ifier | onfig | tick: | ross: |       |       |       |       |
+|       | Class |       |       |       |       |       |       |
+|       | ifier |       |       |       |       |       |       |
+|       | For   |       |       |       |       |       |       |
+|       | Ap    |       |       |       |       |       |       |
+|       | imCon |       |       |       |       |       |       |
+|       | figur |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | Files |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Insta | Fe    | Esta  | V1    | V2    | Final | De    |       |
+| na Ko | ature | Cloud |       |       |       | fault |       |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| apiTo | In    | :     | :c    | :ques |       |       |       |
+| kenId | stana | tick: | ross: | tion: |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | Token |       |       |       |       |       |       |
+|       | ID.   |       |       |       |       |       |       |
+|       | Only  |       |       |       |       |       |       |
+|       | used  |       |       |       |       |       |       |
+|       | if    |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | ecord |       |       |       |       |       |       |
+|       | Deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | true. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | v     |       |       |       |       |       |       |
+|       | alue: |       |       |       |       |       |       |
+|       | null  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| e     | In    | :     | :c    | :ques |       |       |       |
+| nviro | stana | tick: | ross: | tion: |       |       |       |
+| nment | e     |       |       |       |       |       |       |
+|       | nviro |       |       |       |       |       |       |
+|       | nment |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | use,  |       |       |       |       |       |       |
+|       | enum  |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | test| |       |       |       |       |       |       |
+|       | prod, |       |       |       |       |       |       |
+|       | def   |       |       |       |       |       |       |
+|       | ault: |       |       |       |       |       |       |
+|       | test  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| r     | If    | :     | :c    | :ques |       |       |       |
+| ecord | true  | tick: | ross: | tion: |       |       |       |
+| Deplo | a new |       |       |       |       |       |       |
+| yment | deplo |       |       |       |       |       |       |
+|       | yment |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | rec   |       |       |       |       |       |       |
+|       | orded |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | Ins   |       |       |       |       |       |       |
+|       | tana. |       |       |       |       |       |       |
+|       | Also  |       |       |       |       |       |       |
+|       | refer |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | h     |       |       |       |       |       |       |
+|       | ttps: |       |       |       |       |       |       |
+|       | //www |       |       |       |       |       |       |
+|       | .inst |       |       |       |       |       |       |
+|       | ana.c |       |       |       |       |       |       |
+|       | om/do |       |       |       |       |       |       |
+|       | cs/pi |       |       |       |       |       |       |
+|       | pelin |       |       |       |       |       |       |
+|       | e_fee |       |       |       |       |       |       |
+|       | dback |       |       |       |       |       |       |
+|       | /conf |       |       |       |       |       |       |
+|       | igura |       |       |       |       |       |       |
+|       | tion- |       |       |       |       |       |       |
+|       | and-a |       |       |       |       |       |       |
+|       | pi/). |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | v     |       |       |       |       |       |       |
+|       | alue: |       |       |       |       |       |       |
+|       | true  |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Kaf   | Fe    | Esta  | V1    | V2    | Final | De    |       |
+| ka Ko | ature | Cloud |       |       |       | fault |       |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| type  | e     | :     | :c    | :ques |       | Evtl. |       |
+|       | ither | tick: | ross: | tion: |       | G     |       |
+|       | t     |       |       |       |       | itops |       |
+|       | opics |       |       |       |       | mit   |       |
+|       | or    |       |       |       |       | C     |       |
+|       | users |       |       |       |       | harts |       |
+|       |       |       |       |       |       | lösen |       |
+|       |       |       |       |       |       | / Mit |       |
+|       |       |       |       |       |       | Kafk  |       |
+|       |       |       |       |       |       | ateam |       |
+|       |       |       |       |       |       | bespr |       |
+|       |       |       |       |       |       | echen |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| env   | Kafka | :     | :c    | :ques |       |       |       |
+| ironm | e     | tick: | ross: | tion: |       |       |       |
+| entId | nviro |       |       |       |       |       |       |
+|       | nment |       |       |       |       |       |       |
+|       | (     |       |       |       |       |       |       |
+|       | test, |       |       |       |       |       |       |
+|       | inte, |       |       |       |       |       |       |
+|       | prod) |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| cli   | Id of | :     | :c    | :ques |       |       |       |
+| entId | the   | tick: | ross: | tion: |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | API.  |       |       |       |       |       |       |
+|       | Fu    |       |       |       |       |       |       |
+|       | rther |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | forma |       |       |       |       |       |       |
+|       | tion, |       |       |       |       |       |       |
+|       | see   |       |       |       |       |       |       |
+|       | here  |       |       |       |       |       |       |
+|       | .     |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| cl    | S     | :     | :c    | :ques |       |       |       |
+| ientS | ecret | tick: | ross: | tion: |       |       |       |
+| ecret | of    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| fil   | Glob  | :     | :c    | :ques |       |       |       |
+| eGlob | poi   | tick: | ross: | tion: |       |       |       |
+|       | nting |       |       |       |       |       |       |
+|       | to    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | k     |       |       |       |       |       |       |
+|       | afka- |       |       |       |       |       |       |
+|       | resou |       |       |       |       |       |       |
+|       | rces. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | va    |       |       |       |       |       |       |
+|       | lue:  |       |       |       |       |       |       |
+|       | kafka |       |       |       |       |       |       |
+|       | /{typ |       |       |       |       |       |       |
+|       | e}/{e |       |       |       |       |       |       |
+|       | nviro |       |       |       |       |       |       |
+|       | nment |       |       |       |       |       |       |
+|       | Id}/* |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| kaf   | kafka | :     | :c    | :ques |       |       |       |
+| kaAut | Autom | tick: | ross: | tion: |       |       |       |
+| omati | ation |       |       |       |       |       |       |
+| onUrl | URL.  |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | va    |       |       |       |       |       |       |
+|       | lue:  |       |       |       |       |       |       |
+|       | h     |       |       |       |       |       |       |
+|       | ttps: |       |       |       |       |       |       |
+|       | //kaf |       |       |       |       |       |       |
+|       | ka-au |       |       |       |       |       |       |
+|       | tomat |       |       |       |       |       |       |
+|       | ion-p |       |       |       |       |       |       |
+|       | rod.a |       |       |       |       |       |       |
+|       | pp.ob |       |       |       |       |       |       |
+|       | elix. |       |       |       |       |       |       |
+|       | otc.s |       |       |       |       |       |       |
+|       | bb.ch |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| s     | sso   | :     | :c    | :ques |       |       |       |
+| soUrl | URL.  | tick: | ross: | tion: |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | va    |       |       |       |       |       |       |
+|       | lue:  |       |       |       |       |       |       |
+|       | h     |       |       |       |       |       |       |
+|       | ttps: |       |       |       |       |       |       |
+|       | //sso |       |       |       |       |       |       |
+|       | .sbb. |       |       |       |       |       |       |
+|       | ch/au |       |       |       |       |       |       |
+|       | th/re |       |       |       |       |       |       |
+|       | alms/ |       |       |       |       |       |       |
+|       | SBB_P |       |       |       |       |       |       |
+|       | ublic |       |       |       |       |       |       |
+|       | /prot |       |       |       |       |       |       |
+|       | ocol/ |       |       |       |       |       |       |
+|       | openi |       |       |       |       |       |       |
+|       | d-con |       |       |       |       |       |       |
+|       | nect/ |       |       |       |       |       |       |
+|       | token |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Azure | Fe    | Esta  | V1    | V2    | Final | De    |       |
+| AD Ko | ature | Cloud |       |       |       | fault |       |
+| nfigu | Be    | Pip   |       |       |       |       |       |
+| ratio | schre | eline |       |       |       |       |       |
+| nsstr | ibung |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ins   | Ins   | :     | :c    | :     | :     | Soll  |       |
+| tance | tance | tick: | ross: | tick: | tick: | das   |       |
+|       | resp. |       |       |       |       | mit   |       |
+|       | stage |       |       |       |       | Pl    |       |
+|       | of    |       |       |       |       | ugins |       |
+|       | Azure |       |       |       |       | g     |       |
+|       | AD    |       |       |       |       | elöst |       |
+|       | API.  |       |       |       |       | oder  |       |
+|       | Pos   |       |       |       |       | fix   |       |
+|       | sible |       |       |       |       | imp   |       |
+|       | val   |       |       |       |       | lemen |       |
+|       | ues:  |       |       |       |       | tiert |       |
+|       | dev   |       |       |       |       | we    |       |
+|       | , int |       |       |       |       | rden? |       |
+|       | ,     |       |       |       |       |       |       |
+|       | prod  |       |       |       |       | Kann  |       |
+|       |       |       |       |       |       | mit   |       |
+|       |       |       |       |       |       | Helmc |       |
+|       |       |       |       |       |       | harts |       |
+|       |       |       |       |       |       | ein   |       |
+|       |       |       |       |       |       | REST  |       |
+|       |       |       |       |       |       | call  |       |
+|       |       |       |       |       |       | ausge |       |
+|       |       |       |       |       |       | führt |       |
+|       |       |       |       |       |       | we    |       |
+|       |       |       |       |       |       | rden? |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| a     | Path  | :     | :c    | :     | :     |       |       |
+| ppReg | to    | tick: | ross: | tick: | tick: |       |       |
+| istra | the   |       |       |       |       |       |       |
+| tionC | c     |       |       |       |       |       |       |
+| onfig | onfig |       |       |       |       |       |       |
+| Path  | file  |       |       |       |       |       |       |
+|       | (from |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | repos |       |       |       |       |       |       |
+|       | itory |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | oot): |       |       |       |       |       |       |
+|       | e.g.  |       |       |       |       |       |       |
+|       | "app- |       |       |       |       |       |       |
+|       | regis |       |       |       |       |       |       |
+|       | trati |       |       |       |       |       |       |
+|       | on/es |       |       |       |       |       |       |
+|       | ta-ia |       |       |       |       |       |       |
+|       | m-blu |       |       |       |       |       |       |
+|       | eprin |       |       |       |       |       |       |
+|       | ts-ap |       |       |       |       |       |       |
+|       | p-reg |       |       |       |       |       |       |
+|       | istra |       |       |       |       |       |       |
+|       | tions |       |       |       |       |       |       |
+|       | .yml" |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| cli   | Id of | :     | :c    | :     | :     |       |       |
+| entId | the   | tick: | ross: | tick: | tick: |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | that  |       |       |       |       |       |       |
+|       | has   |       |       |       |       |       |       |
+|       | been  |       |       |       |       |       |       |
+|       | regis |       |       |       |       |       |       |
+|       | tered |       |       |       |       |       |       |
+|       | in    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | SBB   |       |       |       |       |       |       |
+|       | deve  |       |       |       |       |       |       |
+|       | loper |       |       |       |       |       |       |
+|       | p     |       |       |       |       |       |       |
+|       | ortal |       |       |       |       |       |       |
+|       |  to   |       |       |       |       |       |       |
+|       | a     |       |       |       |       |       |       |
+|       | ccess |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | Azure |       |       |       |       |       |       |
+|       | AD    |       |       |       |       |       |       |
+|       | API   |       |       |       |       |       |       |
+|       | (C    |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | C     |       |       |       |       |       |       |
+|       | reden |       |       |       |       |       |       |
+|       | tials |       |       |       |       |       |       |
+|       | f     |       |       |       |       |       |       |
+|       | low). |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| cl    | One   | :     | :c    | :     | :     |       |       |
+| ientS | of    | tick: | ross: | tick: | tick: |       |       |
+| ecret | the   |       |       |       |       |       |       |
+|  or   | two   |       |       |       |       |       |       |
+| jenki | param |       |       |       |       |       |       |
+| nsCre | eters |       |       |       |       |       |       |
+| denti | must  |       |       |       |       |       |       |
+| alsId | be    |       |       |       |       |       |       |
+|       | g     |       |       |       |       |       |       |
+|       | iven: |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | ither |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | lient |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |
+|       | ecret |       |       |       |       |       |       |
+|       | or    |       |       |       |       |       |       |
+|       | (pr   |       |       |       |       |       |       |
+|       | efera |       |       |       |       |       |       |
+|       | bly!) |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | jenki |       |       |       |       |       |       |
+|       | nsCre |       |       |       |       |       |       |
+|       | denti |       |       |       |       |       |       |
+|       | alsId |       |       |       |       |       |       |
+|       | r     |       |       |       |       |       |       |
+|       | efere |       |       |       |       |       |       |
+|       | ncing |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | se    |       |       |       |       |       |       |
+|       | cret. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| CiJo  | Fe    | Esta  | V1    | V2    | Final | De    |       |
+| bPara | ature | Cloud |       |       |       | fault |       |
+| meter | Be    | Pip   |       |       |       |       |       |
+| s  Ko | schre | eline |       |       |       |       |       |
+| nfigu | ibung |       |       |       |       |       |       |
+| ratio |       |       |       |       |       |       |       |
+| nsstr |       |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| ups   | SSH   | :     | :c    |       |       |       |       |
+| tream | url   | tick: | ross: |       |       |       |       |
+| GitRe | of    |       |       |       |       |       |       |
+| poUrl | the   |       |       |       |       |       |       |
+|       | ups   |       |       |       |       |       |       |
+|       | tream |       |       |       |       |       |       |
+|       | repos |       |       |       |       |       |       |
+|       | itory |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| u     | B     | :     | :c    |       |       |       |       |
+| pstre | ranch | tick: | ross: |       |       |       |       |
+| amGit | of    |       |       |       |       |       |       |
+| RepoB | the   |       |       |       |       |       |       |
+| ranch | ups   |       |       |       |       |       |       |
+|       | tream |       |       |       |       |       |       |
+|       | repos |       |       |       |       |       |       |
+|       | itory |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| u     | C     | :     | :c    |       |       |       |       |
+| pstre | ommit | tick: | ross: |       |       |       |       |
+| amGit | id of |       |       |       |       |       |       |
+| RepoC | the   |       |       |       |       |       |       |
+| ommit | ups   |       |       |       |       |       |       |
+|       | tream |       |       |       |       |       |       |
+|       | repos |       |       |       |       |       |       |
+|       | itory |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Not   | Fe    | Esta  | V1    | V2    | Final | De    | .n    |
+| ifica | ature | Cloud |       |       |       | fault | otifi |
+| tions | Be    | Pip   |       |       |       |       | catio |
+| Ko    | schre | eline |       |       |       |       | ns[*] |
+| nfigu | ibung |       |       |       |       |       |       |
+| ratio |       |       |       |       |       |       |       |
+| nsstr |       |       |       |       |       |       |       |
+| uktur |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| type  | Typ   | :c    | :     | :     | :     | "e    |       |
+| (requ | e/del | ross: | tick: | tick: | tick: | mail" |       |
+| ired) | ivery |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | no    |       |       |       |       |       |       |
+|       | tific |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | mes   |       |       |       |       |       |       |
+|       | sages |       |       |       |       |       |       |
+|       | ["    |       |       |       |       |       |       |
+|       | EMAIL |       |       |       |       |       |       |
+|       | ","TE |       |       |       |       |       |       |
+|       | AMS"] |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| send  | Flag  | :c    | :     | :     | :     | true  |       |
+| ingEn | to    | ross: | tick: | tick: | tick: |       |       |
+| abled | enab  |       |       |       |       |       |       |
+|       | le/di |       |       |       |       |       |       |
+|       | sable |       |       |       |       |       |       |
+|       | se    |       |       |       |       |       |       |
+|       | nding |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | ifica |       |       |       |       |       |       |
+|       | tions |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| event | F     | :c    | :     | :     | :     |       |       |
+| Types | ilter | ross: | tick: | tick: | tick: |       |       |
+|       | for   |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | vents |       |       |       |       |       |       |
+|       | that  |       |       |       |       |       |       |
+|       | tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | this  |       |       |       |       |       |       |
+|       | no    |       |       |       |       |       |       |
+|       | tific |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | ("STA |       |       |       |       |       |       |
+|       | RT"," |       |       |       |       |       |       |
+|       | SUCCE |       |       |       |       |       |       |
+|       | SS"," |       |       |       |       |       |       |
+|       | FAILU |       |       |       |       |       |       |
+|       | RE"," |       |       |       |       |       |       |
+|       | ABORT |       |       |       |       |       |       |
+|       | ED"). |       |       |       |       |       |       |
+|       | If    |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | mpty, |       |       |       |       |       |       |
+|       | all   |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | vents |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | noti  |       |       |       |       |       |       |
+|       | ficat |       |       |       |       |       |       |
+|       | ions. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| pip   | F     | :c    | :     | :     | :     |       |       |
+| eline | ilter | ross: | tick: | tick: | tick: |       |       |
+| Types | for   |       |       |       |       |       |       |
+|       | pip   |       |       |       |       |       |       |
+|       | eline |       |       |       |       |       |       |
+|       | types |       |       |       |       |       |       |
+|       | tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | this  |       |       |       |       |       |       |
+|       | no    |       |       |       |       |       |       |
+|       | tific |       |       |       |       |       |       |
+|       | ation |       |       |       |       |       |       |
+|       | ("TA  |       |       |       |       |       |       |
+|       | GGING |       |       |       |       |       |       |
+|       | ","BU |       |       |       |       |       |       |
+|       | ILD", |       |       |       |       |       |       |
+|       | "STAG |       |       |       |       |       |       |
+|       | ING", |       |       |       |       |       |       |
+|       | "CUST |       |       |       |       |       |       |
+|       | OM"). |       |       |       |       |       |       |
+|       | If    |       |       |       |       |       |       |
+|       | e     |       |       |       |       |       |       |
+|       | mpty, |       |       |       |       |       |       |
+|       | all   |       |       |       |       |       |       |
+|       | pip   |       |       |       |       |       |       |
+|       | eline |       |       |       |       |       |       |
+|       | types |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | tr    |       |       |       |       |       |       |
+|       | igger |       |       |       |       |       |       |
+|       | noti  |       |       |       |       |       |       |
+|       | ficat |       |       |       |       |       |       |
+|       | ions. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| title | The   | :c    | :c    | :ques | :     |       |       |
+|       | me    | ross: | ross: | tion: | tick: |       |       |
+|       | ssage |       |       |       |       |       |       |
+|       | t     |       |       |       |       |       |       |
+|       | itle. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | title |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | taken |       |       |       |       |       |       |
+|       | from  |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | g     |       |       |       |       |       |       |
+|       | lobal |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | onfig |       |       |       |       |       |       |
+|       | map   |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | ESTA  |       |       |       |       |       |       |
+|       | T     |       |       |       |       |       |       |
+|       | ekton |       |       |       |       |       |       |
+|       | Contr |       |       |       |       |       |       |
+|       | oller |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| me    | The   | :c    | :c    | :ques | :     |       |       |
+| ssage | me    | ross: | ross: | tion: | tick: |       |       |
+|       | ssage |       |       |       |       |       |       |
+|       | body. |       |       |       |       |       |       |
+|       | De    |       |       |       |       |       |       |
+|       | fault |       |       |       |       |       |       |
+|       | value |       |       |       |       |       |       |
+|       | is    |       |       |       |       |       |       |
+|       | taken |       |       |       |       |       |       |
+|       | from  |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | g     |       |       |       |       |       |       |
+|       | lobal |       |       |       |       |       |       |
+|       | c     |       |       |       |       |       |       |
+|       | onfig |       |       |       |       |       |       |
+|       | map   |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | ESTA  |       |       |       |       |       |       |
+|       | T     |       |       |       |       |       |       |
+|       | ekton |       |       |       |       |       |       |
+|       | Contr |       |       |       |       |       |       |
+|       | oller |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| recip | List  | :c    | :     | :     | :     |       |       |
+| ients | of    | ross: | tick: | tick: | tick: |       |       |
+|       | reci  |       |       |       |       |       |       |
+|       | pient |       |       |       |       |       |       |
+|       | email |       |       |       |       |       |       |
+|       | addr  |       |       |       |       |       |       |
+|       | esses |       |       |       |       |       |       |
+|       | for   |       |       |       |       |       |       |
+|       | "e    |       |       |       |       |       |       |
+|       | mail" |       |       |       |       |       |       |
+|       | type  |       |       |       |       |       |       |
+|       | noti  |       |       |       |       |       |       |
+|       | ficat |       |       |       |       |       |       |
+|       | ions. |       |       |       |       |       |       |
+|       | The   |       |       |       |       |       |       |
+|       | S     |       |       |       |       |       |       |
+|       | tring |       |       |       |       |       |       |
+|       | "$a   |       |       |       |       |       |       |
+|       | ctor" |       |       |       |       |       |       |
+|       | will  |       |       |       |       |       |       |
+|       | be    |       |       |       |       |       |       |
+|       | rep   |       |       |       |       |       |       |
+|       | laced |       |       |       |       |       |       |
+|       | with  |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | email |       |       |       |       |       |       |
+|       | ad    |       |       |       |       |       |       |
+|       | dress |       |       |       |       |       |       |
+|       | of    |       |       |       |       |       |       |
+|       | user  |       |       |       |       |       |       |
+|       | who   |       |       |       |       |       |       |
+|       | st    |       |       |       |       |       |       |
+|       | arted |       |       |       |       |       |       |
+|       | the   |       |       |       |       |       |       |
+|       | pipe  |       |       |       |       |       |       |
+|       | line. |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| webho | We    | :c    | :     | :     | :     |       |       |
+| okUrl | bhook | ross: | tick: | tick: | tick: |       |       |
+|       | URL   |       |       |       |       |       |       |
+|       | for   |       |       |       |       |       |       |
+|       | "t    |       |       |       |       |       |       |
+|       | eams" |       |       |       |       |       |       |
+|       | type  |       |       |       |       |       |       |
+|       | not   |       |       |       |       |       |       |
+|       | ifica |       |       |       |       |       |       |
+|       | tions |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Nicht |       |       |       |       |       |       |       |
+| kon   |       |       |       |       |       |       |       |
+| figur |       |       |       |       |       |       |       |
+| ative |       |       |       |       |       |       |       |
+| Fea   |       |       |       |       |       |       |       |
+| tures |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+| Su    | h     | :c    | :c    | :ques |       |       |       |
+| pport | ttps: | ross: | ross: | tion: |       |       |       |
+| von   | //www |       |       |       |       |       |       |
+| Co    | .conv |       |       |       |       |       |       |
+| nvent | entio |       |       |       |       |       |       |
+| ional | nalco |       |       |       |       |       |       |
+| co    | mmits |       |       |       |       |       |       |
+| mmits | .org/ |       |       |       |       |       |       |
+|       | en/v1 |       |       |       |       |       |       |
+|       | .0.0/ |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+
+
+Custom Pipelines (Draft)
+
+Es versteht sich, dass die Standard Pipelines für Maven, NPM, Go und
+Docker Builds, welche von ESTA Tekton angeboten werden, nicht für alle
+Projekte und Bedürfnisse genügen. Einer der Vorteile von Tekton ist,
+dass man einfach eigene Pipelines erstelllen kann und dabei auf
+bestehende Tasks von ESTA Tekton oder aus dem öffentlichen Tekton
+Katalog zugreifen kann. Die Unterstützung für Custom Pipelines in ESTA
+Tekton soll daher möglichst einfach umgesetzt werden und in einer Form,
+wo die Funktionalität des ESTA Tekton Controllers für das Management
+bestmöglichst genutzt werden kann. So sehen wir zwei Stufen für die
+Definition und Anwendung von Custom Pipelines in Repos resp. Projekten
+vor:
+
+Custom Pipeline Templates im Projekt-Repository
+
+Templates für Custom Pipelines resp. PipelineRuns werden direkt im
+Repository gehalten, wo auch das estaTektonPipeline.json liegt und von
+selbigem referenziert.
+
+Als Konvention gilt, dass die PipelineRun Templates im Ordner "tekon"
+gespeichert und "self-contained" sind. Das bedeutet, sie werden vom ESTA
+Tekton Controller direkt via oc process -f <file> verarbeitet und nicht
+im OpenShift Namespace applied. Sie enthalten vorzugsweise die Pipeline
+Definition inline mit pipelineSpec, wie in diesem Beispiel gezeigt.
+Damit wird gewährleistet, dass die Custom Pipeline in der richtigen
+Version aus dem entsprechenden Branch/Tag/Commit gestartet wird.
+
+Custom Repository mit Pipeline und Task Definitionen
+
+Für grössere Projekte können Tekton Tasks und Pipelines in einem eigenen
+Repository verwaltet werden. Diese werden dann vom Controller in den
+entsprechenden OpenShift Namespace importiert, analog zu den Standard
+ESTA Tekton Pipelines. Sie sind dann also global und in der im
+Controller konfigurierten Version vorhanden und werden über ihre
+eindeutigen Namen gestartet oder referenziert. Über diesen Mechanismus
+können die Tasks und Pipelines von ESTA Tekton ergänzt oder ggf. sogar
+überschrieben werden.
+
+Integration in estaTektonPipeline.json
+
+Die Verwendung von Custom Pipelines wird über die steps Definition im
+estaTektonPipeline.json gesteuert und zwar über das Propertry
+customPipelines mit einer Liste von Pipeline Spezifikationen.
+
+Eine Custom Pipeline wird dabei über eine der folgenden Properties
+angegeben:
+
+"pipelineTemplate": "<Name oder Datei des PipelineRun Templates>"
+"pipelineRef": "<Name der Pipeline>"
+
+Mit pipelineTemplate wird auf ein OpenShift Template verwiesen, welches
+einen PipelineRun und allfällige zusäzliche Resourcen wie PVCs erstellt.
+Endet das Property mit .yaml wird die enstprechende Datei im Ordner
+"tekton" des Repositors verwendet. Ansonsten wird der Wert als Name für
+ein im Namespace vorhandenes Template betrachtet.
+
+Ist stattdessen pipelineRef in der Step Konfiguration angegeben, wird
+dies als Referenz auf eine im Namespace vorhandene Pipeline
+interpretiert und über ein Standard PipelineRun Template gestartet.
+
+Pipeline Parameter
+
+Zusätzliche Parameter, welche an die PipelineRuns übergeben werden,
+können in der Custom Pipeline Konfiguration im estaTektonPipeline.json
+definiert werden:
+
+"params": {
+"VERSION_TAG": "snapshot.${DATE}",
+"IMAGE_LABELS": "buildtype=snapshot"
+
+}
+
+Die Parameter Values können interpolierte Strings enthalten, welche mit
+vom Controller global definierten Parametern (${PARAM_NAME}) oder Werten
+aus dem estaTektonPipeline.json (${/json/pointer}) ersetzt werden.
+
+Beispielkonfiguration eines Steps mit Custom Pipeline
+
+Eine Beispielkonfiguration eines Buildsteps könnte so aussehen. Wie man
+sieht, können auch mehrere Pipelines definiert werden, welche vom
+Controller parallel gestartet werden:
+
+{
+"name": "snapshot",
+"enabled": true,
+"buildDockerImage": true,
+"triggerType": [
+"GITEVENT"
+],
+"customPipelines": [
+{
+"pipelineTemplate": "custom-build-pipeline-run-template.yaml",
+"params": {
+"IMAGE_TAG": "snapshot.${DATE}",
+"APP_NAME": "${/stages/1/argoCD/argoCdAppName}"
+
+}
+}
+]
+}
+
+Controller REST API (Draft)
+
+  Route                                                           Methode   Beschreibung                                                                       Payload
+  --------------------------------------------------------------- --------- ---------------------------------------------------------------------------------- --------------------------
+  /api/bitbucket/projects                                         GET       Listet alle Bitbucket Projekte, welche im Controller registriert sind              
+  /api/bitbucket/projects/:pid                                    GET       Details zu einem Bitbucket Projekt                                                 
+  /api/bitbucket/projects/:id/repos                               GET       Listet alle Tekton-enabled Bitbucket Repositories im Projekt                       
+  /api/bitbucket/projects/:id/repos/:rid                          GET       Details zu einem Bitbucket Repository inkl. Branches und estaTektonPipeline.json   
+  /api/bitbucket/projects/:id/repos/:rid/branches                 GET       Gibt die Branches zu einem Repository zurück                                       
+  /api/bitbucket/projects/:id/repos/:rid/branches/:branch/build   POST      Startet einen Pipeline Run für den gegebenen Branch                                {}
+  /api/bitbucket/projects/:id/repos/:rid/branches/:branch/tag     POST      Startet einen Tagging Pipeline Run ür den gegebenen Branch                         {"versionTag":"1.2.3.0"}
+  /api/pipelinerun?repository=kd-esta--foo&type=*                 GET       Listet alle Pipeline Runs welchen den angegegebenen Selektoren entsprchen          
+  /api/pipelinerun/:id                                            GET       Details zu einem Pipeline Run                                                      
+  /api/pipelinerun/:id                                            DELETE    Löschen eines Pipeline Runs mit allen verknüpften Resourcen                        
+  /api/pipelinerun/:id/logs[/stream]                              GET       Logs eines Pipeline Runs                                                           
+  /api/pipelinerun/:id/rerun                                      POST      Neustart des Pipeline Runs                                                         
+  /api/pipelinerun/:id/cancel                                     POST      Abbrechen eines laufenden Pipeline Runs                                            
+  /api/pipelinerun/:id/delete                                     DELETE    Stop und Löschen eines Pipeline Runs                                               
+
+Die Aktuelle Version des APIs wird mit Swagger/OpenAPI dokumentiert:
+https://esta-tekton-controller-esta-tekton-dev.sbb-cloud.net/swaggerui/

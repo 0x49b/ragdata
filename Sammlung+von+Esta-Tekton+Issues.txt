@@ -1,0 +1,83 @@
+Sammlung von Esta-Tekton Issues
+
+Inhalt
+
+-   Inhalt
+
+-   Vert.x Thread has been blocked for more than 2s.
+
+-   JSON Schema Validation Unknown Keywords (then, else)
+
+-   Events Closed Exception vermeiden indem auf den Pod Shutdown gehört
+    wird und dann der Reader closed wird
+
+• Resolved
+
+-   The client is using resource type xyz with unstable version v1beta
+
+-   Pipelinerun cleanup failed
+
+-   Taskrun is not a readiable ressource
+
+Vert.x Thread has been blocked for more than 2s. 
+
+Korrektur für failed pipelinerun Pull Request #397: fix: no streaming
+for failed pipeline - Code (sbb.ch)
+Ticket für running pipelinerun [ESTA-5393] Tetkon: Log und Event streams
+blockieren die Thread - Flow (sbb.ch)
+
+JSON Schema Validation Unknown Keywords (then, else)
+
+Bug im library "Unknown keyword then" / "else" warning · Issue #333 ·
+networknt/json-schema-validator (github.com)
+
+Search | Splunk 9.0.2 (sbb.ch)
+
+Events Closed Exception vermeiden indem auf den Pod Shutdown gehört wird und dann der Reader closed wird
+
+{ [-]
+   exception: { [+]
+   }
+   hostName: esta-tekton-pipeline-controller-7d85676464-v5d6h
+   level: WARN
+   loggerClassName: org.slf4j.impl.Slf4jLogger
+   loggerName: ch.sbb.esta.tekton.pipeline.service.openshift.events.TaskRunEventEmitter
+   mdc: { [+]
+   }
+   message: TaskRun/Pod Events Watcher closed for selector
+ki-kihub--vdv-v2017c-aus-chart-staging-2f0kqj-git-clone
+   ndc:
+   processId: 1
+   processName: quarkus-run.jar
+   sequence: 33735
+   threadId: 894
+   threadName: OkHttp https://198.18.0.1/...
+   timestamp: 2023-01-18T15:26:18.966+01:00
+}
+
+Show as raw text
+
+Sollte mit [ESTA-5393] Tetkon: Log und Event streams blockieren die
+Thread - Flow (sbb.ch) gelöst (kein watch mehr)
+
+Resolved
+
+Löschen wenn sie bestätigt sind
+
+Klicken Sie hier, um zu erweitern...
+
+The client is using resource type xyz with unstable version v1beta
+
+nicht gesehen die letzte 7 tagen: Search | Splunk 9.0.2 (sbb.ch)
+
+Pipelinerun cleanup failed
+
+Ich denke man versucht die logs zu löschen wenn die Datei nicht da sind.
+Die gzip sollte es lösen: Pull Request #393: feat: compress dumped
+pipeline/event logs with gzip - Code (sbb.ch)
+
+Taskrun is not a readiable ressource
+
+should be fixed with Pull Request #394: feat: remove taskrun is no
+readiable resource warning by not call ready on the resource - Code
+(sbb.ch)

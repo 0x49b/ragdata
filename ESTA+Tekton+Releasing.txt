@@ -1,0 +1,180 @@
+ESTA Tekton Releasing
+
+Nachfolgend wird der Prozess beschrieben, wie ESTA Tekton released wird,
+inklusive der Kommunikation und dem Roll-out für unsere Abnehmer.
+
+-   Versionierung
+
+    -   Semantic Versions
+
+-   Unstable Releases
+
+-   Stable Releases
+
+-   Changelog
+
+-   Release Announcements
+
+    -   Muster
+
+• ESTA Tekton Version 1.14.0 released
+
+• Summary
+
+• Further information
+
+-   Deployment
+
+Versionierung
+
+Ein Release des Gesamtsystems ESTA Tekton wird über as Repo
+esta-tekton-pipeline-config gemacht, welches ein Umbrella Helm Chart mit
+den Dependencies und Values für die einzelnen Komponenten enthält. Die
+Versionierung folgt dem Semantic Versioning. Für jedes Release wird ein
+Git Tag erstellt und das Helm Chart mit der entsprechenden Version nach
+bin.sbb.ch gepushed.
+
+Semantic Versions
+
+major: MAJOR Milestones
+minor: Feature Releases
+patch: Patches, kleine Improvements oder Hotfixes
+
+TO BE DISCUSSED
+
+Monorepo erstellen? →  ESTA-5275 - Abrufen der Vorgangsdetails... STATUS
+
+Unstable Releases
+
+"Release early, release often" ist das Credo von ESTA Tekton. Für die
+laufende Entwicklung releasen wir oft, meistens beim Abschluss eines
+neue Features oder einer Anpassung, die aufgrund von Kundenfeedback oder
+-wünschen notwendig wird. Für diese "unstable" Releases gibt es in
+unserem ArgoCD Helm Chart einen eigenen "Cannel", der von einzelnen
+Tekton Instanzen benutzt werden kann, wenn gewünscht. Das kann auch nur
+temporär sein, um schnell einen Fix oder ein gewünschtes Feature zu
+deployen.
+
+Der Unstable Channel kann benutzt werden, indem in der jeweiligen ArgoCD
+App die Value .estaTekton.releaseVersionUnstable verwendet wird.
+
+Stable Releases
+
+Einen etwas langsameren Release-Zyklus bieten wir mit dem Stable
+Releases an. Diese werden publiziert, sobald eine unstable Version eine
+Weile in clew-tekton und anderen Instanzen ohne Probleme und
+Zwischenfälle läuft. Genaue Regeln oder eine zeitliche Periodizität für
+stable Releases sind nicht vorgesehen.
+
+Der Stable Channel ist der Default für alle Tekton Instanzen und wird
+über die Value .estaTekton.releaseVersion bezogen.
+
+Lose Regel für Stable Releases: einmal pro Woche (Montags), wenn
+relevante Änderungen in Unstable vorhanden.
+
+Changelog
+
+Wie bisher wird im esta-tekton-pipeline-config Repo die Datei
+CHANGELOG.md mit Informationen zu Bugfixes, Features und Major Changes
+sowie mit den enthaltenen Versionen der einzelnen Komponenten geführt.
+
+Idee: neue Features im Tekton Control Panel anzeigen (Notifications)
+
+TO BE DISCUSSED
+
+-   Sollen CLEW- oder ESTA- Tickets im Changelog vermerkt werden? → Ja,
+    gemäss Entscheid aus  CLEW-24024 - Abrufen der Vorgangsdetails...
+    STATUS
+
+-   Sollen (zumindest für stable Releases) Release Notes wie diejenigen
+    für die ESTA Cloud Pipeline in Confluence publiziert werden? → No
+
+Release Announcements
+
+Für stable Releases wird eine Ankündigung in Form eines Blogposts
+publiziert. Diese enthält den Changelog seit dem letzten Release und
+allenfalls wichtige Informationen falls Breaking Changes anfallen.
+
+Hier ein Beispiel: ESTA Cloud Pipeline 1.67.0 Release.
+
+Muster
+
+ESTA Tekton Version 1.14.0 released
+
+  ---------- ---------------------------------------
+  Affects:   Users of the ESTA Tekton CI/CD system
+  ---------- ---------------------------------------
+
+Summary
+
+We just released the stable version 1.14.0 of the ESTA Tekton Build
+System.
+
+-   This release includes major/breaking changes that affect XXX
+
+-   This is a service release with a number of new features and
+    improvements which are listed below.
+
+Further information
+
+Major changes
+
+-   Controller: change defaultMavenGoals to "clean install"
+
+Bugfixes
+
+-   Pipeline: support nested multi-module Maven builds
+
+-   Pipeline: fix caching to make multistage Docker builds work
+
+-   Controller: avoid startup errors when bitbucket credentials are
+    empty
+
+-   Builder: fix permissions for non-root user (used for specific Maven
+    builds)
+
+Features
+
+-   UI: add info link explaining how to create a Bitbucket access tokens
+
+See the full Changelog here.
+
+All ESTA Tekton instances on the stable release channel will be
+automatically updated with this new version.
+
+Buillder Image Tools Versionen
+
+Im Changelog oder in den Announcements sollten ebenfalls die Versionen
+der Build Tools (z.B. Maven, Chrome Headless, etc.) erwähnt werden,
+welche in den Builder Images aktuell verwendet werden.
+
+Deployment
+
+Alle Tekton Instanzen werden über das ESTA ArgoCD deployed und sind
+standardmässig auf autosync und entweder die stable und die unstable
+Release Version konfiguriert.
+
+Die releaseVersionUnstable Value wird via Staging Pipeline bei einem
+Release des Config Helm Charts angepasst und somit automatisch deployed.
+
+Die releaseVersion Value wird manuell via Pull Request in den Values der
+jeweiligen Cluster angepasst und zeitnah zum Release Announcement
+gemerged.
+
+Es bleibt jedoch einzelnen Abnehmern überlassen, ihre Instanz auf eine
+fixen Version zu konfigurieren und sie selbständig via Pull-Request
+anzupassen.
+
+Update Downtime
+
+Das Deployment des Tekton Controllers ist auf Recreate eingestellt, da
+die Verwendung eines PVC den redundanten Betrieb von mehreren Pods
+verhindert. Bei einem Update ist also mit einer kurzen Downtime von
+einigen Sekunden bis wenigen Minuten zu rechnen. In dieser Zeit
+"verpasst" der Controller Webhooks von Bitbucket und PipelineRun Status
+Changes von Kubernetes, was zu fehlenden Status-Updates, Notifications
+oder verpassten Builds bei einem Git Push führen kann.
+
+Für ein Update ist also ein Zeitpunkt zu wählen, wo potenziell kein oder
+wenig Betrieb auf Tekton zu erwarten ist (z.B. Abends oder am frühen
+Morgen).

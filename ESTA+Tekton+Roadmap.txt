@@ -1,0 +1,63 @@
+ESTA Tekton Roadmap
+
+The following roadmap is just an internal draft and thus shall not be
+taken as a commitment. Furthermore it's subject to change at any time.
+
+Planned Features for ESTA Tekton
+
+This is a loose collection of high-level features we plan to integrate
+into the ESTA Tekton CI/CD system.
+
+Prio 1
+
+-   estaCloudPipeline.json Migration tool :tick:
+
+-   Full Buildpacks support :tick:
+
+-   Tekton Namespace Setup via CLEW SSP :tick:
+
+Prio 2
+
+-   Parametrized Builds (via Tekton Control Panel)
+
+-   JUnit, Cucumber (+ other) test report publishing
+
+Prio 3
+
+-   Python Support :tick:
+
+-   Selectable Maven Versions (SDKman?)
+
+Later
+
+-   Mobile Build + Deployment
+
+-   Hotfix Creation Assistant
+
+-   Advanced Pipeline Configuration via YAML (like Github actions)
+
+Out-of-scope Features
+
+-   Kafka Deployment
+
+-   APIM Registration
+
+-   Azure AD App Registration
+
+-   Solace Deployment (TMS)
+
+-   Pre and Post Hooks in staging pipelines (preCiDeploymentJob,
+    postCiDeploymentJob)
+
+These are topics specific to deployment and therefore are not an
+integrated part of ESTA Tekton which delegates deployment to ArgoCD.
+Solutions will be discussed with the CLEW Architect and eventually
+provided by CLEW.
+
+Other TODOs for ESTA Tekton
+
+-   Performance Tests / Benchmarks
+
+-   Monitoring / Alerting
+
+-   Security Audit

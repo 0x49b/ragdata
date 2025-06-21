@@ -1,0 +1,135 @@
+Cluster Setup für ESTA Tekton
+
+Um einen OpenShift Cluster für ESTA Tekton "ready" zu machen, sind die
+folgenden Punkte zu erfüllen:
+
++---------+------+---------+---------+---------+--------+---------+
+| Task    | Wer? | Wie?    | clew01d | a       | aws01t | trs01t  |
+|         |      |         |         | zure01d |        |         |
++=========+======+=========+=========+=========+========+=========+
+| Batch   | CON  | ocp-    | :tick:  | :tick:  | :tick: | :tick:  |
+| Nodes   |      | argocd: |         |         |        |         |
+| (mit    |      | Zusä    |         |         |        |         |
+| auto-s  |      | tzliche |         |         |        |         |
+| caling) |      | Cluster |         |         |        |         |
+| konfig  |      | Gruppe  |         |         |        |         |
+| urieren |      | "cluste |         |         |        |         |
+|         |      | r/batch |         |         |        |         |
+|         |      | -nodes" |         |         |        |         |
+|         |      | im      |         |         |        |         |
+|         |      | ins     |         |         |        |         |
+|         |      | tances/ |         |         |        |         |
+|         |      | <stage> |         |         |        |         |
+|         |      | /cluste |         |         |        |         |
+|         |      | rs.yaml |         |         |        |         |
+|         |      | hin     |         |         |        |         |
+|         |      | zufügen |         |         |        |         |
+|         |      | In      |         |         |        |         |
+|         |      | Cluste  |         |         |        |         |
+|         |      | r-spezi |         |         |        |         |
+|         |      | fischen |         |         |        |         |
+|         |      | Values  |         |         |        |         |
+|         |      | Inst    |         |         |        |         |
+|         |      | anz-Typ |         |         |        |         |
+|         |      | der     |         |         |        |         |
+|         |      | Batch   |         |         |        |         |
+|         |      | Nodes   |         |         |        |         |
+|         |      | def     |         |         |        |         |
+|         |      | inieren |         |         |        |         |
+|         |      | Via CON |         |         |        |         |
+|         |      | ArgoCD  |         |         |        |         |
+|         |      | sy      |         |         |        |         |
+|         |      | nchroni |         |         |        |         |
+|         |      | sieren. |         |         |        |         |
++---------+------+---------+---------+---------+--------+---------+
+| Op      | ESTA | ocp-    | :tick:  | :tick:  | :tick: | :tick:  |
+| enShift |      | argocd: |         |         |        |         |
+| Pi      |      | Zusä    | :tick:  | :tick:  | :tick: | :w      |
+| pelines |      | tzliche |         |         |        | arning: |
+| O       |      | Cluster | :tick:  | :tick:  | :tick: |         |
+| perator |      | Gruppe  |         |         |        | :w      |
+| instal  |      | "       |         |         |        | arning: |
+| lieren, |      | applica |         |         |        |         |
+|         |      | tions/e |         |         |        |         |
+| ESTA    |      | sta-tek |         |         |        |         |
+| Tekton  |      | ton-bui |         |         |        |         |
+| Cluste  |      | ld-cont |         |         |        |         |
+| rRollen |      | roller" |         |         |        |         |
+| er      |      | im      |         |         |        |         |
+| stellen |      | ins     |         |         |        |         |
+|         |      | tances/ |         |         |        |         |
+| Na      |      | <stage> |         |         |        |         |
+| mespace |      | /cluste |         |         |        |         |
+| Config  |      | rs.yaml |         |         |        |         |
+| uration |      | hinz    |         |         |        |         |
+| O       |      | ufügen. |         |         |        |         |
+| perator |      | Nach    |         |         |        |         |
+| ESTA    |      | dem     |         |         |        |         |
+| Tekton  |      | A       |         |         |        |         |
+| Conf    |      | pproval |         |         |        |         |
+| uration |      | durch   |         |         |        |         |
+| anlegen |      | CON     |         |         |        |         |
+|         |      | mergen  |         |         |        |         |
+|         |      | und via |         |         |        |         |
+|         |      | CON     |         |         |        |         |
+|         |      | ArgoCD  |         |         |        |         |
+|         |      | s       |         |         |        |         |
+|         |      | ynchron |         |         |        |         |
+|         |      | isieren |         |         |        |         |
+|         |      | Zus     |         |         |        |         |
+|         |      | ätzlich |         |         |        |         |
+|         |      | muss    |         |         |        |         |
+|         |      | CON     |         |         |        |         |
+|         |      | "outco  |         |         |        |         |
+|         |      | ld-coll |         |         |        |         |
+|         |      | ectord" |         |         |        |         |
+|         |      | und     |         |         |        |         |
+|         |      | "names  |         |         |        |         |
+|         |      | pace-co |         |         |        |         |
+|         |      | nfigura |         |         |        |         |
+|         |      | tion-op |         |         |        |         |
+|         |      | erator" |         |         |        |         |
+|         |      | s       |         |         |        |         |
+|         |      | ynchron |         |         |        |         |
+|         |      | isieren |         |         |        |         |
++---------+------+---------+---------+---------+--------+---------+
+| Self-   | CON  | clew    | :tick:  | :tick:  | :tick: |         |
+| Service |      | -self-s |         |         |        |         |
+| für     |      | ervice- |         |         |        |         |
+| Tekton  |      | argocd: |         |         |        |         |
+| P       |      | Feature |         |         |        |         |
+| rojekte |      | "esta   |         |         |        |         |
+| akt     |      | tekton" |         |         |        |         |
+| ivieren |      | in dem  |         |         |        |         |
+|         |      | CON     |         |         |        |         |
+|         |      | backend |         |         |        |         |
+|         |      | Co      |         |         |        |         |
+|         |      | nfigMap |         |         |        |         |
+|         |      | t       |         |         |        |         |
+|         |      | emplate |         |         |        |         |
+|         |      | hinz    |         |         |        |         |
+|         |      | ufügen. |         |         |        |         |
+|         |      | Via     |         |         |        |         |
+|         |      | CLEW    |         |         |        |         |
+|         |      | ArgoCD  |         |         |        |         |
+|         |      | sy      |         |         |        |         |
+|         |      | nchroni |         |         |        |         |
+|         |      | sieren. |         |         |        |         |
++---------+------+---------+---------+---------+--------+---------+
+| Neuer   | ESTA |         | :tick:  | :tick:  | :tick: |         |
+| Cluster |      |         |         |         |        |         |
+| in      |      |         |         |         |        |         |
+| es      |      |         |         |         |        |         |
+| ta-apps |      |         |         |         |        |         |
+| -argocd |      |         |         |         |        |         |
+| e       |      |         |         |         |        |         |
+| rfassen |      |         |         |         |        |         |
++---------+------+---------+---------+---------+--------+---------+
+| ArgoCD  | ESTA |         | :tick:  | :tick:  | :tick: |         |
+| Instanz |      |         |         |         |        |         |
+| cl      |      |         |         |         |        |         |
+| ew-esta |      |         |         |         |        |         |
+| -argocd |      |         |         |         |        |         |
+| au      |      |         |         |         |        |         |
+| fsetzen |      |         |         |         |        |         |
++---------+------+---------+---------+---------+--------+---------+

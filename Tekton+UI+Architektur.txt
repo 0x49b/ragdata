@@ -1,0 +1,23 @@
+Tekton UI Architektur
+
+Package Diagram
+
+[]
+
+Class Diagram Pipeline
+
+[]
+
+HTML Structure Pipelines and Pipeline Detail
+
+[]
+
+Class Diagram Repositories
+
+[]
+
+HTML Structure Repositories and Repository Detail
+
+[]
+
+[]

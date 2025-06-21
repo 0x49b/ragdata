@@ -1,0 +1,48 @@
+Esta Tagging Pipelines - Besprechung
+
+Beteiligte Personen: Brüderli Thomas (IT-PTR-CEN2-SL2) Jeanneret Julien
+(IT-PTR-CEN1-BDE3) Spirig Lukas (IT-PTR-CEN2-SL3) Wallrapp Manuel
+(IT-PTR-EXT-EXT2 - Extern) 
+
+ESTA-5190 - Helm Chart Snapshot Versionen publishen Closed
+
+Diskussion
+
+Weshalb kein SNAPSHOT:
+
+-   Bei snapshot builds werden bestehende Artefakte überschrieben. Falls
+    diese deployed werden, kann es sein, dass ein veraltetes Snapshot
+    Artefakt deployed wird. Das ist der Grund weshalb wir uns gegen
+    Snapshot Deployments und somit gegen Versionierung der Charts mit
+    einer Snapshot Version entschieden haben. 
+
+Weshalb SNAPSHOT:
+
+-   In der Vergangenheit waren sich die Teams gewöhnt mit Snapshot
+    Versionen zu arbeiten. Hier werden vor allem Repoübergreifende
+    Snapshot Dependencies verwendet. Teilweise wurden auch Snapshot
+    Versionen deployed. Dieses Pattern möchten diverse Teams
+    weiterführen. Push nach Master → Snapshotbuild → Deploy nach DEV.
+
+Fragen:
+
+-   Sollen Artefakte in Artifactory überschrieben werden können?
+    ESTA-4962 - Der Jira-Vorgang existiert nicht oder Sie sind nicht
+    anzeigeberechtigt.
+
+-   Soll Esta-Tekton ein Werkzeug sein um zu Builden - ähnlich wie
+    Jenkins oder wollen wir einen opinionated build Prozess aufzwingen?
+
+-   Können SNAPSHOTS überhaupt durch ArgoCD deployed werden? 
+
+Vorschlag:
+
+-   Updaten der Version im Helm Chart ist per Default inaktiv (auch für
+    Releases). Wenn man das Updaten der Version im Helmchart aktiviert,
+    wird die Version dann im Release- wie im Snapshotfall aktualisiert.
+    So wäre es konsistent.
+
+-   Somit soll das Updaten der Version in Helmcharts per Default in der
+    Stagingpipeline gemacht werden.
+
+[]

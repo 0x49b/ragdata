@@ -1,0 +1,72 @@
+OpenShift Pipelines Operator Update
+
+So wird ein Update des Openshift Pipeline Operators (aka Tekton)
+durchgeführt:
+
+Readme First
+
+Basis-Informationen mit Links zu den relevanten Repos und ArgoCD
+Instanzen siehe CON Fact Sheet for ESTA
+
+1. Changes in den Release Notes lesen
+
+Allenfalls Massnahmen in ESTA Tekton planen und umsetzen.
+
+2. Update Infos in Openshift lesen
+
+1.  Operators > Installed Operators > Red Hat OpenShift Pipelines >
+    Subscriptions
+
+2.  Klick auf Upgrade status / Upgrade available
+
+3.  Neue Version: openshift-pipelines-operator-XXXX
+
+3. Operator Version in Git/ArgoCD für Stage "DEV" aktualisieren
+
+1.  stage-specific pipelines-operator values updaten
+
+    1.  installPlanApprover.operatorVersion auf die zu deployende
+        Version ändern
+
+    2.  falls eine neue Major Version veröffentlicht wurde, den
+        subscription.spec.channel ebenfalls auf die neue Verision
+        anpassen
+
+2.  PR erstellen und von CON approven lassen
+
+3.  ArgoCD Sync für Dev Cluster (clew01d) ausführen
+
+4. Integration Tests auf Dev Cluster ausführen
+
+1.  Checkout esta-tekton-integrationtests
+
+2.  Anpassen des Run Templates mit aktuellen Versionen
+
+3.  Oc Login auf dem Dev Cluster
+
+4.  $ oc create -f statics/esta-tekton-integrationtests-clew01d.yaml -n
+    esta-tekton-it
+
+5.  Prüfung der Resultate
+
+6.  Falls nötig ESTA Tekton Komponenten fixen und retest
+
+5. Operator Version für Stages TEST und PROD aktualisieren
+
+1.  Vorgehen analog 3. (ohne ArgoCD Sync)
+
+2.  Neue Version für ESTA Tekton erstellen
+
+6. Ankündigung des Updates via Blogpost
+
+1.  Falls es Breaking Changes gibt, müssen diese angekündigt werden
+
+2.  Zeitpunkt für das Rollout des Updates festlegen (ca. 2 Wochen)
+
+7. Rollout zum angekündigten Zeitpunkt
+
+1.  PRs aus 5. mergen
+
+2.  ArgoCD Sync für Test und Prod Cluster ausführen
+
+3.  ESTA Tekton Update ausrollen (via clew-esta-argocd)

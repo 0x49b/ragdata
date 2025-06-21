@@ -1,0 +1,153 @@
+ESTA Tekton Pipeline
+
+The ESTA Tekton Pipeline provides an easy-to-use CI/CD system with a
+standardized process for building and deploying your software projects
+on Openshift.
+
+The key benefits for using ESTA Tekton are:
+
+-   Easy setup for projects using the standard SBB stacks like
+    SpringBoot, Angular/Typescript and Go
+
+-   Simple build configuration with a single JSON file similar to the
+    well known estaCloudPipeline.json
+
+-   Fast migration for builds from ESTA Cloud Pipeline (the deployment
+    part needs a little more effort)
+
+-   Makes use of Lean Gitflow and Semantic Versioning
+
+-   Scalable build infrastructure using dedicated Openshift 4 clusters
+
+-   Extensible using custom pipelines and individual build namespaces
+
+-   Standard ESTA Tekton Pipelines with options to be customized
+
+-   Customized builder images if necessary
+
+-   Flexible pipeline configurations which get triggered by User, REST
+    API or Bitbucket Webhooks
+
+Architecture Overview
+
+Build and Deployment Setup for individual Business Units:
+
+[]
+
+Build and Deployment Workflow with Tekton Pipelines:
+
+[]
+
+Documentation
+
+-   Getting Started
+
+    -   Prerequisites
+
+    -   Setup your Build Namespace
+
+    -   Enable your Repository for Tekton
+
+    -   Start your first Tekton Pipeline
+
+    -   What's next?
+
+-   Core Concepts
+
+    -   Tekton Pipelines for CI/CD
+
+    -   Deployment with ArgoCD
+
+    -   ESTA Tekton Pipelines
+
+-   Dedicated Build Namespaces
+
+    -   Tekton Build Clusters
+
+    -   Setup your own Build Namespace
+
+    -   Secrets to access your resources
+
+-   Deployment with ArgoCD and Helm Charts
+
+    -   Setup ArgoCD for your Deployments
+
+    -   Create Helm Charts 
+
+    -   Manage ArgoCD Deployments in Git
+
+    -   Update ArgoCD Values from Tekton Pipelines
+
+-   ESTA Tekton Workflow
+
+    -   Continuous Integration
+
+    -   Release Process
+
+    -   Bitbucket Integration
+
+    -   Notifications
+
+-   ESTA Tekton Parameters - estaTektonPipeline.json
+
+    -   Steps and Stages
+
+    -   Helm Charts
+
+    -   Docker Settings
+
+    -   Examples
+
+    -   Parameter Documentation
+
+-   Tekton Control Panel
+
+    -   Authentication
+
+    -   Projects and Repositories
+
+    -   Start Builds and Releases
+
+    -   Monitor Pipeline Runs
+
+    -   ESTA Cloud Pipeline Migration Tool
+
+    -   User Permissions
+
+    -   Pipeline Secrets
+
+    -   System Configuration
+
+-   Advanced Topics
+
+    -   Custom Pipelines
+
+    -   Custom Pipeline Tasks
+
+    -   Environment Variables in Pipeline Tasks
+
+    -   Java and Maven Versions
+
+    -   Using Buildpacks
+
+    -   SonarCloud Test Coverage
+
+-   Migrating from ESTA Cloud Pipeline
+
+    -   Migrating estaCloudPipeline.json
+
+    -   Dockerfile Migration
+
+    -   OpenShift Templates to Helm Migration
+
+-   How-to Tekton
+
+-   Known Issues
+
+Release Notes
+
+Notes about releases of ESTA Tekton and it's components can be found in
+this CHANGELOG.
+
+Our backlog for future development with the possibility to vote in
+listed in Planned Features.

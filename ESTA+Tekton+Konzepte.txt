@@ -1,0 +1,34 @@
+ESTA Tekton Konzepte
+
+-   Azure AD App Registration Prozess
+
+-   Build ENV
+
+-   Builder Image Config
+
+-   Controller API Authentication aus Pipelines
+
+-   Dynamische Pipeline Tasks (Draft)
+
+-   Dynamisches Laden von Tasks aus Repository (Rejected)
+
+-   Esta Tagging Pipelines - Besprechung
+
+-   Esta-Tekton AzureAd-, APIM-, Kafka-Registration Prototyp -
+    Technologieauswahl
+
+-   ESTA Tekton E2E User Stories
+
+-   Esta Tekton Openshift Rollenkonzept
+
+-   ESTA Tekton Operator
+
+-   ESTA Tekton Releasing
+
+-   Parameterisierte Builds
+
+-   Rebuild Konzept
+
+-   Tekton Build Cache Konzept
+
+-   Tekton Build Credentials Exchange via Vault
